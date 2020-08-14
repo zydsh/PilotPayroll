@@ -7,6 +7,24 @@ INSERT INTO O_OBJ
 	'JobSpecification',
 	'A specification of characteristics for a particular type of job.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("b1b8360b-03a0-4511-8de6-3ba09fab9a6f",
+	"f93422d8-e256-4261-bae2-cf5bdf5c023f");
+INSERT INTO O_BATTR
+	VALUES ("b1b8360b-03a0-4511-8de6-3ba09fab9a6f",
+	"f93422d8-e256-4261-bae2-cf5bdf5c023f");
+INSERT INTO O_ATTR
+	VALUES ("b1b8360b-03a0-4511-8de6-3ba09fab9a6f",
+	"f93422d8-e256-4261-bae2-cf5bdf5c023f",
+	"00000000-0000-0000-0000-000000000000",
+	'Title',
+	'Name by which this job is known within the organization.',
+	'',
+	'Title',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"f93422d8-e256-4261-bae2-cf5bdf5c023f");

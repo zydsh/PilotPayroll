@@ -7,6 +7,24 @@ INSERT INTO O_OBJ
 	'Employee',
 	'A paid worker in the organization.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("17433df4-ff12-431a-96cc-61f99155db85",
+	"f228e204-e0aa-481c-adb6-27e960fc359c");
+INSERT INTO O_BATTR
+	VALUES ("17433df4-ff12-431a-96cc-61f99155db85",
+	"f228e204-e0aa-481c-adb6-27e960fc359c");
+INSERT INTO O_ATTR
+	VALUES ("17433df4-ff12-431a-96cc-61f99155db85",
+	"f228e204-e0aa-481c-adb6-27e960fc359c",
+	"00000000-0000-0000-0000-000000000000",
+	'NationalID',
+	'',
+	'',
+	'NationalID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"f228e204-e0aa-481c-adb6-27e960fc359c");

@@ -7,6 +7,27 @@ INSERT INTO O_OBJ
 	'Step',
 	'An employee grading which factors how payscale limits apply to the employee''s salary.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("6f666cf8-4750-4174-bbf5-8677da24dfe6",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_BATTR
+	VALUES ("6f666cf8-4750-4174-bbf5-8677da24dfe6",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_ATTR
+	VALUES ("6f666cf8-4750-4174-bbf5-8677da24dfe6",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	"00000000-0000-0000-0000-000000000000",
+	'Factor',
+	'Factor by which the upper limit value specified in the Grade for an employee''s Job are adjusted.
+If the factor is the lowest of any step, the lower limit value is specified by mnext lower step.
+Factors define boundaries between contiguous increasing step levels and must end with 1.
+Example: a step factor of 0.4 means that the upper limit is lower + (upper - lower) * 0.4.',
+	'',
+	'Factor',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");

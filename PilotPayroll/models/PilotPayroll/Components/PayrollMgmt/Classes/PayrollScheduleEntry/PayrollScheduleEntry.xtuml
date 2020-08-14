@@ -7,6 +7,42 @@ INSERT INTO O_OBJ
 	'PayrollScheduleEntry',
 	'Scheduling information for preparing and submitting a payroll for some pay period.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("614aefac-d27d-48ff-bc24-ac1e29497944",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
+INSERT INTO O_BATTR
+	VALUES ("614aefac-d27d-48ff-bc24-ac1e29497944",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
+INSERT INTO O_ATTR
+	VALUES ("614aefac-d27d-48ff-bc24-ac1e29497944",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
+	"00000000-0000-0000-0000-000000000000",
+	'DraftGenerationDate',
+	'Microseconds since start of epoch when draft payroll is to be auto-generated.',
+	'',
+	'DraftGenerationDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000010",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("883978dd-db59-4063-93f6-56ada24599ee",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
+INSERT INTO O_BATTR
+	VALUES ("883978dd-db59-4063-93f6-56ada24599ee",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
+INSERT INTO O_ATTR
+	VALUES ("883978dd-db59-4063-93f6-56ada24599ee",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
+	"614aefac-d27d-48ff-bc24-ac1e29497944",
+	'SubmittalDueDate',
+	'Microseconds since start of epoch when approved payroll is to be submitted to Finance department.',
+	'',
+	'SubmittalDueDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000010",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a");

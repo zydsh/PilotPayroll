@@ -1,23 +1,23 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
-	'Payroll',
-	1,
-	'Payroll',
-	'Regularly scheduled payments to employees of some segment of the organization for a pay period.',
+	VALUES ("ae8be100-bccd-49d5-b79b-bfa58285b46a",
+	'PayrollScheduleEntry',
+	4,
+	'PayrollScheduleEntry',
+	'Scheduling information for preparing and submitting a payroll for some pay period.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_ID
 	VALUES (0,
-	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c");
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
 INSERT INTO O_ID
 	VALUES (1,
-	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c");
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
 INSERT INTO O_ID
 	VALUES (2,
-	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c");
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
 INSERT INTO PE_PE
-	VALUES ("082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
+	VALUES ("ae8be100-bccd-49d5-b79b-bfa58285b46a",
 	1,
 	"66af3a6e-b969-4d52-8331-503fed93597c",
 	"00000000-0000-0000-0000-000000000000",

@@ -18,11 +18,32 @@ INSERT INTO O_ATTR
 	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04",
 	"00000000-0000-0000-0000-000000000000",
 	'Rate',
-	'',
+	'A rate by which a source value should be multiplied when evaluating.
+TBD - define this as a factor or a percentage... ',
 	'',
 	'Rate',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("42480198-8bce-4c90-8e14-40447e1d2e1e",
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO O_BATTR
+	VALUES ("42480198-8bce-4c90-8e14-40447e1d2e1e",
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO O_ATTR
+	VALUES ("42480198-8bce-4c90-8e14-40447e1d2e1e",
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04",
+	"a7eece14-99d4-428f-b4f1-eafdac7dce76",
+	'Source',
+	'This value is used to locate the instance of payment element to which the rate is applied.
+The element is located by matching the element specification from which it is derived.
+The payment structure is scanned for an element related to a matching element specification.',
+	'',
+	'Source',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID

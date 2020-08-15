@@ -1,23 +1,41 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("a497a518-2ab6-43f6-9658-dec4153f18eb",
+	VALUES ("4dc385b2-4064-4e1a-9f67-b4ce8b44434b",
 	'EmployeePaymentElement',
-	6,
+	14,
 	'EmployeePaymentElement',
-	'Detail of an amount which contributes or deducts for an employee payment for a pay period.',
+	'Holds an amount which contributes to or deducts from total payment for a pay period.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("36aa15ff-ff00-4af3-94d6-4c05478754bb",
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
+INSERT INTO O_BATTR
+	VALUES ("36aa15ff-ff00-4af3-94d6-4c05478754bb",
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
+INSERT INTO O_ATTR
+	VALUES ("36aa15ff-ff00-4af3-94d6-4c05478754bb",
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b",
+	"00000000-0000-0000-0000-000000000000",
+	'Amount',
+	'Amount to be added to or subtracted from the total payment calculation.',
+	'',
+	'Amount',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"a497a518-2ab6-43f6-9658-dec4153f18eb");
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
 INSERT INTO O_ID
 	VALUES (1,
-	"a497a518-2ab6-43f6-9658-dec4153f18eb");
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
 INSERT INTO O_ID
 	VALUES (2,
-	"a497a518-2ab6-43f6-9658-dec4153f18eb");
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
 INSERT INTO PE_PE
-	VALUES ("a497a518-2ab6-43f6-9658-dec4153f18eb",
+	VALUES ("4dc385b2-4064-4e1a-9f67-b4ce8b44434b",
 	1,
 	"66af3a6e-b969-4d52-8331-503fed93597c",
 	"00000000-0000-0000-0000-000000000000",

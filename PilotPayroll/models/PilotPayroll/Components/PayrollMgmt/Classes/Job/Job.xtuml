@@ -7,6 +7,42 @@ INSERT INTO O_OBJ
 	'Job',
 	'An instance of a job - matching a job specification - which an employee is working at or has worked at.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_BATTR
+	VALUES ("c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_ATTR
+	VALUES ("c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
+	"00000000-0000-0000-0000-000000000000",
+	'StartDate',
+	'',
+	'',
+	'StartDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000010",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("cf4cbc30-344b-4447-ada0-14a8026e04ba",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_BATTR
+	VALUES ("cf4cbc30-344b-4447-ada0-14a8026e04ba",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_ATTR
+	VALUES ("cf4cbc30-344b-4447-ada0-14a8026e04ba",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
+	"c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	'EndDate',
+	'',
+	'',
+	'EndDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000010",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");

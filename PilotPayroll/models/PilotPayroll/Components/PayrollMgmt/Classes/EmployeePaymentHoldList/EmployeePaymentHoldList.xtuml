@@ -1,23 +1,23 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("fae66ebd-18af-417a-97b1-453a5ac9409b",
-	'EmployeePaymentStructure',
-	10,
-	'EmployeePaymentStructure',
-	'A specification of which element types are included in an employee''s payment for each pay period.',
+	VALUES ("e8d946a6-1c29-4d62-9925-83eccfb0eb01",
+	'EmployeePaymentHoldList',
+	19,
+	'EmployeePaymentHoldList',
+	'Links to any help Employee payments for a Payroll.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_ID
 	VALUES (0,
-	"fae66ebd-18af-417a-97b1-453a5ac9409b");
+	"e8d946a6-1c29-4d62-9925-83eccfb0eb01");
 INSERT INTO O_ID
 	VALUES (1,
-	"fae66ebd-18af-417a-97b1-453a5ac9409b");
+	"e8d946a6-1c29-4d62-9925-83eccfb0eb01");
 INSERT INTO O_ID
 	VALUES (2,
-	"fae66ebd-18af-417a-97b1-453a5ac9409b");
+	"e8d946a6-1c29-4d62-9925-83eccfb0eb01");
 INSERT INTO PE_PE
-	VALUES ("fae66ebd-18af-417a-97b1-453a5ac9409b",
+	VALUES ("e8d946a6-1c29-4d62-9925-83eccfb0eb01",
 	1,
 	"66af3a6e-b969-4d52-8331-503fed93597c",
 	"00000000-0000-0000-0000-000000000000",

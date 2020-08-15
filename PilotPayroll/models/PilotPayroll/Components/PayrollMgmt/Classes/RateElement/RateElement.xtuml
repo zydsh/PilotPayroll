@@ -1,0 +1,50 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("41be16c0-2ec6-45db-b5ff-b24b9aa1ae04",
+	'RateElement',
+	18,
+	'RateElement',
+	'Defines a default rate for multiplicative evaluation.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("a7eece14-99d4-428f-b4f1-eafdac7dce76",
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO O_BATTR
+	VALUES ("a7eece14-99d4-428f-b4f1-eafdac7dce76",
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO O_ATTR
+	VALUES ("a7eece14-99d4-428f-b4f1-eafdac7dce76",
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04",
+	"00000000-0000-0000-0000-000000000000",
+	'Rate',
+	'',
+	'',
+	'Rate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO O_ID
+	VALUES (1,
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO O_ID
+	VALUES (2,
+	"41be16c0-2ec6-45db-b5ff-b24b9aa1ae04");
+INSERT INTO PE_PE
+	VALUES ("41be16c0-2ec6-45db-b5ff-b24b9aa1ae04",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Classes',
+	'',
+	0,
+	'../Classes.xtuml');

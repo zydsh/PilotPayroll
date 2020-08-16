@@ -25,6 +25,42 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("9a456bd0-335c-4296-90fe-ce46e22f1d24",
+	"f228e204-e0aa-481c-adb6-27e960fc359c");
+INSERT INTO O_BATTR
+	VALUES ("9a456bd0-335c-4296-90fe-ce46e22f1d24",
+	"f228e204-e0aa-481c-adb6-27e960fc359c");
+INSERT INTO O_ATTR
+	VALUES ("9a456bd0-335c-4296-90fe-ce46e22f1d24",
+	"f228e204-e0aa-481c-adb6-27e960fc359c",
+	"17433df4-ff12-431a-96cc-61f99155db85",
+	'FirstName',
+	'',
+	'',
+	'FirstName',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d247f608-c226-415f-b26e-54900fc7ce52",
+	"f228e204-e0aa-481c-adb6-27e960fc359c");
+INSERT INTO O_BATTR
+	VALUES ("d247f608-c226-415f-b26e-54900fc7ce52",
+	"f228e204-e0aa-481c-adb6-27e960fc359c");
+INSERT INTO O_ATTR
+	VALUES ("d247f608-c226-415f-b26e-54900fc7ce52",
+	"f228e204-e0aa-481c-adb6-27e960fc359c",
+	"9a456bd0-335c-4296-90fe-ce46e22f1d24",
+	'LastName',
+	'',
+	'',
+	'LastName',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"f228e204-e0aa-481c-adb6-27e960fc359c");

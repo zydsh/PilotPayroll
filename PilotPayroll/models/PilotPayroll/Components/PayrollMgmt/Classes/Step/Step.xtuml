@@ -27,14 +27,14 @@ Example:
 Step with ID Level = 1 has a factor of 0.25
 Step with ID Level = 2 has a factor of 0.55
 Step with ID Level = 3 has a factor of 1.0 (fulfilling the 0..1 requirement)
-The Grade associated with the employee''s job has a salary range Grade.upper - Grade.lower
+The Grade associated with the employee''s job has a salary range = (Grade.upper - Grade.lower)
 Then, the upper salary limit for this employee at Step 2 is Grade.lower + ( range ) * 0.55.
 The lower limit at Step 2, defined by the next lower level (Step 1), is Grade.lower + ( range ) * 0.25.
 ',
 	'',
 	'Factor',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
+	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
 INSERT INTO O_NBATTR

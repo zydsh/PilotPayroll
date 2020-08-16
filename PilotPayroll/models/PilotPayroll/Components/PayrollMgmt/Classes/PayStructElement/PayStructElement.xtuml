@@ -5,8 +5,22 @@ INSERT INTO O_OBJ
 	'PayStructElement',
 	16,
 	'PayStructElement',
-	'',
+	'One of a chosen set of payment elements that contribute to an employee''s total payment.
+( a payslip line item )',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("a82453ee-23e4-4211-a812-c9fe5b29263d",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'Evaluate',
+	'This operation will evaluate a payment contribution based on subtype calculation.
+TBD: polymorphic evaluation...',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'',
+	3,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_ID
 	VALUES (0,
 	"8705371c-e3aa-4840-b680-68cee4da6b5b");

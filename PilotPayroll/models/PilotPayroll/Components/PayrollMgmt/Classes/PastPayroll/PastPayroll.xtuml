@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'PastPayroll',
 	21,
 	'PastPayroll',
-	'Records previous payrolls',
+	'Records a payroll submittal to Finance for a pay period now in the past.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("a2ec2a8b-bd88-4ffb-b09b-598324ad9929",

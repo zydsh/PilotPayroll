@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Payroll',
 	1,
 	'Payroll',
-	'Regularly scheduled payments to employees of some segment of the organization for a pay period.',
+	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("f91b8c26-ac41-4670-9727-93b0fa1d498e",

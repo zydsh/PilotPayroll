@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'Step',
 	8,
 	'Step',
-	'A grading level which may be associated with an employees performance.
+	'A grading level which may be associated with an employee''s performance.
 If so assigned, it refines how payscale limits, specified in the Grade 
 of the job specification apply to the employee''s salary.',
 	"00000000-0000-0000-0000-000000000000");

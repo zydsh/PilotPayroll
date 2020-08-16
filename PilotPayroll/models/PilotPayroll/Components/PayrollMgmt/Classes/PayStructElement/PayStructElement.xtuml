@@ -5,8 +5,8 @@ INSERT INTO O_OBJ
 	'PayStructElement',
 	16,
 	'PayStructElement',
-	'One of a chosen set of payment elements that contribute to an employee''s total payment.
-( a payslip line item )',
+	'A specification for a payment element that contributes to an employee''s total payment.
+( an employee-specific payslip line item specification)',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("a82453ee-23e4-4211-a812-c9fe5b29263d",

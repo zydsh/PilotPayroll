@@ -5,8 +5,8 @@ INSERT INTO O_OBJ
 	'EmployeePaymentElement',
 	14,
 	'EmployeePaymentElement',
-	'Holds an amount which contributes to or deducts from total payment for a pay period.
-A line item in an emmployee''s payroll for a pay period.',
+	'Holds an amount which contributes to or deducts from an emplyee''s total payment for a pay period.
+( A line item in an employee''s payment for a pay period. )',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("36aa15ff-ff00-4af3-94d6-4c05478754bb",

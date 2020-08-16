@@ -5,7 +5,8 @@ INSERT INTO O_OBJ
 	'RateElement',
 	18,
 	'RateElement',
-	'Defines a default rate for multiplicative evaluation.',
+	'Defines a default rate for multiplicative evaluation.
+Also provides identification information for the input value to be used in evaluation.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("a7eece14-99d4-428f-b4f1-eafdac7dce76",

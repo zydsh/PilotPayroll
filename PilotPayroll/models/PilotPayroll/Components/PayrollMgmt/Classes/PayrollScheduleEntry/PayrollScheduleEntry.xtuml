@@ -18,11 +18,14 @@ INSERT INTO O_ATTR
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
 	"00000000-0000-0000-0000-000000000000",
 	'DraftGenerationDate',
-	'Microseconds since start of epoch when draft payroll is to be auto-generated.',
+	'Date and time when draft payroll is to be auto-generated.
+
+units: hours
+origin: start of epoch',
 	'',
 	'DraftGenerationDate',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_NBATTR
@@ -36,11 +39,14 @@ INSERT INTO O_ATTR
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
 	"614aefac-d27d-48ff-bc24-ac1e29497944",
 	'SubmittalDueDate',
-	'Microseconds since start of epoch when approved payroll is to be submitted to Finance department.',
+	'Date and time when approved payroll is to be submitted to Finance department.
+
+units: hours
+origin: start of epoch',
 	'',
 	'SubmittalDueDate',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("8705371c-e3aa-4840-b680-68cee4da6b5b",
-	'PayStructElement',
+	'PaymentStructureElement',
 	16,
-	'PayStructElement',
+	'PaymentStructureElement',
 	'A specification for a payment element that contributes to an employee''s total payment.
 ( an employee-specific payslip line item specification)
 The default values specified here may be altered by payroll review actions.',

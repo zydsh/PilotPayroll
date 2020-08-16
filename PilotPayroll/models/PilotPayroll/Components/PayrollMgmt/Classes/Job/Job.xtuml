@@ -18,11 +18,14 @@ INSERT INTO O_ATTR
 	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
 	"00000000-0000-0000-0000-000000000000",
 	'StartDate',
-	'',
+	'First day worked
+
+units: days
+origin: start of epoch',
 	'',
 	'StartDate',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_NBATTR
@@ -36,11 +39,14 @@ INSERT INTO O_ATTR
 	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
 	"c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
 	'EndDate',
-	'',
+	'Last day worked - if not currently working
+
+units: days
+origin: start of epoch',
 	'',
 	'EndDate',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

@@ -18,11 +18,14 @@ INSERT INTO O_ATTR
 	"b66d65ce-77c8-4294-96fe-92ced1c17ee0",
 	"00000000-0000-0000-0000-000000000000",
 	'ApprovalDate',
-	'Date when payroll was approved for submittal to Finance.',
+	'Date when payroll was approved for submittal to Finance.
+
+units: hours
+origin: start of epoch',
 	'',
 	'ApprovalDate',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

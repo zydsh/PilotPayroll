@@ -393,145 +393,6 @@ INSERT INTO DIM_CON
 	540.000000,
 	"ee6fff3f-fac3-4e9e-bd40-3d5a7c65af6d");
 INSERT INTO GD_GE
-	VALUES ("8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"3b9efbba-f941-4675-b603-b48c16c6d6d9",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	24,
-	0,
-	'PilotPayroll::Components::PayrollMgmt::Classes::R1');
-INSERT INTO GD_CON
-	VALUES ("8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO GD_CTXT
-	VALUES ("0a73b788-8802-42c7-b6ef-ea833dad2dd0",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	0,
-	0.000000,
-	0.000000);
-INSERT INTO DIM_ND
-	VALUES (0.000000,
-	0.000000,
-	"0a73b788-8802-42c7-b6ef-ea833dad2dd0");
-INSERT INTO DIM_GE
-	VALUES (619.000000,
-	779.000000,
-	"0a73b788-8802-42c7-b6ef-ea833dad2dd0",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_ELE
-	VALUES ("0a73b788-8802-42c7-b6ef-ea833dad2dd0",
-	0,
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO GD_CTXT
-	VALUES ("5677ed2e-3a69-4f32-b14f-fb1f8fb6f129",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	2,
-	0.000000,
-	0.000000);
-INSERT INTO DIM_ND
-	VALUES (0.000000,
-	0.000000,
-	"5677ed2e-3a69-4f32-b14f-fb1f8fb6f129");
-INSERT INTO DIM_GE
-	VALUES (744.000000,
-	709.000000,
-	"5677ed2e-3a69-4f32-b14f-fb1f8fb6f129",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_ELE
-	VALUES ("5677ed2e-3a69-4f32-b14f-fb1f8fb6f129",
-	0,
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO GD_CTXT
-	VALUES ("035295ea-04ee-442e-8bdb-62d65f76be76",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	1,
-	0.000000,
-	0.000000);
-INSERT INTO DIM_ND
-	VALUES (0.000000,
-	0.000000,
-	"035295ea-04ee-442e-8bdb-62d65f76be76");
-INSERT INTO DIM_GE
-	VALUES (681.000000,
-	678.000000,
-	"035295ea-04ee-442e-8bdb-62d65f76be76",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_ELE
-	VALUES ("035295ea-04ee-442e-8bdb-62d65f76be76",
-	0,
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO GD_LS
-	VALUES ("31744d6b-21ce-4baf-a9cf-44efff2f5fa2",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000",
-	"d61d72fb-42dc-4a3b-8033-678c6adf58a3",
-	"1d64248e-62ca-43d9-9639-2c14d50cf6fd");
-INSERT INTO GD_LS
-	VALUES ("dea1af09-863e-4935-b9f8-0ab0dd6a2c40",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"0f7c47b9-30b5-4c3d-ae86-d87d88b26fb9",
-	"291472dd-6118-4b75-9505-8b630ab8ea4d",
-	"f5b412f4-82ff-4409-89b1-4fdc565d1a33");
-INSERT INTO GD_LS
-	VALUES ("c1700b4a-f75c-4b5f-ae25-c3c32346ee44",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"dea1af09-863e-4935-b9f8-0ab0dd6a2c40",
-	"f5b412f4-82ff-4409-89b1-4fdc565d1a33",
-	"31786623-73ba-486e-a256-0b881199d9a8");
-INSERT INTO GD_LS
-	VALUES ("0f7c47b9-30b5-4c3d-ae86-d87d88b26fb9",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"31744d6b-21ce-4baf-a9cf-44efff2f5fa2",
-	"1d64248e-62ca-43d9-9639-2c14d50cf6fd",
-	"291472dd-6118-4b75-9505-8b630ab8ea4d");
-INSERT INTO DIM_WAY
-	VALUES ("d61d72fb-42dc-4a3b-8033-678c6adf58a3",
-	612.000000,
-	743.000000,
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_WAY
-	VALUES ("291472dd-6118-4b75-9505-8b630ab8ea4d",
-	732.000000,
-	768.000000,
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_WAY
-	VALUES ("f5b412f4-82ff-4409-89b1-4fdc565d1a33",
-	732.000000,
-	708.000000,
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_WAY
-	VALUES ("31786623-73ba-486e-a256-0b881199d9a8",
-	644.000000,
-	708.000000,
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_WAY
-	VALUES ("1d64248e-62ca-43d9-9639-2c14d50cf6fd",
-	612.000000,
-	768.000000,
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_GE
-	VALUES (0.000000,
-	0.000000,
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_ELE
-	VALUES ("8101edb9-97ff-4e95-ae84-14fe5f46b522",
-	0,
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO DIM_ED
-	VALUES ("1e7306d4-d6fa-464b-baf8-dbe1f939af3d",
-	"82b679ec-d16e-46c0-9d91-c37ccf64b653",
-	"8101edb9-97ff-4e95-ae84-14fe5f46b522");
-INSERT INTO GD_GE
 	VALUES ("6a484135-845e-483c-823d-e4f4d430adab",
 	"3b9efbba-f941-4675-b603-b48c16c6d6d9",
 	"12fc0e6c-15ce-44f7-9f7a-df5c04b6d412",
@@ -1651,7 +1512,7 @@ INSERT INTO GD_GE
 	"8705371c-e3aa-4840-b680-68cee4da6b5b",
 	21,
 	0,
-	'PilotPayroll::Components::PayrollMgmt::Classes::PayStructElement');
+	'PilotPayroll::Components::PayrollMgmt::Classes::PaymentStructureElement');
 INSERT INTO GD_SHP
 	VALUES ("370e7151-194a-4ed1-a191-908dcbc3942d");
 INSERT INTO GD_NCS
@@ -3680,63 +3541,6 @@ INSERT INTO DIM_DIA
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO R_SIMP
-	VALUES ("0def188b-b511-4916-8a02-0097c17b26cf");
-INSERT INTO R_REL
-	VALUES ("0def188b-b511-4916-8a02-0097c17b26cf",
-	1,
-	'',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO R_PART
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	"87da2a64-bf69-4f15-89a5-e6fbf3de6780",
-	0,
-	1,
-	'preceeds');
-INSERT INTO R_RTO
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	"87da2a64-bf69-4f15-89a5-e6fbf3de6780",
-	-1);
-INSERT INTO R_OIR
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	"87da2a64-bf69-4f15-89a5-e6fbf3de6780",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_OBJ_PROXY
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	'Step',
-	8,
-	'Step',
-	'A grading level which may be associated with an employees performance.
-If so assigned, it refines how payscale limits, specified in the Grade 
-of the job specification apply to the employee''s salary.',
-	"00000000-0000-0000-0000-000000000000",
-	'./Step/Step.xtuml');
-INSERT INTO R_PART
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	"6f7a8942-175a-4cd0-81bc-e1ddbc7b6e1f",
-	0,
-	1,
-	'follows');
-INSERT INTO R_RTO
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	"6f7a8942-175a-4cd0-81bc-e1ddbc7b6e1f",
-	-1);
-INSERT INTO R_OIR
-	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
-	"0def188b-b511-4916-8a02-0097c17b26cf",
-	"6f7a8942-175a-4cd0-81bc-e1ddbc7b6e1f",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO PE_PE
-	VALUES ("0def188b-b511-4916-8a02-0097c17b26cf",
-	1,
-	"66af3a6e-b969-4d52-8331-503fed93597c",
-	"00000000-0000-0000-0000-000000000000",
-	9);
-INSERT INTO R_SIMP
 	VALUES ("12fc0e6c-15ce-44f7-9f7a-df5c04b6d412");
 INSERT INTO R_REL
 	VALUES ("12fc0e6c-15ce-44f7-9f7a-df5c04b6d412",
@@ -3853,7 +3657,7 @@ INSERT INTO O_OBJ_PROXY
 	'PayrollScheduleEntry',
 	4,
 	'PayrollScheduleEntry',
-	'Scheduling information for preparing and submitting a payroll for some pay period.',
+	'Scheduling information for preparing and submitting a deparmental payroll for some pay period.',
 	"00000000-0000-0000-0000-000000000000",
 	'./PayrollScheduleEntry/PayrollScheduleEntry.xtuml');
 INSERT INTO PE_PE
@@ -3908,7 +3712,7 @@ INSERT INTO O_OBJ_PROXY
 	'Payroll',
 	1,
 	'Payroll',
-	'Regularly scheduled payments to employees of some segment of the organization for a pay period.',
+	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.',
 	"00000000-0000-0000-0000-000000000000",
 	'./Payroll/Payroll.xtuml');
 INSERT INTO PE_PE
@@ -4192,6 +3996,16 @@ INSERT INTO R_OIR
 	"4b759686-bd89-423d-911d-47516f207cc4",
 	"3c1d10fe-9685-41e3-8b23-2be6c6ff563e",
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_OBJ_PROXY
+	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	'Step',
+	8,
+	'Step',
+	'A grading level which may be associated with an employee''s performance.
+If so assigned, it refines how payscale limits, specified in the Grade 
+of the job specification apply to the employee''s salary.',
+	"00000000-0000-0000-0000-000000000000",
+	'./Step/Step.xtuml');
 INSERT INTO PE_PE
 	VALUES ("4b759686-bd89-423d-911d-47516f207cc4",
 	1,
@@ -4221,13 +4035,14 @@ INSERT INTO R_OIR
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("8705371c-e3aa-4840-b680-68cee4da6b5b",
-	'PayStructElement',
+	'PaymentStructureElement',
 	16,
-	'PayStructElement',
-	'One of a chosen set of payment elements that contribute to an employee''s total payment.
-( a payslip line item )',
+	'PaymentStructureElement',
+	'A specification for a payment element that contributes to an employee''s total payment.
+( an employee-specific payslip line item specification)
+The default values specified here may be altered by payroll review actions.',
 	"00000000-0000-0000-0000-000000000000",
-	'./PayStructElement/PayStructElement.xtuml');
+	'./PaymentStructureElement/PaymentStructureElement.xtuml');
 INSERT INTO R_SUB
 	VALUES ("f3835121-2579-4b47-8216-fcea725ae36f",
 	"4cb6087c-8516-4c48-9a62-e7a97d6a32f7",
@@ -4267,7 +4082,8 @@ INSERT INTO O_OBJ_PROXY
 	'RateElement',
 	18,
 	'RateElement',
-	'Defines a default rate for multiplicative evaluation.',
+	'Defines a default rate for multiplicative evaluation.
+Also provides identification information for the input value to be used in evaluation.',
 	"00000000-0000-0000-0000-000000000000",
 	'./RateElement/RateElement.xtuml');
 INSERT INTO PE_PE
@@ -4377,8 +4193,11 @@ INSERT INTO O_OBJ_PROXY
 	'EmployeePaymentElement',
 	14,
 	'EmployeePaymentElement',
-	'Holds an amount which contributes to or deducts from total payment for a pay period.
-A line item in an emmployee''s payroll for a pay period.',
+	'Holds an amount which contributes to or deducts from an employee''s total payment for a pay period.
+( A line item in an employee''s payment for a pay period. )
+The amount is initially evaluated from the corresponding entry in the employee''s payment structure.
+It may be subsequently altered by review/approval actions.
+',
 	"00000000-0000-0000-0000-000000000000",
 	'./EmployeePaymentElement/EmployeePaymentElement.xtuml');
 INSERT INTO PE_PE
@@ -4416,7 +4235,7 @@ INSERT INTO O_OBJ_PROXY
 	'EmployeePaymentStructure',
 	10,
 	'EmployeePaymentStructure',
-	'A specification of which element types are included in an employee''s payment for each pay period.',
+	'A specification of which element types are currently included in an employee''s payment for each pay period.',
 	"00000000-0000-0000-0000-000000000000",
 	'./EmployeePaymentStructure/EmployeePaymentStructure.xtuml');
 INSERT INTO R_PART
@@ -4949,7 +4768,7 @@ INSERT INTO O_OBJ_PROXY
 	'PastPayroll',
 	21,
 	'PastPayroll',
-	'Records previous payrolls',
+	'Records a payroll submittal to Finance for a pay period now in the past.',
 	"00000000-0000-0000-0000-000000000000",
 	'./PastPayroll/PastPayroll.xtuml');
 INSERT INTO PE_PE

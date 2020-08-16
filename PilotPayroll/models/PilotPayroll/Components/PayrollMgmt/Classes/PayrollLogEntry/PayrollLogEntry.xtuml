@@ -18,11 +18,14 @@ INSERT INTO O_ATTR
 	"b0460ac1-7d0e-4429-8466-571a574115a6",
 	"00000000-0000-0000-0000-000000000000",
 	'WrittenAt',
-	'TBD - date & time - or time after Log.start?',
+	'Time when entry written to log.
+
+units: minutes
+origin: start of epoch',
 	'',
 	'WrittenAt',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

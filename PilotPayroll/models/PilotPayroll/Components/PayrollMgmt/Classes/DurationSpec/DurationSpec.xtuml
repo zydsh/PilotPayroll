@@ -1,0 +1,68 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7d5d2bac-e263-42d7-9bc4-e7f6a0841c21",
+	'DurationSpec',
+	23,
+	'DurationSpec',
+	'Optional start/stop times specification.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("de191001-8d46-4bd7-bf68-e4a114d30d86",
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO O_BATTR
+	VALUES ("de191001-8d46-4bd7-bf68-e4a114d30d86",
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO O_ATTR
+	VALUES ("de191001-8d46-4bd7-bf68-e4a114d30d86",
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21",
+	"00000000-0000-0000-0000-000000000000",
+	'Begins',
+	'',
+	'',
+	'Begins',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("751143ab-5961-419b-b08f-cd2c4d67ba92",
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO O_BATTR
+	VALUES ("751143ab-5961-419b-b08f-cd2c4d67ba92",
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO O_ATTR
+	VALUES ("751143ab-5961-419b-b08f-cd2c4d67ba92",
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21",
+	"de191001-8d46-4bd7-bf68-e4a114d30d86",
+	'Ends',
+	'',
+	'',
+	'Ends',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO O_ID
+	VALUES (1,
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO O_ID
+	VALUES (2,
+	"7d5d2bac-e263-42d7-9bc4-e7f6a0841c21");
+INSERT INTO PE_PE
+	VALUES ("7d5d2bac-e263-42d7-9bc4-e7f6a0841c21",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Classes',
+	'',
+	0,
+	'../Classes.xtuml');

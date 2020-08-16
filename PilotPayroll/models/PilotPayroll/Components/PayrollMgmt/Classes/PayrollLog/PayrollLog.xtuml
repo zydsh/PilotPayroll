@@ -18,11 +18,14 @@ INSERT INTO O_ATTR
 	"bae05c7d-145a-4d93-8b0c-b331d14ceb13",
 	"00000000-0000-0000-0000-000000000000",
 	'Start',
-	'Time and date of start of generation - microseconds since beginning of epoch.',
+	'Time and date of start of Log generation.
+
+units: hours
+origin: start of epoch',
 	'',
 	'Start',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

@@ -30,13 +30,13 @@ end for;
 for each structElement in structElements
   select one elementSpec related by structElement->PaymentElementSpec[R12.''is defined by''];
   select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
-  if ( not empty target )	// this is a modifier - proceed
-  	for each structElement in structElements
-  	  select one elementSpec related by structElement->PaymentElementSpec[R12.''is defined by''];
+  if ( not empty target )	// this structElement is a modifier - proceed
+  	for each targetElement in structElements
+  	  select one elementSpec related by targetElement->PaymentElementSpec[R12.''is defined by''];
   	  if ( target == elementSpec )	// found our man...
-  	    select one payElement related by structElement->EmployeePaymentElement[R13.''is template for''];
+  	    select one payElement related by targetElement->EmployeePaymentElement[R13.''is template for''];
   	    if ( not payElement.Edited )
-          payElement.Amount = structElement.Modify();
+          payElement.Amount = structElement.Modify( TargetValue:payElement.Amount );
  	    end if;
  	    break;
  	  end if;

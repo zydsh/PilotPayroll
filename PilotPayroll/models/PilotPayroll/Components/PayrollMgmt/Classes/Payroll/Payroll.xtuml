@@ -7,6 +7,48 @@ INSERT INTO O_OBJ
 	'Payroll',
 	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("0f2a1433-a284-4395-80ef-dc84cf8a27e3",
+	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
+	'BuildPaymentElements',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many employees related by self->PayrollScheduleEntry[R5.''is current for'']
+                                     ->Department[R4.''is scheduled for'']
+                                     ->Employee[R6.''employs''];
+for each employee in employees
+  create object instance payment of EmployeePayment;
+  relate employee to self across R7.''is being assessed for'' using payment;
+  select many structureElements related by employee
+              ->PaymentStructureElement[R27.''specifies a payment contribution for''];
+  for each structElem in structureElements
+  	create object instance payElement of EmployeePaymentElement;
+  	relate payElement to structElem across R13.''is current realization of'';
+  	relate payElement to payment across R15.''contributes to'';
+  	payElement.Edited = false;
+  	payElement.Amount = structElem.SetValue;	// initialize from pay ''structure''
+  end for;
+end for;	',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("2c9eb5ac-e7ea-4426-b9e6-013bcb269166",
+	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
+	'EvaluateEmployeePayments',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many employees related by self->Employee[R7.''is assessing pay for''];
+for each employee in employees
+  employee.EvaluatePayment();
+end for;',
+	1,
+	'',
+	"0f2a1433-a284-4395-80ef-dc84cf8a27e3",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("f91b8c26-ac41-4670-9727-93b0fa1d498e",
 	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c");

@@ -13,14 +13,29 @@ INSERT INTO O_TFR
 	VALUES ("a82453ee-23e4-4211-a812-c9fe5b29263d",
 	"8705371c-e3aa-4840-b680-68cee4da6b5b",
 	'Evaluate',
-	'This operation will evaluate a payment contribution based on subtype calculation.
-TBD: polymorphic evaluation...',
+	'This operation will copy an initialization value to a non-edited payment contribution.
+The value will be pro-rated if creation falls within the current pay period.
+',
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
 	'',
 	3,
 	'',
 	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'Modify',
+	'This operation will modify a value in a non-edited payment contribution.
+The modification may be pro-rated depending on creation dates of both elements.
+',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'',
+	3,
+	'',
+	"a82453ee-23e4-4211-a812-c9fe5b29263d",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
@@ -41,6 +56,24 @@ origin: start of epoch',
 	'CreationDate',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_BATTR
+	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_ATTR
+	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	"a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	'SetValue',
+	'A set value which is used to initialize an actual element value when payroll is first drafted.',
+	'',
+	'SetValue',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
 INSERT INTO O_ID

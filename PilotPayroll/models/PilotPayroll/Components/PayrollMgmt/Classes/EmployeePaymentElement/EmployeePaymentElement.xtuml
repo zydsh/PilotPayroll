@@ -29,6 +29,24 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("2dbd4b07-4100-40cb-878a-0191f54bca67",
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
+INSERT INTO O_BATTR
+	VALUES ("2dbd4b07-4100-40cb-878a-0191f54bca67",
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");
+INSERT INTO O_ATTR
+	VALUES ("2dbd4b07-4100-40cb-878a-0191f54bca67",
+	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b",
+	"36aa15ff-ff00-4af3-94d6-4c05478754bb",
+	'Edited',
+	'If true, this element has been altered as part of a review/approval process.',
+	'',
+	'Edited',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"4dc385b2-4064-4e1a-9f67-b4ce8b44434b");

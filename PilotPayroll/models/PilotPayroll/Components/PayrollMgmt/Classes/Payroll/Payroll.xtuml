@@ -26,8 +26,7 @@ for each employee in employees
   	create object instance payElement of EmployeePaymentElement;
   	relate payElement to structElem across R13.''is current realization of'';
   	relate payElement to payment across R15.''contributes to'';
-  	payElement.Edited = false;
-  	payElement.Amount = structElem.SetValue;	// initialize from pay ''structure''
+  	payElement.Amount = structElem.NominalValue;	// initialize from pay ''structure''
   end for;
 end for;	',
 	1,

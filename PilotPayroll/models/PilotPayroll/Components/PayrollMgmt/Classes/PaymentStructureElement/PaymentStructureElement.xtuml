@@ -18,8 +18,8 @@ The value will be pro-rated if creation falls within the current pay period.
 ',
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
-	'// I''ll get round to doing the pro-rating... for now just set the value
-return self.SetValue;',
+	'// @TODO I''ll get round to doing the pro-rating... for now just set the value
+return self.NominalValue;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -33,8 +33,8 @@ The modification may be pro-rated depending on creation dates of both elements.
 ',
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
-	'// I''ll get round to doing the pro-rating... for now just set the value
-return param.TargetValue * self.SetValue;',
+	'// @TODO I''ll get round to doing the pro-rating... for now just set the value
+return param.TargetValue * self.NominalValue;',
 	1,
 	'',
 	"a82453ee-23e4-4211-a812-c9fe5b29263d",
@@ -58,13 +58,13 @@ INSERT INTO O_ATTR
 	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
 	"8705371c-e3aa-4840-b680-68cee4da6b5b",
 	"00000000-0000-0000-0000-000000000000",
-	'CreationDate',
+	'EffectiveDate',
 	'Date this instance added to an employee. Used for possible pro-rating of payment contributions.
 
 units:days
 origin: start of epoch',
 	'',
-	'CreationDate',
+	'EffectiveDate',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
@@ -79,10 +79,10 @@ INSERT INTO O_ATTR
 	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
 	"8705371c-e3aa-4840-b680-68cee4da6b5b",
 	"a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
-	'SetValue',
+	'NominalValue',
 	'A set value which is used to initialize an actual element value when payroll is first drafted.',
 	'',
-	'SetValue',
+	'NominalValue',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',

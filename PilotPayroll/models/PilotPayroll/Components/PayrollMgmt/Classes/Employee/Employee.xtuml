@@ -14,19 +14,25 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select many structElements related by self->PaymentStructureElement[R27.''specifies a payment contribution for''];
+	'// @TODO pro-rating; check EffectiveDate
+
+select many structElements related by self->PaymentStructureElement[R27.''specifies a payment contribution for''];
 // Pass 1 - evaluate non-dependent elements
 for each structElement in structElements
   select one elementSpec related by structElement->PaymentElementSpec[R12.''is defined by''];
   select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
   if ( empty target )	// this is not a modifier - proceed
   	select one payElement related by structElement->EmployeePaymentElement[R13.''is template for''];
-  	if ( not payElement.Edited )
+  	if ( empty payElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
+  	  break;
+  	end if;
+  	select one payroll related by payElement->Payroll[R31.''has been modified''];
+  	if ( empty payroll )
       payElement.Amount = structElement.Evaluate();
  	end if;
  end if;
 end for;
-// Pass 2 - perform any modifications
+// Pass 2 - perform any modifications e.g. multiply base pay by bonus percentage
 for each structElement in structElements
   select one elementSpec related by structElement->PaymentElementSpec[R12.''is defined by''];
   select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
@@ -35,13 +41,29 @@ for each structElement in structElements
   	  select one elementSpec related by targetElement->PaymentElementSpec[R12.''is defined by''];
   	  if ( target == elementSpec )	// found our man...
   	    select one payElement related by targetElement->EmployeePaymentElement[R13.''is template for''];
-  	    if ( not payElement.Edited )
+    	if ( empty payElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
+    	  break;
+    	end if;
+    	select one payroll related by payElement->Payroll[R31.''has been modified''];
+  	    if ( empty payroll )
           payElement.Amount = structElement.Modify( TargetValue:payElement.Amount );
  	    end if;
  	    break;
  	  end if;
  	end for;
- end if;
+  end if;
+end for;
+// Pass 3 - combine  for total
+select one payment related by self->EmployeePayment[R7];
+payment.Amount = 0;
+select many payElements related by payment->EmployeePaymentElement[R15.''is composed of''];
+for each payElement in payElements
+  select one elementSpec related by payElement->PaymentStructureElement[R13.''is current realization of'']
+                                              ->PaymentElementSpec[R12.''is defined by''];
+  select one target related by elementSpec->PaymentElementSpec[R30.''is a modifier for''];
+  if ( empty target )	// this is not a modifier
+    payment.Amount = payment.Amount + payElement.Amount;  
+  end if;
 end for;
 ',
 	1,

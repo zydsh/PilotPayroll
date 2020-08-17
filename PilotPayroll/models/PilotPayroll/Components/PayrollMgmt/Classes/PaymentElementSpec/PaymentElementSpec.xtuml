@@ -5,7 +5,15 @@ INSERT INTO O_OBJ
 	'PaymentElementSpec',
 	15,
 	'PaymentElementSpec',
-	'Describes how a payment element matching a defined name should be subtyped when creating a Employee Payment Structure.',
+	'Specifies a type of payment element which may be included as a contributor to an employee''s payment.
+The association to a separate instance indicates that the value will be used as a modifier.
+The template for an employee''s pay packet is constructed of instances that match these specifications.
+These instances are populated with nominal values specific to the individual employee.
+For each pay period instances of actual pay elements are constructed to match the template.
+The values in the pay elements are set to the nominal values, but may be edited when reviewed.
+The evaluation process in a first pass treats the non-modifier elements - these will be additive.
+A second pass applies any modifiers to the additiuve values - e.g. adding a percentage as bonus.
+Finally, all additive elements are combined to form the total payment for the period.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("69a34421-8fe2-4343-b57f-d8d2859abe8d",

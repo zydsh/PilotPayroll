@@ -22,6 +22,27 @@ TBD: polymorphic evaluation...',
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
+INSERT INTO O_NBATTR
+	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_BATTR
+	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_ATTR
+	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	"00000000-0000-0000-0000-000000000000",
+	'CreationDate',
+	'Date this instance added to an employee. Used for possible pro-rating of payment contributions.
+
+units:days
+origin: start of epoch',
+	'',
+	'CreationDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"8705371c-e3aa-4840-b680-68cee4da6b5b");

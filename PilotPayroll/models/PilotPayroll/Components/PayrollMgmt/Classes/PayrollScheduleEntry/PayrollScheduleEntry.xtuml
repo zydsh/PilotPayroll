@@ -131,6 +131,24 @@ origin: start of epoch',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("8e4192db-bce9-40cf-b9ec-1100ec6a6c78",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
+INSERT INTO O_BATTR
+	VALUES ("8e4192db-bce9-40cf-b9ec-1100ec6a6c78",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
+INSERT INTO O_ATTR
+	VALUES ("8e4192db-bce9-40cf-b9ec-1100ec6a6c78",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
+	"103a06f0-44f3-45a8-990d-75e5d2d484f4",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a");

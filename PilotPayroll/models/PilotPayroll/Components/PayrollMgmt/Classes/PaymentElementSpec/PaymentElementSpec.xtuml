@@ -25,31 +25,6 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
-INSERT INTO O_NBATTR
-	VALUES ("fdaefe02-8f77-44ea-9fd6-8e60215cefa7",
-	"8632100e-ff88-40c6-b646-a1a71c496b33");
-INSERT INTO O_BATTR
-	VALUES ("fdaefe02-8f77-44ea-9fd6-8e60215cefa7",
-	"8632100e-ff88-40c6-b646-a1a71c496b33");
-INSERT INTO O_ATTR
-	VALUES ("fdaefe02-8f77-44ea-9fd6-8e60215cefa7",
-	"8632100e-ff88-40c6-b646-a1a71c496b33",
-	"69a34421-8fe2-4343-b57f-d8d2859abe8d",
-	'ElementSpecType',
-	'',
-	'',
-	'ElementSpecType',
-	0,
-	"8118843f-25c8-4a60-a5f2-5c87160cc109",
-	'',
-	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("8118843f-25c8-4a60-a5f2-5c87160cc109",
-	"00000000-0000-0000-0000-000000000000",
-	'PaymentElementSubtype',
-	'',
-	'',
-	'../../../../Types/Types.xtuml');
 INSERT INTO O_ID
 	VALUES (0,
 	"8632100e-ff88-40c6-b646-a1a71c496b33");

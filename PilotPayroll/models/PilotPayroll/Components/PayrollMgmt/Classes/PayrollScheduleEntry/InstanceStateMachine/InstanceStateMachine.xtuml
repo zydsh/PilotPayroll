@@ -187,7 +187,11 @@ INSERT INTO SM_ACT
 	'// start Payroll
 
 create object instance payroll of Payroll;
-relate self to payroll across R5.''creates'';
+select one dept related by self->Department[R4.''is scheduled for''];
+relate payroll to dept across R34.''is currently being evaluated for'';
+select one payperiod related by self->PayPeriod[R32.''schedules for''];
+unrelate payperiod from self across R32.''specifies dates for'';
+relate payroll to payperiod across R33.''is for''; 
 // generate start to payroll',
 	'',
 	0);

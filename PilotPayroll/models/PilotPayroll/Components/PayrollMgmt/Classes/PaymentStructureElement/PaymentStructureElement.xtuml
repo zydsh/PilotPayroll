@@ -18,7 +18,12 @@ The value will be pro-rated if creation falls within the current pay period.
 ',
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
-	'// @TODO I''ll get round to doing the pro-rating... for now just set the value
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )
+  return self.NominalValue * self.ProRateValue();
+end if;                                 
 return self.NominalValue;',
 	1,
 	'',
@@ -33,7 +38,13 @@ The modification may be pro-rated depending on creation dates of both elements.
 ',
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
-	'// @TODO I''ll get round to doing the pro-rating... for now just set the value
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )
+  return self.NominalValue * param.TargetValue * 
+         self.ProRateModifier( TargetEffectiveDate:param.TargetEffectiveDate );
+end if;                                 
 return param.TargetValue * self.NominalValue;',
 	1,
 	'',
@@ -47,7 +58,72 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'An input value which is to be replaced after modification.');
+	'An input value to be operated on by the value of this structure element.');
+INSERT INTO O_TPARM
+	VALUES ("5f554f56-d031-4749-96e8-08d7667ca313",
+	"2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	'TargetEffectiveDate',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"831a440f-95f5-4f33-bde3-1a941846c128",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f0578c0c-6003-470e-a93b-eac5e8ebe8bf",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'ProRateValue',
+	'If this element is not in play for the entire pay period it mist be prorated.',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )	// becomes effective within period
+  alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;
+  effectivedays = payperiod.PayPeriodEnd - self.EffectiveDate + 1.0;
+  return effectivedays / alldays;
+else 
+  return 1.0;
+end if;',
+	1,
+	'',
+	"2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	0);
+INSERT INTO O_TFR
+	VALUES ("c991a661-64cd-4ac8-8c50-df01fe4919ec",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'ProRateModifier',
+	'If this element is not in play for the entire pay period it mist be prorated.',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )		// becomes effective within period..
+  if ( self.EffectiveDate > param.TargetEffectiveDate )
+    alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;	// tentatively..
+  	if ( param.TargetEffectiveDate > payperiod.PayPeriodStart )			// .. begins within period
+      alldays = payperiod.PayPeriodEnd - param.TargetEffectiveDate + 1.0;
+    end if;
+    effectivedays = payperiod.PayPeriodEnd - self.EffectiveDate + 1.0;
+    return effectivedays / alldays;
+  end if;
+end if;
+return 1.0;
+',
+	1,
+	'',
+	"f0578c0c-6003-470e-a93b-eac5e8ebe8bf",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("001fe76a-02c8-40c4-9213-05f39f705fa5",
+	"c991a661-64cd-4ac8-8c50-df01fe4919ec",
+	'TargetEffectiveDate',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
 	"8705371c-e3aa-4840-b680-68cee4da6b5b");

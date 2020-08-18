@@ -4041,7 +4041,7 @@ INSERT INTO R_PART
 	"3d6c343e-4689-40dc-b913-26fe537d3c1e",
 	0,
 	0,
-	'has payments specied by');
+	'has payments specified by');
 INSERT INTO R_RTO
 	VALUES ("f228e204-e0aa-481c-adb6-27e960fc359c",
 	"6f0c2c04-c59f-4bb6-b2b6-3a6a0c675ee4",

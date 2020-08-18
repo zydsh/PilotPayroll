@@ -14,9 +14,11 @@ INSERT INTO O_TFR
 	'(Re)evaluate payments by traversing the set of structure elements and applying modifiers as appropriate.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// @TODO pro-rating; check EffectiveDate
-
-select many structElements related by self->PaymentStructureElement[R27.''specifies a payment contribution for''];
+	'// traverse the structure elements and populate the pay element values.
+select one payperiod related by self->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+select many structElements related by self->PaymentStructureElement[R27.''specifies a payment contribution for'']
+  where selected.EffectiveDate < payperiod.PayPeriodEnd;
 // Pass 1 - evaluate non-dependent elements
 for each structElement in structElements
   select one elementSpec related by structElement->PaymentElementSpec[R12.''is typed by''];
@@ -46,7 +48,8 @@ for each structElement in structElements
     	end if;
     	select one payroll related by payElement->Payroll[R31.''has been modified''];
   	    if ( empty payroll )
-          payElement.Amount = structElement.Modify( TargetValue:payElement.Amount );
+          payElement.Amount = structElement.Modify( TargetValue:payElement.Amount,
+                                                    TargetEffectiveDate:targetElement.EffectiveDate );
  	    end if;
  	    break;
  	  end if;

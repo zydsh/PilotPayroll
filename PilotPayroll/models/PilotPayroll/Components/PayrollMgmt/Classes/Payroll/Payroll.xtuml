@@ -14,7 +14,8 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select many employees related by self->Department[R34.''is currently being evaluated for'']
+	'// create payment contributiuon elements from the payment structure ''template''
+select many employees related by self->Department[R34.''is currently being evaluated for'']
                                      ->Employee[R6.''employs''];
 for each employee in employees
   create object instance payment of EmployeePayment;
@@ -25,7 +26,6 @@ for each employee in employees
   	create object instance payElement of EmployeePaymentElement;
   	relate payElement to structElem across R13.''is current realization of'';
   	relate payElement to payment across R15.''contributes to'';
-  	payElement.Amount = structElem.NominalValue;	// initialize from pay ''structure''
   end for;
 end for;	',
 	1,

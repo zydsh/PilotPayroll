@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'EmployeePayment',
 	5,
 	'EmployeePayment',
-	'Agregate payment information for an employee for a pay period.',
+	'Aggregate payment information for an employee for a pay period.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("40e511b6-3e21-4c6d-8e9b-eda859847d12",

@@ -1,0 +1,95 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e79f118d-0aec-488e-b2c9-78acdd7e9345",
+	'PayPeriod',
+	22,
+	'PayPeriod',
+	'Scheduling information for preparing and submitting a deparmental payroll for some pay period.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("2eef4bc8-ecce-4fe5-9011-902101424258",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_BATTR
+	VALUES ("2eef4bc8-ecce-4fe5-9011-902101424258",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_ATTR
+	VALUES ("2eef4bc8-ecce-4fe5-9011-902101424258",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345",
+	"00000000-0000-0000-0000-000000000000",
+	'SubmittalDueDate',
+	'Date and time when approved payroll is to be submitted to Finance department.
+
+units: hours
+origin: start of epoch',
+	'',
+	'SubmittalDueDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f68a3d4e-76ef-41e6-bd39-cb7b68bfc4f0",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_BATTR
+	VALUES ("f68a3d4e-76ef-41e6-bd39-cb7b68bfc4f0",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_ATTR
+	VALUES ("f68a3d4e-76ef-41e6-bd39-cb7b68bfc4f0",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345",
+	"2eef4bc8-ecce-4fe5-9011-902101424258",
+	'PayPeriodStart',
+	'First date the scheduled payroll covers
+
+units: days
+origin: start of epoch',
+	'',
+	'PayPeriodStart',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("80332d57-abe6-4d98-81da-77c78efca239",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_BATTR
+	VALUES ("80332d57-abe6-4d98-81da-77c78efca239",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_ATTR
+	VALUES ("80332d57-abe6-4d98-81da-77c78efca239",
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345",
+	"f68a3d4e-76ef-41e6-bd39-cb7b68bfc4f0",
+	'PayPeriodEnd',
+	'Last date the scheduled payroll covers
+
+units: days
+origin: start of epoch',
+	'',
+	'PayPeriodEnd',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_ID
+	VALUES (1,
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO O_ID
+	VALUES (2,
+	"e79f118d-0aec-488e-b2c9-78acdd7e9345");
+INSERT INTO PE_PE
+	VALUES ("e79f118d-0aec-488e-b2c9-78acdd7e9345",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Classes',
+	'',
+	0,
+	'../Classes.xtuml');

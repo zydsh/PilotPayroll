@@ -10,8 +10,8 @@ INSERT INTO O_OBJ
 INSERT INTO O_TFR
 	VALUES ("d17a6d8a-3dab-4ad5-901c-416ede3bfd61",
 	"f228e204-e0aa-481c-adb6-27e960fc359c",
-	'EvaluatePayment',
-	'',
+	'EvaluatePaymentElements',
+	'(Re)evaluate payments by traversing the set of structure elements and applying modifiers as appropriate.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'// @TODO pro-rating; check EffectiveDate
@@ -19,7 +19,7 @@ INSERT INTO O_TFR
 select many structElements related by self->PaymentStructureElement[R27.''specifies a payment contribution for''];
 // Pass 1 - evaluate non-dependent elements
 for each structElement in structElements
-  select one elementSpec related by structElement->PaymentElementSpec[R12.''is defined by''];
+  select one elementSpec related by structElement->PaymentElementSpec[R12.''is typed by''];
   select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
   if ( empty target )	// this is not a modifier - proceed
   	select one payElement related by structElement->EmployeePaymentElement[R13.''is template for''];
@@ -34,12 +34,12 @@ for each structElement in structElements
 end for;
 // Pass 2 - perform any modifications e.g. multiply base pay by bonus percentage
 for each structElement in structElements
-  select one elementSpec related by structElement->PaymentElementSpec[R12.''is defined by''];
+  select one elementSpec related by structElement->PaymentElementSpec[R12.''is typed by''];
   select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
   if ( not empty target )	// this structElement is a modifier - proceed
   	for each targetElement in structElements
-  	  select one elementSpec related by targetElement->PaymentElementSpec[R12.''is defined by''];
-  	  if ( target == elementSpec )	// found our man...
+  	  select one targetElementSpec related by targetElement->PaymentElementSpec[R12.''is typed by''];
+  	  if ( target == targetElementSpec )	// found our man...
   	    select one payElement related by targetElement->EmployeePaymentElement[R13.''is template for''];
     	if ( empty payElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
     	  break;
@@ -53,22 +53,29 @@ for each structElement in structElements
  	end for;
   end if;
 end for;
-// Pass 3 - combine  for total
-select one payment related by self->EmployeePayment[R7];
-payment.Amount = 0;
-select many payElements related by payment->EmployeePaymentElement[R15.''is composed of''];
-for each payElement in payElements
-  select one elementSpec related by payElement->PaymentStructureElement[R13.''is current realization of'']
-                                              ->PaymentElementSpec[R12.''is defined by''];
-  select one target related by elementSpec->PaymentElementSpec[R30.''is a modifier for''];
-  if ( empty target )	// this is not a modifier
-    payment.Amount = payment.Amount + payElement.Amount;  
-  end if;
-end for;
 ',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("845726c6-4dbb-4f03-beb2-cd1014000c4a",
+	"f228e204-e0aa-481c-adb6-27e960fc359c",
+	'CalculateTotalPayment',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Combine evaluated element values for total payment.
+select one payment related by self->EmployeePayment[R7];
+payment.Amount = 0;
+select many payElements related by payment->EmployeePaymentElement[R15.''is composed of''];
+for each payElement in payElements
+  payment.Amount = payment.Amount + payElement.Amount;  
+end for;
+',
+	1,
+	'',
+	"d17a6d8a-3dab-4ad5-901c-416ede3bfd61",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("17433df4-ff12-431a-96cc-61f99155db85",

@@ -29,78 +29,15 @@ origin: start of epoch',
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("883978dd-db59-4063-93f6-56ada24599ee",
+	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
 INSERT INTO O_BATTR
-	VALUES ("883978dd-db59-4063-93f6-56ada24599ee",
+	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
 INSERT INTO O_ATTR
-	VALUES ("883978dd-db59-4063-93f6-56ada24599ee",
+	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
 	"614aefac-d27d-48ff-bc24-ac1e29497944",
-	'SubmittalDueDate',
-	'Date and time when approved payroll is to be submitted to Finance department.
-
-units: hours
-origin: start of epoch',
-	'',
-	'SubmittalDueDate',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("e027c9a5-de73-48c5-b50c-cf5f4d269521",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
-INSERT INTO O_BATTR
-	VALUES ("e027c9a5-de73-48c5-b50c-cf5f4d269521",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
-INSERT INTO O_ATTR
-	VALUES ("e027c9a5-de73-48c5-b50c-cf5f4d269521",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
-	"883978dd-db59-4063-93f6-56ada24599ee",
-	'PayPeriodStart',
-	'First date the scheduled payroll covers
-
-units: days
-origin: start of epoch',
-	'',
-	'PayPeriodStart',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("52d77390-93b3-4c98-9bc0-716ee7cc8133",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
-INSERT INTO O_BATTR
-	VALUES ("52d77390-93b3-4c98-9bc0-716ee7cc8133",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
-INSERT INTO O_ATTR
-	VALUES ("52d77390-93b3-4c98-9bc0-716ee7cc8133",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
-	"e027c9a5-de73-48c5-b50c-cf5f4d269521",
-	'PayPeriodEnd',
-	'Last date the scheduled payroll covers
-
-units: days
-origin: start of epoch',
-	'',
-	'PayPeriodEnd',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
-INSERT INTO O_BATTR
-	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
-INSERT INTO O_ATTR
-	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
-	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
-	"52d77390-93b3-4c98-9bc0-716ee7cc8133",
 	'WakeUpTimer',
 	'TBD - a timer to activate the  scheduled Payroll when due.
 ',

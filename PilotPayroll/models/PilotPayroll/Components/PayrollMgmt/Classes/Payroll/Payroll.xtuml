@@ -14,7 +14,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select many employees related by self->PayrollScheduleEntry[R5.''is current for'']
+	'select many employees related by self->PayrollScheduleEntry[R5.''is created by'']
                                      ->Department[R4.''is scheduled for'']
                                      ->Employee[R6.''employs''];
 for each employee in employees
@@ -42,7 +42,8 @@ INSERT INTO O_TFR
 	1,
 	'select many employees related by self->Employee[R7.''is assessing pay for''];
 for each employee in employees
-  employee.EvaluatePayment();
+  employee.EvaluatePaymentElements();
+  employee.CalculateTotalPayment();
 end for;',
 	1,
 	'',

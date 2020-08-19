@@ -1,0 +1,57 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("8632100e-ff88-40c6-b646-a1a71c496b33",
+	'PaymentElementSpec',
+	15,
+	'PaymentElementSpec',
+	'Specifies all types of payment structure element which may be included as a contributor to an employee''s total payment.
+The existence of an association to another instance indicates that the structure element value will be used as a modifier.
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("69a34421-8fe2-4343-b57f-d8d2859abe8d",
+	"8632100e-ff88-40c6-b646-a1a71c496b33");
+INSERT INTO O_BATTR
+	VALUES ("69a34421-8fe2-4343-b57f-d8d2859abe8d",
+	"8632100e-ff88-40c6-b646-a1a71c496b33");
+INSERT INTO O_ATTR
+	VALUES ("69a34421-8fe2-4343-b57f-d8d2859abe8d",
+	"8632100e-ff88-40c6-b646-a1a71c496b33",
+	"00000000-0000-0000-0000-000000000000",
+	'Label',
+	'A unique name for each different type of element specification.',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"8632100e-ff88-40c6-b646-a1a71c496b33");
+INSERT INTO O_OIDA
+	VALUES ("69a34421-8fe2-4343-b57f-d8d2859abe8d",
+	"8632100e-ff88-40c6-b646-a1a71c496b33",
+	0,
+	'Label');
+INSERT INTO O_ID
+	VALUES (1,
+	"8632100e-ff88-40c6-b646-a1a71c496b33");
+INSERT INTO O_ID
+	VALUES (2,
+	"8632100e-ff88-40c6-b646-a1a71c496b33");
+INSERT INTO PE_PE
+	VALUES ("8632100e-ff88-40c6-b646-a1a71c496b33",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

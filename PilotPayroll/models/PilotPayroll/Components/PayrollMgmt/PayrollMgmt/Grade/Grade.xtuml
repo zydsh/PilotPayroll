@@ -1,0 +1,86 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e4cc636c-5458-4c76-b608-a8cf2377ff9c",
+	'Grade',
+	7,
+	'Grade',
+	'A specification of some characteristics associated with payscale for types of jobs.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("ab10f68e-e4c3-4ac2-be87-2aa112d079c8",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_BATTR
+	VALUES ("ab10f68e-e4c3-4ac2-be87-2aa112d079c8",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_ATTR
+	VALUES ("ab10f68e-e4c3-4ac2-be87-2aa112d079c8",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c",
+	"00000000-0000-0000-0000-000000000000",
+	'GradeNumber',
+	'Arbitrary unique identifier.',
+	'',
+	'GradeNumber',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("59b61a53-5c7f-4db7-b004-ab88b8b074db",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_BATTR
+	VALUES ("59b61a53-5c7f-4db7-b004-ab88b8b074db",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_ATTR
+	VALUES ("59b61a53-5c7f-4db7-b004-ab88b8b074db",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c",
+	"ab10f68e-e4c3-4ac2-be87-2aa112d079c8",
+	'UpperSalaryLimit',
+	'Maximum amount payable in a pay period to an employee of this grade at the highest step level.',
+	'',
+	'UpperSalaryLimit',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("9b848259-60d1-4740-9612-fea4222bf9b7",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_BATTR
+	VALUES ("9b848259-60d1-4740-9612-fea4222bf9b7",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_ATTR
+	VALUES ("9b848259-60d1-4740-9612-fea4222bf9b7",
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c",
+	"59b61a53-5c7f-4db7-b004-ab88b8b074db",
+	'LowerSalaryLimit',
+	'Minimum amount payable in a pay period to an employee of this grade at the lowest step level.',
+	'',
+	'LowerSalaryLimit',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_ID
+	VALUES (1,
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO O_ID
+	VALUES (2,
+	"e4cc636c-5458-4c76-b608-a8cf2377ff9c");
+INSERT INTO PE_PE
+	VALUES ("e4cc636c-5458-4c76-b608-a8cf2377ff9c",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

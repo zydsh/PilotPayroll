@@ -1,0 +1,74 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
+	'Job',
+	13,
+	'Job',
+	'An instance of a job - matching a job specification - which an employee is working at or has worked at.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_BATTR
+	VALUES ("c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_ATTR
+	VALUES ("c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
+	"00000000-0000-0000-0000-000000000000",
+	'StartDate',
+	'First day worked
+
+units: days
+origin: start of epoch',
+	'',
+	'StartDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("cf4cbc30-344b-4447-ada0-14a8026e04ba",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_BATTR
+	VALUES ("cf4cbc30-344b-4447-ada0-14a8026e04ba",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_ATTR
+	VALUES ("cf4cbc30-344b-4447-ada0-14a8026e04ba",
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
+	"c0abefe7-9ddc-409c-a7d5-55e71bfd4e2a",
+	'EndDate',
+	'Last day worked - if not currently working
+
+units: days
+origin: start of epoch',
+	'',
+	'EndDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_ID
+	VALUES (1,
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO O_ID
+	VALUES (2,
+	"bf57d467-0a32-495f-bd2d-2d3b4b16b3ba");
+INSERT INTO PE_PE
+	VALUES ("bf57d467-0a32-495f-bd2d-2d3b4b16b3ba",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

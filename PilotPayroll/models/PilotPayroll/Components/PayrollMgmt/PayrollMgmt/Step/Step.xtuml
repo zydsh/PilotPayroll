@@ -1,0 +1,85 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	'Step',
+	8,
+	'Step',
+	'A grading level which may be associated with an employee''s performance.
+If so assigned, it refines how payscale limits, specified in the Grade 
+of the job specification apply to the employee''s salary.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("6f666cf8-4750-4174-bbf5-8677da24dfe6",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_BATTR
+	VALUES ("6f666cf8-4750-4174-bbf5-8677da24dfe6",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_ATTR
+	VALUES ("6f666cf8-4750-4174-bbf5-8677da24dfe6",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	"6610c9c2-db8c-4b13-af1c-5c3f30ef38bb",
+	'Factor',
+	'Factor by which the upper salary limit specified in the Grade for an employee''s Job is adjusted.
+Factors covering the range 0 to 1 should be defined in a set of increasingly numbered step levels.
+
+Example:
+Step with ID Level = 1 has a factor of 0.25
+Step with ID Level = 2 has a factor of 0.55
+Step with ID Level = 3 has a factor of 1.0 (fulfilling the 0..1 requirement)
+The Grade associated with the employee''s job has a salary range = (Grade.upper - Grade.lower)
+Then, the upper salary limit for this employee at Step 2 is Grade.lower + ( range ) * 0.55.
+The lower limit at Step 2, defined by the next lower level (Step 1), is Grade.lower + ( range ) * 0.25.
+',
+	'',
+	'Factor',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6610c9c2-db8c-4b13-af1c-5c3f30ef38bb",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_BATTR
+	VALUES ("6610c9c2-db8c-4b13-af1c-5c3f30ef38bb",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_ATTR
+	VALUES ("6610c9c2-db8c-4b13-af1c-5c3f30ef38bb",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	"00000000-0000-0000-0000-000000000000",
+	'Level',
+	'Position in the sequence of Steps: 1..N',
+	'',
+	'Level',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_OIDA
+	VALUES ("6610c9c2-db8c-4b13-af1c-5c3f30ef38bb",
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	0,
+	'Level');
+INSERT INTO O_ID
+	VALUES (1,
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO O_ID
+	VALUES (2,
+	"9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f");
+INSERT INTO PE_PE
+	VALUES ("9cec73fe-6ef7-492b-b0db-2c40ce0d8a5f",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

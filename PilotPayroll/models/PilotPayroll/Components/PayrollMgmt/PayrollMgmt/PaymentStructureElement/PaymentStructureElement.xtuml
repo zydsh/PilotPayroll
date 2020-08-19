@@ -1,0 +1,188 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'PaymentStructureElement',
+	16,
+	'PaymentStructureElement',
+	'A specification for a payment element that contributes to an employee''s total payment.
+( an employee-specific payslip line item specification)
+The default values specified here may be altered by payroll review actions.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("a82453ee-23e4-4211-a812-c9fe5b29263d",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'Evaluate',
+	'This operation will copy an initialization value to a non-edited payment contribution.
+The value will be pro-rated if creation falls within the current pay period.
+',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )
+  return self.NominalValue * self.ProRateValue();
+end if;                                 
+return self.NominalValue;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'Modify',
+	'This operation will modify a value in a non-edited payment contribution.
+The modification may be pro-rated depending on creation dates of both elements.
+',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )
+  return self.NominalValue * param.TargetValue * 
+         self.ProRateModifier( TargetEffectiveDate:param.TargetEffectiveDate );
+end if;                                 
+return param.TargetValue * self.NominalValue;',
+	1,
+	'',
+	"a82453ee-23e4-4211-a812-c9fe5b29263d",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("831a440f-95f5-4f33-bde3-1a941846c128",
+	"2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	'TargetValue',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'An input value to be operated on by the value of this structure element.');
+INSERT INTO O_TPARM
+	VALUES ("5f554f56-d031-4749-96e8-08d7667ca313",
+	"2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	'TargetEffectiveDate',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"831a440f-95f5-4f33-bde3-1a941846c128",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f0578c0c-6003-470e-a93b-eac5e8ebe8bf",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'ProRateValue',
+	'If this element is not in play for the entire pay period it mist be prorated.',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )	// becomes effective within period
+  alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;
+  effectivedays = payperiod.PayPeriodEnd - self.EffectiveDate + 1.0;
+  return effectivedays / alldays;
+else 
+  return 1.0;
+end if;',
+	1,
+	'',
+	"2564f4e6-24a4-460f-977a-dab3dec7c4d7",
+	0);
+INSERT INTO O_TFR
+	VALUES ("c991a661-64cd-4ac8-8c50-df01fe4919ec",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	'ProRateModifier',
+	'If this element is not in play for the entire pay period it mist be prorated.',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'select one payperiod related by self->Employee[R27.''has payments specified by'']
+                                    ->Payroll[R7.''is being assessed for'']
+                                    ->PayPeriod[R33.''is for''];
+if ( self.EffectiveDate > payperiod.PayPeriodStart )		// becomes effective within period..
+  if ( self.EffectiveDate > param.TargetEffectiveDate )
+    alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;	// tentatively..
+  	if ( param.TargetEffectiveDate > payperiod.PayPeriodStart )			// .. begins within period
+      alldays = payperiod.PayPeriodEnd - param.TargetEffectiveDate + 1.0;
+    end if;
+    effectivedays = payperiod.PayPeriodEnd - self.EffectiveDate + 1.0;
+    return effectivedays / alldays;
+  end if;
+end if;
+return 1.0;
+',
+	1,
+	'',
+	"f0578c0c-6003-470e-a93b-eac5e8ebe8bf",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("001fe76a-02c8-40c4-9213-05f39f705fa5",
+	"c991a661-64cd-4ac8-8c50-df01fe4919ec",
+	'TargetEffectiveDate',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_BATTR
+	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_ATTR
+	VALUES ("a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	"00000000-0000-0000-0000-000000000000",
+	'EffectiveDate',
+	'Date this instance added to an employee. Used for possible pro-rating of payment contributions.
+
+units:days
+origin: start of epoch',
+	'',
+	'EffectiveDate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_BATTR
+	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_ATTR
+	VALUES ("7faa6d5a-fbaa-41be-842e-3b7b3c3d0250",
+	"8705371c-e3aa-4840-b680-68cee4da6b5b",
+	"a17ee2c3-70aa-4bb3-a6a9-c6df81a8a9b0",
+	'NominalValue',
+	'A set value which is used to initialize an actual element value when payroll is first drafted.',
+	'',
+	'NominalValue',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_ID
+	VALUES (1,
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO O_ID
+	VALUES (2,
+	"8705371c-e3aa-4840-b680-68cee4da6b5b");
+INSERT INTO PE_PE
+	VALUES ("8705371c-e3aa-4840-b680-68cee4da6b5b",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

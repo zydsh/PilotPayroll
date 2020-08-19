@@ -1,0 +1,53 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("b0460ac1-7d0e-4429-8466-571a574115a6",
+	'PayrollLogEntry',
+	12,
+	'PayrollLogEntry',
+	'Log entry for each Payroll payment processed',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("a83721dc-9b7b-4374-b29e-b56bcfc40f9b",
+	"b0460ac1-7d0e-4429-8466-571a574115a6");
+INSERT INTO O_BATTR
+	VALUES ("a83721dc-9b7b-4374-b29e-b56bcfc40f9b",
+	"b0460ac1-7d0e-4429-8466-571a574115a6");
+INSERT INTO O_ATTR
+	VALUES ("a83721dc-9b7b-4374-b29e-b56bcfc40f9b",
+	"b0460ac1-7d0e-4429-8466-571a574115a6",
+	"00000000-0000-0000-0000-000000000000",
+	'WrittenAt',
+	'Time when entry written to log.
+
+units: minutes
+origin: start of epoch',
+	'',
+	'WrittenAt',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"b0460ac1-7d0e-4429-8466-571a574115a6");
+INSERT INTO O_ID
+	VALUES (1,
+	"b0460ac1-7d0e-4429-8466-571a574115a6");
+INSERT INTO O_ID
+	VALUES (2,
+	"b0460ac1-7d0e-4429-8466-571a574115a6");
+INSERT INTO PE_PE
+	VALUES ("b0460ac1-7d0e-4429-8466-571a574115a6",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

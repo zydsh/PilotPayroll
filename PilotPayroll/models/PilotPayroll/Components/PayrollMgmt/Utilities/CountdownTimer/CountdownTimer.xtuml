@@ -1,0 +1,182 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	'CountdownTimer',
+	1,
+	'CountdownTimer',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("c55169f8-82cc-49a5-bed0-b96352cfbf55",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	'Start',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.Event = param.ClientEvent;
+self.Countdown = param.Duration;
+if ( self.Countdown > 0 )
+  create event instance tick of CountdownTimer1:Tick to self;
+  self.BaseTimer = TIM::timer_start_recurring( event_inst:tick, microseconds:self.ScaleFactor );
+else
+  LOG::LogFailure( message:"Countdown time must be positive" );
+end if;	',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("7088d4ea-cb0d-49a4-a24d-4fbb722db569",
+	"c55169f8-82cc-49a5-bed0-b96352cfbf55",
+	'ClientEvent',
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'Event to be dispatched to client on timer expiration.');
+INSERT INTO O_TPARM
+	VALUES ("b515a8af-5776-428d-bbfa-700248dd4f9d",
+	"c55169f8-82cc-49a5-bed0-b96352cfbf55",
+	'Duration',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"7088d4ea-cb0d-49a4-a24d-4fbb722db569",
+	'Desired wake up interval
+
+units: see ScaleFactor');
+INSERT INTO O_TPARM
+	VALUES ("0876204b-2d1e-4e07-9823-cab1270ec394",
+	"c55169f8-82cc-49a5-bed0-b96352cfbf55",
+	'Scaling',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"b515a8af-5776-428d-bbfa-700248dd4f9d",
+	'');
+INSERT INTO O_TFR
+	VALUES ("64786acb-d197-405a-8a9f-aa9536c0dd2a",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	'Cancel',
+	'Stop this countdown timer.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'cancel = TIM::timer_cancel( timer_inst_ref:self.BaseTimer );',
+	1,
+	'',
+	"c55169f8-82cc-49a5-bed0-b96352cfbf55",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("8648b1e7-7e62-453f-96fa-cfe904ff6430",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_BATTR
+	VALUES ("8648b1e7-7e62-453f-96fa-cfe904ff6430",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ATTR
+	VALUES ("8648b1e7-7e62-453f-96fa-cfe904ff6430",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	"00000000-0000-0000-0000-000000000000",
+	'Event',
+	'Event which will be dispatched to client when timer expires.',
+	'',
+	'Event',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("984ea9d0-3c8d-4e28-b897-6948e8f9d9eb",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_BATTR
+	VALUES ("984ea9d0-3c8d-4e28-b897-6948e8f9d9eb",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ATTR
+	VALUES ("984ea9d0-3c8d-4e28-b897-6948e8f9d9eb",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	"0c7b41bf-f12e-4c8d-8835-cd3772a02c56",
+	'BaseTimer',
+	'Underlying built-in timer.',
+	'',
+	'BaseTimer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d9f46f1e-2f68-4f99-9c14-c087524c840a",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_BATTR
+	VALUES ("d9f46f1e-2f68-4f99-9c14-c087524c840a",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ATTR
+	VALUES ("d9f46f1e-2f68-4f99-9c14-c087524c840a",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	"984ea9d0-3c8d-4e28-b897-6948e8f9d9eb",
+	'ScaleFactor',
+	'',
+	'',
+	'ScaleFactor',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("0c7b41bf-f12e-4c8d-8835-cd3772a02c56",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_BATTR
+	VALUES ("0c7b41bf-f12e-4c8d-8835-cd3772a02c56",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ATTR
+	VALUES ("0c7b41bf-f12e-4c8d-8835-cd3772a02c56",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	"8648b1e7-7e62-453f-96fa-cfe904ff6430",
+	'Countdown',
+	'Countdown period in units matching ScaleFactor.',
+	'',
+	'Countdown',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("be200bea-be35-4cd8-be93-102a59d30d4e",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_BATTR
+	VALUES ("be200bea-be35-4cd8-be93-102a59d30d4e",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ATTR
+	VALUES ("be200bea-be35-4cd8-be93-102a59d30d4e",
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	"d9f46f1e-2f68-4f99-9c14-c087524c840a",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ID
+	VALUES (1,
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO O_ID
+	VALUES (2,
+	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
+INSERT INTO PE_PE
+	VALUES ("5208dd6e-09ad-4170-a392-7ae90f1d9176",
+	1,
+	"32424a52-1b34-46a9-9852-2e7dd55f4cce",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("32424a52-1b34-46a9-9852-2e7dd55f4cce",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Utilities',
+	'',
+	0,
+	'../Utilities.xtuml');

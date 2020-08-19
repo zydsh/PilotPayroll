@@ -1,0 +1,50 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("140d4f3a-e48f-4d68-b31f-4a30bcdc4718",
+	'Department',
+	3,
+	'Department',
+	'A grouping of employees with a defined responsibility. An organization may have multiple departments.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("513f29de-fb71-4c67-94c4-597fb15c8256",
+	"140d4f3a-e48f-4d68-b31f-4a30bcdc4718");
+INSERT INTO O_BATTR
+	VALUES ("513f29de-fb71-4c67-94c4-597fb15c8256",
+	"140d4f3a-e48f-4d68-b31f-4a30bcdc4718");
+INSERT INTO O_ATTR
+	VALUES ("513f29de-fb71-4c67-94c4-597fb15c8256",
+	"140d4f3a-e48f-4d68-b31f-4a30bcdc4718",
+	"00000000-0000-0000-0000-000000000000",
+	'Name',
+	'',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"140d4f3a-e48f-4d68-b31f-4a30bcdc4718");
+INSERT INTO O_ID
+	VALUES (1,
+	"140d4f3a-e48f-4d68-b31f-4a30bcdc4718");
+INSERT INTO O_ID
+	VALUES (2,
+	"140d4f3a-e48f-4d68-b31f-4a30bcdc4718");
+INSERT INTO PE_PE
+	VALUES ("140d4f3a-e48f-4d68-b31f-4a30bcdc4718",
+	1,
+	"66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66af3a6e-b969-4d52-8331-503fed93597c",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PayrollMgmt',
+	'',
+	0,
+	'../PayrollMgmt.xtuml');

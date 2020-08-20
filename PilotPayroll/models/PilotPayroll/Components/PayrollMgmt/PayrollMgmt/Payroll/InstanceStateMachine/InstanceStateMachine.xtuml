@@ -387,8 +387,17 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("b7b809b8-491b-4764-9efd-cadb1dc13b9b",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
-	'',
+	1,
+	'select any element related by self->EmployeePayment[R7]->EmployeePaymentElement[R15.''is composed of''];
+if ( empty element )
+  self.BuildPaymentElements();	// first generation for this payroll instance
+end if;
+self.EvaluateEmployeePayments();
+create object instance log of PayrollLog;
+relate log to self across R8.''records generation of'';
+log.Log();
+generate Payroll2:Generated() to self;
+',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -401,7 +410,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("b0cff8e9-62c3-4f44-ba51-545f7324a4b0",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -415,7 +424,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("1c10176f-bbe6-456b-8c57-70e72c511dde",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -432,7 +441,11 @@ INSERT INTO SM_ACT
 	1,
 	'select one dept related by self->Department[R34.''is currently being evaluated for''];
 unrelate self from dept across R34.''is currently being evaluated for'';
-relate self to dept across R24.''has been generated for'';',
+relate self to dept across R24.''has been generated for'';
+
+select one scheduler related by self->PayPeriod[R33.''is for'']
+                                    ->PayrollScheduleEntry[R32.''specifies dates for''];
+generate PayrollScheduleEntry3:Complete() to scheduler;                                    ',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -445,7 +458,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("aa1c8632-e5c2-4ab8-85d2-c0ce75cc4467",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -459,7 +472,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("2771f023-a8fe-44c6-9125-dfe5e3f930bb",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -473,7 +486,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("73f97240-4fe6-4881-94ad-b086e09828c9",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -487,7 +500,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("ab86f15b-08ac-4830-b468-9c02b15dd025",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -501,7 +514,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("16bd4f42-8784-4431-91a6-abcf481fdd86",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -515,7 +528,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("a1d52d1c-3262-460f-8f5f-750636b09b1d",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
-	3,
+	1,
 	'',
 	'',
 	0);

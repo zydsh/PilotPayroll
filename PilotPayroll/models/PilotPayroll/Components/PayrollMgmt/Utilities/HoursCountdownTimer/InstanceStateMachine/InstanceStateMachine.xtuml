@@ -25,7 +25,7 @@ INSERT INTO SM_EVT
 	'Tick',
 	0,
 	'',
-	'CountdownTimer1',
+	'HoursCountdownTimer1',
 	'');
 INSERT INTO SM_STATE
 	VALUES ("c93b6f41-e4c5-4c3b-b616-98917704ff6f",
@@ -61,8 +61,9 @@ INSERT INTO SM_ACT
 	VALUES ("89781d2c-6224-4c63-b9d7-3a610f4fd072",
 	"91fd54b6-3a10-4075-b1c9-f3146dee68b1",
 	1,
-	'self.Countdown = self.Countdown - 1;
-if ( self.Countdown == 0 )
+	'// every elapsed minute, check for expiration
+now = TIM::current_seconds();
+if ( self.Expiration <= now )
   generate self.Event;
   cancel = TIM::timer_cancel( timer_inst_ref:self.BaseTimer );
 end if;',
@@ -78,7 +79,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("b679ce29-abff-40b3-b745-decd9f95ee50",
 	"91fd54b6-3a10-4075-b1c9-f3146dee68b1",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -100,14 +101,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'PilotPayroll::Components::PayrollMgmt::Utilities::CountdownTimer::Instance State Machine');
+	'PilotPayroll::Components::PayrollMgmt::Utilities::HoursCountdownTimer::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("f0cec7d0-218a-4f8c-99c7-03123663ac21",
 	"9f528dbd-b785-4a61-9ec3-4fd90e6c522a",
 	"c93b6f41-e4c5-4c3b-b616-98917704ff6f",
 	41,
 	0,
-	'PilotPayroll::Components::PayrollMgmt::Utilities::CountdownTimer::Instance State Machine::Counting Down');
+	'PilotPayroll::Components::PayrollMgmt::Utilities::HoursCountdownTimer::Instance State Machine::Counting Down');
 INSERT INTO GD_SHP
 	VALUES ("f0cec7d0-218a-4f8c-99c7-03123663ac21");
 INSERT INTO GD_NCS
@@ -151,7 +152,7 @@ INSERT INTO GD_GE
 	"70f686e3-7c78-4100-86a3-7c67e5b6616a",
 	42,
 	0,
-	'PilotPayroll::Components::PayrollMgmt::Utilities::CountdownTimer::Instance State Machine::Counting Down::CountdownTimer1: Tick');
+	'PilotPayroll::Components::PayrollMgmt::Utilities::HoursCountdownTimer::Instance State Machine::Counting Down::HoursCountdownTimer1: Tick');
 INSERT INTO GD_CON
 	VALUES ("2de08cf0-d1a2-472b-89d7-7c529782a1fb",
 	"00000000-0000-0000-0000-000000000000");
@@ -293,9 +294,9 @@ INSERT INTO DIM_DIA
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("5208dd6e-09ad-4170-a392-7ae90f1d9176",
-	'CountdownTimer',
+	'HoursCountdownTimer',
 	1,
-	'CountdownTimer',
+	'HoursCountdownTimer',
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'../CountdownTimer.xtuml');
+	'../HoursCountdownTimer.xtuml');

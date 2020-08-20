@@ -7,6 +7,30 @@ INSERT INTO O_OBJ
 	'PayrollLog',
 	' A log of generated payroll entries.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("58ae1744-d171-47e4-b8bc-41229bdf89b8",
+	"bae05c7d-145a-4d93-8b0c-b331d14ceb13",
+	'Log',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many employees related by self->Payroll[R8.''records generation of'']
+                                     ->Employee[R7.''is assessing pay for''];
+for each employee in employees
+  select one payment related by employee->EmployeePayment[R7];
+  LOG::LogInfo( message:employee.FirstName + " " + employee.LastName );
+  LOG::LogReal( message:"Total pay this period: ", r: payment.Amount );
+  select many payelements related by payment->EmployeePaymentElement[R15.''is composed of''];
+  for each elem in payelements
+  	select one spec related by elem->PaymentStructureElement[R13.''is current realization of'']
+  	                               ->PaymentElementSpec[R12.''is typed by''];
+  	LOG::LogReal( message:spec.Label, r:elem.Amount );
+  end for;
+end for;                                     ',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("61dcdca3-d027-41a3-b20c-d3b918fdd33e",
 	"bae05c7d-145a-4d93-8b0c-b331d14ceb13");

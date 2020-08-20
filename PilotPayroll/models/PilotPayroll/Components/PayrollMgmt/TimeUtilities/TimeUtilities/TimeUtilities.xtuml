@@ -1,0 +1,121 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("df9ef248-d331-419f-bbb4-14b92ae0314e",
+	'TimeUtilities',
+	1,
+	'TimeUtilities',
+	'Literal integers in BridgePoint are treated as signed 32-bit integers.
+The timestamp type is a signed 64-bit integer.
+Loading a variable of type timestamp with a value calculated with 
+literal integers therefore requires special care.  Basically, the 
+left-hand-side of all sub-expressions must be of type timestamp to
+ensure that all math is done as 64-bit integer math.  For example:
+x = MicrosecondsPerHalfHour * 2;  // Works fine
+The following line does not produce the desired result because the 
+multiplication operation is performed in 32-bit integer math, and
+the result is greater than 2^31, so the value gets truncated, even 
+if the LHS of the assignment, x, has been previously typed as timestamp.
+x = 2 * MicrosecondsPerHalfHour;  // Does not work',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("9c14d408-8f21-49d5-bb56-989b96c91792",
+	"df9ef248-d331-419f-bbb4-14b92ae0314e",
+	'AdvanceTime',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	0,
+	'//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+DaysInMicroseconds = ConversionFactors::MicrosecondsPerHalfHour * 2  * 24 * param.days;
+HoursInMicroseconds = ConversionFactors::MicrosecondsPerHalfHour * 2 * param.hours;
+MinutesInMicroseconds = ConversionFactors::MicrosecondsPerMinute * param.minutes;
+current_time = TIM::advance_time( microseconds:HoursInMicroseconds + MinutesInMicroseconds );
+return current_time;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("fdcbbfad-7618-4c07-a17a-d36e284486dc",
+	"9c14d408-8f21-49d5-bb56-989b96c91792",
+	'hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"92a4cb0e-2e44-4c04-a770-03f4b6f5d5cc",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("f5947fc3-c873-4a99-964e-dfe2d8d57c86",
+	"9c14d408-8f21-49d5-bb56-989b96c91792",
+	'minutes',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"fdcbbfad-7618-4c07-a17a-d36e284486dc",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("92a4cb0e-2e44-4c04-a770-03f4b6f5d5cc",
+	"9c14d408-8f21-49d5-bb56-989b96c91792",
+	'days',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a222db15-32de-4203-86a3-b3163f2555c3",
+	"df9ef248-d331-419f-bbb4-14b92ae0314e",
+	'DayHourToSeconds',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'return param.Days * TimeConversion::QuantumPerDay + TimeConversion::QuantumPerHour;',
+	1,
+	'',
+	"9c14d408-8f21-49d5-bb56-989b96c91792",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("8091618a-960f-409a-aa94-b43a27c28abc",
+	"a222db15-32de-4203-86a3-b3163f2555c3",
+	'Days',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("6284e704-de9d-4275-a498-614f476f1187",
+	"a222db15-32de-4203-86a3-b3163f2555c3",
+	'Hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"8091618a-960f-409a-aa94-b43a27c28abc",
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"df9ef248-d331-419f-bbb4-14b92ae0314e");
+INSERT INTO O_ID
+	VALUES (1,
+	"df9ef248-d331-419f-bbb4-14b92ae0314e");
+INSERT INTO O_ID
+	VALUES (2,
+	"df9ef248-d331-419f-bbb4-14b92ae0314e");
+INSERT INTO PE_PE
+	VALUES ("df9ef248-d331-419f-bbb4-14b92ae0314e",
+	1,
+	"6010dc91-ac66-4985-8167-8619decd7a99",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("6010dc91-ac66-4985-8167-8619decd7a99",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'TimeUtilities',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
+	0,
+	'../TimeUtilities.xtuml');

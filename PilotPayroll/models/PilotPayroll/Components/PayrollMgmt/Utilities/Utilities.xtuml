@@ -32,7 +32,7 @@ INSERT INTO GD_GE
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
 	21,
 	0,
-	'PilotPayroll::Components::PayrollMgmt::Utilities::CountdownTimer');
+	'PilotPayroll::Components::PayrollMgmt::Utilities::HoursCountdownTimer');
 INSERT INTO GD_SHP
 	VALUES ("63c2e44b-c105-49ce-b236-f2722f8c4b48");
 INSERT INTO GD_NCS
@@ -65,7 +65,7 @@ INSERT INTO DIM_DIA
 INSERT INTO S_DT
 	VALUES ("71e40277-9bda-4b05-813e-120b85a617de",
 	"00000000-0000-0000-0000-000000000000",
-	'inst_ref<CountdownTimer>',
+	'inst_ref<HoursCountdownTimer>',
 	'',
 	'');
 INSERT INTO S_IRDT
@@ -74,12 +74,12 @@ INSERT INTO S_IRDT
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("5208dd6e-09ad-4170-a392-7ae90f1d9176",
-	'CountdownTimer',
+	'HoursCountdownTimer',
 	1,
-	'CountdownTimer',
+	'HoursCountdownTimer',
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'./CountdownTimer/CountdownTimer.xtuml');
+	'./HoursCountdownTimer/HoursCountdownTimer.xtuml');
 INSERT INTO PE_PE
 	VALUES ("71e40277-9bda-4b05-813e-120b85a617de",
 	1,
@@ -89,7 +89,7 @@ INSERT INTO PE_PE
 INSERT INTO S_DT
 	VALUES ("cb78d6e5-56ad-45f3-aa23-28d3ebc7ebd2",
 	"00000000-0000-0000-0000-000000000000",
-	'inst_ref_set<CountdownTimer>',
+	'inst_ref_set<HoursCountdownTimer>',
 	'',
 	'');
 INSERT INTO S_IRDT

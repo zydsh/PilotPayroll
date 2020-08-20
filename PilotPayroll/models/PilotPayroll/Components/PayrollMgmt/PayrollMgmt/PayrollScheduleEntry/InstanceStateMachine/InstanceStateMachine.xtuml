@@ -124,7 +124,7 @@ INSERT INTO SM_STATE
 	VALUES ("2c866d63-ed22-47e4-9294-3e3481b940fc",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	"00000000-0000-0000-0000-000000000000",
-	'Activated',
+	'Completed',
 	3,
 	0);
 INSERT INTO SM_CH
@@ -266,15 +266,14 @@ INSERT INTO SM_ACT
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
 	'// @TODO send advance notification - some outgoing port signal
+LOG::LogInfo( message:"Payroll generation imminent!" ); 
 
 // Ask countdown timer to trigger at Draft payroll generation date & time
 hoursDelay = self.DraftGenerationDate - self.NotificationDate;
 create event instance advance of PayrollScheduleEntry2:Activate() to self;
 
-factor = TimeConversion::QuantumPerHour * TimeConversion::MicrosecondsPerQuantum;
 mytimer = self.WakeUpTimer;	// workaround for parser problem
-mytimer.Start( ClientEvent:advance, Duration:hoursDelay, Scaling:factor );
-
+mytimer.Start( ClientEvent:advance, Duration:hoursDelay );
 ',
 	'',
 	0);
@@ -335,9 +334,8 @@ generate Payroll1:Generate() to payroll;
 hoursDelay = self.SubmittalDueDate - self.DraftGenerationDate;
 create event instance warn of PayrollScheduleEntry4:Timeout to self;
 
-factor = TimeConversion::QuantumPerHour * TimeConversion::MicrosecondsPerQuantum;
 mytimer = self.WakeUpTimer;	// workaround for parser problem
-mytimer.Start( ClientEvent:warn, Duration:hoursDelay, Scaling:factor );',
+mytimer.Start( ClientEvent:warn, Duration:hoursDelay );',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -350,7 +348,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("980ea3b3-0db0-4587-83c1-debc29bcf633",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -364,7 +362,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("7b1021ef-e3f4-4ee6-8bbc-596e6004b518",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
-	3,
+	1,
 	'',
 	'',
 	0);
@@ -456,7 +454,7 @@ INSERT INTO GD_GE
 	"2c866d63-ed22-47e4-9294-3e3481b940fc",
 	41,
 	0,
-	'PilotPayroll::Components::PayrollMgmt::PayrollMgmt::PayrollScheduleEntry::Instance State Machine::Activated');
+	'PilotPayroll::Components::PayrollMgmt::PayrollMgmt::PayrollScheduleEntry::Instance State Machine::Completed');
 INSERT INTO GD_SHP
 	VALUES ("f6cb98f6-af11-4c82-b8df-0ea307bb6ea1");
 INSERT INTO GD_NCS

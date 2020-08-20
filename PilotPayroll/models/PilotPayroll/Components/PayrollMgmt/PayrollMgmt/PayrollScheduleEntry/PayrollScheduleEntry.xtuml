@@ -7,6 +7,25 @@ INSERT INTO O_OBJ
 	'PayrollScheduleEntry',
 	'Scheduling information for preparing and submitting a deparmental payroll for some pay period.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("3134b8b4-3c50-4746-8152-243e79bf29b0",
+	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
+	'Initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Ask countdown timer to wake me up when the time comes...
+hoursDelay = self.NotificationDate;
+create event instance advance of PayrollScheduleEntry2:Activate() to self;
+create object instance mytimer of HoursCountdownTimer;
+self.WakeUpTimer = mytimer;
+mytimer = self.WakeUpTimer;	// workaround for parser problem
+mytimer.Start( ClientEvent:advance, Duration:hoursDelay );
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("614aefac-d27d-48ff-bc24-ac1e29497944",
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a");
@@ -50,7 +69,7 @@ INSERT INTO O_ATTR
 INSERT INTO S_DT_PROXY
 	VALUES ("71e40277-9bda-4b05-813e-120b85a617de",
 	"00000000-0000-0000-0000-000000000000",
-	'inst_ref<CountdownTimer>',
+	'inst_ref<HoursCountdownTimer>',
 	'',
 	'',
 	'../../Utilities/Utilities.xtuml');

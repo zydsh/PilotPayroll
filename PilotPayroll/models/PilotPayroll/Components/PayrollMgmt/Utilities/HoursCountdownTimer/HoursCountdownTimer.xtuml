@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("5208dd6e-09ad-4170-a392-7ae90f1d9176",
-	'CountdownTimer',
+	'HoursCountdownTimer',
 	1,
-	'CountdownTimer',
+	'HoursCountdownTimer',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -15,13 +15,16 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'self.Event = param.ClientEvent;
-self.Countdown = param.Duration;
-if ( self.Countdown > 0 )
-  create event instance tick of CountdownTimer1:Tick to self;
-  self.BaseTimer = TIM::timer_start_recurring( event_inst:tick, microseconds:self.ScaleFactor );
+now = TIM::current_seconds();
+self.Expiration = now + param.Duration;
+if ( param.Duration > 0 )
+  create event instance tick of HoursCountdownTimer1:Tick to self;
+  self.BaseTimer = TIM::timer_start_recurring( event_inst:tick, 
+                                               microseconds:ConversionFactors::MicrosecondsPerMinute );
 else
-  LOG::LogFailure( message:"Countdown time must be positive" );
-end if;	',
+  LOG::LogFailure( message:"Countdown duration must be positive" );
+end if;	
+',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -46,15 +49,6 @@ INSERT INTO O_TPARM
 	'Desired wake up interval
 
 units: see ScaleFactor');
-INSERT INTO O_TPARM
-	VALUES ("0876204b-2d1e-4e07-9823-cab1270ec394",
-	"c55169f8-82cc-49a5-bed0-b96352cfbf55",
-	'Scaling',
-	"ba5eda7a-def5-0000-0000-000000000002",
-	0,
-	'',
-	"b515a8af-5776-428d-bbfa-700248dd4f9d",
-	'');
 INSERT INTO O_TFR
 	VALUES ("64786acb-d197-405a-8a9f-aa9536c0dd2a",
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
@@ -104,24 +98,6 @@ INSERT INTO O_ATTR
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("d9f46f1e-2f68-4f99-9c14-c087524c840a",
-	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
-INSERT INTO O_BATTR
-	VALUES ("d9f46f1e-2f68-4f99-9c14-c087524c840a",
-	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
-INSERT INTO O_ATTR
-	VALUES ("d9f46f1e-2f68-4f99-9c14-c087524c840a",
-	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
-	"984ea9d0-3c8d-4e28-b897-6948e8f9d9eb",
-	'ScaleFactor',
-	'',
-	'',
-	'ScaleFactor',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
 	VALUES ("0c7b41bf-f12e-4c8d-8835-cd3772a02c56",
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176");
 INSERT INTO O_BATTR
@@ -131,10 +107,10 @@ INSERT INTO O_ATTR
 	VALUES ("0c7b41bf-f12e-4c8d-8835-cd3772a02c56",
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
 	"8648b1e7-7e62-453f-96fa-cfe904ff6430",
-	'Countdown',
+	'Expiration',
 	'Countdown period in units matching ScaleFactor.',
 	'',
-	'Countdown',
+	'Expiration',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
@@ -148,7 +124,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("be200bea-be35-4cd8-be93-102a59d30d4e",
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176",
-	"d9f46f1e-2f68-4f99-9c14-c087524c840a",
+	"984ea9d0-3c8d-4e28-b897-6948e8f9d9eb",
 	'current_state',
 	'',
 	'',

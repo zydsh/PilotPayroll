@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("5208dd6e-09ad-4170-a392-7ae90f1d9176",
-	'HoursCountdownTimer',
+	'DateTimeMonitor',
 	1,
-	'HoursCountdownTimer',
+	'DateTimeMonitor',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -14,11 +14,11 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'self.Event = param.ClientEvent;
-now = TIM::current_seconds();
-self.Expiration = param.Duration;
-if ( param.Duration > 0 )
-  create event instance tick of HoursCountdownTimer1:Tick to self;
+	'now = TIM::current_seconds();
+if ( param.DateTime > now )
+  self.Event = param.ClientEvent;
+  self.Expiration = param.DateTime;
+  create event instance tick of DateTimeMonitor1:Tick() to self;
   self.BaseTimer = TIM::timer_start_recurring( event_inst:tick, 
                                                microseconds:ConversionFactors::MicrosecondsPerMinute );
 else
@@ -41,14 +41,15 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("b515a8af-5776-428d-bbfa-700248dd4f9d",
 	"c55169f8-82cc-49a5-bed0-b96352cfbf55",
-	'Duration',
+	'DateTime',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
 	"7088d4ea-cb0d-49a4-a24d-4fbb722db569",
-	'Desired wake up interval
+	'Desired wake up time.
 
-units: see ScaleFactor');
+units: seconds
+origin: start of epoch');
 INSERT INTO O_TFR
 	VALUES ("64786acb-d197-405a-8a9f-aa9536c0dd2a",
 	"5208dd6e-09ad-4170-a392-7ae90f1d9176",

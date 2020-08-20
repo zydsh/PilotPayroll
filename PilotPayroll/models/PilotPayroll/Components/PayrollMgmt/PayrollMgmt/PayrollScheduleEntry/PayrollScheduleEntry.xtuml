@@ -14,13 +14,11 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// Ask countdown timer to wake me up when the time comes...
-hoursDelay = self.NotificationDate;
-create event instance advance of PayrollScheduleEntry2:Activate() to self;
-create object instance mytimer of HoursCountdownTimer;
-self.WakeUpTimer = mytimer;
-mytimer = self.WakeUpTimer;	// workaround for parser problem
-mytimer.Start( ClientEvent:advance, Duration:hoursDelay );
+	'// Ask monitor to wake me up when the time comes...
+create event instance notify of PayrollScheduleEntry1:Notify() to self;
+create object instance monitor of DateTimeMonitor;
+self.MyMonitor = monitor;
+monitor.Start( ClientEvent:notify, DateTime:self.NotificationDate );
 ',
 	1,
 	'',
@@ -57,11 +55,11 @@ INSERT INTO O_ATTR
 	VALUES ("103a06f0-44f3-45a8-990d-75e5d2d484f4",
 	"ae8be100-bccd-49d5-b79b-bfa58285b46a",
 	"cf849d5b-5dc5-4944-810b-7dcb667eb30d",
-	'WakeUpTimer',
+	'MyMonitor',
 	'A timer to sequence Payroll scheduling timeline.
 ',
 	'',
-	'WakeUpTimer',
+	'MyMonitor',
 	0,
 	"71e40277-9bda-4b05-813e-120b85a617de",
 	'',
@@ -69,7 +67,7 @@ INSERT INTO O_ATTR
 INSERT INTO S_DT_PROXY
 	VALUES ("71e40277-9bda-4b05-813e-120b85a617de",
 	"00000000-0000-0000-0000-000000000000",
-	'inst_ref<HoursCountdownTimer>',
+	'inst_ref<DateTimeMonitor>',
 	'',
 	'',
 	'../../Utilities/Utilities.xtuml');

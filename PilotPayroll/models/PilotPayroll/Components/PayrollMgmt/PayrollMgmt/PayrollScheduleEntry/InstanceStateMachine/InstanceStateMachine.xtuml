@@ -266,14 +266,12 @@ INSERT INTO SM_ACT
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
 	'// @TODO send advance notification - some outgoing port signal
-LOG::LogInfo( message:"Payroll generation imminent!" ); 
+LOG::LogInfo( message:"Payroll generation imminent !!!!!!!!!!!!" ); 
 
-// Ask countdown timer to trigger at Draft payroll generation date & time
-next = self.NotificationDate;
+// Ask monitor to trigger at Draft payroll generation date & time
 create event instance advance of PayrollScheduleEntry2:Activate() to self;
-
-mytimer = self.WakeUpTimer;	// workaround for parser problem
-mytimer.Start( ClientEvent:advance, Duration:next );
+monitor = self.MyMonitor;	// workaround for parser flaw
+monitor.Start( ClientEvent:advance, DateTime:self.DraftGenerationDate );
 ',
 	'',
 	0);
@@ -330,12 +328,12 @@ select one payperiod related by self->PayPeriod[R32.''schedules for''];
 relate payroll to payperiod across R33.''is for''; 
 generate Payroll1:Generate() to payroll;
 
-// Ask countdown timer to trigger warning if submission date is missed
-hoursDelay = self.SubmittalDueDate;
+// Set monitor to trigger warning event if submission date is missed
 create event instance warn of PayrollScheduleEntry4:Timeout to self;
+monitor = self.MyMonitor;	// workaround for parser flaw
+monitor.Start( ClientEvent:warn, DateTime:self.SubmittalDueDate );
 
-mytimer = self.WakeUpTimer;	// workaround for parser problem
-mytimer.Start( ClientEvent:warn, Duration:hoursDelay );',
+',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -377,7 +375,8 @@ INSERT INTO SM_ACT
 	VALUES ("76eb83cc-f949-4d19-9fe3-3cae6888575a",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
-	'// @TODO send a missed submission message',
+	'// @TODO send a missed submission message
+LOG::LogInfo( message:"Payroll submission date passed !!!!!!!!!!!!!!!" );',
 	'',
 	0);
 INSERT INTO GD_MD

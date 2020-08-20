@@ -22,7 +22,7 @@ select many structElements related by self->PaymentStructureElement[R27.''specif
 // Pass 1 - evaluate non-dependent elements
 for each structElement in structElements
   select one elementSpec related by structElement->PaymentElementSpec[R12.''is typed by''];
-  select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
+  select one target related by elementSpec->PaymentElementSpec[R30.''is a modifier for''];
   if ( empty target )	// this is not a modifier - proceed
   	select one payElement related by structElement->EmployeePaymentElement[R13.''is template for''];
   	if ( empty payElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
@@ -37,18 +37,19 @@ end for;
 // Pass 2 - perform any modifications e.g. multiply base pay by bonus percentage
 for each structElement in structElements
   select one elementSpec related by structElement->PaymentElementSpec[R12.''is typed by''];
-  select one target related by elementSpec->PaymentElementSpec[R30.''is modified by''];
+  select one target related by elementSpec->PaymentElementSpec[R30.''is a modifier for''];
   if ( not empty target )	// this structElement is a modifier - proceed
   	for each targetElement in structElements
   	  select one targetElementSpec related by targetElement->PaymentElementSpec[R12.''is typed by''];
   	  if ( target == targetElementSpec )	// found our man...
-  	    select one payElement related by targetElement->EmployeePaymentElement[R13.''is template for''];
-    	if ( empty payElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
+  	    select one tgtElement related by targetElement->EmployeePaymentElement[R13.''is template for''];
+    	if ( empty tgtElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
     	  break;
     	end if;
-    	select one payroll related by payElement->Payroll[R31.''has been modified''];
+    	select one payroll related by tgtElement->Payroll[R31.''has been modified''];
   	    if ( empty payroll )
-          payElement.Amount = structElement.Modify( TargetValue:payElement.Amount,
+          select one payElement related by structElement->EmployeePaymentElement[R13.''is template for''];
+          payElement.Amount = structElement.Modify( TargetValue:tgtElement.Amount,
                                                     TargetEffectiveDate:targetElement.EffectiveDate );
  	    end if;
  	    break;

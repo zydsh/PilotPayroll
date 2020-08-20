@@ -45,7 +45,7 @@ payspec.Label = "Monthly salary";
 
 create object instance percent of PaymentElementSpec;
 percent.Label = "Fractional bonus";
-relate percent to payspec across R30.''is a modifier for'';
+relate payspec to percent across R30.''is modified by'';
 
 create object instance payspec of PaymentElementSpec;
 payspec.Label = "Travel allowance";
@@ -62,7 +62,7 @@ create object instance dept of Department;
 dept.Name = "IT";
 
 TIM::set_epoch( day:1, month:1, year:2020 );
-toss = TimeUtilities::AdvanceTime( days:32, hours:0, minutes:0 );	// March 1 ?
+toss = TimeUtilities::AdvanceTime( days:31, hours:0, minutes:0 );	// Feb 1 ?
 now = TIM::current_seconds();
 create object instance schedule of PayrollScheduleEntry;
 relate schedule to dept across R4.''is scheduled for'';
@@ -94,7 +94,8 @@ create object instance struct of PaymentStructureElement;
 relate struct to emp across R27.''has payments specified by'';
 select any payspec from instances of PaymentElementSpec where selected.Label == "Fractional bonus";
 relate struct to payspec across R12.''is typed by'';
-struct.EffectiveDate = now + TimeUtilities::DayHourToSeconds(Days:7, Hours:0 );
+struct.EffectiveDate = now - TimeUtilities::DayHourToSeconds(Days:30, Hours:0 );
+//struct.EffectiveDate = now + TimeUtilities::DayHourToSeconds(Days:7, Hours:0 );
 struct.NominalValue = 0.1;
 
 

@@ -16,7 +16,7 @@ INSERT INTO O_TFR
 	1,
 	'self.Event = param.ClientEvent;
 now = TIM::current_seconds();
-self.Expiration = now + param.Duration;
+self.Expiration = param.Duration;
 if ( param.Duration > 0 )
   create event instance tick of HoursCountdownTimer1:Tick to self;
   self.BaseTimer = TIM::timer_start_recurring( event_inst:tick, 

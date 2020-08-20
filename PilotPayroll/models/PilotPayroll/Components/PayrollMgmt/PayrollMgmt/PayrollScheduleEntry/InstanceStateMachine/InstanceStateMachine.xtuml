@@ -269,11 +269,11 @@ INSERT INTO SM_ACT
 LOG::LogInfo( message:"Payroll generation imminent!" ); 
 
 // Ask countdown timer to trigger at Draft payroll generation date & time
-hoursDelay = self.DraftGenerationDate - self.NotificationDate;
+next = self.NotificationDate;
 create event instance advance of PayrollScheduleEntry2:Activate() to self;
 
 mytimer = self.WakeUpTimer;	// workaround for parser problem
-mytimer.Start( ClientEvent:advance, Duration:hoursDelay );
+mytimer.Start( ClientEvent:advance, Duration:next );
 ',
 	'',
 	0);
@@ -331,7 +331,7 @@ relate payroll to payperiod across R33.''is for'';
 generate Payroll1:Generate() to payroll;
 
 // Ask countdown timer to trigger warning if submission date is missed
-hoursDelay = self.SubmittalDueDate - self.DraftGenerationDate;
+hoursDelay = self.SubmittalDueDate;
 create event instance warn of PayrollScheduleEntry4:Timeout to self;
 
 mytimer = self.WakeUpTimer;	// workaround for parser problem

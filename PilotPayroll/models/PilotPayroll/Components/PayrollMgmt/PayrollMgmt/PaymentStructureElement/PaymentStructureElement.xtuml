@@ -42,10 +42,11 @@ The modification may be pro-rated depending on creation dates of both elements.
                                     ->Payroll[R7.''is being assessed for'']
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )
-  return self.NominalValue * param.TargetValue * 
+  result = self.NominalValue * param.TargetValue * 
          self.ProRateModifier( TargetEffectiveDate:param.TargetEffectiveDate );
 end if;                                 
-return param.TargetValue * self.NominalValue;',
+result = param.TargetValue * self.NominalValue;
+return result;',
 	1,
 	'',
 	"a82453ee-23e4-4211-a812-c9fe5b29263d",

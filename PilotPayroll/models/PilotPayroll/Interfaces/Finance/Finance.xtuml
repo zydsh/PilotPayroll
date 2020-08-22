@@ -1,0 +1,63 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("dd3d882c-a83f-4c8d-878b-94053cc6d7a5",
+	"00000000-0000-0000-0000-000000000000",
+	'Finance',
+	'');
+INSERT INTO C_EP
+	VALUES ("19479001-5e3e-479d-8ce4-494cfc76a5b3",
+	"dd3d882c-a83f-4c8d-878b-94053cc6d7a5",
+	-1,
+	'SubmitPayroll',
+	'');
+INSERT INTO C_AS
+	VALUES ("19479001-5e3e-479d-8ce4-494cfc76a5b3",
+	'SubmitPayroll',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("6ea69ec8-bd97-40f4-b72c-e8b7fc183b33",
+	"19479001-5e3e-479d-8ce4-494cfc76a5b3",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'PayPeriodStart',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("165ca226-5b2f-41b7-a9e0-adcc07af47bd",
+	"dd3d882c-a83f-4c8d-878b-94053cc6d7a5",
+	-1,
+	'AcceptPayroll',
+	'');
+INSERT INTO C_AS
+	VALUES ("165ca226-5b2f-41b7-a9e0-adcc07af47bd",
+	'AcceptPayroll',
+	'',
+	1,
+	"19479001-5e3e-479d-8ce4-494cfc76a5b3");
+INSERT INTO C_PP
+	VALUES ("b159cf2b-1d0a-4b5d-94e2-d690120c16c1",
+	"165ca226-5b2f-41b7-a9e0-adcc07af47bd",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'PayPeriodStart',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("dd3d882c-a83f-4c8d-878b-94053cc6d7a5",
+	1,
+	"3e009682-fca9-4bec-a3bd-f9cf28f514cc",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3e009682-fca9-4bec-a3bd-f9cf28f514cc",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Interfaces',
+	'',
+	0,
+	'../Interfaces.xtuml');

@@ -1,0 +1,57 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("42385522-1c5f-4df9-9de6-3cd5ff2b1211",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'DataMarshalling',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("72378a00-8e97-4279-8b6f-a2fd67ee8d08",
+	112,
+	"42385522-1c5f-4df9-9de6-3cd5ff2b1211",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'PilotPayroll::Components::PayrollMgmt::DataMarshalling');
+INSERT INTO DIM_DIA
+	VALUES ("72378a00-8e97-4279-8b6f-a2fd67ee8d08",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("42385522-1c5f-4df9-9de6-3cd5ff2b1211",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"7c6d191c-1502-4f72-9055-2069e5f671e6",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("7c6d191c-1502-4f72-9055-2069e5f671e6",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'PayrollMgmt',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../PayrollMgmt.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PilotPayroll',
+	1,
+	'../../../PilotPayroll.xtuml');

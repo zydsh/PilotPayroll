@@ -3520,7 +3520,9 @@ INSERT INTO O_OBJ_PROXY
 	'Payroll',
 	1,
 	'Payroll',
-	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.',
+	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.
+A payroll with outstanding unapproved pay elements cannot be submitted to Finance.
+Modified element values must either be approved or placed on hold status. ',
 	"00000000-0000-0000-0000-000000000000",
 	'./Payroll/Payroll.xtuml');
 INSERT INTO R_AOTH
@@ -3852,6 +3854,7 @@ INSERT INTO O_OBJ_PROXY
 ( A line item in an employee''s payment for a pay period. )
 The amount is initially evaluated from the corresponding entry in the employee''s payment structure.
 It may be subsequently altered by review/approval actions.
+If modified by a reviewer, it must subsequently be approved - perhaps by the same reviewer.
 ',
 	"00000000-0000-0000-0000-000000000000",
 	'./EmployeePaymentElement/EmployeePaymentElement.xtuml');
@@ -4203,7 +4206,7 @@ INSERT INTO R_SIMP
 INSERT INTO R_REL
 	VALUES ("5ca73829-9183-4623-90ae-031e01acf973",
 	29,
-	'',
+	'An element may be put on hold for further review and disposition.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO R_PART
 	VALUES ("082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
@@ -4297,7 +4300,9 @@ INSERT INTO R_SIMP
 INSERT INTO R_REL
 	VALUES ("9ea59452-9c3f-4447-984c-e611397b9e2c",
 	31,
-	'',
+	'An element may be modified by a reviewer.
+It is marked (by this association) as modified and will not be overwritten by any automated processing.
+It is also marked as needing approval - which may be done at the same time, or postponed.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO R_PART
 	VALUES ("082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
@@ -4493,7 +4498,10 @@ INSERT INTO R_SIMP
 INSERT INTO R_REL
 	VALUES ("390f5220-18c6-4f0e-b9fb-c5ae10e772bd",
 	35,
-	'',
+	'An element that is modified during a review is marked ( by this association ) as needing approval.
+A payroll with any associated unapproved elements cannot be submitted to Finance.
+( Unless the entirwe payment of which it is a part is on hold status ).
+Such an element must be either approved or else put on hold ( see a separate association )',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO R_PART
 	VALUES ("082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",

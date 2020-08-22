@@ -5,7 +5,9 @@ INSERT INTO O_OBJ
 	'Payroll',
 	1,
 	'Payroll',
-	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.',
+	'A group of regularly scheduled payments to employees of some segment of the organization ( a department ) for a pay period.
+A payroll with outstanding unapproved pay elements cannot be submitted to Finance.
+Modified element values must either be approved or placed on hold status. ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("0f2a1433-a284-4395-80ef-dc84cf8a27e3",

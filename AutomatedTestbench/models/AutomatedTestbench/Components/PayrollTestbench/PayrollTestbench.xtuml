@@ -343,7 +343,10 @@ INSERT INTO SPR_RS
 	VALUES ("16d39a4d-6a0a-44c4-bd1e-a3d6133327b3",
 	'InjectStimulus',
 	'Invoke injection of the identified stimulus in the test bench.',
-	'',
+	'select any stim from instances of Stimulus
+  where ( selected.assigned_stm_id == param.stimulusId );
+stim.Inject();
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -361,7 +364,9 @@ INSERT INTO SPR_RS
 	VALUES ("103987c4-1298-4219-b8df-b57f88f09b3b",
 	'TriggerObservation',
 	'Invoke evaluation of the identified observation in the test bench.',
-	'',
+	'select any obs from instances of Observation
+  where ( selected.assigned_obs_id == param.observationId );
+obs.Observe();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -398,7 +403,13 @@ INSERT INTO SPR_RS
 	'InitializeTestCase',
 	'Testbench receives notification that a new test case has been selected to run.
 Initialize any pre-conditions and respond when ready for stimulus injection.',
-	'',
+	'select any cond from instances of PreConditions
+ where ( selected.conditions_id == param.condId );
+if ( not_empty cond )
+  cond.Establish();
+end if;
+send TESTSEQ::TestCaseInitialized( caseId:param.condId );
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -551,7 +562,10 @@ INSERT INTO SPR_RS
 	VALUES ("fac640d7-64ae-4e70-94dd-3a190ea6007b",
 	'InitializeBucket',
 	'Signals a test bucket to instantiate its test case sequences.',
-	'',
+	'select any tb from instances of TestBucket
+  where ( selected.assigned_bucket_id == param.bucketId );
+generate TestBucket1:Execute_pvt to tb;
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -605,7 +619,11 @@ INSERT INTO SPR_RS
 	VALUES ("6195131f-06b9-4b92-af14-ac9756da0ff6",
 	'DeletePreCondition',
 	'Signals the testbench that the identified precodition instance can be disposed of.',
-	'',
+	'select any cond from instances of PreConditions
+  where ( selected.conditions_id == param.caseId );
+if ( not_empty cond )
+  delete object instance cond;
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -623,7 +641,9 @@ INSERT INTO SPR_RS
 	VALUES ("663a955c-00d0-492e-88a8-2cd8f58caa42",
 	'DeleteStimulus',
 	'Signals the testbench that the identified stimulus sub/supertype can be disposed of.',
-	'',
+	'select any stm from instances of Stimulus
+  where ( selected.assigned_stm_id == param.stimulusId );
+stm.Delete();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -641,7 +661,9 @@ INSERT INTO SPR_RS
 	VALUES ("73f91868-c8d6-4f34-a175-1cfdccb63454",
 	'DeleteTestBucket',
 	'Signals the testbench that the identified test bucket sub/supertype can be disposed of.',
-	'',
+	'select any bucket from instances of TestBucket
+  where ( selected.assigned_bucket_id == param.bucketId );
+bucket.Delete();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -751,7 +773,9 @@ INSERT INTO SPR_RS
 	VALUES ("7acbf551-ac72-4947-85a8-c36cc6f6d6f7",
 	'DeleteObservation',
 	'Signals the testbench that the identified observation sub/supertype can be disposed of.',
-	'',
+	'select any obs from instances of Observation
+  where ( selected.assigned_obs_id == param.observationId );
+obs.Delete();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -787,7 +811,7 @@ INSERT INTO SPR_RS
 	VALUES ("380a6d3a-8d83-4ca4-a311-79780f2914b8",
 	'TestSuiteComplete',
 	'',
-	'',
+	'::Finish();',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

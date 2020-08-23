@@ -1,0 +1,175 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'Stimulus',
+	2,
+	'Stimulus',
+	'The supertype for those classes which, when invoked, will effect some change in the application under test.
+Invocation of a subtype is implemented through polymorphic event dispatch.
+
+An stimulus subtype must include an instance-based state model.
+This state model must accept or ignore both Inject_pvt and Delete_pvt events.
+The first should result in a perturbation of the test application and should signal completion.
+The second may delete the stimulus sub/supertype instances.
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("3fab1f36-caa9-4f0d-bd4a-8d21ff4f5158",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'AddToTest',
+	'Add a newly-created instance of Stimulus to the specified sequence of stimuli associated with a test case.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.assigned_stm_id = TESTSEQ::AppendStimulus( sequenceId:param.assigned_seq_id );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("037bbc6b-087f-455c-b971-74101573cedb",
+	"3fab1f36-caa9-4f0d-bd4a-8d21ff4f5158",
+	'assigned_seq_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'The identifier for the stimulus sequence to which this stimulus is to be added.');
+INSERT INTO O_TFR
+	VALUES ("6609ec1d-8c96-4403-b1df-04cc15777c07",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'Inject',
+	'This operation will be invoked when the stimulus is encountered by the sequencing service.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'generate Stimulus1:Inject_pvt to self;',
+	1,
+	'',
+	"3fab1f36-caa9-4f0d-bd4a-8d21ff4f5158",
+	0);
+INSERT INTO O_TFR
+	VALUES ("16ad924b-30e4-44f0-9dfa-e8a7c01e83e1",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'Complete',
+	'Invoke this operation to signal completion of stimulus injection.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::StimulusDone( stimulusId:self.assigned_stm_id );',
+	1,
+	'',
+	"6609ec1d-8c96-4403-b1df-04cc15777c07",
+	0);
+INSERT INTO O_TFR
+	VALUES ("948b031e-dc1b-4814-87f8-02317b20e2c1",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'StartIntervalTimer',
+	'Start/reset the interval timer associated with the stimulus sequence to which this stimulus belongs.
+The value of the interval timer may be read by subsequent observations on this stimulus sequence.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::StartIntervalTimer( stimulusId:self.assigned_stm_id );',
+	1,
+	'',
+	"16ad924b-30e4-44f0-9dfa-e8a7c01e83e1",
+	0);
+INSERT INTO O_TFR
+	VALUES ("b10941af-a61b-4ea7-8cc7-2eb27f32c723",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'Delete',
+	'Dispose of the client instances when the test sequence service no longer needs them.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'generate Stimulus2:Delete_pvt to self;',
+	1,
+	'',
+	"0e7044ee-4900-4b80-8bba-167854ec5bb7",
+	0);
+INSERT INTO O_TFR
+	VALUES ("0e7044ee-4900-4b80-8bba-167854ec5bb7",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	'SetSequenceResolution',
+	'Modify the timer resolution of the associated stimulus sequence.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'send TESTSEQ::SetSequenceResolution( stimulusId:self.assigned_stm_id, 
+                                     resolution:param.resolution );',
+	1,
+	'',
+	"948b031e-dc1b-4814-87f8-02317b20e2c1",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("01dc8d32-fb0c-411b-83b5-dddfd6ab2126",
+	"0e7044ee-4900-4b80-8bba-167854ec5bb7",
+	'resolution',
+	"74e39e3b-eaad-47cb-889d-3ede473b7f8b",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("74e39e3b-eaad-47cb-889d-3ede473b7f8b",
+	"00000000-0000-0000-0000-000000000000",
+	'timerResolution',
+	'',
+	'',
+	'../../../../../../../TestFramework/models/TestFramework/Datatypes/Datatypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("3f63fbd9-c794-49fa-8248-321f094ed245",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO O_BATTR
+	VALUES ("3f63fbd9-c794-49fa-8248-321f094ed245",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO O_ATTR
+	VALUES ("3f63fbd9-c794-49fa-8248-321f094ed245",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	"00000000-0000-0000-0000-000000000000",
+	'assigned_stm_id',
+	'An identifier returned by the Test sequencer service.
+Used to identify an instance when being invoked by the Test sequencer.',
+	'',
+	'assigned_stm_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("99f61cca-6276-4b7a-9117-7e5ddce04bb1",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO O_BATTR
+	VALUES ("99f61cca-6276-4b7a-9117-7e5ddce04bb1",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO O_ATTR
+	VALUES ("99f61cca-6276-4b7a-9117-7e5ddce04bb1",
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	"3f63fbd9-c794-49fa-8248-321f094ed245",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO O_ID
+	VALUES (1,
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO O_ID
+	VALUES (2,
+	"7b139d9e-a4c7-4441-861a-ae1b3f71c89f");
+INSERT INTO PE_PE
+	VALUES ("7b139d9e-a4c7-4441-861a-ae1b3f71c89f",
+	1,
+	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	"254e12da-372d-4f11-ad9a-5b53303407a5",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

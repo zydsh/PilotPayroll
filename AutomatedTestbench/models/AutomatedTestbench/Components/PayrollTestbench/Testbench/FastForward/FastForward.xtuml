@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("10753813-4435-42b5-b35e-30f6c94ceffb",
-	'StimulusA',
+	'FastForward',
 	5,
-	'StimulusA',
+	'FastForward',
 	'An example of a stimulus providing value(s) to be injected to the application undere test.
 
 A contrivance allows this stimulus to be configured to manipulate the interval timer:
@@ -18,11 +18,12 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
-	'create object instance sa of StimulusA;
-sa.newValue = param.value;
-create object instance stimulus of Stimulus;
-relate stimulus to sa across R3;
+	'create object instance ff of FastForward;
+ff.days = param.days;
+ff.hours = param.hours;
 
+create object instance stimulus of Stimulus;
+relate stimulus to ff across R3;
 stimulus.AddToTest( assigned_seq_id:param.seq );
 return stimulus.assigned_stm_id;
 ',
@@ -42,11 +43,20 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("93a46435-9bea-4c53-a002-2d54616c2ed8",
 	"82ff6d7f-0e77-438e-a86f-7f308737e7b1",
-	'value',
+	'days',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
 	"b5c90e5e-8215-4e4b-875e-2ed7f15e0cf7",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("6bc10951-5044-4b6b-8200-c561ff9a5fd4",
+	"82ff6d7f-0e77-438e-a86f-7f308737e7b1",
+	'hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"93a46435-9bea-4c53-a002-2d54616c2ed8",
 	'');
 INSERT INTO O_NBATTR
 	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
@@ -76,10 +86,28 @@ INSERT INTO O_ATTR
 	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb",
 	"409dc04a-e8b2-469c-9f63-1417062790de",
-	'newValue',
+	'days',
 	'',
 	'',
-	'newValue',
+	'days',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("43203a1a-efb2-437b-840a-a79933464357",
+	"10753813-4435-42b5-b35e-30f6c94ceffb");
+INSERT INTO O_BATTR
+	VALUES ("43203a1a-efb2-437b-840a-a79933464357",
+	"10753813-4435-42b5-b35e-30f6c94ceffb");
+INSERT INTO O_ATTR
+	VALUES ("43203a1a-efb2-437b-840a-a79933464357",
+	"10753813-4435-42b5-b35e-30f6c94ceffb",
+	"a29a665d-bb5e-4683-9678-bf3d7996bcc7",
+	'hours',
+	'',
+	'',
+	'hours',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',

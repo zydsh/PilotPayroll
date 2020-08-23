@@ -22,14 +22,14 @@ send TESTSEQ::NameTestBucket( bucketId:bucket.assigned_bucket_id, bucketLabel:"B
 send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"testB3_1" );
 send TESTSEQ::SetTestCaseDurationLimit( caseId:tc, durationLimit:50 );
 send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_a" );
-stId = StimulusA::Create( seq:seq1, value:15 );
-ObservationY::CreatePolling( stimulus:stId, expectedC:False, pollInterval:2, timeLimit:30 );
+//stId = StimulusA::Create( seq:seq1, value:15 );
+//ObservationY::CreatePolling( stimulus:stId, expectedC:False, pollInterval:2, timeLimit:30 );
 
 send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"testB3_2" );
 send TESTSEQ::SetTestCaseDurationLimit( caseId:tc, durationLimit:20 );
 send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_a" );
-stId = StimulusA::Create( seq:seq1, value:15 );
-ObservationY::CreatePolling( stimulus:stId, expectedC:False, pollInterval:2, timeLimit:0 );
+//stId = StimulusA::Create( seq:seq1, value:15 );
+//ObservationY::CreatePolling( stimulus:stId, expectedC:False, pollInterval:2, timeLimit:0 );
 
 bucket.Initialized();',
 	1,

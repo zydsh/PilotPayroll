@@ -1,0 +1,125 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7fbf7788-3d8b-4433-a708-28cdf7257679",
+	'TimeUtilities',
+	1,
+	'TimeUtilities',
+	'Literal integers in BridgePoint are treated as signed 32-bit integers.
+The timestamp type is a signed 64-bit integer.
+Loading a variable of type timestamp with a value calculated with 
+literal integers therefore requires special care.  Basically, the 
+left-hand-side of all sub-expressions must be of type timestamp to
+ensure that all math is done as 64-bit integer math.  For example:
+x = MicrosecondsPerHalfHour * 2;  // Works fine
+The following line does not produce the desired result because the 
+multiplication operation is performed in 32-bit integer math, and
+the result is greater than 2^31, so the value gets truncated, even 
+if the LHS of the assignment, x, has been previously typed as timestamp.
+x = 2 * MicrosecondsPerHalfHour;  // Does not work',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("a49205f8-09d8-4688-9dd6-839e928b24bb",
+	"7fbf7788-3d8b-4433-a708-28cdf7257679",
+	'AdvanceTime',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	0,
+	'//------------------------------------------------------------------------------------------
+// Note: Much of the code below involves work-arounds for tooling deficiencies.
+// Before changing any of it, please review https://github.com/johnrwolfe/CarPark/issues/42.
+//------------------------------------------------------------------------------------------
+HoursInMicroseconds = ConversionFactors::MicrosecondsPerHalfHour * 2;
+hours = param.days * 24;
+while ( hours > 0 )
+  current_time = TIM::advance_time( microseconds:HoursInMicroseconds );
+  hours = hours - 1;
+end while;
+MinutesInMicroseconds = ConversionFactors::MicrosecondsPerMinute * param.minutes;
+current_time = TIM::advance_time( microseconds:HoursInMicroseconds + MinutesInMicroseconds );
+return current_time;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("951ab86a-f508-4d3e-a10d-31c2964e8354",
+	"a49205f8-09d8-4688-9dd6-839e928b24bb",
+	'hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"2375b75d-269a-4975-a1cc-e0fabc20d11f",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("9884e7ab-571d-4626-8e28-499d0784da09",
+	"a49205f8-09d8-4688-9dd6-839e928b24bb",
+	'minutes',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"951ab86a-f508-4d3e-a10d-31c2964e8354",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("2375b75d-269a-4975-a1cc-e0fabc20d11f",
+	"a49205f8-09d8-4688-9dd6-839e928b24bb",
+	'days',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("1162dc54-4639-4ecb-926d-45eaad3661db",
+	"7fbf7788-3d8b-4433-a708-28cdf7257679",
+	'DayHourToSeconds',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'return param.Days * TimeConversion::QuantumPerDay + TimeConversion::QuantumPerHour;',
+	1,
+	'',
+	"a49205f8-09d8-4688-9dd6-839e928b24bb",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("6551de63-6e28-4358-a307-90d4610e0964",
+	"1162dc54-4639-4ecb-926d-45eaad3661db",
+	'Days',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("e8543a9c-936c-43bb-8c31-2a13eae6151c",
+	"1162dc54-4639-4ecb-926d-45eaad3661db",
+	'Hours',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"6551de63-6e28-4358-a307-90d4610e0964",
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"7fbf7788-3d8b-4433-a708-28cdf7257679");
+INSERT INTO O_ID
+	VALUES (1,
+	"7fbf7788-3d8b-4433-a708-28cdf7257679");
+INSERT INTO O_ID
+	VALUES (2,
+	"7fbf7788-3d8b-4433-a708-28cdf7257679");
+INSERT INTO PE_PE
+	VALUES ("7fbf7788-3d8b-4433-a708-28cdf7257679",
+	1,
+	"66672f68-d2e0-4b3d-bfd8-7f45b9bb1752",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("66672f68-d2e0-4b3d-bfd8-7f45b9bb1752",
+	"00000000-0000-0000-0000-000000000000",
+	"254e12da-372d-4f11-ad9a-5b53303407a5",
+	'TimeUtilities',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
+	0,
+	'../TimeUtilities.xtuml');

@@ -148,20 +148,22 @@ INSERT INTO SM_ACT
 	VALUES ("3feaa2a0-1924-4018-b59c-21c967424bb5",
 	"4eeca709-eed6-4d2d-9e0f-c40a5c96bb4c",
 	1,
-	'LOG::LogInfo( message:"StimulusA injected" );
+	'LOG::LogInfo( message:"FastForward injected" );
 
 // attribute(s) of this instance provide values to be delivered to the application
 // send SomePort::someInterfaceSignal( input_value = self.new_value );
 
 select one stimulus related by self->Stimulus[R3];
+ts = TimeUtilities::AdvanceTime( days: self.days, hours:self.hours, minutes:0 );
 
+/*
 if (self.newValue < 0 )		// contrived to selectively allow start of interal timer...
   if ( self.newValue < -1 )	// ... and, maybe, change timer resolution for this sequence
     stimulus.SetSequenceResolution( resolution:timerResolution::millisecond );
   end if;
   stimulus.StartIntervalTimer();
 end if;
-
+*/
 stimulus.Complete();',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
@@ -227,14 +229,14 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'4.1.17',
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusA::Instance State Machine');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::FastForward::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("723051d1-c96c-46c2-82e3-04c6dfd80ca9",
 	"ccf02729-b8fa-41a1-92d1-2362fd1b3d26",
 	"07d3b1e9-9bae-4439-9e95-f744f9d526db",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusA::Instance State Machine::Injecting');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::FastForward::Instance State Machine::Injecting');
 INSERT INTO GD_SHP
 	VALUES ("723051d1-c96c-46c2-82e3-04c6dfd80ca9");
 INSERT INTO GD_NCS
@@ -273,7 +275,7 @@ INSERT INTO GD_GE
 	"947e390c-ba73-4071-a58f-6a73350e5fb6",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusA::Instance State Machine::Injecting::Inject_pvt::Stimulus');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::FastForward::Instance State Machine::Injecting::Inject_pvt::Stimulus');
 INSERT INTO GD_CON
 	VALUES ("c9bee62b-0db2-4470-8f7b-bfd260fe4e9b",
 	"00000000-0000-0000-0000-000000000000");
@@ -412,7 +414,7 @@ INSERT INTO GD_GE
 	"f894bcbe-a945-49ea-bb99-8c701e84bebd",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusA::Instance State Machine::Deleting');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::FastForward::Instance State Machine::Deleting');
 INSERT INTO GD_SHP
 	VALUES ("03138dbd-60d4-4a95-8fef-742bcebd6a2e");
 INSERT INTO GD_NCS
@@ -441,7 +443,7 @@ INSERT INTO GD_GE
 	"65a36442-6579-4083-805d-067829385d74",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusA::Instance State Machine::Injecting::Delete_pvt::Stimulus');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::FastForward::Instance State Machine::Injecting::Delete_pvt::Stimulus');
 INSERT INTO GD_CON
 	VALUES ("f37a4dec-b2c6-4222-ad00-bd699a012693",
 	"00000000-0000-0000-0000-000000000000");
@@ -544,13 +546,13 @@ INSERT INTO DIM_DIA
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("10753813-4435-42b5-b35e-30f6c94ceffb",
-	'StimulusA',
+	'FastForward',
 	5,
-	'StimulusA',
+	'FastForward',
 	'An example of a stimulus providing value(s) to be injected to the application undere test.
 
 A contrivance allows this stimulus to be configured to manipulate the interval timer:
 Any negative value of the supplied attribute will start the timer.
 Exactly -1 will adjust the timer resolution. ',
 	"00000000-0000-0000-0000-000000000000",
-	'../StimulusA.xtuml');
+	'../FastForward.xtuml');

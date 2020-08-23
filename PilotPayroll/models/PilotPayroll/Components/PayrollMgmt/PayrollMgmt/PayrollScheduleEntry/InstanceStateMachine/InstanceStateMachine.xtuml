@@ -265,8 +265,8 @@ INSERT INTO SM_ACT
 	VALUES ("b51326f8-aeae-4558-9d02-bea244afaa1f",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
-	'// @TODO send advance notification - some outgoing port signal
-LOG::LogInfo( message:"Payroll generation imminent !!!!!!!!!!!!" ); 
+	'send USER::Notify( Message:"Payroll generation imminent" );
+LOG::LogInfo( message:"UC06 Payroll generation imminent !!!!!!!!!!!!" ); 
 
 // Ask monitor to trigger at Draft payroll generation date & time
 create event instance advance of PayrollScheduleEntry2:Activate() to self;

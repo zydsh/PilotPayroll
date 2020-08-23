@@ -585,11 +585,11 @@ INSERT INTO C_EP
 	VALUES ("8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'ReceivePayroll',
+	'SendPayroll',
 	'');
 INSERT INTO C_AS
 	VALUES ("8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
-	'ReceivePayroll',
+	'SendPayroll',
 	'',
 	1,
 	"5ddc2f40-c598-4724-b9e2-e763f4901ac4");
@@ -696,18 +696,18 @@ INSERT INTO C_EP
 	VALUES ("0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'ReceiveNotification',
+	'Notify',
 	'');
 INSERT INTO C_AS
 	VALUES ("0f25438a-f717-4b80-b06c-9ce0f1c905c4",
-	'ReceiveNotification',
+	'Notify',
 	'',
 	1,
 	"8c9de5fe-1015-4d0e-bc74-0aa939a8f275");
 INSERT INTO C_PP
 	VALUES ("1db19890-3460-46ba-ba5f-113fc5bf57d9",
 	"0f25438a-f717-4b80-b06c-9ce0f1c905c4",
-	"ba5eda7a-def5-0000-0000-000000000002",
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'Message',
 	'',
 	0,

@@ -1,0 +1,106 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("77d6047f-1bcc-4553-92e7-a60486cde93e",
+	'GetNotification',
+	20,
+	'GetNotification',
+	'An example of an observation which checks some measured application value against expectation.
+
+Note: this specific example uses some choices of attribute values to contrive outcomes:
+This allows some test sequence services to be exercised without an actual test application.
+
+Specifically:
+A choice of expected value & tolerance can force failure - or guarantee success.
+A low expected value can trigger a "assess" request to the sequencing service.
+A negative value for tolerance will request a read of interval timer value.
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("b2793190-40e6-43fc-87a3-ba7ac95daf33",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e",
+	'CreatePolling',
+	'See Observation.AppendPolling for description.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'create object instance verify of GetNotification;
+
+create object instance observation of Observation;
+relate verify to observation across R4;
+
+observation.AppendPolling( stimulus:param.stimulus,
+                           pollInterval:param.pollInterval, 
+                           timeLimit:param.timeLimit );
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("161a587e-de92-4047-aad3-478094cae10f",
+	"b2793190-40e6-43fc-87a3-ba7ac95daf33",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"67659838-3468-4731-8315-765ddbdccb9b",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("2b8eca8f-69a8-4b39-917e-00d40d809ae3",
+	"b2793190-40e6-43fc-87a3-ba7ac95daf33",
+	'timeLimit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"161a587e-de92-4047-aad3-478094cae10f",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("67659838-3468-4731-8315-765ddbdccb9b",
+	"b2793190-40e6-43fc-87a3-ba7ac95daf33",
+	'stimulus',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO O_BATTR
+	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO O_ATTR
+	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO O_ID
+	VALUES (1,
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO O_ID
+	VALUES (2,
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO PE_PE
+	VALUES ("77d6047f-1bcc-4553-92e7-a60486cde93e",
+	1,
+	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	"254e12da-372d-4f11-ad9a-5b53303407a5",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

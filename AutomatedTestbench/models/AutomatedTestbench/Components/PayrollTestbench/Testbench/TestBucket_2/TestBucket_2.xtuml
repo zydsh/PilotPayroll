@@ -24,10 +24,10 @@ send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"t
 send TESTSEQ::LinkRequirement( reqPrefix:"SampleApp", reqNumber:3, caseId:tc );
 send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_1" );
 send seq2 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_2" );
-stId = StimulusA::Create( seq:seq1, value:15 );
-::InsertDelay( stimulus:stId, duration:10 );
-ObservationX::CreatePolling( stimulus:stId, expectedA:15, tolerance:1, pollInterval:1, timeLimit:10 );
-ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
+//stId = StimulusA::Create( seq:seq1, value:15 );
+//::InsertDelay( stimulus:stId, duration:10 );
+//ObservationX::CreatePolling( stimulus:stId, expectedA:15, tolerance:1, pollInterval:1, timeLimit:10 );
+//ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
 stId = StimulusC::Create( seq:seq2, status:True );
 ::InsertDelay( stimulus:stId, duration:20 );
 ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
@@ -39,7 +39,7 @@ send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"t
 send TESTSEQ::LinkRequirement( reqPrefix:"ANY", reqNumber:3, caseId:tc );
 send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_1" );
 send seq2 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_2" );
-stId = StimulusA::Create( seq:seq1, value:15 );
+//stId = StimulusA::Create( seq:seq1, value:15 );
 ::InsertDelay( stimulus:stId, duration:30 );
 ObservationX::CreatePolling( stimulus:stId, expectedA:1, tolerance:1, pollInterval:1, timeLimit:10 );
 ::InsertDelay( stimulus:stId, duration:20 );

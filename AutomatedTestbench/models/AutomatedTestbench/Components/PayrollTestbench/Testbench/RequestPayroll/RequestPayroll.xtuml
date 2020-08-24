@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("a0339736-2755-40e8-a654-0b77ca79d2c3",
-	'StimulusC',
+	'RequestPayroll',
 	6,
-	'StimulusC',
+	'RequestPayroll',
 	'An example of a stimulus invoking an interface signal to the application under test.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -14,10 +14,11 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
-	'create object instance sc of StimulusC;
-sc.newStatus = param.status;
+	'create object instance rp of RequestPayroll;
+rp.dept = param.dept;
+
 create object instance stimulus of Stimulus;
-relate stimulus to sc across R3;
+relate stimulus to rp across R3;
 
 stimulus.AddToTest( assigned_seq_id:param.seq );
 return stimulus.assigned_stm_id;
@@ -36,10 +37,10 @@ INSERT INTO O_TPARM
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO O_TPARM
-	VALUES ("d78c07fb-998e-4f6b-a6e4-c31c35aef31e",
+	VALUES ("3007fef7-fa60-40a4-9e40-5fb5b0f701f9",
 	"37ce3279-09b8-455b-bfd1-4628a7e625d2",
-	'status',
-	"ba5eda7a-def5-0000-0000-000000000001",
+	'dept',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"60768926-4fff-4b27-970a-40f1211b973f",
@@ -53,7 +54,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("01e01536-7740-4dee-88ec-74bd1374474a",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3",
-	"00000000-0000-0000-0000-000000000000",
+	"cac04f3b-263c-4d91-80cf-f97eea2cc1f2",
 	'current_state',
 	'',
 	'',
@@ -63,21 +64,21 @@ INSERT INTO O_ATTR
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("516e4de6-7ee5-4257-842e-d6923583c1a1",
+	VALUES ("cac04f3b-263c-4d91-80cf-f97eea2cc1f2",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3");
 INSERT INTO O_BATTR
-	VALUES ("516e4de6-7ee5-4257-842e-d6923583c1a1",
+	VALUES ("cac04f3b-263c-4d91-80cf-f97eea2cc1f2",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3");
 INSERT INTO O_ATTR
-	VALUES ("516e4de6-7ee5-4257-842e-d6923583c1a1",
+	VALUES ("cac04f3b-263c-4d91-80cf-f97eea2cc1f2",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3",
-	"01e01536-7740-4dee-88ec-74bd1374474a",
-	'newStatus',
+	"00000000-0000-0000-0000-000000000000",
+	'dept',
 	'',
 	'',
-	'newStatus',
+	'dept',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000001",
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID

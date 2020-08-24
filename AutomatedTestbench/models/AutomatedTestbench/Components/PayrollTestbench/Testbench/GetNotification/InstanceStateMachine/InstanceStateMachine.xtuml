@@ -148,7 +148,7 @@ INSERT INTO SM_ACT
 	VALUES ("14491f8a-72b2-43db-a08d-6a6ed578d948",
 	"851d1b5a-a33d-4a3f-a62b-73547b0fb687",
 	1,
-	'LOG::LogInfo( message:"Hoping to observe notification for " + self.code );
+	'LOG::LogInfo( message:" --- Hoping to observe notification for " + self.code );
 select one obs related by self->Observation[R4];
 
 success = False;

@@ -16,43 +16,6 @@ INSERT INTO O_TFR
 	1,
 	'// demonstrate two parallel sequences with failure - both sequences terminated.
 // ObservationX is configured to fail: no instance of ObservationY should be invoked
-select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.assigned_bucket_id, bucketLabel:"Bucket2" );
-send TESTSEQ::SetTestBucketResolution( bucketId:bucket.assigned_bucket_id, 
-                                       resolution:timerResolution::millisecond );
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"testB2_1" );
-send TESTSEQ::LinkRequirement( reqPrefix:"SampleApp", reqNumber:3, caseId:tc );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_1" );
-send seq2 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_2" );
-//stId = StimulusA::Create( seq:seq1, value:15 );
-//::InsertDelay( stimulus:stId, duration:10 );
-//ObservationX::CreatePolling( stimulus:stId, expectedA:15, tolerance:1, pollInterval:1, timeLimit:10 );
-//ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
-stId = StimulusC::Create( seq:seq2, status:True );
-::InsertDelay( stimulus:stId, duration:20 );
-ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
-
-// demonstrate a triggered observation: ObservationZ is triggered by a condition in ObservationX
-// the second instance of ObservationZ is configure to fail; 
-// both following instances of ObservationY should be cancelled.
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"testB2_2" );
-send TESTSEQ::LinkRequirement( reqPrefix:"ANY", reqNumber:3, caseId:tc );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_1" );
-send seq2 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_2" );
-//stId = StimulusA::Create( seq:seq1, value:15 );
-::InsertDelay( stimulus:stId, duration:30 );
-//ObservationX::CreatePolling( stimulus:stId, expectedA:1, tolerance:1, pollInterval:1, timeLimit:10 );
-::InsertDelay( stimulus:stId, duration:20 );
-//ObservationX::CreatePolling( stimulus:stId, expectedA:1, tolerance:1, pollInterval:1, timeLimit:10 );
-::InsertDelay( stimulus:stId, duration:10 );
-ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
-stId = StimulusC::Create( seq:seq2, status:True );
-ObservationZ::CreateTriggered( stimulus:stId, expectedValue:100, key:"EventZ", timeLimit:100 );
-ObservationZ::CreateTriggered( stimulus:stId, expectedValue:10, key:"EventZ", timeLimit:100 );
-::InsertDelay( stimulus:stId, duration:10 );
-ObservationY::CreatePolling( stimulus:stId, expectedC:True, pollInterval:10, timeLimit:0 );
-
-bucket.Initialized();
 ',
 	1,
 	'',

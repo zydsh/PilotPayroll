@@ -334,8 +334,8 @@ INSERT INTO SPR_PS
 	VALUES ("0bda7c67-dbef-4adf-bb45-59d4e6a9ca9f",
 	'RetrievePayrollForReview',
 	'',
-	'',
-	3,
+	'::MarshalPayroll( Dept:param.Department );',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("1ba55bd7-0e2e-4583-86b6-7e4ec6170539",
@@ -353,7 +353,7 @@ INSERT INTO SPR_PS
 	'SubmitItemUpdates',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("4d9c995d-41df-4210-b324-bacfc13385c6",
@@ -371,7 +371,7 @@ INSERT INTO SPR_PS
 	'SubmitItemApprovals',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("629926c0-e851-45a1-a84c-1776a2a7cba6",
@@ -389,7 +389,7 @@ INSERT INTO SPR_PS
 	'SubmitItemHolds',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("bb2c26a6-cd84-4b87-8bb5-ed5924eab856",
@@ -407,7 +407,7 @@ INSERT INTO SPR_PS
 	'SubmitPayHolds',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("f143ad52-738b-43d7-a3a2-d79376361797",
@@ -425,7 +425,7 @@ INSERT INTO SPR_PS
 	'SubmitPayApprovals',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("5ddc2f40-c598-4724-b9e2-e763f4901ac4",
@@ -440,16 +440,16 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("6caf6b8c-d33e-471f-b6ca-ee9e88c3ecee",
-	'ReceivePayroll',
+	'SendPayroll',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'ReceivePayroll',
+	'SendPayroll',
 	'',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
@@ -458,16 +458,42 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("b78d9224-37d3-4371-829b-727ce3157b4b",
-	'ReceiveNotification',
+	'Notify',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'ReceiveNotification',
+	'Notify',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("8be019a9-e027-42fd-810b-bd39356e51a2",
+	"180cc4e4-f88e-432c-8950-48095a2171f1",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("8be019a9-e027-42fd-810b-bd39356e51a2",
+	'SubmitPayrollApproval',
+	'',
+	'select any dept from instances of Department
+ where ( selected.Name == param.Department );
+select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+if ( empty payroll )
+  LOG::LogFailure( message:"Department not matched for payroll approval" );
+  return;
+end if;
+payroll.AssessForApproval();
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("180cc4e4-f88e-432c-8950-48095a2171f1",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'SubmitPayrollApproval',
 	'',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY

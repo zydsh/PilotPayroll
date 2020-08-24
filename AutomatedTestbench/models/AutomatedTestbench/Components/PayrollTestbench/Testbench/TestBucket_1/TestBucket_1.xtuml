@@ -23,16 +23,26 @@ send TESTSEQ::SetTestBucketResolution( bucketId:bucket.assigned_bucket_id,
 send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC06" );
 send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
 stId = FastForward::Create( seq:seq1, days:13, hours:11 );
-::InsertDelay( stimulus:stId, duration:10 );
+::InsertDelay( stimulus:stId, duration:2 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"UC06", pollInterval:100, timeLimit:1000 );
 
+// Use Case UC05
+send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC05" );
+send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
 stId = FastForward::Create( seq:seq1, days:1, hours:1 );
-::InsertDelay( stimulus:stId, duration:10 );
-
+::InsertDelay( stimulus:stId, duration:2 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"UC05_a", pollInterval:100, timeLimit:1000 );
-::InsertDelay( stimulus:stId, duration:10 );
+::InsertDelay( stimulus:stId, duration:2 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"UC05_b", pollInterval:100, timeLimit:1000 );
 
+// Use Case UC04
+send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC04" );
+send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
+stId = RequestPayroll::Create( seq:seq1, dept:"IT" );
+::InsertDelay( stimulus:stId, duration:2 );
+ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", pollInterval:100, timeLimit:1000 );
+::InsertDelay( stimulus:stId, duration:2 );
+GetNotification::CreatePolling( stimulus:stId, codematch:"UC04", pollInterval:100, timeLimit:1000 );
 
 bucket.Initialized();
 ',

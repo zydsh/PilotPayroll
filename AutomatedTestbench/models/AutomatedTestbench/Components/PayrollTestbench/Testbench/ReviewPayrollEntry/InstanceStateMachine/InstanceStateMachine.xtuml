@@ -148,7 +148,7 @@ INSERT INTO SM_ACT
 	VALUES ("b182b65b-ef60-4428-926f-d1ff6ef33701",
 	"3fa40a0b-5f54-4926-900f-98a0e814a6cd",
 	1,
-	'LOG::LogInfo( message:"Reviewing payroll entry" );
+	'LOG::LogInfo( message:"--- Expecting to review payroll entry" );
 select one obs related by self->Observation[R4];
 
 select any entry from instances of PayrollEntry
@@ -156,9 +156,11 @@ select any entry from instances of PayrollEntry
    and ( selected.Label == self.label );
 if ( not_empty entry )
   obs.Complete( success:True );
+  send TESTAPP::SubmitPayrollApproval( Department:entry.DeptName );
 else
   obs.Complete( success:False );
-end if;',
+end if;
+//@TODO delete all entries - they have served their purpose ?',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
 INSERT INTO SM_MOAH

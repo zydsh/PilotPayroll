@@ -148,14 +148,12 @@ INSERT INTO SM_ACT
 	VALUES ("b83f11fb-29d8-41ce-9149-cf8e1cff0340",
 	"6d7374d7-8ba3-4d82-9358-6758a1d29c0a",
 	1,
-	'LOG::LogInfo( message:"StimulusC injected" );
-// attribute(s) of this instance determine interaction with the application
-// if ( self.newStatus == True )
-// send SomePort::someInterfaceSignal();
-// end if;
+	'LOG::LogInfo( message:"Requesting payroll for review injected" );
 
+send TESTAPP::RetrievePayrollForReview( Department:self.dept );
 select one stimulus related by self->Stimulus[R3];
-stimulus.Complete();',
+stimulus.Complete();
+',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
 INSERT INTO SM_MOAH
@@ -220,14 +218,14 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'4.1.17',
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusC::Instance State Machine');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::RequestPayroll::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("b3b7f540-3fe4-4922-a640-af801ce06cb1",
 	"427e6a64-a40b-4b2b-8550-1505d41d5b08",
 	"d51ef0ec-224e-44d8-921c-378900754798",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusC::Instance State Machine::Injecting');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::RequestPayroll::Instance State Machine::Injecting');
 INSERT INTO GD_SHP
 	VALUES ("b3b7f540-3fe4-4922-a640-af801ce06cb1");
 INSERT INTO GD_NCS
@@ -266,7 +264,7 @@ INSERT INTO GD_GE
 	"77b617c6-6419-4404-810b-0d25d6eb226d",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusC::Instance State Machine::Injecting::Inject_pvt::Stimulus');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::RequestPayroll::Instance State Machine::Injecting::Inject_pvt::Stimulus');
 INSERT INTO GD_CON
 	VALUES ("06cf1376-30b9-4e9c-833a-2b9af6af1181",
 	"00000000-0000-0000-0000-000000000000");
@@ -405,7 +403,7 @@ INSERT INTO GD_GE
 	"319b9a35-65fd-4af5-a9df-b09298d08de0",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusC::Instance State Machine::Deleting');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::RequestPayroll::Instance State Machine::Deleting');
 INSERT INTO GD_SHP
 	VALUES ("f9679d80-6d0c-4cf2-9908-d5432151c9b6");
 INSERT INTO GD_NCS
@@ -434,7 +432,7 @@ INSERT INTO GD_GE
 	"8e0019ba-f6e6-4569-b2ce-608c1b745912",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::StimulusC::Instance State Machine::Injecting::Delete_pvt::Stimulus');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::RequestPayroll::Instance State Machine::Injecting::Delete_pvt::Stimulus');
 INSERT INTO GD_CON
 	VALUES ("4e6349d1-a9c6-45ed-8688-008d00d0ff03",
 	"00000000-0000-0000-0000-000000000000");
@@ -537,9 +535,9 @@ INSERT INTO DIM_DIA
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("a0339736-2755-40e8-a654-0b77ca79d2c3",
-	'StimulusC',
+	'RequestPayroll',
 	6,
-	'StimulusC',
+	'RequestPayroll',
 	'An example of a stimulus invoking an interface signal to the application under test.',
 	"00000000-0000-0000-0000-000000000000",
-	'../StimulusC.xtuml');
+	'../RequestPayroll.xtuml');

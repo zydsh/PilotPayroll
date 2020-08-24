@@ -33,6 +33,54 @@ INSERT INTO DIM_DIA
 	0.000000,
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("d02f6ae0-5a9d-4e8d-b2ba-0f4897ccd9a4",
+	"00000000-0000-0000-0000-000000000000",
+	'MarshalPayroll',
+	'',
+	'index = 1;
+IDs[index] = 0;
+Labels[index] = "";
+Values[index] = 0.0;
+select any dept from instances of Department where ( selected.Name == param.Dept );
+if ( empty dept )
+  LOG::LogFailure( message:"Department name not matched in Send Payroll" );
+  return;
+end if;
+select many employees related by dept->Employee[R6.''employs''];
+for each emp in employees
+  select many payments related by emp->EmployeePayment[R7]
+                                     ->EmployeePaymentElement[R15.''is composed of''];
+  for each payment in payments
+  	select one spec related by payment->PaymentStructureElement[R13.''is current realization of'']
+  	                                  ->PaymentElementSpec[R12.''is typed by''];
+	IDs[index] = emp.NationalID;
+	Labels[index] = spec.Label;
+	Values[index] = payment.Amount;
+    index = index + 1;	
+  end for;
+end for;
+send USER::SendPayroll( Department:dept.Name, EmployeeID:IDs, PaymentLabel:Labels, PaymentAmount:Values );
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("01898846-dc9a-4a4c-b295-fb92bf20c24c",
+	"d02f6ae0-5a9d-4e8d-b2ba-0f4897ccd9a4",
+	'Dept',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("d02f6ae0-5a9d-4e8d-b2ba-0f4897ccd9a4",
+	1,
+	"42385522-1c5f-4df9-9de6-3cd5ff2b1211",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("42385522-1c5f-4df9-9de6-3cd5ff2b1211",
 	1,

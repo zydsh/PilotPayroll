@@ -1088,7 +1088,16 @@ INSERT INTO SPR_RS
 	VALUES ("b4f90f2f-7db5-4003-92c1-5bb08c931a35",
 	'SendPayroll',
 	'',
-	'',
+	'index = param.EmployeeID.length - 1;
+LOG::LogInfo( message:"retrieving employee data in Testbench");
+while ( index > 0 )
+  create object instance entry of PayrollEntry;
+  entry.DeptName = param.Department;
+  entry.EmployeeID = param.EmployeeID[index];
+  entry.Label = param.PaymentLabel[index];
+  entry.Amount = param.PaymentAmount[index];
+  index = index - 1;
+end while;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1115,6 +1124,24 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Notify',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a84e8b17-2b9b-46c2-8135-d900ae56b508",
+	"180cc4e4-f88e-432c-8950-48095a2171f1",
+	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
+INSERT INTO SPR_RS
+	VALUES ("a84e8b17-2b9b-46c2-8135-d900ae56b508",
+	'SubmitPayrollApproval',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("180cc4e4-f88e-432c-8950-48095a2171f1",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'SubmitPayrollApproval',
 	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY

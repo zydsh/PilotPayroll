@@ -91,12 +91,12 @@ send TESTSEQ::RunTestSuite();',
 INSERT INTO O_TFR
 	VALUES ("4cfb2651-e836-43be-b64d-f22a631db4a7",
 	"54d84bf0-c310-46ff-8760-ef1f90466aab",
-	'RunUC_06',
+	'RunNominalCases',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'
-send TESTSEQ::RegisterTestSuite( suiteLabel:"Payroll Test Suite", keepAllCases:False ); 
+send TESTSEQ::RegisterTestSuite( suiteLabel:"Payroll Nominal Test Suite", keepAllCases:False ); 
 
 create object instance tb1 of TestBucket_1;
 tb1.AddBucket();

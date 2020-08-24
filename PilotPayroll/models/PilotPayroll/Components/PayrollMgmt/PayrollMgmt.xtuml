@@ -334,7 +334,7 @@ INSERT INTO SPR_PS
 	VALUES ("0bda7c67-dbef-4adf-bb45-59d4e6a9ca9f",
 	'RetrievePayrollForReview',
 	'',
-	'::MarshalPayroll( Dept:param.Department );',
+	'::MarshalPayroll( Dept:param.Department, Holds:False );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

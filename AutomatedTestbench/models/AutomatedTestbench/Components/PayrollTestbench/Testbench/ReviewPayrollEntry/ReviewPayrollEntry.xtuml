@@ -27,6 +27,7 @@ INSERT INTO O_TFR
 
 rvw.employeeID = param.employee;
 rvw.label = param.label;
+rvw.action = param.action;
 
 create object instance observation of Observation;
 relate rvw to observation across R4;
@@ -55,7 +56,7 @@ INSERT INTO O_TPARM
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
-	"5b135321-76f7-48f0-83cf-6904a2caec21",
+	"39aaea25-1d98-40c1-b69a-ce8882658371",
 	'');
 INSERT INTO O_TPARM
 	VALUES ("361f0dd8-3074-4711-86b9-1ac8662a7ce4",
@@ -84,6 +85,15 @@ INSERT INTO O_TPARM
 	'',
 	"6e00901f-d2e1-4152-9843-4d0e8e185323",
 	'');
+INSERT INTO O_TPARM
+	VALUES ("39aaea25-1d98-40c1-b69a-ce8882658371",
+	"9ad4aa68-8983-4730-b54b-2a829e341178",
+	'action',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"5b135321-76f7-48f0-83cf-6904a2caec21",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("2d7fcb07-6190-4efc-be5a-648bfb6561ab",
 	"97f00b06-01bd-4757-98d9-717daa3ca783");
@@ -93,7 +103,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("2d7fcb07-6190-4efc-be5a-648bfb6561ab",
 	"97f00b06-01bd-4757-98d9-717daa3ca783",
-	"7326b20f-8e76-40c2-b965-2578fbccbb4b",
+	"20decafb-7581-43b2-a14b-0225f636f758",
 	'current_state',
 	'',
 	'',
@@ -156,6 +166,24 @@ INSERT INTO O_ATTR
 	'employeeID',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("20decafb-7581-43b2-a14b-0225f636f758",
+	"97f00b06-01bd-4757-98d9-717daa3ca783");
+INSERT INTO O_BATTR
+	VALUES ("20decafb-7581-43b2-a14b-0225f636f758",
+	"97f00b06-01bd-4757-98d9-717daa3ca783");
+INSERT INTO O_ATTR
+	VALUES ("20decafb-7581-43b2-a14b-0225f636f758",
+	"97f00b06-01bd-4757-98d9-717daa3ca783",
+	"7326b20f-8e76-40c2-b965-2578fbccbb4b",
+	'action',
+	'',
+	'',
+	'action',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID

@@ -7,6 +7,34 @@ INSERT INTO O_OBJ
 	'PayrollEntry',
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("9053ba79-ecf1-4799-b839-5762120dca26",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f",
+	'SendEntryHolds',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'index = 1;
+IDs[index] = 0;
+Labels[index] = "";
+Holds[index] = False;
+Dept = "";
+select many entries from instances of PayrollEntry
+ where selected.Edited;
+for each entry in entries
+  	IDs[index] = entry.EmployeeID;
+  	Labels[index] = entry.Label;
+  	Holds[index] = entry.Hold;
+  	Dept = entry.DeptName;
+end for;
+send TESTAPP::SubmitItemHolds( Department: Dept, EmployeeID:IDs, PaymentLabel:Labels, HoldStatus:Holds );
+
+  
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("86521c02-af48-4956-9790-04135daac291",
 	"9c63482d-b58f-4f87-a87e-03a71788d08f");
@@ -77,6 +105,42 @@ INSERT INTO O_ATTR
 	'DeptName',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("7d51ade4-a3a2-4ca5-9a6e-8609a44f41a7",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f");
+INSERT INTO O_BATTR
+	VALUES ("7d51ade4-a3a2-4ca5-9a6e-8609a44f41a7",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f");
+INSERT INTO O_ATTR
+	VALUES ("7d51ade4-a3a2-4ca5-9a6e-8609a44f41a7",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f",
+	"adc5d3b7-cdcc-4853-911d-1f18dc07e7ce",
+	'Hold',
+	'',
+	'',
+	'Hold',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d089b1e4-657f-4b08-a92f-1fa5b9f8c50b",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f");
+INSERT INTO O_BATTR
+	VALUES ("d089b1e4-657f-4b08-a92f-1fa5b9f8c50b",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f");
+INSERT INTO O_ATTR
+	VALUES ("d089b1e4-657f-4b08-a92f-1fa5b9f8c50b",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f",
+	"7d51ade4-a3a2-4ca5-9a6e-8609a44f41a7",
+	'Edited',
+	'',
+	'',
+	'Edited',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
 	'');
 INSERT INTO O_ID

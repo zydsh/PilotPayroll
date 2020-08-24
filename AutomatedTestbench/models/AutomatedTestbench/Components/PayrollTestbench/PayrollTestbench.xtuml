@@ -1096,6 +1096,8 @@ while ( index > 0 )
   entry.EmployeeID = param.EmployeeID[index];
   entry.Label = param.PaymentLabel[index];
   entry.Amount = param.PaymentAmount[index];
+  entry.Hold = param.HoldStatus[index];
+  entry.Edited = False;
   index = index - 1;
 end while;',
 	1,
@@ -1135,13 +1137,49 @@ INSERT INTO SPR_RS
 	'SubmitPayrollApproval',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("180cc4e4-f88e-432c-8950-48095a2171f1",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitPayrollApproval',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("dbed358c-6472-419f-8dfa-a08c6a8d0068",
+	"cd89f044-8052-4bd7-828a-07b3030804fc",
+	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
+INSERT INTO SPR_RS
+	VALUES ("dbed358c-6472-419f-8dfa-a08c6a8d0068",
+	'SubmitToFinance',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("cd89f044-8052-4bd7-828a-07b3030804fc",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'SubmitToFinance',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("5d56f9bf-4a46-4873-a33a-8d16ffd893b7",
+	"dce7039f-aa29-4ba4-af47-7258d8fb7941",
+	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
+INSERT INTO SPR_RS
+	VALUES ("5d56f9bf-4a46-4873-a33a-8d16ffd893b7",
+	'Accepted',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("dce7039f-aa29-4ba4-af47-7258d8fb7941",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'Accepted',
 	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY

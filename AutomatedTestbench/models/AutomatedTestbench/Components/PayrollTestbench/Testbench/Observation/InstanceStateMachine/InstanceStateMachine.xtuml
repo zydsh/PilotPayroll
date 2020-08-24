@@ -111,7 +111,7 @@ INSERT INTO SM_AH
 INSERT INTO SM_ACT
 	VALUES ("2d06ce45-f713-41ba-b90f-7debf6725f84",
 	"318c7744-378a-44d2-86f4-bcf61194ee57",
-	3,
+	1,
 	'',
 	'',
 	0);

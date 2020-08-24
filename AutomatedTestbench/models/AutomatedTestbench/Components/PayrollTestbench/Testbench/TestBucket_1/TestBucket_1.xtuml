@@ -18,11 +18,21 @@ INSERT INTO O_TFR
 send TESTSEQ::NameTestBucket( bucketId:bucket.assigned_bucket_id, bucketLabel:"Payroll_Bucket_1" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.assigned_bucket_id, 
                                        resolution:timerResolution::second );
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC_06" );
+
+// Use Case UC06
+send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC06" );
 send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = FastForward::Create( seq:seq1, days:15, hours:0 );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, pollInterval:100, timeLimit:1000 );
+stId = FastForward::Create( seq:seq1, days:13, hours:11 );
+::InsertDelay( stimulus:stId, duration:10 );
+GetNotification::CreatePolling( stimulus:stId, codematch:"UC06", pollInterval:100, timeLimit:1000 );
+
+stId = FastForward::Create( seq:seq1, days:1, hours:1 );
+::InsertDelay( stimulus:stId, duration:10 );
+
+GetNotification::CreatePolling( stimulus:stId, codematch:"UC05_a", pollInterval:100, timeLimit:1000 );
+::InsertDelay( stimulus:stId, duration:10 );
+GetNotification::CreatePolling( stimulus:stId, codematch:"UC05_b", pollInterval:100, timeLimit:1000 );
+
 
 bucket.Initialized();
 ',

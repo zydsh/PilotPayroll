@@ -27,6 +27,7 @@ INSERT INTO O_TFR
 
 create object instance observation of Observation;
 relate verify to observation across R4;
+verify.code = param.codematch;
 
 observation.AppendPolling( stimulus:param.stimulus,
                            pollInterval:param.pollInterval, 
@@ -43,7 +44,7 @@ INSERT INTO O_TPARM
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
-	"67659838-3468-4731-8315-765ddbdccb9b",
+	"bb2565aa-68c3-4ea0-84a8-a6a4a2ae141a",
 	'');
 INSERT INTO O_TPARM
 	VALUES ("2b8eca8f-69a8-4b39-917e-00d40d809ae3",
@@ -63,6 +64,15 @@ INSERT INTO O_TPARM
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'');
+INSERT INTO O_TPARM
+	VALUES ("bb2565aa-68c3-4ea0-84a8-a6a4a2ae141a",
+	"b2793190-40e6-43fc-87a3-ba7ac95daf33",
+	'codematch',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"67659838-3468-4731-8315-765ddbdccb9b",
+	'');
 INSERT INTO O_NBATTR
 	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
 	"77d6047f-1bcc-4553-92e7-a60486cde93e");
@@ -79,6 +89,24 @@ INSERT INTO O_ATTR
 	'current_state',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO O_BATTR
+	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e");
+INSERT INTO O_ATTR
+	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e",
+	"2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	'code',
+	'',
+	'',
+	'code',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID

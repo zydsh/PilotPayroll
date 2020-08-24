@@ -148,32 +148,16 @@ INSERT INTO SM_ACT
 	VALUES ("b182b65b-ef60-4428-926f-d1ff6ef33701",
 	"3fa40a0b-5f54-4926-900f-98a0e814a6cd",
 	1,
-	'LOG::LogInfo( message:"Observing X" );
+	'LOG::LogInfo( message:"Reviewing payroll entry" );
 select one obs related by self->Observation[R4];
 
-// typically, compare the expected value to some application measurement:
-// value == send SomePort::getValueA()
-// if ( value < expectedA + tolerance )  
-
-if ( self.expected_value_A + self.tolerance < 10 )	// selectively allows failure - just for testing
+select any entry from instances of PayrollEntry
+ where ( selected.EmployeeID == self.employeeID )
+   and ( selected.Label == self.label );
+if ( not_empty entry )
   obs.Complete( success:True );
 else
   obs.Complete( success:False );
-end if;
-
-// This is contrived: 
-// Normally, Assess would be triggered by some status change received from the test application.
-// In this contrived case, the low expected value is used to trigger an assessment request.
-// Any active observation with a matching keyName will be triggered to evaluate.
-if ( self.expected_value_A < 2 )
-  send TESTSEQ::Assess( key:"EventZ" );
-end if;
-
-// This is contrived:
-// A negative value is used to request a read of the timer on the associated sequence.
-if ( self.tolerance < 0 )
-  send interval = TESTSEQ::ReadIntervalTimer( observationId:obs.assigned_obs_id, reset:False );
-  LOG::LogReal( message:"Interval timer reading", r:interval );
 end if;',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
@@ -239,14 +223,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationX::Instance State Machine');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ReviewPayrollEntry::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("e93d81b6-6003-427b-a06b-8275458f828d",
 	"d68728c2-a6c8-49fc-899d-1ad6b43f5293",
 	"dcc604b2-8414-4738-96ce-538059e0b1d4",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationX::Instance State Machine::Observing');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ReviewPayrollEntry::Instance State Machine::Observing');
 INSERT INTO GD_SHP
 	VALUES ("e93d81b6-6003-427b-a06b-8275458f828d");
 INSERT INTO GD_NCS
@@ -285,7 +269,7 @@ INSERT INTO GD_GE
 	"70f3d772-5575-4400-8b85-3f9db74eabda",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationX::Instance State Machine::Observing::Observe_pvt::Observation');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ReviewPayrollEntry::Instance State Machine::Observing::Observe_pvt::Observation');
 INSERT INTO GD_CON
 	VALUES ("e4e795cf-ae84-49bd-b529-15619c845dd9",
 	"00000000-0000-0000-0000-000000000000");
@@ -424,7 +408,7 @@ INSERT INTO GD_GE
 	"f477704d-e8ce-4d11-b22d-49e8effdf120",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationX::Instance State Machine::Deleting');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ReviewPayrollEntry::Instance State Machine::Deleting');
 INSERT INTO GD_SHP
 	VALUES ("0d2a5128-c1dc-4a60-9f50-db45b0384d72");
 INSERT INTO GD_NCS
@@ -453,7 +437,7 @@ INSERT INTO GD_GE
 	"0a9e70db-371f-491e-904a-cfc07c813ed6",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationX::Instance State Machine::Observing::Delete_pvt::Observation');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ReviewPayrollEntry::Instance State Machine::Observing::Delete_pvt::Observation');
 INSERT INTO GD_CON
 	VALUES ("a85d1d12-8075-4a41-93b0-32db7eb19ebd",
 	"00000000-0000-0000-0000-000000000000");
@@ -556,9 +540,9 @@ INSERT INTO DIM_DIA
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("97f00b06-01bd-4757-98d9-717daa3ca783",
-	'ObservationX',
+	'ReviewPayrollEntry',
 	7,
-	'ObservationX',
+	'ReviewPayrollEntry',
 	'An example of an observation which checks some measured application value against expectation.
 
 Note: this specific example uses some choices of attribute values to contrive outcomes:
@@ -570,4 +554,4 @@ A low expected value can trigger a "assess" request to the sequencing service.
 A negative value for tolerance will request a read of interval timer value.
 ',
 	"00000000-0000-0000-0000-000000000000",
-	'../ObservationX.xtuml');
+	'../ReviewPayrollEntry.xtuml');

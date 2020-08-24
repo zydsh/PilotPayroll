@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("97f00b06-01bd-4757-98d9-717daa3ca783",
-	'ObservationX',
+	'ReviewPayrollEntry',
 	7,
-	'ObservationX',
+	'ReviewPayrollEntry',
 	'An example of an observation which checks some measured application value against expectation.
 
 Note: this specific example uses some choices of attribute values to contrive outcomes:
@@ -23,12 +23,13 @@ INSERT INTO O_TFR
 	'See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance obsX of ObservationX;
-obsX.expected_value_A = param.expectedA;
-obsX.tolerance = param.tolerance;
+	'create object instance rvw of ReviewPayrollEntry;
+
+rvw.employeeID = param.employee;
+rvw.label = param.label;
 
 create object instance observation of Observation;
-relate obsX to observation across R4;
+relate rvw to observation across R4;
 
 observation.AppendPolling( stimulus:param.stimulus, 
                            pollInterval:param.pollInterval, 
@@ -41,7 +42,7 @@ observation.AppendPolling( stimulus:param.stimulus,
 INSERT INTO O_TPARM
 	VALUES ("6e00901f-d2e1-4152-9843-4d0e8e185323",
 	"9ad4aa68-8983-4730-b54b-2a829e341178",
-	'expectedA',
+	'employee',
 	"ba5eda7a-def5-0000-0000-000000000003",
 	0,
 	'',
@@ -77,8 +78,8 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("5b135321-76f7-48f0-83cf-6904a2caec21",
 	"9ad4aa68-8983-4730-b54b-2a829e341178",
-	'tolerance',
-	"ba5eda7a-def5-0000-0000-000000000003",
+	'label',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"6e00901f-d2e1-4152-9843-4d0e8e185323",
@@ -92,7 +93,7 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("2d7fcb07-6190-4efc-be5a-648bfb6561ab",
 	"97f00b06-01bd-4757-98d9-717daa3ca783",
-	"9a4ca977-1455-48c9-9f3c-e4b40f1c7ff3",
+	"7326b20f-8e76-40c2-b965-2578fbccbb4b",
 	'current_state',
 	'',
 	'',
@@ -110,11 +111,11 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("7326b20f-8e76-40c2-b965-2578fbccbb4b",
 	"97f00b06-01bd-4757-98d9-717daa3ca783",
-	"00000000-0000-0000-0000-000000000000",
-	'expected_value_A',
+	"9a4ca977-1455-48c9-9f3c-e4b40f1c7ff3",
+	'amount',
 	'A token expected value for some measurement from the test application.',
 	'',
-	'expected_value_A',
+	'amount',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000003",
 	'',
@@ -128,15 +129,33 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("9a4ca977-1455-48c9-9f3c-e4b40f1c7ff3",
 	"97f00b06-01bd-4757-98d9-717daa3ca783",
-	"7326b20f-8e76-40c2-b965-2578fbccbb4b",
-	'tolerance',
+	"996b0bcd-f9b6-44c2-875e-646971d0dfbd",
+	'label',
 	'A token value that might affect asn observations success/failure.
 See the observe state action.
 Read the observation description.',
 	'',
-	'tolerance',
+	'label',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000003",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("996b0bcd-f9b6-44c2-875e-646971d0dfbd",
+	"97f00b06-01bd-4757-98d9-717daa3ca783");
+INSERT INTO O_BATTR
+	VALUES ("996b0bcd-f9b6-44c2-875e-646971d0dfbd",
+	"97f00b06-01bd-4757-98d9-717daa3ca783");
+INSERT INTO O_ATTR
+	VALUES ("996b0bcd-f9b6-44c2-875e-646971d0dfbd",
+	"97f00b06-01bd-4757-98d9-717daa3ca783",
+	"00000000-0000-0000-0000-000000000000",
+	'employeeID',
+	'',
+	'',
+	'employeeID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

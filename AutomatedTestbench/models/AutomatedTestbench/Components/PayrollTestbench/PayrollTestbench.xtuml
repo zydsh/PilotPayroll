@@ -1106,7 +1106,8 @@ INSERT INTO SPR_RS
 	VALUES ("0c2fddcc-17f0-43ca-ac28-4a50c8294c82",
 	'Notify',
 	'',
-	'create object instance msg of ReceivedNotification;',
+	'create object instance msg of ReceivedNotification;
+msg.Code = param.Code;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

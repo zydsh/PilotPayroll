@@ -60,7 +60,7 @@ INSERT INTO O_TFR
 	'select one dept related by self->Department[R34.''is currently being evaluated for''];
 select any bad related by self->EmployeePaymentElement[R35.''has unapproved''];
 if ( not_empty bad )
-  LOG::LogFailure( message:"Unable to approve payroll fopr department " + dept.Name );
+  LOG::LogFailure( message:"Unable to approve payroll for department " + dept.Name );
   return;
 end if;
 generate Payroll3:Approve() to self;
@@ -68,6 +68,25 @@ generate Payroll3:Approve() to self;
 	1,
 	'',
 	"2c9eb5ac-e7ea-4426-b9e6-013bcb269166",
+	0);
+INSERT INTO O_TFR
+	VALUES ("f0138969-611f-456f-8810-ac882a357505",
+	"082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
+	'AssessForSubmittal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one dept related by self->Department[R34.''is currently being evaluated for''];
+select any bad related by self->EmployeePaymentElement[R35.''has unapproved''];
+if ( not_empty bad )
+  LOG::LogFailure( message:"Unable to submit payroll for department " + dept.Name );
+  return;
+end if;
+generate Payroll6:Submit() to self;
+',
+	1,
+	'',
+	"e96b22b1-1d1b-4f8b-b903-28e6cf7b8860",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("f91b8c26-ac41-4670-9727-93b0fa1d498e",

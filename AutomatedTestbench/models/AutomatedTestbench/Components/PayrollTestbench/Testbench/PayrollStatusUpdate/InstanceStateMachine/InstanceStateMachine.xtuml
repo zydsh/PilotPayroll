@@ -154,7 +154,7 @@ if ( self.newstatus == "Approve" )
   send TESTAPP::SubmitPayrollApproval( Department:self.dept );
 end if;
 
-if ( self.newstatus == "Final" )
+if ( self.newstatus == "FinalSubmit" )
   send TESTAPP::SubmitToFinance( Department:self.dept );
 end if;
 

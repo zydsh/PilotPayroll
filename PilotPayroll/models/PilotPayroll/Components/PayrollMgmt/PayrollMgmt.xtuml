@@ -27,7 +27,7 @@ INSERT INTO GD_MD
 	200,
 	150,
 	0,
-	'',
+	'4.1.17',
 	'PilotPayroll::Components::PayrollMgmt');
 INSERT INTO GD_GE
 	VALUES ("2bd49b98-b523-4394-a532-9845347466ee",
@@ -242,8 +242,8 @@ INSERT INTO DIM_ND
 	0.000000,
 	"6723c3a7-26c4-4480-af0a-aa6c94ada18a");
 INSERT INTO DIM_GE
-	VALUES (0.000000,
-	0.000000,
+	VALUES (6223.000000,
+	3632.000000,
 	"6723c3a7-26c4-4480-af0a-aa6c94ada18a",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -388,7 +388,8 @@ INSERT INTO SPR_PS
 	VALUES ("f8de3ba4-c757-43e6-9493-246185227011",
 	'SubmitItemHolds',
 	'',
-	'',
+	'::UnmarshallitemHolds( Dept:param.Department, IDs:param.EmployeeID, Labels:param.PaymentLabel, Holds:param.HoldStatus );
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -494,6 +495,45 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitPayrollApproval',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("3262aaf6-56ac-4e75-9cdb-de7134df3f29",
+	"cd89f044-8052-4bd7-828a-07b3030804fc",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("3262aaf6-56ac-4e75-9cdb-de7134df3f29",
+	'SubmitToFinance',
+	'',
+	'select any dept from instances of Department
+ where ( selected.Name == param.Department );
+select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+payroll.AssessForSubmittal();',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("cd89f044-8052-4bd7-828a-07b3030804fc",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'SubmitToFinance',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("2e4fa06e-2fb2-48b4-bd9c-8dca953ad57a",
+	"dce7039f-aa29-4ba4-af47-7258d8fb7941",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("2e4fa06e-2fb2-48b4-bd9c-8dca953ad57a",
+	'Accepted',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("dce7039f-aa29-4ba4-af47-7258d8fb7941",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'Accepted',
 	'',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY

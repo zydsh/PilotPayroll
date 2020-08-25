@@ -287,6 +287,7 @@ INSERT INTO SM_ACT
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
 	'// clean up and disappear
+LOG::LogInfo( message:"Sheduled payroll complete" );
 
 select one dept related by self->Department[R4.''is scheduled for''];
 unrelate self from dept across R4.''is scheduled for'';

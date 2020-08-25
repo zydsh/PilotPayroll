@@ -157,8 +157,17 @@ select any msg from instances of ReceivedNotification
 if ( not_empty msg )
   success = True;
   delete object instance msg;
+else
+  success = False;
 end if;
-obs.Complete( success:success );',
+obs.Complete( success:success );
+
+// @TODO here for expediency... really needs separate observation(?)
+
+select many entries from instances of PayrollEntry;
+for each entry in entries
+  delete object instance entry;
+end for;',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
 INSERT INTO SM_MOAH

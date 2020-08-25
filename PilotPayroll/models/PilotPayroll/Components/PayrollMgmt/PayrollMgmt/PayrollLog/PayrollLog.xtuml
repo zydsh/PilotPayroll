@@ -14,7 +14,8 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select many employees related by self->Payroll[R8.''records generation of'']
+	'LOG::LogInfo( message:"*** Logging Payroll Generation *** " );
+select many employees related by self->Payroll[R8.''records generation of'']
                                      ->Employee[R7.''has payments for''];
 for each employee in employees
   select one payment related by employee->EmployeePayment[R7];
@@ -26,7 +27,9 @@ for each employee in employees
   	                               ->PaymentElementSpec[R12.''is typed by''];
   	LOG::LogReal( message:spec.Label, r:elem.Amount );
   end for;
-end for;                                     ',
+end for;
+LOG::LogInfo( message:"*** End of Payroll Generation *** " );
+',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

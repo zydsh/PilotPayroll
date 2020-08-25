@@ -151,7 +151,6 @@ INSERT INTO SM_ACT
 	'LOG::LogInfo( message:"--- Expecting to review payroll entry" );
 select one obs related by self->Observation[R4];
 
-sendupdates = False;
 select any entry from instances of PayrollEntry
  where ( selected.EmployeeID == self.employeeID )
    and ( selected.Label == self.label );
@@ -160,20 +159,15 @@ if ( not_empty entry )
   if ( self.action == "hold" ) and ( entry.Hold == False )
   	entry.Hold = True;
   	entry.Edited = True;
-  	sendupdates = True;
   end if;
   if ( self.action == "clear" ) and ( entry.Hold == True );
   	entry.Hold = False;
   	entry.Edited = True;
-  	sendupdates = True;
   end if;
 else
   obs.Complete( success:False );
 end if;
-if ( sendupdates )
-  PayrollEntry::SendEntryHolds();
-end if;
-//@TODO delete all entries - they have served their purpose ?',
+',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
 INSERT INTO SM_MOAH

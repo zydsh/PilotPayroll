@@ -107,12 +107,12 @@ INSERT INTO S_SYNC
 	'select any dept from instances of Department
  where ( selected.Name == param.Dept );
 if ( empty dept )
-  LOG::LogFailure( message:"************** No Dept - unmarshal" );
+  LOG::LogFailure( message:"Department not found when specifing item holds" );
   return;
 end if;
 select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
 if ( empty payroll )
-  LOG::LogFailure( message:"************** No Payroll - unmmarshal" );
+  LOG::LogFailure( message:"Payroll not found when specifing item holds" );
   return;
 end if;
 

@@ -507,6 +507,11 @@ INSERT INTO SPR_PS
 	'',
 	'select any dept from instances of Department
  where ( selected.Name == param.Department );
+if ( empty dept )
+  LOG::LogFailure( message:"Department not found for final submission" );
+  return;
+end if;
+
 select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
 payroll.AssessForSubmittal();',
 	1,
@@ -527,7 +532,7 @@ INSERT INTO SPR_PS
 	'Accepted',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("dce7039f-aa29-4ba4-af47-7258d8fb7941",

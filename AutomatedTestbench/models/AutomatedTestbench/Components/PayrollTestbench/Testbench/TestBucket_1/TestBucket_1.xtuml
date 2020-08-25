@@ -43,6 +43,8 @@ stId = RequestPayroll::Create( seq:seq1, dept:"IT", holds:False );
 ::InsertDelay( stimulus:stId, duration:2 );
 ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:100, timeLimit:1000 );
 ::InsertDelay( stimulus:stId, duration:2 );
+stId = PayrollStatusUpdate::Create( seq:seq1, dept:"IT", requestedstatus:"" );
+::InsertDelay( stimulus:stId, duration:2 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"Holds", pollInterval:100, timeLimit:1000 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"Reviewed", pollInterval:100, timeLimit:1000 );
 
@@ -52,6 +54,8 @@ send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
 stId = RequestPayroll::Create( seq:seq1, dept:"IT", holds:True );
 ::InsertDelay( stimulus:stId, duration:2 );
 ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"clear", pollInterval:100, timeLimit:1000 );
+::InsertDelay( stimulus:stId, duration:2 );
+stId = PayrollStatusUpdate::Create( seq:seq1, dept:"IT", requestedstatus:"" );
 ::InsertDelay( stimulus:stId, duration:2 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"Noholds", pollInterval:100, timeLimit:1000 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"Reviewed", pollInterval:100, timeLimit:1000 );

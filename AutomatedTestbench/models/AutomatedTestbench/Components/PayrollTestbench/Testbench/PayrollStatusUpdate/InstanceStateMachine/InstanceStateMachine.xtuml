@@ -162,6 +162,12 @@ if ( self.newstatus == "Accept" )
   send TESTAPP::Accepted( Department:self.dept );
 end if;
 
+select any entry from instances of PayrollEntry
+ where ( selected.Edited );
+if ( not_empty entry )
+  PayrollEntry::SendEntryHolds();
+end if;
+
 select one stimulus related by self->Stimulus[R3];
 stimulus.Complete();
 ',

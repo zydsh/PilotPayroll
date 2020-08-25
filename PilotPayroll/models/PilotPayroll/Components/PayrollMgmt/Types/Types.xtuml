@@ -1,0 +1,68 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("85ccbee9-3117-4eca-9928-4117423dce4b",
+	"00000000-0000-0000-0000-000000000000",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Types',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("019ed38f-3da5-42a8-99bd-72cd892f026c",
+	112,
+	"85ccbee9-3117-4eca-9928-4117423dce4b",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'PilotPayroll::Components::PayrollMgmt::Types');
+INSERT INTO DIM_DIA
+	VALUES ("019ed38f-3da5-42a8-99bd-72cd892f026c",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO EP_PKGREF
+	VALUES ("85ccbee9-3117-4eca-9928-4117423dce4b",
+	"06ebca4d-c9fd-4621-817d-3fadc505ee21");
+INSERT INTO EP_PKG_PROXY
+	VALUES ("06ebca4d-c9fd-4621-817d-3fadc505ee21",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Types',
+	'',
+	0,
+	'../../../Types/Types.xtuml');
+INSERT INTO PE_PE
+	VALUES ("85ccbee9-3117-4eca-9928-4117423dce4b",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"7c6d191c-1502-4f72-9055-2069e5f671e6",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("7c6d191c-1502-4f72-9055-2069e5f671e6",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'PayrollMgmt',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../PayrollMgmt.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'PilotPayroll',
+	1,
+	'../../../PilotPayroll.xtuml');

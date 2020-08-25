@@ -69,7 +69,7 @@ for each emp in employees
     end if;	
   end for;
 end for;
-send USER::SendPayroll( Department:dept.Name, EmployeeID:IDs, PaymentLabel:Labels, PaymentAmount:Values, HoldStatus:Holds );
+send USER::Payroll( Department:dept.Name, EmployeeID:IDs, PaymentLabel:Labels, PaymentAmount:Values, HoldStatus:Holds );
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,

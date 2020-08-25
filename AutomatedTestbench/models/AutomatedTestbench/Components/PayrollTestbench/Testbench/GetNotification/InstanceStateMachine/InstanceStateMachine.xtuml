@@ -158,11 +158,12 @@ if ( not_empty msg )
   success = True;
   delete object instance msg;
 else
-  success = False;
+  success = False;	// here to allow breakpoint only
 end if;
 obs.Complete( success:success );
 
-// @TODO here for expediency... really needs separate observation(?)
+// @TODO here for expediency... really needs separate observation(stimulus?)
+// assumption: by the time notifications are being observed, payroll data is no longer need for this test case.
 
 select many entries from instances of PayrollEntry;
 for each entry in entries

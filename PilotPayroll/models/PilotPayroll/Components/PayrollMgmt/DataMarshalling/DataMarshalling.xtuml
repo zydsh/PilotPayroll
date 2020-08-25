@@ -122,7 +122,7 @@ while ( index > 0 )
    where ( selected.NationalID == param.IDs[index] );
   if ( not_empty employee )
   	select one payroll related by employee->EmployeePayment[R7]
-  	                                      ->Payroll[R7.''is being assessed for''];
+  	                                      ->Payroll[R7.''is on''];
   	select many elements related by employee->EmployeePayment[R7]
   	                                        ->EmployeePaymentElement[R15.''is composed of''];
     for each elmt in elements

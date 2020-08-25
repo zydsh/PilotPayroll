@@ -19,7 +19,7 @@ The value will be pro-rated if creation falls within the current pay period.
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
 	'select one payperiod related by self->Employee[R27.''has payments specified by'']
-                                    ->Payroll[R7.''is being assessed for'']
+                                    ->Payroll[R7.''is on'']
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )
   return self.NominalValue * self.ProRateValue();
@@ -39,7 +39,7 @@ The modification may be pro-rated depending on creation dates of both elements.
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
 	'select one payperiod related by self->Employee[R27.''has payments specified by'']
-                                    ->Payroll[R7.''is being assessed for'']
+                                    ->Payroll[R7.''is on'']
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )
   result = self.NominalValue * param.TargetValue * 
@@ -77,7 +77,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
 	'select one payperiod related by self->Employee[R27.''has payments specified by'']
-                                    ->Payroll[R7.''is being assessed for'']
+                                    ->Payroll[R7.''is on'']
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )	// becomes effective within period
   alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;
@@ -98,7 +98,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000003",
 	1,
 	'select one payperiod related by self->Employee[R27.''has payments specified by'']
-                                    ->Payroll[R7.''is being assessed for'']
+                                    ->Payroll[R7.''is on'']
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )		// becomes effective within period..
   if ( self.EffectiveDate > param.TargetEffectiveDate )

@@ -15,7 +15,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'// traverse the structure elements and populate the pay element values.
-select one payperiod related by self->Payroll[R7.''is being assessed for'']
+select one payperiod related by self->Payroll[R7.''is on'']
                                     ->PayPeriod[R33.''is for''];
 select many structElements related by self->PaymentStructureElement[R27.''specifies a payment contribution for'']
   where selected.EffectiveDate < payperiod.PayPeriodEnd;
@@ -28,7 +28,7 @@ for each structElement in structElements
   	if ( empty payElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
   	  break;
   	end if;
-  	select one payroll related by payElement->Payroll[R31.''has been modified''];
+  	select one payroll related by payElement->Payroll[R31.''has been modified for''];
   	if ( empty payroll )
       payElement.Amount = structElement.Evaluate();
  	end if;
@@ -46,7 +46,7 @@ for each structElement in structElements
     	if ( empty tgtElement )	// payment structure has been edited: @TODO decide: create new element on the fly?
     	  break;
     	end if;
-    	select one payroll related by tgtElement->Payroll[R31.''has been modified''];
+    	select one payroll related by tgtElement->Payroll[R31.''has been modified for''];
   	    if ( empty payroll )
           select one payElement related by structElement->EmployeePaymentElement[R13.''is template for''];
           payElement.Amount = structElement.Modify( TargetValue:tgtElement.Amount,

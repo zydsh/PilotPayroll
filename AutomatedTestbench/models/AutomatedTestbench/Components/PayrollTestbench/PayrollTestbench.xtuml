@@ -1086,27 +1086,24 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("b4f90f2f-7db5-4003-92c1-5bb08c931a35",
-	'SendPayroll',
+	'PayrollData',
 	'',
-	'index = param.EmployeeID.length - 1;
-LOG::LogInfo( message:"retrieving employee data in Testbench");
-while ( index > 0 )
-  create object instance entry of PayrollEntry;
-  entry.DeptName = param.Department;
-  entry.EmployeeID = param.EmployeeID[index];
-  entry.Label = param.PaymentLabel[index];
-  entry.Amount = param.PaymentAmount[index];
-  entry.Hold = param.HoldStatus[index];
-  entry.Edited = False;
-  index = index - 1;
-end while;',
+	'LOG::LogInfo( message:"retrieving employee data in Testbench");
+create object instance entry of PayrollEntry;
+entry.DeptName = param.Department;
+entry.EmployeeID = param.EmployeeID;
+entry.Label = param.PaymentLabel;
+entry.Amount = param.PaymentAmount;
+entry.Hold = param.HoldStatus;
+entry.Edited = False;
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SendPayroll',
+	'PayrollData',
 	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
@@ -1115,7 +1112,7 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("0c2fddcc-17f0-43ca-ac28-4a50c8294c82",
-	'Notify',
+	'Notification',
 	'',
 	'create object instance msg of ReceivedNotification;
 msg.Code = param.Code;',
@@ -1125,7 +1122,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'Notify',
+	'Notification',
 	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
@@ -1180,6 +1177,42 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Accepted',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
+	"79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
+	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
+INSERT INTO SPR_RS
+	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
+	'PayrollSent',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayrollSent',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("5a6fab6b-7072-42f1-9cf7-38c681723694",
+	"4977673c-bec5-4608-b2c5-3676282e237e",
+	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
+INSERT INTO SPR_RS
+	VALUES ("5a6fab6b-7072-42f1-9cf7-38c681723694",
+	'UpdatesSent',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("4977673c-bec5-4608-b2c5-3676282e237e",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'UpdatesSent',
 	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY

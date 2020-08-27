@@ -149,8 +149,8 @@ INSERT INTO SM_ACT
 	"6d7374d7-8ba3-4d82-9358-6758a1d29c0a",
 	1,
 	'LOG::LogInfo( message:"Requesting payroll for review injected" );
+send TESTAPP::RetrievePayrollForReview( Department:self.dept, HoldsOnly:self.holds );
 
-send TESTAPP::RetrievePayrollForReview( Department:self.dept, Holds:self.holds );
 select one stimulus related by self->Stimulus[R3];
 stimulus.Complete();
 ',

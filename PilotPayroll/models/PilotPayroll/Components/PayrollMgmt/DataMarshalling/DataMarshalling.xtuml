@@ -38,7 +38,9 @@ INSERT INTO S_SYNC
 	"00000000-0000-0000-0000-000000000000",
 	'MarshalPayroll',
 	'',
-	'index = 1;
+	'// Gather employee payment data elements to present to a client for review.
+// Sometimes only on-hold items are required for review - Holds == True;  otherwise all items are gathered...
+index = 1;
 IDs[index] = 0;
 Labels[index] = "";
 Values[index] = 0.0;
@@ -53,12 +55,14 @@ for each emp in employees
   select many payments related by emp->EmployeePayment[R7]
                                      ->EmployeePaymentElement[R15.''is composed of''];
   for each payment in payments
-	hold = False;
-	select one payroll related by payment->Payroll[R29.''is on hold for''];
+	hold = False;	// tentatively..
+	select one payroll related by payment->Payroll[R29.''is on hold for''];	// is there a hold on this element?
 	if ( not_empty payroll )
 	  hold = True;
-	end if;  	
-    if ( param.Holds == False ) or ( hold == True )
+	end if;
+    // sometimes only on-hold items are required for review - Holds == True;  otherwise all items are gathered...
+    if ( param.Holds == False ) 	// ... gather all items
+     or ( hold == True )			// always include on-hold items
   	  select one spec related by payment->PaymentStructureElement[R13.''is current realization of'']
   	                                  ->PaymentElementSpec[R12.''is typed by''];
 	  IDs[index] = emp.NationalID;
@@ -83,7 +87,7 @@ INSERT INTO S_SPARM
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'');
+	'Choice of department for which payroll data is to be presented.');
 INSERT INTO S_SPARM
 	VALUES ("bc5c13e4-7ef7-47c2-a3f0-ec73fc370f24",
 	"d02f6ae0-5a9d-4e8d-b2ba-0f4897ccd9a4",
@@ -92,7 +96,7 @@ INSERT INTO S_SPARM
 	0,
 	'',
 	"01898846-dc9a-4a4c-b295-fb92bf20c24c",
-	'');
+	'Set to ''True'' if only those payment elements which are on hold are to be presented for review.');
 INSERT INTO PE_PE
 	VALUES ("d02f6ae0-5a9d-4e8d-b2ba-0f4897ccd9a4",
 	1,
@@ -104,7 +108,8 @@ INSERT INTO S_SYNC
 	"00000000-0000-0000-0000-000000000000",
 	'UnmarshallitemHolds',
 	'',
-	'select any dept from instances of Department
+	'// From updated data from client, adjust the on-hold status (association) of pay elements.
+select any dept from instances of Department
  where ( selected.Name == param.Dept );
 if ( empty dept )
   LOG::LogFailure( message:"Department not found when specifing item holds" );
@@ -158,7 +163,7 @@ INSERT INTO S_SPARM
 	0,
 	'[]',
 	"4c8dcbb8-e388-4f74-950f-7fb30a7bfc4d",
-	'');
+	'Employee IDs');
 INSERT INTO S_DIM
 	VALUES (0,
 	0,

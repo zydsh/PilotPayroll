@@ -1,0 +1,170 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("a6e4906d-0070-486f-a1a9-d00ae7962e79",
+	"00000000-0000-0000-0000-000000000000",
+	"20cb96e4-e47e-4962-9629-4c10e15e7ea2",
+	'IncomingMessageFunctions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("bdd1226a-e448-4f8d-bc4e-969efe46ebaa",
+	112,
+	"a6e4906d-0070-486f-a1a9-d00ae7962e79",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'HRuser::Components::HRuser::IncomingMessageFunctions');
+INSERT INTO DIM_DIA
+	VALUES ("bdd1226a-e448-4f8d-bc4e-969efe46ebaa",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("966dbce2-9638-4d6b-9bc1-a0ef4730aa1b",
+	"00000000-0000-0000-0000-000000000000",
+	'Notification',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("b6632b14-7b19-4618-89a1-beeb15030225",
+	"966dbce2-9638-4d6b-9bc1-a0ef4730aa1b",
+	'Code',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("82acc613-9c45-4266-ac47-374060d08625",
+	"966dbce2-9638-4d6b-9bc1-a0ef4730aa1b",
+	'Message',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"b6632b14-7b19-4618-89a1-beeb15030225",
+	'');
+INSERT INTO PE_PE
+	VALUES ("966dbce2-9638-4d6b-9bc1-a0ef4730aa1b",
+	1,
+	"a6e4906d-0070-486f-a1a9-d00ae7962e79",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	"00000000-0000-0000-0000-000000000000",
+	'PayrollData',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("818806a2-13b9-4b38-be42-1c0c96b0b164",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'Department',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("f5558078-e856-45cd-ac3d-d1e67b9da5a1",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'EmployeeID',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"818806a2-13b9-4b38-be42-1c0c96b0b164",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("14d457c3-eddd-4b3b-8248-d0b1ddc45f79",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'EmployeeFirstName',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"f5558078-e856-45cd-ac3d-d1e67b9da5a1",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("e5667045-eeb4-4653-883d-385126b06b4b",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'EmployeeLastName',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"14d457c3-eddd-4b3b-8248-d0b1ddc45f79",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("eeefd67e-9380-4eaa-b8d0-2df47117ab00",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'PaymentLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"e5667045-eeb4-4653-883d-385126b06b4b",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("5d240f0b-ad40-4620-8aa1-b94b032330e0",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'PaymentAmount',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"eeefd67e-9380-4eaa-b8d0-2df47117ab00",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("308de555-090c-4d3b-a3e2-3826d058e519",
+	"46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	'HoldStatus',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"5d240f0b-ad40-4620-8aa1-b94b032330e0",
+	'');
+INSERT INTO PE_PE
+	VALUES ("46d29e2d-5e17-4cc5-904d-134e1587aba7",
+	1,
+	"a6e4906d-0070-486f-a1a9-d00ae7962e79",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("a6e4906d-0070-486f-a1a9-d00ae7962e79",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"b85aebec-ba33-486a-acde-3d7c5d4dd64d",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("b85aebec-ba33-486a-acde-3d7c5d4dd64d",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'HRuser',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../HRuser.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("20cb96e4-e47e-4962-9629-4c10e15e7ea2",
+	'HRuser',
+	1,
+	'../../../HRuser.xtuml');

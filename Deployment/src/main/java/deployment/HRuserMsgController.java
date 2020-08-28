@@ -31,9 +31,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.HtmlUtils;
 
-import deployment.hruser.HRuserPayroll;        		// HRuser-Payroll port
-import deployment.payrollmgmt.PayrollMgmtUSER;		// CarPark-PaymentMachine port
-import deployment.HRuser;							// Shell component
+import deployment.hruser.HRuserPayroll;             // HRuser-Payroll port
+import deployment.payrollmgmt.PayrollMgmtUSER;      // CarPark-PaymentMachine port
+import deployment.HRuser;                           // Shell component
 import deployment.NotificationMsg;
 import deployment.PayrollDataMsg;
 import deployment.PayrollSentMsg;
@@ -54,26 +54,23 @@ public class HRuserMsgController {
 	
 	@Autowired
 	public HRuserMsgController( SimpMessagingTemplate template ) {
-		singleton = this;
-		this.template = template;
+        singleton = this;
+        this.template = template;
 	}
 	
 	public static HRusereMsgController Singleton() {
 		return singleton;
 	}
 	
-	// Begin outgoing (from this component) messages.
-	// Each of the following methods is invoked when the (JavaScript) client sends 
-	// a message to the corresponding message-broker topic, "/app/<messageName>".
-	// For example, when the JavaScript client sends a message to "/app/InsertedTicket",
-	// the method annotated with @MessageMapping( "/InsertedTicket" ) is invoked, and
-	// an instance of the message is passed to it as a parameter.
-	
-	// The exit stand has an InsertedTicket message, so this one uses a prefix to distinguish it.
-    @MessageMapping( "/RetrievePayrollForReview" )
+    // Begin outgoing (from this component) messages.
+    // Each of the following methods is invoked when the (JavaScript) client sends 
+    // a message to the corresponding message-broker topic, "/app/<messageName>".
+
+	@MessageMapping( "/RetrievePayrollForReview" )
     public void RetrievePayrollForReview( RetrievePayrollForReviewMsg message ) throws Exception {
     	try {
-      	  HRuser.Singleton().Payroll().RetrievePayrollForReview( message.getDepartment() ) );
+      	  HRuser.Singleton().Payroll().RetrievePayrollForReview( message.getDepartment(), 
+      			                                                 Boolean.parseBoolean( message.getHoldStatus() ) );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in RetrievePayrollForReview()\n", e );    			
@@ -114,7 +111,7 @@ public class HRuserMsgController {
     public void SubmitItemHold( SubmitItemHoldMsg message ) throws Exception {
     	try {
       	  HRuser.Singleton().Payroll().SubmitItemHold( message.getDepartment(),
-      			                                       Integer.parseInt( message.getEmployeeID(),
+      			                                       Integer.parseInt( message.getEmployeeId(),
       			                                       message.getPaymentLabel(),
       			                                       Boolean.parseBoolean( message.getHoldStatus() ) );
       	}
@@ -127,29 +124,28 @@ public class HRuserMsgController {
     
     // Incoming (to this component) messages.
     // The following methods forward incoming messages to the (JavaScript) client which
-    // subscribes to a location-specific message-broker topic.  For example, the "North"
-    // entry stand subscribes to "/topic/PaymentMachine/North".
+    // subscribes to a specific message-broker topic.  
     public void SendPayrollSent ( String Department ) throws Exception {
-    	PayrollSentMsg msg = new PayrollSentMsg( "Payroll sent ", Department );
+    	PayrollSentMsg msg = new PayrollSentMsg( "PayrollSent", Department );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendPayrollDataMsg ( String Department, 
-    		                         Integer EmployeeID, 
-    		                         String EmployeeFirstName,
-    		                         String EmployeeLastName,
-    		                         String PaymentLabel,
-    		                         Double PaymentAmount,
-    		                         Boolean HoldStatus ) throws Exception {
+    public void SendPayrollData ( String Department, 
+    		                      Integer EmployeeId, 
+    		                      String EmployeeFirstName,
+    		                      String EmployeeLastName,
+    		                      String PaymentLabel,
+    		                      Double PaymentAmount,
+    		                      Boolean HoldStatus ) throws Exception {
     	PayrollDataMsg msg = new PayrollDataMsg( "PayrollData",
-    			                                 String Department,
-    			                                 String.valueOf( EmployeeID ),
-    			                                 String EmployeeFirstName,
-    			                                 String EmployeeLastName,
-    			                                 String PaymentLabel,
-    			                                 String.valujeOf( PaymentAmount ),
-    			                                 String.valueOf( HoldStatus ) );
+    			                                  Department,
+    			                                  String.valueOf( EmployeeId ),
+    			                                  EmployeeFirstName,
+    			                                  EmployeeLastName,
+    			                                  PaymentLabel,
+    			                                  String.valueOf( PaymentAmount ),
+    			                                  String.valueOf( HoldStatus ) );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }

@@ -4,7 +4,7 @@ package deployment;
 public class PayrollDataMsg {
 	private String messageName;
 	private String department;
-	private String employeeID;
+	private String employeeId;
 	private String employeeFirstName;
 	private String employeeLastName;
 	private String paymentLabel;
@@ -13,16 +13,16 @@ public class PayrollDataMsg {
 	public PayrollDataMsg() {
 	}
 	public PayrollDataMsg( String messageName,
-			                String department, 
-	                        String employeeID, 
-							String employeeFirstName, 
-							String employeeLastName, 
-							String paymentLabel, 
-							String paymentAmount,
-							String holdStatus ) {
+			               String department, 
+	                       String employeeId, 
+	                       String employeeFirstName, 
+                           String employeeLastName, 
+                           String paymentLabel, 
+                           String paymentAmount,
+                           String holdStatus ) {
 		this.messageName = messageName;
 		this.department = department;
-		this.employeeID = employeeID;
+		this.employeeID = employeeId;
 		this.employeeFirstName = employeeFirstName;
 		this.employeeLastName = employeeLastName;
 		this.paymentLabel = paymentLabel;
@@ -41,11 +41,11 @@ public class PayrollDataMsg {
 	public String getDepartment() {
 		return department;
 	}
-	public void setEmployeeID( String employeeID ) {
-		this.employeeID = employeeID;
+	public void setEmployeeID( String employeeId ) {
+		this.employeeId = employeeId;
 	}
-	public String getEmployeeID() {
-		return employeeID;
+	public String getEmployeeId() {
+		return employeeId;
 	}
 	public void setEmployeeFirstName( String employeeFirstName ) {
 		this.employeeFirstName = employeeFirstName;

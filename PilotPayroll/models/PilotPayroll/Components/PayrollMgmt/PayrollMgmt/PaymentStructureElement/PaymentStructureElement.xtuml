@@ -80,8 +80,8 @@ INSERT INTO O_TFR
                                     ->Payroll[R7.''is on'']
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )	// becomes effective within period
-  alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;
-  effectivedays = payperiod.PayPeriodEnd - self.EffectiveDate + 1.0;
+  alldays = 1.0 + payperiod.PayPeriodEnd - payperiod.PayPeriodStart;
+  effectivedays = 1.0 + payperiod.PayPeriodEnd - self.EffectiveDate;
   return effectivedays / alldays;
 else 
   return 1.0;
@@ -102,11 +102,11 @@ INSERT INTO O_TFR
                                     ->PayPeriod[R33.''is for''];
 if ( self.EffectiveDate > payperiod.PayPeriodStart )		// becomes effective within period..
   if ( self.EffectiveDate > param.TargetEffectiveDate )
-    alldays = payperiod.PayPeriodEnd - payperiod.PayPeriodStart + 1.0;	// tentatively..
+    alldays = 1.0 + payperiod.PayPeriodEnd - payperiod.PayPeriodStart;	// tentatively..
   	if ( param.TargetEffectiveDate > payperiod.PayPeriodStart )			// .. begins within period
-      alldays = payperiod.PayPeriodEnd - param.TargetEffectiveDate + 1.0;
+      alldays = 1.0 + payperiod.PayPeriodEnd - param.TargetEffectiveDate;
     end if;
-    effectivedays = payperiod.PayPeriodEnd - self.EffectiveDate + 1.0;
+    effectivedays = 1.0 + payperiod.PayPeriodEnd - self.EffectiveDate;
     return effectivedays / alldays;
   end if;
 end if;

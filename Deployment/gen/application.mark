@@ -1,0 +1,2 @@
+*,RootPackage,*,Deployment::Deployment
+Components::PayrollMgmt,InitFunction,Component,CreatePEIs

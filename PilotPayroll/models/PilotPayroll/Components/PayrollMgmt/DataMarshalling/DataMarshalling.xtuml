@@ -5,7 +5,22 @@ INSERT INTO EP_PKG
 	"00000000-0000-0000-0000-000000000000",
 	"5713191d-1d3c-41cb-add1-1cce3729acf2",
 	'DataMarshalling',
-	'',
+	'The marshalling/unmarshalling functions are packaged here because they are not subject matter of the Payroll application.
+The separation originated out of concern for efficient client-server transmission of multiple-instance data.
+
+At this time, data for each instance is sent or received individually.
+
+A "data sent" signal informs the client that all data for all instances has been sent and can be acted on.
+
+An "updates sent" signal from the client indicates that all update instances have been submitted.
+In this case, the Payroll application can be signalled to assess the effects of any updates.
+
+Note:
+A component providing an efficient solution to combined instance data transmission could be interposed between these
+marshalling functions and the communications path. By offering such component(s) in separate projects their use or 
+otherwise becomes a matter of deployment configurations and need not affect the defined interfaces used here.
+
+',
 	0);
 INSERT INTO GD_MD
 	VALUES ("72378a00-8e97-4279-8b6f-a2fd67ee8d08",

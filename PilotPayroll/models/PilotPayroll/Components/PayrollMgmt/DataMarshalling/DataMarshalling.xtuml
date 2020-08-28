@@ -38,12 +38,7 @@ INSERT INTO S_SYNC
 	"00000000-0000-0000-0000-000000000000",
 	'MarshalPayroll',
 	'',
-	'index = 1;
-IDs[index] = 0;
-Labels[index] = "";
-Values[index] = 0.0;
-Holds[index] = False;
-select any dept from instances of Department where ( selected.Name == param.Dept );
+	'select any dept from instances of Department where ( selected.Name == param.Dept );
 if ( empty dept )
   LOG::LogFailure( message:"Department name not matched in Send Payroll" );
   return;
@@ -61,16 +56,14 @@ for each emp in employees
     if ( param.Holds == False ) or ( hold == True )
   	  select one spec related by payment->PaymentStructureElement[R13.''is current realization of'']
   	                                  ->PaymentElementSpec[R12.''is typed by''];
-	  IDs[index] = emp.NationalID;
-	  Labels[index] = spec.Label;
-	  Values[index] = payment.Amount;
-	  Holds[index] = hold;
-      index = index + 1;
+      send USER::PayrollData( Department:dept.Name, 
+                            EmployeeID:emp.NationalID, EmployeeFirstName:emp.FirstName, EmployeeLastName:emp.LastName,
+                            PaymentLabel:spec.Label, PaymentAmount:payment.Amount, HoldStatus:hold );
+
     end if;	
   end for;
 end for;
-send USER::Payroll( Department:dept.Name, EmployeeID:IDs, PaymentLabel:Labels, PaymentAmount:Values, HoldStatus:Holds );
-',
+send USER::PayrollSent( Department:dept.Name );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
@@ -102,25 +95,23 @@ INSERT INTO PE_PE
 INSERT INTO S_SYNC
 	VALUES ("1e4bfa68-bb78-4314-90ca-c3a1dd322805",
 	"00000000-0000-0000-0000-000000000000",
-	'UnmarshallitemHolds',
+	'UnmarshallitemHold',
 	'',
 	'select any dept from instances of Department
  where ( selected.Name == param.Dept );
 if ( empty dept )
-  LOG::LogFailure( message:"Department not found when specifing item holds" );
+  LOG::LogFailure( message:"Department not found when updating item hold" );
   return;
 end if;
 select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
 if ( empty payroll )
-  LOG::LogFailure( message:"Payroll not found when specifing item holds" );
+  LOG::LogFailure( message:"Payroll not found when updating item hold" );
   return;
 end if;
 
-index = param.IDs.length - 1;
-while ( index > 0 )
-  select any employee from instances of Employee
-   where ( selected.NationalID == param.IDs[index] );
-  if ( not_empty employee )
+select any employee from instances of Employee
+ where ( selected.NationalID == param.ID );
+if ( not_empty employee )
   	select one payroll related by employee->EmployeePayment[R7]
   	                                      ->Payroll[R7.''is on''];
   	select many elements related by employee->EmployeePayment[R7]
@@ -128,9 +119,9 @@ while ( index > 0 )
     for each elmt in elements
       select one spec related by elmt->PaymentStructureElement[R13.''is current realization of'']
                                     ->PaymentElementSpec[R12.''is typed by''];
-      if ( spec.Label == param.Labels[index] );
+      if ( spec.Label == param.Label );
       	  select one pr related by elmt->Payroll[R29.''is on hold for''];
-      	if ( param.Holds[index] )
+      	if ( param.Hold )
       	  if ( empty pr )
       	  	relate elmt to payroll across R29.''is on hold for'';
       	  end if;
@@ -141,10 +132,7 @@ while ( index > 0 )
       	end if;
       end if;
     end for; 
-  end if;
-  index = index - 1;
-end while;
-generate Payroll7:Reviewed() to payroll; 	                                      
+end if;
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -153,93 +141,30 @@ generate Payroll7:Reviewed() to payroll;
 INSERT INTO S_SPARM
 	VALUES ("6951c3a2-c510-407f-a5cc-1d3760839074",
 	"1e4bfa68-bb78-4314-90ca-c3a1dd322805",
-	'IDs',
+	'ID',
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
-	'[]',
+	'',
 	"4c8dcbb8-e388-4f74-950f-7fb30a7bfc4d",
 	'');
-INSERT INTO S_DIM
-	VALUES (0,
-	0,
-	"00000000-0000-0000-0000-000000000000",
-	"6951c3a2-c510-407f-a5cc-1d3760839074",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"c1cc1b1c-292d-4f5d-b189-c6c7c2fcc802",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_SPARM
 	VALUES ("8a0d4aae-73eb-4f5f-8a4a-114b3a4f9d68",
 	"1e4bfa68-bb78-4314-90ca-c3a1dd322805",
-	'Labels',
+	'Label',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
-	'[]',
+	'',
 	"6951c3a2-c510-407f-a5cc-1d3760839074",
 	'');
-INSERT INTO S_DIM
-	VALUES (0,
-	0,
-	"00000000-0000-0000-0000-000000000000",
-	"8a0d4aae-73eb-4f5f-8a4a-114b3a4f9d68",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"7c698613-ae89-48dc-ba3e-d0dfe437c809",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_SPARM
 	VALUES ("8210bdea-8369-4fb9-90a3-96c2230f44ce",
 	"1e4bfa68-bb78-4314-90ca-c3a1dd322805",
-	'Holds',
+	'Hold',
 	"ba5eda7a-def5-0000-0000-000000000001",
 	0,
-	'[]',
+	'',
 	"8a0d4aae-73eb-4f5f-8a4a-114b3a4f9d68",
 	'');
-INSERT INTO S_DIM
-	VALUES (0,
-	0,
-	"00000000-0000-0000-0000-000000000000",
-	"8210bdea-8369-4fb9-90a3-96c2230f44ce",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"5f80f22d-be3b-46b0-b782-35544a584058",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000",
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO S_SPARM
 	VALUES ("4c8dcbb8-e388-4f74-950f-7fb30a7bfc4d",
 	"1e4bfa68-bb78-4314-90ca-c3a1dd322805",

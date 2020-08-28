@@ -412,7 +412,7 @@ INSERT INTO SPR_PS
 	VALUES ("f8de3ba4-c757-43e6-9493-246185227011",
 	'SubmitItemHolds',
 	'',
-	'::UnmarshallitemHolds( Dept:param.Department, IDs:param.EmployeeID, Labels:param.PaymentLabel, Holds:param.HoldStatus );
+	'::UnmarshallitemHold( Dept:param.Department, ID:param.EmployeeID, Label:param.PaymentLabel, Hold:param.HoldStatus );
 ',
 	1,
 	0);
@@ -465,7 +465,7 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("6caf6b8c-d33e-471f-b6ca-ee9e88c3ecee",
-	'Payroll',
+	'PayrollData',
 	'',
 	'',
 	1,
@@ -474,7 +474,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'Payroll',
+	'PayrollData',
 	'',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
@@ -563,6 +563,55 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Accepted',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("f9413599-a85d-4909-9ad3-b44281dc4af2",
+	"79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("f9413599-a85d-4909-9ad3-b44281dc4af2",
+	'PayrollSent',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayrollSent',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("8185cb14-1495-4f74-aba2-96daf97f3cbf",
+	"4977673c-bec5-4608-b2c5-3676282e237e",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("8185cb14-1495-4f74-aba2-96daf97f3cbf",
+	'UpdatesSent',
+	'',
+	'select any dept from instances of Department
+ where ( selected.Name == param.Department );
+if ( empty dept )
+  LOG::LogFailure( message:"Department not found when updating payroll review status" );
+  return;
+end if;
+select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+if ( empty payroll )
+  LOG::LogFailure( message:"Payroll not found when updating payroll review status" );
+  return;
+end if;
+
+generate Payroll7:Reviewed() to payroll; 	                                      
+',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("4977673c-bec5-4608-b2c5-3676282e237e",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'UpdatesSent',
 	'',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY

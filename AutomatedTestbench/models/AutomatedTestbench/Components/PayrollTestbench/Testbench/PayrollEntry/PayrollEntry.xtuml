@@ -14,23 +14,16 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'index = 1;
-IDs[index] = 0;
-Labels[index] = "";
-Holds[index] = False;
-Dept = "";
-select many entries from instances of PayrollEntry
+	'select many entries from instances of PayrollEntry
  where selected.Edited;
+if ( not_empty entries )
 for each entry in entries
-  	IDs[index] = entry.EmployeeID;
-  	Labels[index] = entry.Label;
-  	Holds[index] = entry.Hold;
-  	Dept = entry.DeptName;
+  send TESTAPP::SubmitItemHold( Department:entry.DeptName, EmployeeID:entry.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
 end for;
-send TESTAPP::SubmitItemHolds( Department: Dept, EmployeeID:IDs, PaymentLabel:Labels, HoldStatus:Holds );
+select any entry from instances of PayrollEntry;
 
-  
-',
+send TESTAPP::UpdatesSent( Department:entry.DeptName );
+end if;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

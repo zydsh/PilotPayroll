@@ -24,8 +24,8 @@ ff.hours = param.hours;
 
 create object instance stimulus of Stimulus;
 relate stimulus to ff across R3;
-stimulus.AddToTest( assigned_seq_id:param.seq );
-return stimulus.assigned_stm_id;
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
 ',
 	1,
 	'',
@@ -34,8 +34,8 @@ return stimulus.assigned_stm_id;
 INSERT INTO O_TPARM
 	VALUES ("b5c90e5e-8215-4e4b-875e-2ed7f15e0cf7",
 	"82ff6d7f-0e77-438e-a86f-7f308737e7b1",
-	'seq',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",

@@ -15,71 +15,16 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.assigned_bucket_id, bucketLabel:"Payroll_Bucket_1" );
-send TESTSEQ::SetTestBucketResolution( bucketId:bucket.assigned_bucket_id, 
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"Payroll_Bucket_1" );
+send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, 
                                        resolution:timerResolution::second );
 
 // Use Case UC06
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC06" );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = FastForward::Create( seq:seq1, days:13, hours:11 );
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC06" );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC06", seqLabel:"seq1" );
+stId = FastForward::Create( seqLabel:"seq1", days:13, hours:11 );
 ::InsertDelay( stimulus:stId, duration:2 );
 GetNotification::CreatePolling( stimulus:stId, codematch:"UC06", pollInterval:100, timeLimit:1000 );
-
-// Use Case UC05
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC05" );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = FastForward::Create( seq:seq1, days:1, hours:1 );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"UC05_a", pollInterval:100, timeLimit:1000 );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"UC05_b", pollInterval:100, timeLimit:1000 );
-
-
-// Use Case UC03
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC03" );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = RequestPayroll::Create( seq:seq1, dept:"IT", holds:False );
-::InsertDelay( stimulus:stId, duration:2 );
-ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:100, timeLimit:1000 );
-::InsertDelay( stimulus:stId, duration:2 );
-stId = PayrollStatusUpdate::Create( seq:seq1, dept:"IT", requestedstatus:"" );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Holds", pollInterval:100, timeLimit:1000 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Reviewed", pollInterval:100, timeLimit:1000 );
-
-// Use Case UC07
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC07" );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = RequestPayroll::Create( seq:seq1, dept:"IT", holds:True );
-::InsertDelay( stimulus:stId, duration:2 );
-ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"clear", pollInterval:100, timeLimit:1000 );
-::InsertDelay( stimulus:stId, duration:2 );
-stId = PayrollStatusUpdate::Create( seq:seq1, dept:"IT", requestedstatus:"" );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Noholds", pollInterval:100, timeLimit:1000 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Reviewed", pollInterval:100, timeLimit:1000 );
-
-// Use Case UC04
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC04" );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = RequestPayroll::Create( seq:seq1, dept:"IT", holds:False );
-::InsertDelay( stimulus:stId, duration:2 );
-ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"", pollInterval:100, timeLimit:1000 );
-ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"", pollInterval:100, timeLimit:1000 );
-::InsertDelay( stimulus:stId, duration:2 );
-stId = PayrollStatusUpdate::Create( seq:seq1, dept:"IT", requestedstatus:"Approve" );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"UC04", pollInterval:100, timeLimit:1000 );
-
-// Use Case UC09
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"UC09" );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq1" );
-stId = RequestPayroll::Create( seq:seq1, dept:"IT", holds:False );
-::InsertDelay( stimulus:stId, duration:2 );
-stId = PayrollStatusUpdate::Create( seq:seq1, dept:"IT", requestedstatus:"FinalSubmit" );
-::InsertDelay( stimulus:stId, duration:2 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Submitted", pollInterval:100, timeLimit:1000 );
 
 bucket.Initialized();
 ',

@@ -344,7 +344,7 @@ INSERT INTO SPR_RS
 	'InjectStimulus',
 	'Invoke injection of the identified stimulus in the test bench.',
 	'select any stim from instances of Stimulus
-  where ( selected.assigned_stm_id == param.stimulusId );
+  where ( selected.stimulusId == param.stimulusId );
 stim.Inject();
 ',
 	1,
@@ -365,7 +365,7 @@ INSERT INTO SPR_RS
 	'TriggerObservation',
 	'Invoke evaluation of the identified observation in the test bench.',
 	'select any obs from instances of Observation
-  where ( selected.assigned_obs_id == param.observationId );
+  where ( selected.observationId == param.observationId );
 obs.Observe();',
 	1,
 	0);
@@ -404,11 +404,11 @@ INSERT INTO SPR_RS
 	'Testbench receives notification that a new test case has been selected to run.
 Initialize any pre-conditions and respond when ready for stimulus injection.',
 	'select any cond from instances of PreConditions
- where ( selected.conditions_id == param.condId );
+ where ( selected.conditionsCaseLabel == param.caseLabel );
 if ( not_empty cond )
   cond.Establish();
 end if;
-send TESTSEQ::TestCaseInitialized( caseId:param.condId );
+send TESTSEQ::TestCaseInitialized( caseLabel:param.caseLabel );
 ',
 	1,
 	0);
@@ -563,7 +563,7 @@ INSERT INTO SPR_RS
 	'InitializeBucket',
 	'Signals a test bucket to instantiate its test case sequences.',
 	'select any tb from instances of TestBucket
-  where ( selected.assigned_bucket_id == param.bucketId );
+  where ( selected.bucketId == param.bucketId );
 generate TestBucket1:Execute_pvt to tb;
 ',
 	1,
@@ -620,7 +620,7 @@ INSERT INTO SPR_RS
 	'DeletePreCondition',
 	'Signals the testbench that the identified precodition instance can be disposed of.',
 	'select any cond from instances of PreConditions
-  where ( selected.conditions_id == param.caseId );
+  where ( selected.conditionsCaseLabel == param.caseLabel );
 if ( not_empty cond )
   delete object instance cond;
 end if;',
@@ -642,7 +642,7 @@ INSERT INTO SPR_RS
 	'DeleteStimulus',
 	'Signals the testbench that the identified stimulus sub/supertype can be disposed of.',
 	'select any stm from instances of Stimulus
-  where ( selected.assigned_stm_id == param.stimulusId );
+  where ( selected.stimulusId == param.stimulusId );
 stm.Delete();',
 	1,
 	0);
@@ -662,7 +662,7 @@ INSERT INTO SPR_RS
 	'DeleteTestBucket',
 	'Signals the testbench that the identified test bucket sub/supertype can be disposed of.',
 	'select any bucket from instances of TestBucket
-  where ( selected.assigned_bucket_id == param.bucketId );
+  where ( selected.bucketId == param.bucketId );
 bucket.Delete();',
 	1,
 	0);
@@ -774,7 +774,7 @@ INSERT INTO SPR_RS
 	'DeleteObservation',
 	'Signals the testbench that the identified observation sub/supertype can be disposed of.',
 	'select any obs from instances of Observation
-  where ( selected.assigned_obs_id == param.observationId );
+  where ( selected.observationId == param.observationId );
 obs.Delete();',
 	1,
 	0);
@@ -822,92 +822,6 @@ INSERT INTO C_EP_PROXY
 	'',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
-	VALUES ("fe828df6-93d7-40d2-82c0-95a7e3b3de73",
-	"a5e756a0-e7cd-4688-b091-3b765a277dfe",
-	"8343e62e-053d-47d5-9e0f-752dd12b137a");
-INSERT INTO SPR_RO
-	VALUES ("fe828df6-93d7-40d2-82c0-95a7e3b3de73",
-	'AddTestCase',
-	'Add a representative of a test case to a test bucket in the Test sequencer service.
-Test cases in a given test bucket will be be executed in the order they are added.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("a5e756a0-e7cd-4688-b091-3b765a277dfe",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AddTestCase',
-	'Add a representative of a test case to a test bucket in the Test sequencer service.
-Test cases in a given test bucket will be be executed in the order they are added.',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("82b552b8-3f6b-489a-b3c4-da2ce9296420",
-	"78b0b631-2e04-43c4-ae45-6d1b1b77c270",
-	"8343e62e-053d-47d5-9e0f-752dd12b137a");
-INSERT INTO SPR_RO
-	VALUES ("82b552b8-3f6b-489a-b3c4-da2ce9296420",
-	'AppendStimulus',
-	'Add a stimulus to the chain of stimuli in a given sequence.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("78b0b631-2e04-43c4-ae45-6d1b1b77c270",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AppendStimulus',
-	'Add a stimulus to the chain of stimuli in a given sequence.',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("8ac24e62-b580-4cf0-b72b-449b76dcfe52",
-	"7c81b3c6-29a0-4c5d-a248-f17d2dee1bae",
-	"8343e62e-053d-47d5-9e0f-752dd12b137a");
-INSERT INTO SPR_RO
-	VALUES ("8ac24e62-b580-4cf0-b72b-449b76dcfe52",
-	'AppendObservation',
-	'Add an observation to the chain of observations that will execute after a stimulus injection.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("7c81b3c6-29a0-4c5d-a248-f17d2dee1bae",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AppendObservation',
-	'Add an observation to the chain of observations that will execute after a stimulus injection.',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("f0e947b0-89d2-4c82-ba4d-0d78cac6458f",
-	"901a4c37-8864-4074-b742-6b4b8abd2937",
-	"8343e62e-053d-47d5-9e0f-752dd12b137a");
-INSERT INTO SPR_RO
-	VALUES ("f0e947b0-89d2-4c82-ba4d-0d78cac6458f",
-	'AttachStimulusSequence',
-	'Attach a separate instance of a sequence to a test case.
-Each sequence may order one or more instances of stimulus, each possibly followed by observations.
-Stimuli in each sequence are ordered, but independent of other sequences in the test case.
-All sequences are activated at test case initialization; later attachments are ignored.
-
-
-',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("901a4c37-8864-4074-b742-6b4b8abd2937",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AttachStimulusSequence',
-	'Attach a separate instance of a sequence to a test case.
-Each sequence may order one or more instances of stimulus, each possibly followed by observations.
-Stimuli in each sequence are ordered, but independent of other sequences in the test case.
-All sequences are activated at test case initialization; later attachments are ignored.
-
-
-',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
 	VALUES ("26536c40-4e5d-444f-8565-1fd362c133c3",
 	"aa6fda4c-6b41-41a1-8919-4495bdc90167",
 	"8343e62e-053d-47d5-9e0f-752dd12b137a");
@@ -938,13 +852,121 @@ INSERT INTO SPR_RS
 	'AddBucket',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("3ab9f7fe-b572-4c34-98f5-076122029206",
 	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	-1,
 	'AddBucket',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("98f00777-eb48-440e-b9c7-11e33fca10a4",
+	"338f43fc-f8fd-4707-98a1-be43d1ec3394",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("98f00777-eb48-440e-b9c7-11e33fca10a4",
+	'CreateTestCase',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("338f43fc-f8fd-4707-98a1-be43d1ec3394",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'CreateTestCase',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6671ca66-a4da-4b10-a716-788719117d5f",
+	"63e52cd1-3ec8-4352-ade8-ba438a671bd3",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("6671ca66-a4da-4b10-a716-788719117d5f",
+	'CreateStimulusSequence',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("63e52cd1-3ec8-4352-ade8-ba438a671bd3",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'CreateStimulusSequence',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("33a51a71-411e-4ddf-96ed-9753ae5efca0",
+	"ccdf5756-d7fc-4bb0-9a09-adbbe404ef3d",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("33a51a71-411e-4ddf-96ed-9753ae5efca0",
+	'AddStimulus',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ccdf5756-d7fc-4bb0-9a09-adbbe404ef3d",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddStimulus',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c8a5bd1b-9983-4a04-81f2-a9d18a7a1e6c",
+	"db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("c8a5bd1b-9983-4a04-81f2-a9d18a7a1e6c",
+	'AddObservation',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddObservation',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("fb9e840f-56c9-4b4b-baa8-2867c6d66710",
+	"80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("fb9e840f-56c9-4b4b-baa8-2867c6d66710",
+	'RequestIntervalTimerValue',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'RequestIntervalTimerValue',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("81bbfb7f-b53e-4f83-8f78-c039e93fcc69",
+	"7c394270-a8ad-44af-a4ad-8601e7eebc96",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("81bbfb7f-b53e-4f83-8f78-c039e93fcc69",
+	'IntervalTimerValue',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("7c394270-a8ad-44af-a4ad-8601e7eebc96",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'IntervalTimerValue',
 	'',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY

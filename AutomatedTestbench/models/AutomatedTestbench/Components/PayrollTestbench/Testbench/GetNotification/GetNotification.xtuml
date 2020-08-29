@@ -25,13 +25,13 @@ INSERT INTO O_TFR
 	0,
 	'create object instance verify of GetNotification;
 
-create object instance observation of Observation;
-relate verify to observation across R4;
+create object instance obs of Observation;
+relate verify to obs across R4;
 verify.code = param.codematch;
 
-observation.AppendPolling( stimulus:param.stimulus,
-                           pollInterval:param.pollInterval, 
-                           timeLimit:param.timeLimit );
+obs.AppendPolling( stimulus:param.stimulus,
+                   pollInterval:param.pollInterval, 
+                   timeLimit:param.timeLimit );
 ',
 	1,
 	'',

@@ -15,19 +15,19 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'select one bucket related by self->TestBucket[R7];
-send TESTSEQ::NameTestBucket( bucketId:bucket.assigned_bucket_id, bucketLabel:"Bucket_3" );
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"Bucket_3" );
 // demonstrate time-outs: both Observation and Test Case.
 
 // first, demonstrate observation time out: ObservationY with False cannot succeed.
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"testB3_1" );
-send TESTSEQ::SetTestCaseDurationLimit( caseId:tc, durationLimit:50 );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_a" );
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"testB3_1" );
+send TESTSEQ::SetTestCaseDurationLimit( caseLabel:"testB3_1" , durationLimit:50 );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"testB3_1", seqLabel:"seq_a" );
 //stId = StimulusA::Create( seq:seq1, value:15 );
 //ObservationY::CreatePolling( stimulus:stId, expectedC:False, pollInterval:2, timeLimit:30 );
 
-send tc = TESTSEQ::AddTestCase( bucketId:bucket.assigned_bucket_id, caseLabel:"testB3_2" );
-send TESTSEQ::SetTestCaseDurationLimit( caseId:tc, durationLimit:20 );
-send seq1 = TESTSEQ::AttachStimulusSequence( caseId:tc, seqLabel:"seq_a" );
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"testB3_2" );
+send TESTSEQ::SetTestCaseDurationLimit( caseLabel:"testB3_2", durationLimit:20 );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"testB3_2", seqLabel:"seq_a" );
 //stId = StimulusA::Create( seq:seq1, value:15 );
 //ObservationY::CreatePolling( stimulus:stId, expectedC:False, pollInterval:2, timeLimit:0 );
 

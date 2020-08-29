@@ -21,22 +21,14 @@ psu.newstatus = param.requestedstatus;
 create object instance stimulus of Stimulus;
 relate stimulus to psu across R3;
 
-stimulus.AddToTest( assigned_seq_id:param.seq );
-return stimulus.assigned_stm_id;
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
+
 ',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
-INSERT INTO O_TPARM
-	VALUES ("d20c1e2e-4d62-48fc-b0d6-4c5a32dcc895",
-	"990f9b1c-4a19-411a-bf44-f6612a67845a",
-	'seq',
-	"ba5eda7a-def5-0000-0000-000000000005",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
 INSERT INTO O_TPARM
 	VALUES ("2784e1ff-dae6-4193-8a92-7eb9b5be83ba",
 	"990f9b1c-4a19-411a-bf44-f6612a67845a",
@@ -44,7 +36,7 @@ INSERT INTO O_TPARM
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
-	"d20c1e2e-4d62-48fc-b0d6-4c5a32dcc895",
+	"fdbdb894-0e58-4d73-baa1-fd82f5a4a3f3",
 	'');
 INSERT INTO O_TPARM
 	VALUES ("b91abd48-13b5-4194-a538-01552ba5673a",
@@ -54,6 +46,15 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"2784e1ff-dae6-4193-8a92-7eb9b5be83ba",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("fdbdb894-0e58-4d73-baa1-fd82f5a4a3f3",
+	"990f9b1c-4a19-411a-bf44-f6612a67845a",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO O_NBATTR
 	VALUES ("2accec38-c4bc-48f8-b62c-4022749be4da",

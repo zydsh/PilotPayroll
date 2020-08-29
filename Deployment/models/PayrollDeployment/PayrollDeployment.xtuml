@@ -2,7 +2,7 @@
 
 INSERT INTO S_SYS
 	VALUES ("9062a18c-bbbf-4475-b434-6c8318fc86b1",
-	'Deployment',
+	'PayrollDeployment',
 	1);
 INSERT INTO GD_MD
 	VALUES ("a5923dda-1c70-4a84-a8a0-bd504e882a74",
@@ -22,7 +22,7 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'',
-	'Deployment');
+	'PayrollDeployment');
 INSERT INTO GD_GE
 	VALUES ("bc6c8aa7-544d-4d34-9110-6289dd698443",
 	"a5923dda-1c70-4a84-a8a0-bd504e882a74",

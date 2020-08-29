@@ -3,17 +3,17 @@ package deployment;
 //Spring requires a POJ class for each message.
 public class SubmitItemHoldMsg {
 	private String department;
-	private String employeeID;
+	private String employeeId;
 	private String paymentLabel;
 	private String holdStatus;
 	public SubmitItemHoldMsg() {
 	}
 	public SubmitItemHoldMsg( String department, 
-	                        String employeeID, 
+	                        String employeeId, 
 							String paymentLabel, 
 							String holdStatus ) {
 		this.department = department;
-		this.employeeID = employeeID;
+		this.employeeId = employeeId;
 		this.paymentLabel = paymentLabel;
 		this.holdStatus = holdStatus;
 	}
@@ -23,11 +23,11 @@ public class SubmitItemHoldMsg {
 	public String getDepartment() {
 		return department;
 	}
-	public void setEmployeeID( String employeeID ) {
-		this.employeeID = employeeID;
+	public void setEmployeeId( String employeeId ) {
+		this.employeeId = employeeId;
 	}
-	public String getEmployeeID() {
-		return employeeID;
+	public String getEmployeeId() {
+		return employeeId;
 	}
 	public void setPaymentLabel( String paymentLabel ) {
 		this.paymentLabel = paymentLabel;

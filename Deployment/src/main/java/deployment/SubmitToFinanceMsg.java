@@ -3,9 +3,9 @@ package deployment;
 //Spring requires a POJ class for each message.
 public class SubmitToFinanceMsg {
 	private String department;
-	public SubmitToFinance() {
+	public SubmitToFinanceMsg() {
 	}
-	public SubmitToFinance( String department ) {
+	public SubmitToFinanceMsg( String department ) {
 		this.department = department;
 	}
 	public void setDepartment( String department ) {

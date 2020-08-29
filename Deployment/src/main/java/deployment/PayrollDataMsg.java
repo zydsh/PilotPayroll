@@ -22,7 +22,7 @@ public class PayrollDataMsg {
                            String holdStatus ) {
 		this.messageName = messageName;
 		this.department = department;
-		this.employeeID = employeeId;
+		this.employeeId = employeeId;
 		this.employeeFirstName = employeeFirstName;
 		this.employeeLastName = employeeLastName;
 		this.paymentLabel = paymentLabel;
@@ -50,13 +50,13 @@ public class PayrollDataMsg {
 	public void setEmployeeFirstName( String employeeFirstName ) {
 		this.employeeFirstName = employeeFirstName;
 	}
-	public void getEmployeeFirstName() {
+	public String getEmployeeFirstName() {
 		return employeeFirstName;
 	}
 	public void setEmployeeLastName( String employeeLastName ) {
 		this.employeeLastName = employeeLastName;
 	}
-	public void getEmployeeLastName() {
+	public String getEmployeeLastName() {
 		return employeeLastName;
 	}
 	public void setPaymentLabel( String paymentLabel ) {

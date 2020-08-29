@@ -46,6 +46,11 @@ public class HRuser extends Component<HRuser> {
       	} catch ( Exception e ) {}
     }
 
+    public void PayrollSent( final String p_Department ) throws XtumlException {
+       	try {
+            HRuserMsgController.Singleton().SendPayrollSentMsg( p_Department );
+      	} catch ( Exception e ) {}
+    }
 
 
     // relates and unrelates

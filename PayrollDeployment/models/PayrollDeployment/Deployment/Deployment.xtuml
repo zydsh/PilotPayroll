@@ -25,14 +25,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'Deployment::Deployment');
+	'PayrollDeployment::Deployment');
 INSERT INTO GD_GE
 	VALUES ("38dceb34-f0a9-48ef-a2f3-8a0bf1fa488a",
 	"373dd7d7-0512-4efb-92d6-fe7d3c717467",
 	"49b38bd8-7693-4d9e-9033-d8df7f54645c",
 	100,
 	0,
-	'Deployment::Deployment::PilotPayroll::Components::PayrollMgmt');
+	'PayrollDeployment::Deployment::PilotPayroll::Components::PayrollMgmt');
 INSERT INTO GD_SHP
 	VALUES ("38dceb34-f0a9-48ef-a2f3-8a0bf1fa488a");
 INSERT INTO GD_NCS
@@ -61,7 +61,7 @@ INSERT INTO GD_GE
 	"3496e8c5-baf6-4d57-b539-127140d4a0a8",
 	100,
 	0,
-	'Deployment::Deployment::HRuser::Components::HRuser');
+	'PayrollDeployment::Deployment::HRuser::Components::HRuser');
 INSERT INTO GD_SHP
 	VALUES ("93c53f06-055d-4168-a2d0-931f470d0b45");
 INSERT INTO GD_NCS
@@ -90,7 +90,7 @@ INSERT INTO GD_GE
 	"5b47503c-1bf9-4ab4-972d-4d62c36a27e9",
 	105,
 	0,
-	'Deployment::Deployment::PilotPayroll::Components::PayrollMgmt::USER::HumanResources');
+	'PayrollDeployment::Deployment::PilotPayroll::Components::PayrollMgmt::USER::HumanResources');
 INSERT INTO GD_CON
 	VALUES ("18e94488-d632-42dc-983c-5dcbcc52b5de",
 	"00000000-0000-0000-0000-000000000000");
@@ -198,7 +198,7 @@ INSERT INTO GD_GE
 	"4d5f63cd-b6a0-4f74-b533-63bf6d7c5106",
 	106,
 	0,
-	'Deployment::Deployment::HRuser::Components::HRuser::Port1::HumanResources');
+	'PayrollDeployment::Deployment::HRuser::Components::HRuser::Payroll::HumanResources');
 INSERT INTO GD_CON
 	VALUES ("df6ec33e-8216-48bc-bd48-6719eeace61b",
 	"00000000-0000-0000-0000-000000000000");
@@ -369,7 +369,7 @@ INSERT INTO CL_IC
 INSERT INTO CL_POR
 	VALUES ("3496e8c5-baf6-4d57-b539-127140d4a0a8",
 	"b8464efc-ed7e-4be4-bb54-82e3ec730f5b",
-	'Port1',
+	'Payroll',
 	"e8cff9a6-44e4-4786-a359-1d88f2a9861b");
 INSERT INTO CL_IIR
 	VALUES ("4d5f63cd-b6a0-4f74-b533-63bf6d7c5106",
@@ -392,7 +392,7 @@ INSERT INTO C_IR_PROXY
 INSERT INTO C_PO_PROXY
 	VALUES ("b8464efc-ed7e-4be4-bb54-82e3ec730f5b",
 	"b85aebec-ba33-486a-acde-3d7c5d4dd64d",
-	'Port1',
+	'Payroll',
 	0,
 	0,
 	'../../../../HRuser/models/HRuser/Components/HRuser/HRuser.xtuml');
@@ -418,7 +418,7 @@ INSERT INTO C_SF
 	"b9266a99-419d-4977-a5b3-f0a7f6342582",
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7",
 	'',
-	'PayrollMgmt::USER::HumanResources -o)- HRuser::Port1::HumanResources');
+	'PayrollMgmt::USER::HumanResources -o)- HRuser::Payroll::HumanResources');
 INSERT INTO PE_PE
 	VALUES ("0c07f81c-0b1f-4be6-988c-5257aa098064",
 	1,
@@ -430,7 +430,7 @@ INSERT INTO C_R_PROXY
 	'HumanResources',
 	'',
 	'Unnamed Interface',
-	'HRuser::Port1::HumanResources',
+	'HRuser::Payroll::HumanResources',
 	'../../../../HRuser/models/HRuser/Components/HRuser/HRuser.xtuml');
 INSERT INTO C_P_PROXY
 	VALUES ("8673d1a5-e3c1-4890-a8c6-d82bc89731e7",
@@ -447,6 +447,6 @@ INSERT INTO PE_PE
 	7);
 INSERT INTO S_SYS_PROXY
 	VALUES ("9062a18c-bbbf-4475-b434-6c8318fc86b1",
-	'Deployment',
+	'PayrollDeployment',
 	1,
-	'../Deployment.xtuml');
+	'../PayrollDeployment.xtuml');

@@ -3,10 +3,10 @@ package deployment;
 //Spring requires a POJ class for each message.
 public class RetrievePayrollForReviewMsg {
 	private String department;
-	private String holdsOnly
-	public RetrievePayrollForReview() {
+	private String holdsOnly;
+	public RetrievePayrollForReviewMsg() {
 	}
-	public RetrievePayrollForReview( String department, String holdsOnly ) {
+	public RetrievePayrollForReviewMsg( String department, String holdsOnly ) {
 		this.department = department;
 		this.holdsOnly = holdsOnly;
 	}

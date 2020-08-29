@@ -2,6 +2,7 @@ package deployment;
 
 
 import deployment.hruser.HRuserPayroll;
+import deployment.HRuserMsgController;
 
 import io.ciera.runtime.summit.application.IApplication;
 import io.ciera.runtime.summit.application.IRunContext;
@@ -35,13 +36,13 @@ public class HRuser extends Component<HRuser> {
     // domain functions
     public void Notification( final String p_Code,  final String p_Message ) throws XtumlException {
     	try {
-            HRuser.Singleton().SendNotificationMsg( p_Code, p_Message );
+            HRuserMsgController.Singleton().SendNotificationMsg( p_Code, p_Message );
       	} catch ( Exception e ) {}
     }
 
     public void PayrollData( final String p_Department, final int p_EmployeeID, final String p_EmployeeFirstName, final String p_EmployeeLastName,  final String p_PaymentLabel,  final double p_PaymentAmount,  final boolean p_HoldStatus ) throws XtumlException {
     	try {
-            HRuser.Singleton().SendPayrollDataMsg( p_Department, p_EmployeeID, p_EmployeeFirstName, p_EmployeeLastName, p_PaymentLabel, p_PaymentAmount, p_HoldStatus );
+            HRuserMsgController.Singleton().SendPayrollDataMsg( p_Department, p_EmployeeID, p_EmployeeFirstName, p_EmployeeLastName, p_PaymentLabel, p_PaymentAmount, p_HoldStatus );
       	} catch ( Exception e ) {}
     }
 

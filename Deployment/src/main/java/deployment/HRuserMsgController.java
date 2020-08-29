@@ -58,7 +58,7 @@ public class HRuserMsgController {
         this.template = template;
 	}
 	
-	public static HRusereMsgController Singleton() {
+	public static HRuserMsgController Singleton() {
 		return singleton;
 	}
 	
@@ -70,7 +70,7 @@ public class HRuserMsgController {
     public void RetrievePayrollForReview( RetrievePayrollForReviewMsg message ) throws Exception {
     	try {
       	  HRuser.Singleton().Payroll().RetrievePayrollForReview( message.getDepartment(), 
-      			                                                 Boolean.parseBoolean( message.getHoldStatus() ) );
+      			                                                 Boolean.parseBoolean( message.getHoldsOnly() ) );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in RetrievePayrollForReview()\n", e );    			
@@ -80,7 +80,7 @@ public class HRuserMsgController {
     @MessageMapping( "/SubmitPayrollApproval" )
     public void SubmitPayrollApproval( SubmitPayrollApprovalMsg message ) throws Exception {
     	try {
-      	  HRuser.Singleton().Payroll().SubmitPayrollApproval( message.getDepartment() ) );
+      	  HRuser.Singleton().Payroll().SubmitPayrollApproval( message.getDepartment() );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in SubmitPayrollApproval()\n", e );    			
@@ -90,7 +90,7 @@ public class HRuserMsgController {
     @MessageMapping( "/SubmitToFinance" )
     public void SubmitToFinance( SubmitToFinanceMsg message ) throws Exception {
     	try {
-      	  HRuser.Singleton().Payroll().SubmitToFinance( message.getDepartment() ) );
+      	  HRuser.Singleton().Payroll().SubmitToFinance( message.getDepartment() );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in SubmitToFinance()\n", e );    			
@@ -100,7 +100,7 @@ public class HRuserMsgController {
     @MessageMapping( "/UpdatesSent" )
     public void UpdatesSent( UpdatesSentMsg message ) throws Exception {
     	try {
-      	  HRuser.Singleton().Payroll().UpdatesSent( message.getDepartment() ) );
+      	  HRuser.Singleton().Payroll().UpdatesSent( message.getDepartment() );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in UpdatesSent()\n", e );    			
@@ -111,7 +111,7 @@ public class HRuserMsgController {
     public void SubmitItemHold( SubmitItemHoldMsg message ) throws Exception {
     	try {
       	  HRuser.Singleton().Payroll().SubmitItemHold( message.getDepartment(),
-      			                                       Integer.parseInt( message.getEmployeeId(),
+      			                                       Integer.parseInt( message.getEmployeeId() ),
       			                                       message.getPaymentLabel(),
       			                                       Boolean.parseBoolean( message.getHoldStatus() ) );
       	}
@@ -125,13 +125,19 @@ public class HRuserMsgController {
     // Incoming (to this component) messages.
     // The following methods forward incoming messages to the (JavaScript) client which
     // subscribes to a specific message-broker topic.  
-    public void SendPayrollSent ( String Department ) throws Exception {
+    public void SendPayrollSentMsg( String Department ) throws Exception {
     	PayrollSentMsg msg = new PayrollSentMsg( "PayrollSent", Department );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendPayrollData ( String Department, 
+    public void SendNotificationMsg( String Code, String Message ) throws Exception {
+    	NotificationMsg msg = new NotificationMsg( "Notification", Code, Message );
+        String topic = "/topic/HRuser/";
+        this.template.convertAndSend( topic, msg );
+    }
+    
+    public void SendPayrollDataMsg( String Department, 
     		                      Integer EmployeeId, 
     		                      String EmployeeFirstName,
     		                      String EmployeeLastName,

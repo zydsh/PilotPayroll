@@ -822,26 +822,6 @@ INSERT INTO C_EP_PROXY
 	'',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
-	VALUES ("48f58dd0-d0e4-4ff5-b418-748b7bdb2885",
-	"55a0e619-9899-42ff-b4c4-f2e53dce5bfa",
-	"8343e62e-053d-47d5-9e0f-752dd12b137a");
-INSERT INTO SPR_RO
-	VALUES ("48f58dd0-d0e4-4ff5-b418-748b7bdb2885",
-	'AddTestBucket',
-	'Create a representative of a test bucket in the Test sequencer service.
-A test bucket maintains an ordering of test cases.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("55a0e619-9899-42ff-b4c4-f2e53dce5bfa",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'AddTestBucket',
-	'Create a representative of a test bucket in the Test sequencer service.
-A test bucket maintains an ordering of test cases.',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
 	VALUES ("fe828df6-93d7-40d2-82c0-95a7e3b3de73",
 	"a5e756a0-e7cd-4688-b091-3b765a277dfe",
 	"8343e62e-053d-47d5-9e0f-752dd12b137a");
@@ -949,6 +929,24 @@ INSERT INTO C_EP_PROXY
 Each such sequence has an associated interval timer.
 An observation invocation can request the value of the interval timer for its sequence.',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a856b3c9-7402-4ba4-a978-488776b23cc4",
+	"3ab9f7fe-b572-4c34-98f5-076122029206",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a");
+INSERT INTO SPR_RS
+	VALUES ("a856b3c9-7402-4ba4-a978-488776b23cc4",
+	'AddBucket',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("3ab9f7fe-b572-4c34-98f5-076122029206",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	-1,
+	'AddBucket',
+	'',
+	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("eff7aa83-70b9-46a6-bfc0-08d66d36431e",
 	"00000000-0000-0000-0000-000000000000",
@@ -979,7 +977,9 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("ea7fb0db-9df3-4e57-b239-fce278c4ed20",
 	'RetrievePayrollForReview',
-	'',
+	'Request from client to get department payroll data for review.
+Some reviews request only those items with on-hold status.
+',
 	'',
 	1,
 	0);
@@ -988,7 +988,9 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'RetrievePayrollForReview',
-	'',
+	'Request from client to get department payroll data for review.
+Some reviews request only those items with on-hold status.
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("4440bf0d-663b-4b01-8200-caac74d10bed",
@@ -996,8 +998,10 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("4440bf0d-663b-4b01-8200-caac74d10bed",
-	'SubmitItemUpdates',
-	'',
+	'SubmitItemUpdate',
+	'Update a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -1005,8 +1009,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("4d9c995d-41df-4210-b324-bacfc13385c6",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitItemUpdates',
-	'',
+	'SubmitItemUpdate',
+	'Update a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("84c1fd8b-566d-448e-b5f0-77315d14240a",
@@ -1014,8 +1020,10 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("84c1fd8b-566d-448e-b5f0-77315d14240a",
-	'SubmitItemApprovals',
-	'',
+	'SubmitItemApproval',
+	'Approve a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -1023,8 +1031,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("629926c0-e851-45a1-a84c-1776a2a7cba6",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitItemApprovals',
-	'',
+	'SubmitItemApproval',
+	'Approve a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("5162e3b1-57f7-41f9-af4b-4c657750c5c6",
@@ -1032,8 +1042,10 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("5162e3b1-57f7-41f9-af4b-4c657750c5c6",
-	'SubmitItemHolds',
-	'',
+	'SubmitItemHold',
+	'Update the on-hold status of a payment element for an employee on a department payroll.
+
+',
 	'',
 	1,
 	0);
@@ -1041,8 +1053,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("bb2c26a6-cd84-4b87-8bb5-ed5924eab856",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitItemHolds',
-	'',
+	'SubmitItemHold',
+	'Update the on-hold status of a payment element for an employee on a department payroll.
+
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("8cb5f6c0-749a-40ed-90b5-10cc2650a64f",
@@ -1050,8 +1064,10 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("8cb5f6c0-749a-40ed-90b5-10cc2650a64f",
-	'SubmitPayHolds',
-	'',
+	'SubmitPayHold',
+	'Client submits an on-hold status for the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -1059,8 +1075,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("f143ad52-738b-43d7-a3a2-d79376361797",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitPayHolds',
-	'',
+	'SubmitPayHold',
+	'Client submits an on-hold status for the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("2be34b3d-66d7-4f34-90e1-6423c01fc6aa",
@@ -1068,8 +1086,10 @@ INSERT INTO SPR_REP
 	"1537511c-fd0a-4f97-a1ab-fd6b6a3ce9c7");
 INSERT INTO SPR_RS
 	VALUES ("2be34b3d-66d7-4f34-90e1-6423c01fc6aa",
-	'SubmitPayApprovals',
-	'',
+	'SubmitPayApproval',
+	'Signal approval of the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -1077,8 +1097,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("5ddc2f40-c598-4724-b9e2-e763f4901ac4",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitPayApprovals',
-	'',
+	'SubmitPayApproval',
+	'Signal approval of the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("b4f90f2f-7db5-4003-92c1-5bb08c931a35",
@@ -1087,7 +1109,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("b4f90f2f-7db5-4003-92c1-5bb08c931a35",
 	'PayrollData',
-	'',
+	'Data for single payroll payment element for an employee in a department.',
 	'LOG::LogInfo( message:"retrieving employee data in Testbench");
 create object instance entry of PayrollEntry;
 entry.DeptName = param.Department;
@@ -1104,7 +1126,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayrollData',
-	'',
+	'Data for single payroll payment element for an employee in a department.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("0c2fddcc-17f0-43ca-ac28-4a50c8294c82",
@@ -1113,7 +1135,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("0c2fddcc-17f0-43ca-ac28-4a50c8294c82",
 	'Notification',
-	'',
+	'Notify a client of some occurrence.',
 	'create object instance msg of ReceivedNotification;
 msg.Code = param.Code;',
 	1,
@@ -1123,7 +1145,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Notification',
-	'',
+	'Notify a client of some occurrence.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("a84e8b17-2b9b-46c2-8135-d900ae56b508",
@@ -1132,7 +1154,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("a84e8b17-2b9b-46c2-8135-d900ae56b508",
 	'SubmitPayrollApproval',
-	'',
+	'Signal that the payroll for a department has been approved by a client.',
 	'',
 	1,
 	0);
@@ -1141,7 +1163,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitPayrollApproval',
-	'',
+	'Signal that the payroll for a department has been approved by a client.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("dbed358c-6472-419f-8dfa-a08c6a8d0068",
@@ -1150,7 +1172,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("dbed358c-6472-419f-8dfa-a08c6a8d0068",
 	'SubmitToFinance',
-	'',
+	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
 	'',
 	1,
 	0);
@@ -1159,7 +1181,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitToFinance',
-	'',
+	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("5d56f9bf-4a46-4873-a33a-8d16ffd893b7",
@@ -1168,7 +1190,9 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("5d56f9bf-4a46-4873-a33a-8d16ffd893b7",
 	'Accepted',
-	'',
+	'Signal acceptance from Finance of a department payroll submitted for payment.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -1177,7 +1201,9 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Accepted',
-	'',
+	'Signal acceptance from Finance of a department payroll submitted for payment.
+Not used for preliminary Use Cases.
+',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
@@ -1186,7 +1212,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
 	'PayrollSent',
-	'',
+	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'',
 	1,
 	0);
@@ -1195,7 +1221,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayrollSent',
-	'',
+	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("5a6fab6b-7072-42f1-9cf7-38c681723694",
@@ -1204,7 +1230,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("5a6fab6b-7072-42f1-9cf7-38c681723694",
 	'UpdatesSent',
-	'',
+	'Signal that all payroll updates for a department have been submitted by client.',
 	'',
 	1,
 	0);
@@ -1213,7 +1239,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'UpdatesSent',
-	'',
+	'Signal that all payroll updates for a department have been submitted by client.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("cbed0e18-6775-4be9-b1f9-61714edc73e6",

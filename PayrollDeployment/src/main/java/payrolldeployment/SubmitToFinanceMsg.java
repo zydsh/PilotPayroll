@@ -1,11 +1,11 @@
-package deployment;
+package payrolldeployment;
 
 //Spring requires a POJ class for each message.
-public class UpdatesSentMsg {
+public class SubmitToFinanceMsg {
 	private String department;
-	public UpdatesSentMsg() {
+	public SubmitToFinanceMsg() {
 	}
-	public UpdatesSentMsg( String department ) {
+	public SubmitToFinanceMsg( String department ) {
 		this.department = department;
 	}
 	public void setDepartment( String department ) {

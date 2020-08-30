@@ -1,8 +1,8 @@
-package deployment;
+package payrolldeployment;
 
 
-import deployment.hruser.HRuserPayroll;
-import deployment.HRuserMsgController;
+import payrolldeployment.hruser.HRuserPayroll;
+import payrolldeployment.HRuserMsgController;
 
 import io.ciera.runtime.summit.application.IApplication;
 import io.ciera.runtime.summit.application.IRunContext;

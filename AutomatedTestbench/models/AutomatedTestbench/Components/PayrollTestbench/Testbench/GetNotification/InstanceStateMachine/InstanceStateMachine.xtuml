@@ -151,24 +151,24 @@ INSERT INTO SM_ACT
 	'LOG::LogInfo( message:" --- Hoping to observe notification for " + self.code );
 select one obs related by self->Observation[R4];
 
-success = False;
 select any msg from instances of ReceivedNotification
  where ( selected.Code == self.code );
 if ( not_empty msg )
-  success = True;
   delete object instance msg;
+  obs.Complete( success:True );
 else
   success = False;	// here to allow breakpoint only
 end if;
-obs.Complete( success:success );
 
+/*
 // @TODO here for expediency... really needs separate observation(stimulus?)
 // assumption: by the time notifications are being observed, payroll data is no longer need for this test case.
 
 select many entries from instances of PayrollEntry;
 for each entry in entries
   delete object instance entry;
-end for;',
+end for;
+*/',
 	'This state action is invoked polymorphically by the test sequencing service.',
 	0);
 INSERT INTO SM_MOAH

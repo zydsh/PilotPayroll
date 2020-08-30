@@ -17,12 +17,11 @@ INSERT INTO O_TFR
 	'select many entries from instances of PayrollEntry
  where selected.Edited;
 if ( not_empty entries )
-for each entry in entries
-  send TESTAPP::SubmitItemHold( Department:entry.DeptName, EmployeeID:entry.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
-end for;
-select any entry from instances of PayrollEntry;
-
-send TESTAPP::UpdatesSent( Department:entry.DeptName );
+  for each entry in entries
+    send TESTAPP::SubmitItemHold( Department:entry.DeptName, EmployeeID:entry.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
+  end for;
+  select any entry from instances of PayrollEntry;
+  send TESTAPP::UpdatesSent( Department:entry.DeptName );
 end if;',
 	1,
 	'',

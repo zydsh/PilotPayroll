@@ -148,20 +148,9 @@ INSERT INTO SM_ACT
 	VALUES ("c493fa88-4625-4f0a-8730-204428294aa7",
 	"25fc71d2-c8ee-466b-946d-3ef16faf963b",
 	1,
-	'LOG::LogInfo( message:"Observing Z - Triggered observation" );
+	'LOG::LogInfo( message:"Triggered observation" );
 select one obs related by self->Observation[R4];
-
-success = True;		// tentatively
-
-value = self.expected_value;
-// compare this expected value to some application measurement:
-// if ( value == send SomePort::getSomeValue )
-
-if ( value < 50 )	// arbitrary threshold provides means to generate failure for testing.
-  success = False;
-end if;
-
-obs.Complete( success:success );
+obs.Complete( success:True );
 
 
 ',
@@ -229,14 +218,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationZ::Instance State Machine');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::WaitForTrigger::Instance State Machine');
 INSERT INTO GD_GE
 	VALUES ("8e50bfaa-3b1e-4d08-ad69-ca8a1efb4518",
 	"c6e9759d-7a32-48d1-b645-b28f8a91f996",
 	"ac513f7a-5803-4541-b5b3-b81d1508f61d",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationZ::Instance State Machine::Observing');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::WaitForTrigger::Instance State Machine::Observing');
 INSERT INTO GD_SHP
 	VALUES ("8e50bfaa-3b1e-4d08-ad69-ca8a1efb4518");
 INSERT INTO GD_NCS
@@ -275,7 +264,7 @@ INSERT INTO GD_GE
 	"0d4bf5a9-9c88-4ded-9c60-28bcf62811c6",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationZ::Instance State Machine::Observing::Observe_pvt::Observation');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::WaitForTrigger::Instance State Machine::Observing::Observe_pvt::Observation');
 INSERT INTO GD_CON
 	VALUES ("7a072890-001e-411a-bbce-a70698bb1571",
 	"00000000-0000-0000-0000-000000000000");
@@ -414,7 +403,7 @@ INSERT INTO GD_GE
 	"aeebf897-f5c8-4625-9a3e-eb23de922886",
 	41,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationZ::Instance State Machine::Deleting');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::WaitForTrigger::Instance State Machine::Deleting');
 INSERT INTO GD_SHP
 	VALUES ("8b2b324e-c156-493a-9fbb-c2fd6c235161");
 INSERT INTO GD_NCS
@@ -443,7 +432,7 @@ INSERT INTO GD_GE
 	"a1c10bec-b786-4468-9825-94da01f8d38a",
 	42,
 	0,
-	'AutomatedTestbench::Components::PayrollTestbench::Testbench::ObservationZ::Instance State Machine::Observing::Delete_pvt::Observation');
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::WaitForTrigger::Instance State Machine::Observing::Delete_pvt::Observation');
 INSERT INTO GD_CON
 	VALUES ("2c59fa0b-e81b-4f31-8d98-92c1f67872c6",
 	"00000000-0000-0000-0000-000000000000");
@@ -546,13 +535,13 @@ INSERT INTO DIM_DIA
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("75a87610-8432-46fb-9ae0-5d3096a38d68",
-	'ObservationZ',
+	'WaitForTrigger',
 	18,
-	'ObservationZ',
+	'WaitForTrigger',
 	'Example of an observation which will re-evaluate when requested.
 This is because it used "CreateTriggered" and supplied an "interested in" key value
 The testbench, seeing some status change, can use "Assess" to selectively trigger re-evaluations.
 
 For test purposes, the expected value attribute can be chosen to determine success or failure.',
 	"00000000-0000-0000-0000-000000000000",
-	'../ObservationZ.xtuml');
+	'../WaitForTrigger.xtuml');

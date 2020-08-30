@@ -19,7 +19,7 @@ A negative value for tolerance will request a read of interval timer value.
 INSERT INTO O_TFR
 	VALUES ("9ad4aa68-8983-4730-b54b-2a829e341178",
 	"97f00b06-01bd-4757-98d9-717daa3ca783",
-	'CreatePolling',
+	'CreateTriggeredPolling',
 	'See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
@@ -32,9 +32,16 @@ rvw.action = param.action;
 create object instance observation of Observation;
 relate rvw to observation across R4;
 
+
 observation.AppendPolling( stimulus:param.stimulus, 
                            pollInterval:param.pollInterval, 
                            timeLimit:param.timeLimit );
+/*
+observation.AppendTriggered( stimulus:param.stimulus, 
+                           key:"PayrollAvailable", 
+                           pollInterval:param.pollInterval,
+                           timeLimit:param.timeLimit );
+                           */
 ',
 	1,
 	'',

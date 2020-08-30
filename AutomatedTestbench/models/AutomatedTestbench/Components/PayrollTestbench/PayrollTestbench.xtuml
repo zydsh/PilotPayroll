@@ -366,7 +366,9 @@ INSERT INTO SPR_RS
 	'Invoke evaluation of the identified observation in the test bench.',
 	'select any obs from instances of Observation
   where ( selected.observationId == param.observationId );
-obs.Observe();',
+if ( not_empty obs )
+  obs.Observe();
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -822,28 +824,6 @@ INSERT INTO C_EP_PROXY
 	'',
 	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
 INSERT INTO SPR_REP
-	VALUES ("26536c40-4e5d-444f-8565-1fd362c133c3",
-	"aa6fda4c-6b41-41a1-8919-4495bdc90167",
-	"8343e62e-053d-47d5-9e0f-752dd12b137a");
-INSERT INTO SPR_RO
-	VALUES ("26536c40-4e5d-444f-8565-1fd362c133c3",
-	'ReadIntervalTimer',
-	'A test case can run multiple independent sequences of stimuli.
-Each such sequence has an associated interval timer.
-An observation invocation can request the value of the interval timer for its sequence.',
-	'',
-	1,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("aa6fda4c-6b41-41a1-8919-4495bdc90167",
-	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
-	-1,
-	'ReadIntervalTimer',
-	'A test case can run multiple independent sequences of stimuli.
-Each such sequence has an associated interval timer.
-An observation invocation can request the value of the interval timer for its sequence.',
-	'../../../../../TestFramework/models/TestFramework/Interfaces/TestSequencing/TestSequencing.xtuml');
-INSERT INTO SPR_REP
 	VALUES ("a856b3c9-7402-4ba4-a978-488776b23cc4",
 	"3ab9f7fe-b572-4c34-98f5-076122029206",
 	"8343e62e-053d-47d5-9e0f-752dd12b137a");
@@ -942,7 +922,7 @@ INSERT INTO SPR_RS
 	'RequestIntervalTimerValue',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
@@ -960,7 +940,7 @@ INSERT INTO SPR_RS
 	'IntervalTimerValue',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7c394270-a8ad-44af-a4ad-8601e7eebc96",
@@ -1235,7 +1215,10 @@ INSERT INTO SPR_RS
 	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
 	'PayrollSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
-	'',
+	'LOG::LogInfo( message:"--------- Payroll data received ***********" );
+send TESTSEQ::Assess( key:"PayrollAvailable" );
+
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

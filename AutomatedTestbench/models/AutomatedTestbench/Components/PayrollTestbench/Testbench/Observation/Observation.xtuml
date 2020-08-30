@@ -120,7 +120,7 @@ Any observation failure terminates the entire test case.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'send TESTSEQ::AddObservation( stimulusId:param.stimulus, observationId:self.observationId,
-                                                   pollInterval:0, 
+                                                   pollInterval:param.pollInterval, 
                                                    pollDuration:param.timeLimit, 
                                                    eventKey:param.key );',
 	1,
@@ -143,7 +143,7 @@ INSERT INTO O_TPARM
 	"ba5eda7a-def5-0000-0000-000000000002",
 	0,
 	'',
-	"2f5fa361-017d-43f2-bcff-9100e3c11fb1",
+	"535952e6-e118-4750-8c1e-66260cb7332f",
 	'');
 INSERT INTO O_TPARM
 	VALUES ("2f5fa361-017d-43f2-bcff-9100e3c11fb1",
@@ -153,6 +153,15 @@ INSERT INTO O_TPARM
 	0,
 	'',
 	"14d52d47-0a9c-4b16-b128-8f5bbb1e370f",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("535952e6-e118-4750-8c1e-66260cb7332f",
+	"b1a1d8af-df67-4ade-bedb-59d5c52f3606",
+	'pollInterval',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"2f5fa361-017d-43f2-bcff-9100e3c11fb1",
 	'');
 INSERT INTO O_TFR
 	VALUES ("adae075f-8921-4e92-985f-d87cada085c5",

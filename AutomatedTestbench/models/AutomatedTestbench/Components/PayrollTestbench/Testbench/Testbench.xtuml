@@ -2505,7 +2505,9 @@ INSERT INTO S_SYNC
 	'InsertDelay',
 	'Used to establish a time delay before the next observation in a sequence is triggered.
 The duration is specified at the current timer resolution of the associated sequence.',
-	'send TESTSEQ::InsertDelay( stimulusId:param.stimulus, duration:param.duration );',
+	'create object instance delay of Observation;
+send TESTSEQ::InsertDelay( stimulusId:param.stimulus, observationId: delay.observationId, duration:param.duration );
+delete object instance delay; ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',

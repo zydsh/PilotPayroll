@@ -56,24 +56,40 @@ INSERT INTO O_TPARM
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'');
-INSERT INTO O_NBATTR
-	VALUES ("2accec38-c4bc-48f8-b62c-4022749be4da",
-	"56d852da-5807-48de-9bbe-a33dd482bc90");
-INSERT INTO O_BATTR
-	VALUES ("2accec38-c4bc-48f8-b62c-4022749be4da",
-	"56d852da-5807-48de-9bbe-a33dd482bc90");
-INSERT INTO O_ATTR
-	VALUES ("2accec38-c4bc-48f8-b62c-4022749be4da",
+INSERT INTO O_TFR
+	VALUES ("b7cf04ef-c030-4379-92eb-89aab2af66c1",
 	"56d852da-5807-48de-9bbe-a33dd482bc90",
-	"aa88f8c7-a633-463c-a459-41f7fa0c2d48",
-	'current_state',
+	'SetStatus',
 	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Requesting payroll status update injected: "  + self.newstatus );
+
+if ( self.newstatus == "Approve" )
+  send TESTAPP::SubmitPayrollApproval( Department:self.dept );
+end if;
+
+if ( self.newstatus == "FinalSubmit" )
+  send TESTAPP::SubmitToFinance( Department:self.dept );
+end if;
+
+if ( self.newstatus == "Accept" )
+  send TESTAPP::Accepted( Department:self.dept );
+end if;
+
+select any entry from instances of PayrollEntry
+ where ( selected.Edited );
+if ( not_empty entry )
+  PayrollEntry::SendEntryHolds();
+end if;
+
+select one stimulus related by self->Stimulus[R3];
+stimulus.Complete();
+',
+	1,
 	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
+	"990f9b1c-4a19-411a-bf44-f6612a67845a",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("9179d7f6-2ab8-45f0-aa5a-f114d6769710",
 	"56d852da-5807-48de-9bbe-a33dd482bc90");

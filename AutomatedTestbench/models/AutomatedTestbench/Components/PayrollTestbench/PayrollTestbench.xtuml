@@ -566,7 +566,7 @@ INSERT INTO SPR_RS
 	'Signals a test bucket to instantiate its test case sequences.',
 	'select any tb from instances of TestBucket
   where ( selected.bucketId == param.bucketId );
-generate TestBucket1:Execute_pvt to tb;
+tb.RunTestCases();
 ',
 	1,
 	0);

@@ -73,34 +73,39 @@ INSERT INTO O_TPARM
 	'',
 	"67659838-3468-4731-8315-765ddbdccb9b",
 	'');
+INSERT INTO O_TFR
+	VALUES ("970fd98b-a0a5-4914-b5c5-541810cbb5fb",
+	"77d6047f-1bcc-4553-92e7-a60486cde93e",
+	'CheckNotification',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:" --- Hoping to observe notification for " + self.code );
+select one obs related by self->Observation[R4];
+
+select any msg from instances of ReceivedNotification
+ where ( selected.Code == self.code );
+if ( not_empty msg )
+  delete object instance msg;
+  obs.Complete( success:True );
+else
+  success = False;	// here to allow breakpoint only
+end if;
+',
+	1,
+	'',
+	"b2793190-40e6-43fc-87a3-ba7ac95daf33",
+	0);
 INSERT INTO O_NBATTR
-	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
 	"77d6047f-1bcc-4553-92e7-a60486cde93e");
 INSERT INTO O_BATTR
-	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
 	"77d6047f-1bcc-4553-92e7-a60486cde93e");
 INSERT INTO O_ATTR
-	VALUES ("2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
+	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
 	"77d6047f-1bcc-4553-92e7-a60486cde93e",
 	"00000000-0000-0000-0000-000000000000",
-	'current_state',
-	'',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
-	"77d6047f-1bcc-4553-92e7-a60486cde93e");
-INSERT INTO O_BATTR
-	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
-	"77d6047f-1bcc-4553-92e7-a60486cde93e");
-INSERT INTO O_ATTR
-	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
-	"77d6047f-1bcc-4553-92e7-a60486cde93e",
-	"2a85075b-73a8-481b-a3e1-5cd26e2a7f6d",
 	'code',
 	'',
 	'',

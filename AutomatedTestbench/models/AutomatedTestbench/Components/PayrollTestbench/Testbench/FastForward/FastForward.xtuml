@@ -58,34 +58,33 @@ INSERT INTO O_TPARM
 	'',
 	"93a46435-9bea-4c53-a002-2d54616c2ed8",
 	'');
+INSERT INTO O_TFR
+	VALUES ("2acb5ce1-8a12-413d-ae38-edebbefba09d",
+	"10753813-4435-42b5-b35e-30f6c94ceffb",
+	'Advance',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"FastForward injected" );
+
+select one stimulus related by self->Stimulus[R3];
+ts = TimeUtilities::AdvanceTime( days: self.days, hours:self.hours, minutes:0 );
+
+stimulus.Complete();',
+	1,
+	'',
+	"82ff6d7f-0e77-438e-a86f-7f308737e7b1",
+	0);
 INSERT INTO O_NBATTR
-	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
+	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb");
 INSERT INTO O_BATTR
-	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
+	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb");
 INSERT INTO O_ATTR
-	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
+	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb",
 	"00000000-0000-0000-0000-000000000000",
-	'current_state',
-	'',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
-	"10753813-4435-42b5-b35e-30f6c94ceffb");
-INSERT INTO O_BATTR
-	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
-	"10753813-4435-42b5-b35e-30f6c94ceffb");
-INSERT INTO O_ATTR
-	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
-	"10753813-4435-42b5-b35e-30f6c94ceffb",
-	"409dc04a-e8b2-469c-9f63-1417062790de",
 	'days',
 	'',
 	'',

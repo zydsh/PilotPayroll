@@ -22,7 +22,14 @@ if ( not_empty entries )
   end for;
   select any entry from instances of PayrollEntry;
   send TESTAPP::UpdatesSent( Department:entry.DeptName );
-end if;',
+end if;
+
+// @TODO - is this the right place to do this? - guessing we are done with these.
+select many entries from instances of PayrollEntry;
+for each entry in entries
+  delete object instance entry;
+end for;
+',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",

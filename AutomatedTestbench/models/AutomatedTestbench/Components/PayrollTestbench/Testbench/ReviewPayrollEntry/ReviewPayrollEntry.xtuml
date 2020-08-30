@@ -101,24 +101,35 @@ INSERT INTO O_TPARM
 	'',
 	"5b135321-76f7-48f0-83cf-6904a2caec21",
 	'');
-INSERT INTO O_NBATTR
-	VALUES ("2d7fcb07-6190-4efc-be5a-648bfb6561ab",
-	"97f00b06-01bd-4757-98d9-717daa3ca783");
-INSERT INTO O_BATTR
-	VALUES ("2d7fcb07-6190-4efc-be5a-648bfb6561ab",
-	"97f00b06-01bd-4757-98d9-717daa3ca783");
-INSERT INTO O_ATTR
-	VALUES ("2d7fcb07-6190-4efc-be5a-648bfb6561ab",
+INSERT INTO O_TFR
+	VALUES ("bcf8f8f1-c6cb-4495-9902-4d579f715014",
 	"97f00b06-01bd-4757-98d9-717daa3ca783",
-	"20decafb-7581-43b2-a14b-0225f636f758",
-	'current_state',
+	'ReviewEntry',
 	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"--- Expecting to review payroll entry with action " + self.action );
+select one obs related by self->Observation[R4];
+
+select any entry from instances of PayrollEntry
+ where ( selected.EmployeeID == self.employeeID )
+   and ( selected.Label == self.label );
+if ( not_empty entry )
+  if ( self.action == "hold" ) and ( entry.Hold == False )
+  	entry.Hold = True;
+  	entry.Edited = True;
+  end if;
+  if ( self.action == "clear" ) and ( entry.Hold == True );
+  	entry.Hold = False;
+  	entry.Edited = True;
+  end if;
+  obs.Complete( success:True );
+end if;
+',
+	1,
 	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
+	"9ad4aa68-8983-4730-b54b-2a829e341178",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("7326b20f-8e76-40c2-b965-2578fbccbb4b",
 	"97f00b06-01bd-4757-98d9-717daa3ca783");

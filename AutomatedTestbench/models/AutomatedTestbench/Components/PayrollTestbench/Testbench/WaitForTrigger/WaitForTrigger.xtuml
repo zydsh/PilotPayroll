@@ -67,24 +67,21 @@ INSERT INTO O_TPARM
 	'',
 	"21c28c29-2559-423f-bee1-50e125cabb3b",
 	'');
-INSERT INTO O_NBATTR
-	VALUES ("5dd91ae6-ab7d-4cfb-9c71-aeeef603ad13",
-	"75a87610-8432-46fb-9ae0-5d3096a38d68");
-INSERT INTO O_BATTR
-	VALUES ("5dd91ae6-ab7d-4cfb-9c71-aeeef603ad13",
-	"75a87610-8432-46fb-9ae0-5d3096a38d68");
-INSERT INTO O_ATTR
-	VALUES ("5dd91ae6-ab7d-4cfb-9c71-aeeef603ad13",
+INSERT INTO O_TFR
+	VALUES ("60b58024-4d21-4733-ab62-3adc011f10ee",
 	"75a87610-8432-46fb-9ae0-5d3096a38d68",
-	"00000000-0000-0000-0000-000000000000",
-	'current_state',
+	'EndWait',
 	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Triggered observation" );
+select one obs related by self->Observation[R4];
+obs.Complete( success:True );
+',
+	1,
 	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
+	"7a39e8c1-54c7-48f1-8e79-4bad5edfd551",
+	0);
 INSERT INTO O_ID
 	VALUES (0,
 	"75a87610-8432-46fb-9ae0-5d3096a38d68");

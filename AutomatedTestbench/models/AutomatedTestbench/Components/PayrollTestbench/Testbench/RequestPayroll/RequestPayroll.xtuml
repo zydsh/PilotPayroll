@@ -55,24 +55,23 @@ INSERT INTO O_TPARM
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'');
-INSERT INTO O_NBATTR
-	VALUES ("01e01536-7740-4dee-88ec-74bd1374474a",
-	"a0339736-2755-40e8-a654-0b77ca79d2c3");
-INSERT INTO O_BATTR
-	VALUES ("01e01536-7740-4dee-88ec-74bd1374474a",
-	"a0339736-2755-40e8-a654-0b77ca79d2c3");
-INSERT INTO O_ATTR
-	VALUES ("01e01536-7740-4dee-88ec-74bd1374474a",
+INSERT INTO O_TFR
+	VALUES ("0cf2765f-b1cc-416a-b2b6-82f142f9df51",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3",
-	"ff8ba38c-80a4-4dc2-b411-ab26f0c3af33",
-	'current_state',
+	'MakeRequest',
 	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Requesting payroll for review injected" );
+send TESTAPP::RetrievePayrollForReview( Department:self.dept, HoldsOnly:self.holds );
+
+select one stimulus related by self->Stimulus[R3];
+stimulus.Complete();
+',
+	1,
 	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
+	"37ce3279-09b8-455b-bfd1-4628a7e625d2",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("cac04f3b-263c-4d91-80cf-f97eea2cc1f2",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3");

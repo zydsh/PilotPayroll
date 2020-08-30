@@ -39,7 +39,10 @@ INSERT INTO O_TFR
 	'Dispose of the test bucket instances after completion of execution.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'generate TestBucket2:Delete_pvt to self;',
+	'select one nominal related by self->NominalCaseBucket[R7];
+unrelate self from nominal across R7;
+delete object instance nominal;
+delete object instance self;',
 	1,
 	'',
 	"dc5940e0-920d-4496-82fe-a150351893ff",
@@ -56,24 +59,20 @@ INSERT INTO O_TFR
 	'',
 	"7bb04181-a76f-42a2-838b-c744a8f29555",
 	0);
-INSERT INTO O_NBATTR
-	VALUES ("e60d5cf8-b860-4187-b176-5f41ea7bb504",
-	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2");
-INSERT INTO O_BATTR
-	VALUES ("e60d5cf8-b860-4187-b176-5f41ea7bb504",
-	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2");
-INSERT INTO O_ATTR
-	VALUES ("e60d5cf8-b860-4187-b176-5f41ea7bb504",
+INSERT INTO O_TFR
+	VALUES ("40baccb7-b4b3-45a5-8e80-df6cd65023f1",
 	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2",
-	"407d9785-e89d-4d7e-967a-f3e98b16c2ff",
-	'current_state',
+	'RunTestCases',
 	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one nominal related by self->NominalCaseBucket[R7];
+nominal.RunBucketTests();
+',
+	1,
 	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
+	"4309ad42-6054-4416-bd1b-299a4abbe8b2",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("407d9785-e89d-4d7e-967a-f3e98b16c2ff",
 	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2");

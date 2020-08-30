@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("ebb842bc-1283-4528-8f93-563362996b3f",
-	'TestBucket_1',
+	'NominalCaseBucket',
 	15,
-	'TestBucket_1',
+	'NominalCaseBucket',
 	'A sample test bucket which runs several test cases demonstrating various capabilities.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -91,24 +91,6 @@ bucket.AddToSuite();',
 	'',
 	"335acef2-7a9f-427b-b2da-3f2c30504939",
 	0);
-INSERT INTO O_NBATTR
-	VALUES ("88aebc07-91a1-47d2-b7b9-e4fd338bc6fb",
-	"ebb842bc-1283-4528-8f93-563362996b3f");
-INSERT INTO O_BATTR
-	VALUES ("88aebc07-91a1-47d2-b7b9-e4fd338bc6fb",
-	"ebb842bc-1283-4528-8f93-563362996b3f");
-INSERT INTO O_ATTR
-	VALUES ("88aebc07-91a1-47d2-b7b9-e4fd338bc6fb",
-	"ebb842bc-1283-4528-8f93-563362996b3f",
-	"00000000-0000-0000-0000-000000000000",
-	'current_state',
-	'',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"ebb842bc-1283-4528-8f93-563362996b3f");

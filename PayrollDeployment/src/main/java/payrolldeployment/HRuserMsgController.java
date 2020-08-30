@@ -1,4 +1,4 @@
-package deployment;
+package payrolldeployment;
 
 import io.ciera.runtime.summit.application.IApplication;
 import io.ciera.runtime.summit.application.IRunContext;
@@ -31,17 +31,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.HtmlUtils;
 
-import deployment.hruser.HRuserPayroll;             // HRuser-Payroll port
-import deployment.payrollmgmt.PayrollMgmtUSER;      // CarPark-PaymentMachine port
-import deployment.HRuser;                           // Shell component
-import deployment.NotificationMsg;
-import deployment.PayrollDataMsg;
-import deployment.PayrollSentMsg;
-import deployment.RetrievePayrollForReviewMsg;
-import deployment.SubmitItemHoldMsg;
-import deployment.SubmitPayrollApprovalMsg;
-import deployment.SubmitToFinanceMsg;
-import deployment.UpdatesSentMsg;
+import payrolldeployment.hruser.HRuserPayroll;             // HRuser-Payroll port
+import payrolldeployment.payrollmgmt.PayrollMgmtUSER;      // CarPark-PaymentMachine port
+import payrolldeployment.HRuser;                           // Shell component
+import payrolldeployment.NotificationMsg;
+import payrolldeployment.PayrollDataMsg;
+import payrolldeployment.PayrollSentMsg;
+import payrolldeployment.RetrievePayrollForReviewMsg;
+import payrolldeployment.SubmitItemHoldMsg;
+import payrolldeployment.SubmitPayrollApprovalMsg;
+import payrolldeployment.SubmitToFinanceMsg;
+import payrolldeployment.UpdatesSentMsg;
 
 // The Spring framework arranges for an instance of this class to be
 // created, passing an instance of SimpMessagingTemplate as an argument,

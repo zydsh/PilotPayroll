@@ -1,8 +1,9 @@
-package deployment;
+package payrolldeployment;
 
 
-import deployment.HRuser;
-import deployment.PayrollMgmt;
+import payrolldeployment.HRuser;
+import payrolldeployment.PayrollMgmt;
+import payrolldeployment.TestControl;
 
 import io.ciera.runtime.summit.application.ApplicationExecutor;
 import io.ciera.runtime.summit.application.IApplication;
@@ -12,20 +13,21 @@ import io.ciera.runtime.summit.application.tasks.HaltExecutionTask;
 import io.ciera.runtime.summit.components.IComponent;
 import io.ciera.runtime.summit.exceptions.XtumlException;
 
-import java.util.Arrays;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class DeploymentApplication implements IApplication {
+import java.util.Arrays;
 
-	private static DeploymentApplication singleton;
+
+@SpringBootApplication
+public class PayrollDeploymentApplication implements IApplication {
+
+	private static PayrollDeploymentApplication singleton;
     private IComponent<?>[] components;
     private ApplicationExecutor[] executors;
 
-    public DeploymentApplication() {
-        components = new IComponent<?>[2];
+    public PayrollDeploymentApplication() {
+        components = new IComponent<?>[3];
         executors = new ApplicationExecutor[1];
         singleton = this;
         setup( null, null );
@@ -43,18 +45,22 @@ public class DeploymentApplication implements IApplication {
     public void setup( String[] args, ILogger logger ) {
         for ( int i = 0; i < executors.length; i++ ) {
             if ( null != logger ) {
-                executors[i] = new ApplicationExecutor( "DeploymentApplicationExecutor" + i, args, logger );
+                executors[i] = new ApplicationExecutor( "PayrollDeploymentApplicationExecutor" + i, args, logger );
             }
             else {
-                executors[i] = new ApplicationExecutor( "DeploymentApplicationExecutor" + i, args );
+                executors[i] = new ApplicationExecutor( "PayrollDeploymentApplicationExecutor" + i, args );
             }
         }
+        components[2] = new TestControl(this, executors[0], 2);
         components[0] = new HRuser(this, executors[0], 0);
         components[1] = new PayrollMgmt(this, executors[0], 1);
         ((HRuser)components[0]).Payroll().satisfy(((PayrollMgmt)components[1]).USER());
         ((PayrollMgmt)components[1]).USER().satisfy(((HRuser)components[0]).Payroll());
     }
 
+    public TestControl TestControl() {
+        return (TestControl)components[2];
+    }
     public HRuser HRuser() {
         return (HRuser)components[0];
     }
@@ -103,7 +109,7 @@ public class DeploymentApplication implements IApplication {
     }
 
     public static void main( String[] args ) {
-        SpringApplication.run( DeploymentApplication.class, args );
+        SpringApplication.run( PayrollDeploymentApplication.class, args );
         singleton.start();
     }
 

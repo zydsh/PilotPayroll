@@ -14,5 +14,6 @@
     <module>PayrollDeployment</module>
     <module>PilotPayroll</module>
     <module>HRuser</module>
+    <module>TestControl</module>
   </modules>
 </project>

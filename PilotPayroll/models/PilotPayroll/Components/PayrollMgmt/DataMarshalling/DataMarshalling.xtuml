@@ -58,6 +58,7 @@ if ( empty dept )
   LOG::LogFailure( message:"Department name not matched in Send Payroll" );
   return;
 end if;
+count = 0;
 select many employees related by dept->Employee[R6.''employs''];
 for each emp in employees
   select many payments related by emp->EmployeePayment[R7]
@@ -74,11 +75,11 @@ for each emp in employees
       send USER::PayrollData( Department:dept.Name, 
                             EmployeeID:emp.NationalID, EmployeeFirstName:emp.FirstName, EmployeeLastName:emp.LastName,
                             PaymentLabel:spec.Label, PaymentAmount:payment.Amount, HoldStatus:hold );
-
+      count = count + 1;
     end if;	
   end for;
 end for;
-send USER::PayrollSent( Department:dept.Name );',
+send USER::PayrollSent( Department:dept.Name, Count:count );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',

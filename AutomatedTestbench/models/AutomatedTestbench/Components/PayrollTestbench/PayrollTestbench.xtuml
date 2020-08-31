@@ -1112,8 +1112,7 @@ INSERT INTO SPR_RS
 	VALUES ("b4f90f2f-7db5-4003-92c1-5bb08c931a35",
 	'PayrollData',
 	'Data for single payroll payment element for an employee in a department.',
-	'LOG::LogInfo( message:"retrieving employee data in Testbench");
-create object instance entry of PayrollEntry;
+	'create object instance entry of PayrollEntry;
 entry.DeptName = param.Department;
 entry.EmployeeID = param.EmployeeID;
 entry.Label = param.PaymentLabel;

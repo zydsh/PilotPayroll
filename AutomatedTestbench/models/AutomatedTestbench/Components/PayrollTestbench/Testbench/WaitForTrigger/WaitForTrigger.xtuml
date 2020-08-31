@@ -5,11 +5,9 @@ INSERT INTO O_OBJ
 	'WaitForTrigger',
 	18,
 	'WaitForTrigger',
-	'Example of an observation which will re-evaluate when requested.
-This is because it used "CreateTriggered" and supplied an "interested in" key value
-The testbench, seeing some status change, can use "Assess" to selectively trigger re-evaluations.
-
-For test purposes, the expected value attribute can be chosen to determine success or failure.',
+	'This ''observation'' will evaluate only when requested and is used to delay for a certain condition.
+It uses "CreateTriggered" and supplies an "interested in" key value
+The testbench, at some point, can invoke an assessment using that key value.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("7a39e8c1-54c7-48f1-8e79-4bad5edfd551",
@@ -74,7 +72,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:"Triggered observation" );
+	'LOG::LogInfo( message:"---- WaitFor triggered *****" );
 select one obs related by self->Observation[R4];
 obs.Complete( success:True );
 ',

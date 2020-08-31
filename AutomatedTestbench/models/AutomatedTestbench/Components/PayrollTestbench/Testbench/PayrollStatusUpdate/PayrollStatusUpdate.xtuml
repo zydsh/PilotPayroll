@@ -5,7 +5,8 @@ INSERT INTO O_OBJ
 	'PayrollStatusUpdate',
 	23,
 	'PayrollStatusUpdate',
-	'An example of a stimulus invoking an interface signal to the application under test.',
+	'An example of a stimulus invoking an interface signal to the application under test.
+This is a request to update the status based on a configured attribute. ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("990f9b1c-4a19-411a-bf44-f6612a67845a",

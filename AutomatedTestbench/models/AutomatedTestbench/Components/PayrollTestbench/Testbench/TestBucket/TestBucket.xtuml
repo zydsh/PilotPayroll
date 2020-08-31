@@ -7,17 +7,12 @@ INSERT INTO O_OBJ
 	'TestBucket',
 	'A test bucket is used to group related test cases; every test case must belong to a bucket.
 This supertype uses the test sequencer to manage the order of execution of test cases.
-Invocation of test buckets is managed through polymorphic event dispatch.
 This mechanism allows for postponment of instantiation of test case components.
 Each test bucket subtype is activated, in sequence, by the test sequencing service.
 Each subtype surfaces an operation which instantiates its stimuli and observations.
 These stimuli/observations are instantiated as each test bucket is activated.
 They may be deleted when the test bucket completes, dependant on configuration choice.
-
-A test bucket subtype must include an instance-based state model.
-This state model must accept or ignore both Execute_pvt and Delete_pvt events.
-The first should result in instantiation of stimuli/observation sequences.
-The second may delete the test bucket sub/supertype instances.
+The subtype may also surface an operation to delete the test bucket sub/supertype instances.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR

@@ -5,16 +5,8 @@ INSERT INTO O_OBJ
 	'ReviewPayrollEntry',
 	7,
 	'ReviewPayrollEntry',
-	'An example of an observation which checks some measured application value against expectation.
-
-Note: this specific example uses some choices of attribute values to contrive outcomes:
-This allows some test sequence services to be exercised without an actual test application.
-
-Specifically:
-A choice of expected value & tolerance can force failure - or guarantee success.
-A low expected value can trigger a "assess" request to the sequencing service.
-A negative value for tolerance will request a read of interval timer value.
-',
+	'This observation looks for a payroll entry that matches some attribute values.
+It may also make changes to a discovered entry, directed by its action attribute.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("9ad4aa68-8983-4730-b54b-2a829e341178",
@@ -36,12 +28,6 @@ relate rvw to observation across R4;
 observation.AppendPolling( stimulus:param.stimulus, 
                            pollInterval:param.pollInterval, 
                            timeLimit:param.timeLimit );
-/*
-observation.AppendTriggered( stimulus:param.stimulus, 
-                           key:"PayrollAvailable", 
-                           pollInterval:param.pollInterval,
-                           timeLimit:param.timeLimit );
-                           */
 ',
 	1,
 	'',

@@ -6,12 +6,6 @@ INSERT INTO O_OBJ
 	2,
 	'Stimulus',
 	'The supertype for those classes which, when invoked, will effect some change in the application under test.
-Invocation of a subtype is implemented through polymorphic event dispatch.
-
-An stimulus subtype must include an instance-based state model.
-This state model must accept or ignore both Inject_pvt and Delete_pvt events.
-The first should result in a perturbation of the test application and should signal completion.
-The second may delete the stimulus sub/supertype instances.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR

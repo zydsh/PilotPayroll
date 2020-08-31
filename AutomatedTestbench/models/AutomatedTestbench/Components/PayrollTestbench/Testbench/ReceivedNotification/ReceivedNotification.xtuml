@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'ReceivedNotification',
 	21,
 	'ReceivedNotification',
-	'',
+	'An instance of a message received from the application which can be searched for by an observation.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("7793f490-4cd5-48ae-aab2-425d8f2f5d1b",

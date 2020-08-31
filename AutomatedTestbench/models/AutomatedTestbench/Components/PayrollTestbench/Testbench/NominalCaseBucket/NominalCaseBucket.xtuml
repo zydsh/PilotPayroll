@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'NominalCaseBucket',
 	15,
 	'NominalCaseBucket',
-	'A sample test bucket which runs several test cases demonstrating various capabilities.',
+	'A test bucket which runs a number of tests based on Use Cases for the Payroll application.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("335acef2-7a9f-427b-b2da-3f2c30504939",
@@ -16,14 +16,12 @@ INSERT INTO O_TFR
 	1,
 	'select one bucket related by self->TestBucket[R7];
 send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"Payroll_Bucket_1" );
-send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, 
-                                       resolution:timerResolution::second );
+send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
 // Use Case UC06
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC06" ); 
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC06", seqLabel:"seq06" );
 stId06 = FastForward::Create( seqLabel:"seq06", days:13, hours:11 );
-//::InsertDelay( stimulus:stId06, duration:2 );
 GetNotification::CreatePolling( stimulus:stId06, codematch:"UC06", pollInterval:1, timeLimit:10 );
 
 // Use Case UC05
@@ -111,6 +109,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

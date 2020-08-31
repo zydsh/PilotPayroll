@@ -6,22 +6,18 @@ INSERT INTO O_OBJ
 	3,
 	'Observation',
 	'The supertype for those classes which, when invoked, will measure some change in the application under test.
-Invocation of a subtype is implemented through polymorphic event dispatch.
 
 In general an observation will report on, or evaluate against some criteria, some returned value from the application.
 An observation may fail if it does not satisfy the presented criteria within a time limit, if specified.
 
 A observation may be polling or triggered:
+
 If polling, and an interval is specified, the evaluation will be repeated periodically; again, the time limit applies.
+
 If triggered, an evaluation may be caused at any time by the testbench, when deemed appropriate.
 To do this, the testbench should signal an "assess" with a key value matching that of the observation.
 
 If an observation fails to succeed, the test case is deemed to have failed; all un-executed stimuli and observations are cancelled.
-
-An observation subtype must include an instance-based state model.
-This state model must accept or ignore both Observe_pvt and Delete_pvt events.
-The first should result in an evaluation which should signal completion with or without success.
-The second may delete the observation sub/supertype instances.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR

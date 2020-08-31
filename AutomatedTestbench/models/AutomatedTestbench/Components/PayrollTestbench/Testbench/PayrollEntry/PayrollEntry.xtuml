@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'PayrollEntry',
 	22,
 	'PayrollEntry',
-	'',
+	'An instance of an employee pay item requested from the application for review.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("9053ba79-ecf1-4799-b839-5762120dca26",

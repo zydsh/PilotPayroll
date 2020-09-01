@@ -40,13 +40,29 @@
 
         <div class="col-md-6">
             <div class="row">
-                <button id="payroll" class="btn btn-primary" type="submit" disabled="disabled">Retrieve payroll for review</button>
-                <button id="update" class="btn btn-primary" type="submit" disabled="disabled">Submit updated items</button>
-                <button id="approve" class="btn btn-primary" type="submit" disabled="disabled">Submit approved payroll</button>
-                <button id="submit" class="btn btn-primary" type="submit" disabled="disabled">Submit to Finance</button>
+                <button v-bind:disabled="PayrollRequestDisabled" id="payroll" class="btn btn-primary" type="submit" disabled="disabled">Retrieve payroll for review</button>
+                <button v-bind:disabled="UpdateDisabled" id="update" class="btn btn-primary" type="submit" disabled="disabled">Submit updated items</button>
+                <button v-bind:disabled="ApproveDisabled" id="approve" class="btn btn-primary" type="submit" disabled="disabled">Submit approved payroll</button>
+                <button v-bind:disabled="SubmitDisabled" id="finance" class="btn btn-primary" type="submit" disabled="disabled">Submit to Finance</button>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table id="payrollentries" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Payroll Entries</th>
+                </tr>
+                </thead>
+                <tbody id="entries">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-12">
             <table id="conversation" class="table table-striped">

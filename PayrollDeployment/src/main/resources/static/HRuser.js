@@ -7,6 +7,7 @@ var vm = new Vue({
 	    UpdateDisabled: true,
 	    ApproveDisabled: true,
 	    SubmitDisabled: true,
+	    department: "",
 	    notification: ""
 	}
 })
@@ -14,8 +15,9 @@ var vm = new Vue({
 function initialize() {
 	    vm.PayrollRequestDisabled = true;
 	    vcm.UpdateDisabled = true;
-	    vm.ApproveDisabled: true,
-	    SubmitDisabled: true,
+	    vm.ApproveDisabled = true;
+	    SubmitDisabled = true;
+	    department = "";
 	    notification = "";
 }
 
@@ -89,7 +91,8 @@ function sendSubmitToFinance() {
 
 function payrollDataMsg( message ) {
     // accept a payroll element data message - just display it, for now
-    $("#entries").append("<tr><td>" + message + "</td></tr>");
+    name = JSON.parse( reply.body ).employeeFirstName + " " + JSON.parse( reply.body ).employeeLastName;
+    $("#entries").append("<tr><td>" + name + "</td></tr>");
 }
 
 // Display a message received from the server.

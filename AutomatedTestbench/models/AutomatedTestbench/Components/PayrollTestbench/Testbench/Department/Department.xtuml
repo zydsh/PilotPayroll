@@ -1,0 +1,71 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7ab39b34-fd7a-404b-8780-719eb8be8a17",
+	'Department',
+	25,
+	'Department',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("637e5f80-bbad-4f46-92bb-2c1f2400bbdb",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17",
+	'SendEntryHolds',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'select many entries from instances of PayrollEntry
+ where selected.Edited;
+if ( not_empty entries )
+for each entry in entries
+  send TESTAPP::SubmitItemHold( Department:entry.DeptName, EmployeeID:entry.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
+end for;
+select any entry from instances of PayrollEntry;
+
+send TESTAPP::UpdatesSent( Department:entry.DeptName );
+end if;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("c0821f99-0707-4c95-a2d1-6e69d7b19fa8",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO O_BATTR
+	VALUES ("c0821f99-0707-4c95-a2d1-6e69d7b19fa8",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO O_ATTR
+	VALUES ("c0821f99-0707-4c95-a2d1-6e69d7b19fa8",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17",
+	"00000000-0000-0000-0000-000000000000",
+	'Name',
+	'',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO O_ID
+	VALUES (1,
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO O_ID
+	VALUES (2,
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO PE_PE
+	VALUES ("7ab39b34-fd7a-404b-8780-719eb8be8a17",
+	1,
+	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	"254e12da-372d-4f11-ad9a-5b53303407a5",
+	'Testbench',
+	'',
+	0,
+	'../Testbench.xtuml');

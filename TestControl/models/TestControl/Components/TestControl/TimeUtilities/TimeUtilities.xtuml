@@ -1,0 +1,149 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("5d3646b2-05d9-4881-abd9-00322bfa5e5f",
+	"00000000-0000-0000-0000-000000000000",
+	"d1f91493-98b2-4d82-b42e-d88b55e309fd",
+	'TimeUtilities',
+	'Wrapper for TIM bridge operations to make it more convenient to operate on time scales 
+larger than one microsecond.',
+	0);
+INSERT INTO GD_MD
+	VALUES ("5e5c074b-80f1-43d9-96c9-36336b4d83e8",
+	112,
+	"5d3646b2-05d9-4881-abd9-00322bfa5e5f",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'4.1.17',
+	'TestControl::Components::TestControl::TimeUtilities');
+INSERT INTO GD_GE
+	VALUES ("1ca85656-e015-455b-8dce-f0f5c423f9c0",
+	"5e5c074b-80f1-43d9-96c9-36336b4d83e8",
+	"34da24ee-6744-4770-8978-e3a2481da10b",
+	109,
+	0,
+	'TestControl::Components::TestControl::TimeUtilities::ConversionFactors');
+INSERT INTO GD_SHP
+	VALUES ("1ca85656-e015-455b-8dce-f0f5c423f9c0");
+INSERT INTO GD_NCS
+	VALUES ("1ca85656-e015-455b-8dce-f0f5c423f9c0");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"1ca85656-e015-455b-8dce-f0f5c423f9c0");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"1ca85656-e015-455b-8dce-f0f5c423f9c0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1ca85656-e015-455b-8dce-f0f5c423f9c0",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("be914ba9-2ac7-473a-bd87-cbed6908f320",
+	"5e5c074b-80f1-43d9-96c9-36336b4d83e8",
+	"6636968a-0d6a-4c16-8746-fba2d6cfff96",
+	21,
+	0,
+	'TestControl::Components::TestControl::TimeUtilities::TimeUtilities');
+INSERT INTO GD_SHP
+	VALUES ("be914ba9-2ac7-473a-bd87-cbed6908f320");
+INSERT INTO GD_NCS
+	VALUES ("be914ba9-2ac7-473a-bd87-cbed6908f320");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"be914ba9-2ac7-473a-bd87-cbed6908f320");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"be914ba9-2ac7-473a-bd87-cbed6908f320",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("be914ba9-2ac7-473a-bd87-cbed6908f320",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("5e5c074b-80f1-43d9-96c9-36336b4d83e8",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("34da24ee-6744-4770-8978-e3a2481da10b",
+	'ConversionFactors',
+	'The timestamp type is mapped to a long (64-bit) integer.  Constants 
+with this type can then be used in calculations that required long-integer math.
+Keep in mind that the value of the constant is limited, by the editor, to be no 
+larger 2^31 (signed integer).');
+INSERT INTO CNST_SYC
+	VALUES ("0637bc8d-4ff1-4eeb-a5cc-c2737643a39b",
+	'MicrosecondsPerHalfHour',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"34da24ee-6744-4770-8978-e3a2481da10b",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("0637bc8d-4ff1-4eeb-a5cc-c2737643a39b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("0637bc8d-4ff1-4eeb-a5cc-c2737643a39b",
+	"00000000-0000-0000-0000-000000000000",
+	'1800000000');
+INSERT INTO CNST_SYC
+	VALUES ("1667ad36-39a8-459d-9825-3f0ba9963504",
+	'MicrosecondsPerMinute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000010",
+	"34da24ee-6744-4770-8978-e3a2481da10b",
+	"0637bc8d-4ff1-4eeb-a5cc-c2737643a39b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("1667ad36-39a8-459d-9825-3f0ba9963504",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LSC
+	VALUES ("1667ad36-39a8-459d-9825-3f0ba9963504",
+	"00000000-0000-0000-0000-000000000000",
+	'60000000');
+INSERT INTO PE_PE
+	VALUES ("34da24ee-6744-4770-8978-e3a2481da10b",
+	1,
+	"5d3646b2-05d9-4881-abd9-00322bfa5e5f",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("5d3646b2-05d9-4881-abd9-00322bfa5e5f",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"60212e59-6987-4c4c-830f-1ce4487b2b4d",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("60212e59-6987-4c4c-830f-1ce4487b2b4d",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'TestControl',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../TestControl.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d1f91493-98b2-4d82-b42e-d88b55e309fd",
+	'TestControl',
+	1,
+	'../../../TestControl.xtuml');

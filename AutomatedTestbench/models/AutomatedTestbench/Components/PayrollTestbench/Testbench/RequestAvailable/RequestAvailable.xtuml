@@ -27,24 +27,6 @@ return stimulus.stimulusId;
 	"00000000-0000-0000-0000-000000000000",
 	0);
 INSERT INTO O_TPARM
-	VALUES ("c87a93dc-efad-44b6-97f3-012c2aa73d01",
-	"0445091a-23e5-4086-8398-5882ac33f0bc",
-	'dept',
-	"ba5eda7a-def5-0000-0000-000000000004",
-	0,
-	'',
-	"5ab21399-05f4-4e99-b214-452c77bcf53b",
-	'');
-INSERT INTO O_TPARM
-	VALUES ("4015cdf8-acd2-4e8a-8ae3-78060a9a2552",
-	"0445091a-23e5-4086-8398-5882ac33f0bc",
-	'holds',
-	"ba5eda7a-def5-0000-0000-000000000001",
-	0,
-	'',
-	"c87a93dc-efad-44b6-97f3-012c2aa73d01",
-	'');
-INSERT INTO O_TPARM
 	VALUES ("5ab21399-05f4-4e99-b214-452c77bcf53b",
 	"0445091a-23e5-4086-8398-5882ac33f0bc",
 	'seqLabel',

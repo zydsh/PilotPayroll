@@ -34,7 +34,7 @@ GetNotification::CreatePolling( stimulus:stId05, codematch:"", pollInterval:1, t
 // Use Case UC03
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC03" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC03", seqLabel:"seq03" );
-stId = Req
+stId = RequestAvailable::Create( seqLabel:"seq03" );
 stId = RequestPayroll::Create( seqLabel:"seq03", dept:"IT", holds:False );
 WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
 ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:10 );

@@ -441,7 +441,7 @@ INSERT INTO SPR_REP
 	"b9266a99-419d-4977-a5b3-f0a7f6342582");
 INSERT INTO SPR_RS
 	VALUES ("a8369463-92b9-4e97-a929-16d73d212fdf",
-	'PayrollSent',
+	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'::PayrollSent( Department:param.Department );',
 	1,
@@ -450,7 +450,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'PayrollSent',
+	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
@@ -470,6 +470,60 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'UpdatesSent',
 	'Signal that all payroll updates for a department have been submitted by client.',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("5c057cf8-aa67-4deb-88e2-ed4fb9bc5c2b",
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"b9266a99-419d-4977-a5b3-f0a7f6342582");
+INSERT INTO SPR_RS
+	VALUES ("5c057cf8-aa67-4deb-88e2-ed4fb9bc5c2b",
+	'PayeeData',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayeeData',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("3044472b-39cb-4a16-bf9a-602e520d7f9f",
+	"e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
+	"b9266a99-419d-4977-a5b3-f0a7f6342582");
+INSERT INTO SPR_RS
+	VALUES ("3044472b-39cb-4a16-bf9a-602e520d7f9f",
+	'AvailablePayrolls',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'AvailablePayrolls',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("f261ac18-3b01-46ab-a72c-706c2f91c35f",
+	"4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	"b9266a99-419d-4977-a5b3-f0a7f6342582");
+INSERT INTO SPR_RS
+	VALUES ("f261ac18-3b01-46ab-a72c-706c2f91c35f",
+	'PayrollAvailable',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayrollAvailable',
+	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("cbed0e18-6775-4be9-b1f9-61714edc73e6",

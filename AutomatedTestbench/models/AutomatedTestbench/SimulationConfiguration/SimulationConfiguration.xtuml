@@ -169,7 +169,7 @@ INSERT INTO GD_GE
 	"f8bad976-c9fa-464f-9e9b-363fe0a4a97f",
 	100,
 	0,
-	'AutomatedTestbench::SimulationConfiguration::Unassigned Imported Component');
+	'AutomatedTestbench::SimulationConfiguration::TestFramework::Components::TestSequencer');
 INSERT INTO GD_SHP
 	VALUES ("832e5f36-1e6e-459e-90e8-4f832a6aecb1");
 INSERT INTO GD_NCS
@@ -191,6 +191,11 @@ INSERT INTO DIM_CON
 	VALUES ("4160b789-1823-4ad6-9e60-c214284bc798",
 	212.000000,
 	276.000000,
+	"832e5f36-1e6e-459e-90e8-4f832a6aecb1");
+INSERT INTO DIM_CON
+	VALUES ("f9dbc0bc-7aa7-4135-a578-d93eb9de68c9",
+	212.000000,
+	281.000000,
 	"832e5f36-1e6e-459e-90e8-4f832a6aecb1");
 INSERT INTO GD_GE
 	VALUES ("6ae7f170-7015-4646-b83e-524db92812e8",
@@ -225,6 +230,11 @@ INSERT INTO DIM_CON
 	VALUES ("6ff33a73-0b32-4039-bc44-721e780ef393",
 	396.000000,
 	108.000000,
+	"6ae7f170-7015-4646-b83e-524db92812e8");
+INSERT INTO DIM_CON
+	VALUES ("a36e6373-b018-41b3-a3b5-e0b83091217d",
+	491.000000,
+	222.000000,
 	"6ae7f170-7015-4646-b83e-524db92812e8");
 INSERT INTO GD_GE
 	VALUES ("997657bc-716b-4bce-a2ea-9ddfd5c9a107",
@@ -326,6 +336,227 @@ INSERT INTO DIM_ED
 	VALUES ("6ff33a73-0b32-4039-bc44-721e780ef393",
 	"e5603bbf-8204-44b5-ada0-f562dd6d9acf",
 	"997657bc-716b-4bce-a2ea-9ddfd5c9a107");
+INSERT INTO GD_GE
+	VALUES ("33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"245d46b4-3aa8-4dd9-8915-55f66a00ed78",
+	"34b00f5d-1eea-49f9-8cd5-f5372b71aa98",
+	106,
+	0,
+	'AutomatedTestbench::SimulationConfiguration::AutomatedTestbench::Components::PayrollTestbench::TESTSEQ::TestSequencing');
+INSERT INTO GD_CON
+	VALUES ("33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("aeb9932e-6e5b-4eb2-90ae-08c009016a77",
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"aeb9932e-6e5b-4eb2-90ae-08c009016a77");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"aeb9932e-6e5b-4eb2-90ae-08c009016a77",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("aeb9932e-6e5b-4eb2-90ae-08c009016a77",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("85f47bff-c516-47dd-b08e-99e6dd67520d",
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"85f47bff-c516-47dd-b08e-99e6dd67520d");
+INSERT INTO DIM_GE
+	VALUES (304.000000,
+	210.000000,
+	"85f47bff-c516-47dd-b08e-99e6dd67520d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("85f47bff-c516-47dd-b08e-99e6dd67520d",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("78145e9b-666b-4243-b80f-db06b126ad32",
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"78145e9b-666b-4243-b80f-db06b126ad32");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"78145e9b-666b-4243-b80f-db06b126ad32",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("78145e9b-666b-4243-b80f-db06b126ad32",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("26aba254-fe2a-4d46-948b-8b0233f4f429",
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"00000000-0000-0000-0000-000000000000",
+	"a28606f2-bd26-473c-a8f3-255107ac9db8",
+	"21e9fc9c-79f0-4fec-91cf-9d56edc3220c");
+INSERT INTO GD_LS
+	VALUES ("c5a6baaf-098b-4d08-b2d0-a330cd55542f",
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"26aba254-fe2a-4d46-948b-8b0233f4f429",
+	"21e9fc9c-79f0-4fec-91cf-9d56edc3220c",
+	"22f5b786-1949-44b8-9f8a-f8a4a359d3a8");
+INSERT INTO DIM_WAY
+	VALUES ("a28606f2-bd26-473c-a8f3-255107ac9db8",
+	491.000000,
+	222.000000,
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("22f5b786-1949-44b8-9f8a-f8a4a359d3a8",
+	264.000000,
+	281.000000,
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"00000000-0000-0000-0000-000000000000",
+	"a28606f2-bd26-473c-a8f3-255107ac9db8");
+INSERT INTO DIM_WAY
+	VALUES ("21e9fc9c-79f0-4fec-91cf-9d56edc3220c",
+	491.000000,
+	281.000000,
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"33893f6c-6302-4e72-bc1b-a8b10e519668",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("33893f6c-6302-4e72-bc1b-a8b10e519668",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("a36e6373-b018-41b3-a3b5-e0b83091217d",
+	"23b228b9-576c-4f31-a56f-0ebf6b9e2965",
+	"33893f6c-6302-4e72-bc1b-a8b10e519668");
+INSERT INTO GD_GE
+	VALUES ("23209d0e-24e5-4545-837d-f1677ce201d3",
+	"245d46b4-3aa8-4dd9-8915-55f66a00ed78",
+	"2c78e510-9972-42b3-b2fe-ab50b583446c",
+	105,
+	0,
+	'AutomatedTestbench::SimulationConfiguration::TestFramework::Components::TestSequencer::TESTBENCH::TestSequencing');
+INSERT INTO GD_CON
+	VALUES ("23209d0e-24e5-4545-837d-f1677ce201d3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("005f9ba3-d61f-4629-839d-4c1573bfbd4c",
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"005f9ba3-d61f-4629-839d-4c1573bfbd4c");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"005f9ba3-d61f-4629-839d-4c1573bfbd4c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("005f9ba3-d61f-4629-839d-4c1573bfbd4c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("87687a9f-00a4-4047-9436-596536fa2f69",
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"87687a9f-00a4-4047-9436-596536fa2f69");
+INSERT INTO DIM_GE
+	VALUES (197.000000,
+	241.000000,
+	"87687a9f-00a4-4047-9436-596536fa2f69",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("87687a9f-00a4-4047-9436-596536fa2f69",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("0b807dd6-a7d4-46b5-80a5-ebf6cd7433e8",
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"0b807dd6-a7d4-46b5-80a5-ebf6cd7433e8");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"0b807dd6-a7d4-46b5-80a5-ebf6cd7433e8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("0b807dd6-a7d4-46b5-80a5-ebf6cd7433e8",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("39ab3a46-1d9e-40ea-af4a-cd8d7b57976e",
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	"00000000-0000-0000-0000-000000000000",
+	"277071b5-3be2-4d3b-b7bd-1e0ac0bf5c15",
+	"4b006443-420d-48be-95ba-42333d336144");
+INSERT INTO GD_AOS
+	VALUES ("23b228b9-576c-4f31-a56f-0ebf6b9e2965",
+	"39ab3a46-1d9e-40ea-af4a-cd8d7b57976e");
+INSERT INTO DIM_WAY
+	VALUES ("277071b5-3be2-4d3b-b7bd-1e0ac0bf5c15",
+	212.000000,
+	281.000000,
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("4b006443-420d-48be-95ba-42333d336144",
+	264.000000,
+	281.000000,
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	"00000000-0000-0000-0000-000000000000",
+	"277071b5-3be2-4d3b-b7bd-1e0ac0bf5c15");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"23209d0e-24e5-4545-837d-f1677ce201d3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("23209d0e-24e5-4545-837d-f1677ce201d3",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("23b228b9-576c-4f31-a56f-0ebf6b9e2965",
+	264.000000,
+	281.000000,
+	"23209d0e-24e5-4545-837d-f1677ce201d3");
+INSERT INTO DIM_ED
+	VALUES ("f9dbc0bc-7aa7-4135-a578-d93eb9de68c9",
+	"00000000-0000-0000-0000-000000000000",
+	"23209d0e-24e5-4545-837d-f1677ce201d3");
 INSERT INTO DIM_DIA
 	VALUES ("245d46b4-3aa8-4dd9-8915-55f66a00ed78",
 	'',
@@ -393,19 +624,147 @@ INSERT INTO C_C_PROXY
 	'../../../../PilotPayroll/models/PilotPayroll/Components/PayrollMgmt/PayrollMgmt.xtuml');
 INSERT INTO CL_IC
 	VALUES ("f8bad976-c9fa-464f-9e9b-363fe0a4a97f",
-	"00000000-0000-0000-0000-000000000000",
+	"6458b090-4d5d-4bec-a376-1c820254581c",
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000",
 	0,
 	'',
-	'Unassigned Imported Component',
+	'TestFramework::Components::TestSequencer',
 	'');
+INSERT INTO CL_POR
+	VALUES ("f8bad976-c9fa-464f-9e9b-363fe0a4a97f",
+	"88e63b11-f30e-4336-9006-ddc2e129d092",
+	'TESTBENCH',
+	"37c49596-800d-4d1d-b9dc-d16f55f45970");
+INSERT INTO CL_IIR
+	VALUES ("2c78e510-9972-42b3-b2fe-ab50b583446c",
+	"b0b3c5e8-7447-4dbd-98da-8a1ba11cf9fb",
+	"37c49596-800d-4d1d-b9dc-d16f55f45970",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSequencing',
+	'');
+INSERT INTO CL_IP
+	VALUES ("2c78e510-9972-42b3-b2fe-ab50b583446c",
+	'TestSequencing',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("ed6cec9a-fd06-40bc-8855-69b778b642b1",
+	"2c78e510-9972-42b3-b2fe-ab50b583446c");
+INSERT INTO C_IR_PROXY
+	VALUES ("b0b3c5e8-7447-4dbd-98da-8a1ba11cf9fb",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	"00000000-0000-0000-0000-000000000000",
+	"88e63b11-f30e-4336-9006-ddc2e129d092",
+	'../../../../TestFramework/models/TestFramework/Components/TestSequencer/TestSequencer.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("88e63b11-f30e-4336-9006-ddc2e129d092",
+	"6458b090-4d5d-4bec-a376-1c820254581c",
+	'TESTBENCH',
+	0,
+	0,
+	'../../../../TestFramework/models/TestFramework/Components/TestSequencer/TestSequencer.xtuml');
 INSERT INTO PE_PE
 	VALUES ("f8bad976-c9fa-464f-9e9b-363fe0a4a97f",
 	1,
 	"f3a640d7-6823-4ded-97e5-8d7eddc0f17b",
 	"00000000-0000-0000-0000-000000000000",
 	21);
+INSERT INTO C_C_PROXY
+	VALUES ("6458b090-4d5d-4bec-a376-1c820254581c",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSequencer',
+	'Summary description:
+
+A service supporting the sequencing of the steps involved in running a suite of test cases.
+A test suite contains an ordered set of test buckets.
+Each test bucket contains at least one test case; typically several related tests.
+A test case consists of one or more sequences of stimuli and following observations.
+Multiple sequences of stimuli run concurrently in a test case execution.
+A stimulus effects some changes in a system under test.
+Following observations may evaluate the response of the system to such a stimulus.
+Time delays can be interspersed between stimuli and observations and between observations.
+All observations following a stimulus must complete before the next stimulus is injected
+If all observations are found acceptable, the test case is deemed to be successful.
+If any observation fails, the test case ceases execution: all sequences discontinue.
+A test case may be associated with instances of requirements to support coverage reporting.
+
+Discussion:
+
+Typically a self-checking test case has three primary components:
+1. Establish pre-conditions.
+2. Inject stimulus.
+3. Verify post-stimulus conditions.
+Often, the injection of stimulus and the verification of post-conditions
+are intermixed, as the test case injects a stimulus, verifies the response(s), 
+injects additional stimuli, and so on.
+
+This subject matter-independent Test Sequencer service asumes the burdens of sequencing, timer 
+management, requirements coverage tracking and summary reporting for multi-threaded test cases 
+ordered in test buckets within a test suite.
+
+A testbench, with subject matter-specific details of stimuli and observations, can use this 
+Test Sequencer service to manage its interaction with a system under test.
+
+To use the service, a testbench must derive its test bucket, stimuli and observation classes from 
+the supertype classes provided in the sample testbench component and use the operations supplied 
+in the supertypes to interface with the service.
+
+In principle, a testbench registers a test suite with the service, supplying a name and optionally 
+selecting a timescale which will be default for the testcases it will contain. The testbench adds 
+test buckets to the suite and populates each bucket with test cases comprised of stimuli and 
+observations. A test bucket contains at least one test case, but commonly a number of cases which 
+share some common purpose, such as comprehensive testing of a subgroup of requirements. 
+
+Optionally, a testbench can register instances of requirements with the service. There is provision 
+for associating any such requirement with one or more test case instances; the service will provide 
+a summary report on requirements coverage at completion of testing.
+
+A test case may choose to specify pre-conditions which should be established before the case is run.
+This is done by associating an instance of the testbench preconditions class which is configured with 
+the desired values and an operation to inject these values when invoked at test case initialization.
+
+As the testbench constructs test cases, using provided operations of the stimulus and observation 
+supertypes to add its specific stimuli and observation instances, the sequencer builds corresponding 
+sequences in the Test Sequencer service context. 
+
+For each instance of test bucket, stimulus or observation created in the testbench in this way, the 
+service returns identifying information which is used to activate those instances when appropriate.
+
+The testbench test bucket, stimulus and observation subtype classes must provide instances which will 
+respond to the invocations of injection and observation operations on the supertype when triggered by 
+the sequencing service as it works through the series of test cases. 
+The supertypes also provide operations to signal responses to the service.
+
+The test cases are created in an instance based operation of a test bucket subtype. This operation 
+will be invoked for each test bucket subtype as the sequencer runs through the set of buckets that 
+constitute a test suite. The invoked operation creates subtype instances of stimulus and observation 
+arranging them in order. Stimuli are added to a stimulus sequence - of which there must be at least 
+one created for a test case. If there are multiple sequences of stimuli they will run concurrently.
+Observations are each appended to a specific stimulus and may be separated by chosen time delays.
+
+An observation may be configured to poll, repeatedly evaluating system conditions until it completes 
+by reporting success, or fails after some time limit. Alternatively, invocation of an evaluation can
+be triggered by some specific occurrence in the testbench - such as receipt of a status change in 
+the system under test. This is achieved by associating a specific key with the observation; invoking 
+a sequence "assess" signal, with a key value, will trigger evaluation of any current observations 
+with a matching key. If desired, such an ''asynchronous'' observation may be associated with a separate 
+stimulus sequence, allowing other sets of observations to proceed while it waits to be triggered.
+
+Associated with each stimulus sequence there is one interval timer. A stimulus or observation can 
+start (or restart) the timer on a sequence. A subsequent observation may read the elapsed time since 
+the timer was started - and may optionally reset the timer value to zero on reading. Interval timer 
+resolution defaults to that of the test case, but can be overridden.
+
+The provided sample testbench demonstrates the capabilities provided by the test sequencing service.
+They include linking pre-conditions and requirements to test cases, chosing time resolution values 
+and measuring elapsed time intervals.
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../../../TestFramework/models/TestFramework/Components/TestSequencer/TestSequencer.xtuml');
 INSERT INTO CL_IC
 	VALUES ("e3573ce4-fbf5-4afb-9403-d200567e63bf",
 	"76e58be0-a1c7-49ea-ba74-f77b1638c4f9",
@@ -442,6 +801,36 @@ INSERT INTO C_PO_PROXY
 	VALUES ("79aae608-4aab-49dd-9eaa-fc20710e98f4",
 	"76e58be0-a1c7-49ea-ba74-f77b1638c4f9",
 	'TESTAPP',
+	0,
+	0,
+	'../Components/PayrollTestbench/PayrollTestbench.xtuml');
+INSERT INTO CL_POR
+	VALUES ("e3573ce4-fbf5-4afb-9403-d200567e63bf",
+	"e94fdefe-2c96-438c-95ef-863bdc869231",
+	'TESTSEQ',
+	"e92a2478-571b-446c-a396-427f5cc85fbb");
+INSERT INTO CL_IIR
+	VALUES ("34b00f5d-1eea-49f9-8cd5-f5372b71aa98",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a",
+	"e92a2478-571b-446c-a396-427f5cc85fbb",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSequencing',
+	'');
+INSERT INTO CL_IR
+	VALUES ("34b00f5d-1eea-49f9-8cd5-f5372b71aa98",
+	"ed6cec9a-fd06-40bc-8855-69b778b642b1",
+	'TestSequencing',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("8343e62e-053d-47d5-9e0f-752dd12b137a",
+	"eff7aa83-70b9-46a6-bfc0-08d66d36431e",
+	"00000000-0000-0000-0000-000000000000",
+	"e94fdefe-2c96-438c-95ef-863bdc869231",
+	'../Components/PayrollTestbench/PayrollTestbench.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("e94fdefe-2c96-438c-95ef-863bdc869231",
+	"76e58be0-a1c7-49ea-ba74-f77b1638c4f9",
+	'TESTSEQ',
 	0,
 	0,
 	'../Components/PayrollTestbench/PayrollTestbench.xtuml');
@@ -488,6 +877,32 @@ INSERT INTO C_P_PROXY
 	'',
 	'PayrollMgmt::USER::HumanResources',
 	'../../../../PilotPayroll/models/PilotPayroll/Components/PayrollMgmt/PayrollMgmt.xtuml');
+INSERT INTO C_SF
+	VALUES ("ed6cec9a-fd06-40bc-8855-69b778b642b1",
+	"8343e62e-053d-47d5-9e0f-752dd12b137a",
+	"b0b3c5e8-7447-4dbd-98da-8a1ba11cf9fb",
+	'',
+	'TestSequencer::TESTBENCH::TestSequencing -o)- PayrollTestbench::TESTSEQ::TestSequencing');
+INSERT INTO PE_PE
+	VALUES ("ed6cec9a-fd06-40bc-8855-69b778b642b1",
+	1,
+	"f3a640d7-6823-4ded-97e5-8d7eddc0f17b",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("8343e62e-053d-47d5-9e0f-752dd12b137a",
+	'TestSequencing',
+	'',
+	'Unnamed Interface',
+	'PayrollTestbench::TESTSEQ::TestSequencing',
+	'../Components/PayrollTestbench/PayrollTestbench.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("b0b3c5e8-7447-4dbd-98da-8a1ba11cf9fb",
+	'TestSequencing',
+	'SequencingService',
+	'',
+	'TestSequencer::TESTBENCH::TestSequencing',
+	'../../../../TestFramework/models/TestFramework/Components/TestSequencer/TestSequencer.xtuml');
 INSERT INTO PE_PE
 	VALUES ("f3a640d7-6823-4ded-97e5-8d7eddc0f17b",
 	1,

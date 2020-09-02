@@ -599,7 +599,7 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("f9413599-a85d-4909-9ad3-b44281dc4af2",
-	'PayrollSent',
+	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'',
 	1,
@@ -608,7 +608,7 @@ INSERT INTO C_EP_PROXY
 	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'PayrollSent',
+	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
@@ -641,6 +641,60 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'UpdatesSent',
 	'Signal that all payroll updates for a department have been submitted by client.',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("c9db54ef-53ad-41c4-a2cd-98091ba479d8",
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("c9db54ef-53ad-41c4-a2cd-98091ba479d8",
+	'PayeeData',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayeeData',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("ee544d00-85d5-405d-9f39-048b2befa83a",
+	"e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("ee544d00-85d5-405d-9f39-048b2befa83a",
+	'AvailablePayrolls',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'AvailablePayrolls',
+	'',
+	'../../Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("66353e67-f6b4-4c46-98b3-e3ae3e8ccefb",
+	"4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
+INSERT INTO SPR_PS
+	VALUES ("66353e67-f6b4-4c46-98b3-e3ae3e8ccefb",
+	'PayrollAvailable',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayrollAvailable',
+	'',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("cbed0e18-6775-4be9-b1f9-61714edc73e6",

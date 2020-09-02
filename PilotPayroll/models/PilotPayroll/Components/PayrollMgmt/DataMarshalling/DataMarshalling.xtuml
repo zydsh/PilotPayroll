@@ -119,7 +119,7 @@ if ( empty dept )
   LOG::LogFailure( message:"Department not found when updating item hold" );
   return;
 end if;
-select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+select one payroll related by dept->Payroll[R34.''has under review''];
 if ( empty payroll )
   LOG::LogFailure( message:"Payroll not found when updating item hold" );
   return;

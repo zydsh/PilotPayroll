@@ -4459,7 +4459,7 @@ INSERT INTO R_PART
 	"45986634-2a75-4006-a8a7-bc4ca8883c0e",
 	0,
 	0,
-	'is currently being evaluated for');
+	'is being reviewed for');
 INSERT INTO R_RTO
 	VALUES ("140d4f3a-e48f-4d68-b31f-4a30bcdc4718",
 	"b8d9bd6a-7b87-491a-a3a2-62c40e76f128",
@@ -4476,7 +4476,7 @@ INSERT INTO R_PART
 	"9e8b3cd3-ef41-48b0-b6b3-202f8fed3c57",
 	0,
 	1,
-	'needs current evaluation of');
+	'has under review');
 INSERT INTO R_RTO
 	VALUES ("082d7012-4ccd-4f69-8aac-c0d1f9d5d21c",
 	"b8d9bd6a-7b87-491a-a3a2-62c40e76f128",

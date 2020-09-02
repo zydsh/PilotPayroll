@@ -18,22 +18,23 @@ INSERT INTO O_TFR
 send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"Payroll_Bucket_1" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
-// Use Case UC06
+// Use Case UC06 
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC06" ); 
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC06", seqLabel:"seq06" );
 stId06 = FastForward::Create( seqLabel:"seq06", days:13, hours:11 );
-GetNotification::CreatePolling( stimulus:stId06, codematch:"UC06", pollInterval:1, timeLimit:10 );
+GetNotification::CreatePolling( stimulus:stId06, codematch:"imminent", pollInterval:1, timeLimit:10 );
 
 // Use Case UC05
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC05" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC05", seqLabel:"seq05" );
 stId05 = FastForward::Create( seqLabel:"seq05", days:1, hours:1 );
-GetNotification::CreatePolling( stimulus:stId05, codematch:"UC05_a", pollInterval:1, timeLimit:10 );
-GetNotification::CreatePolling( stimulus:stId05, codematch:"UC05_b", pollInterval:1, timeLimit:10 );
+GetNotification::CreatePolling( stimulus:stId05, codematch:"generating", pollInterval:1, timeLimit:10 );
+GetNotification::CreatePolling( stimulus:stId05, codematch:"", pollInterval:1, timeLimit:10 );
 
 // Use Case UC03
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC03" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC03", seqLabel:"seq03" );
+stId = Req
 stId = RequestPayroll::Create( seqLabel:"seq03", dept:"IT", holds:False );
 WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
 ReviewPayrollEntry::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:10 );

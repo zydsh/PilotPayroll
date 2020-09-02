@@ -390,7 +390,7 @@ INSERT INTO C_PP
 	VALUES ("1db19890-3460-46ba-ba5f-113fc5bf57d9",
 	"0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"ba5eda7a-def5-0000-0000-000000000004",
-	'Message',
+	'Content',
 	'Message content.',
 	0,
 	'',
@@ -399,7 +399,7 @@ INSERT INTO C_PP
 	VALUES ("d0e3630d-7998-47d3-87e8-031734921af9",
 	"0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"ba5eda7a-def5-0000-0000-000000000004",
-	'Code',
+	'Ident',
 	'Currently used to check for receipt of specific notifications.',
 	0,
 	'',
@@ -475,11 +475,11 @@ INSERT INTO C_EP
 	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'PayrollSent',
+	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.');
 INSERT INTO C_AS
 	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
-	'PayrollSent',
+	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	1,
 	"dce7039f-aa29-4ba4-af47-7258d8fb7941");
@@ -487,7 +487,7 @@ INSERT INTO C_PP
 	VALUES ("904bbd7d-dcf9-4ddb-9a85-0f5b32aac4c5",
 	"79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"ba5eda7a-def5-0000-0000-000000000004",
-	'Department',
+	'Ident',
 	'',
 	0,
 	'',
@@ -531,6 +531,87 @@ INSERT INTO C_PP
 	0,
 	'',
 	"6a1d8b96-5e20-4fd0-b5fc-4ee99ed7c5f9");
+INSERT INTO C_EP
+	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayeeData',
+	'');
+INSERT INTO C_AS
+	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	'PayeeData',
+	'',
+	1,
+	"4977673c-bec5-4608-b2c5-3676282e237e");
+INSERT INTO C_PP
+	VALUES ("41643373-e34f-4e19-b715-9c2008359cb7",
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Department',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("276dfd6e-851f-4004-a9db-bf88a82d1896",
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'EmployeeID',
+	'',
+	0,
+	'',
+	"41643373-e34f-4e19-b715-9c2008359cb7");
+INSERT INTO C_PP
+	VALUES ("35b4a243-334e-41cf-ba71-d26f38114df4",
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'EmployeeFirstName',
+	'',
+	0,
+	'',
+	"276dfd6e-851f-4004-a9db-bf88a82d1896");
+INSERT INTO C_PP
+	VALUES ("25c4956a-4c0f-4e60-a5c2-efedbdef729e",
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'EmployeeLastName',
+	'',
+	0,
+	'',
+	"35b4a243-334e-41cf-ba71-d26f38114df4");
+INSERT INTO C_EP
+	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'AvailablePayrolls',
+	'');
+INSERT INTO C_AS
+	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
+	'AvailablePayrolls',
+	'',
+	0,
+	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af");
+INSERT INTO C_EP
+	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
+	-1,
+	'PayrollAvailable',
+	'');
+INSERT INTO C_AS
+	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	'PayrollAvailable',
+	'',
+	1,
+	"e4c136c3-a15a-4c1d-a50d-388ef28a61ba");
+INSERT INTO C_PP
+	VALUES ("8f282b7e-c3a1-4d04-aebf-a1e98c9e509b",
+	"4d16c31d-6243-441a-8a49-f1f48cf4331d",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Department',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
 	VALUES ("cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	1,

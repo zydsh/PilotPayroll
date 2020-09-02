@@ -35,6 +35,7 @@ import payrolldeployment.hruser.HRuserPayroll;             // HRuser-Payroll por
 import payrolldeployment.payrollmgmt.PayrollMgmtUSER;      // CarPark-PaymentMachine port
 import payrolldeployment.HRuser;                           // Shell component
 import payrolldeployment.NotificationMsg;
+import payrolldeployment.PayeeDataMsg;
 import payrolldeployment.PayrollDataMsg;
 import payrolldeployment.PayrollSentMsg;
 import payrolldeployment.RetrievePayrollForReviewMsg;
@@ -131,24 +132,29 @@ public class HRuserMsgController {
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendNotificationMsg( String Code, String Message ) throws Exception {
-    	NotificationMsg msg = new NotificationMsg( "Notification", Code, Message );
+    public void SendNotificationMsg( String MsgIdent ) throws Exception {
+    	NotificationMsg msg = new NotificationMsg( "Notification", MsgIdent );
+        String topic = "/topic/HRuser/";
+        this.template.convertAndSend( topic, msg );
+    }
+
+    public void SendPayeeDataMsg( String Department, 
+    		                      Integer EmployeeId, 
+    		                      String EmployeeFirstName,
+    		                      String EmployeeLastName ) throws Exception {
+    	PayeeDataMsg msg = new PayeeDataMsg( "PayeeData",
+    			                              Department,
+    			                              String.valueOf( EmployeeId ),
+    			                              EmployeeFirstName,
+    			                              EmployeeLastName ) );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendPayrollDataMsg( String Department, 
-    		                      Integer EmployeeId, 
-    		                      String EmployeeFirstName,
-    		                      String EmployeeLastName,
-    		                      String PaymentLabel,
-    		                      Double PaymentAmount,
-    		                      Boolean HoldStatus ) throws Exception {
+    public void SendPayrollDataMsg( String PaymentLabel,
+    		                        Double PaymentAmount,
+    		                        Boolean HoldStatus ) throws Exception {
     	PayrollDataMsg msg = new PayrollDataMsg( "PayrollData",
-    			                                  Department,
-    			                                  String.valueOf( EmployeeId ),
-    			                                  EmployeeFirstName,
-    			                                  EmployeeLastName,
     			                                  PaymentLabel,
     			                                  String.valueOf( PaymentAmount ),
     			                                  String.valueOf( HoldStatus ) );

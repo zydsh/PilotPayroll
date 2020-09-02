@@ -357,7 +357,9 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("0bda7c67-dbef-4adf-bb45-59d4e6a9ca9f",
 	'RetrievePayrollForReview',
-	'',
+	'Request from client to get department payroll data for review.
+Some reviews request only those items with on-hold status.
+',
 	'::MarshalPayroll( Dept:param.Department, Holds:False );',
 	1,
 	0);
@@ -366,7 +368,9 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'RetrievePayrollForReview',
-	'',
+	'Request from client to get department payroll data for review.
+Some reviews request only those items with on-hold status.
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("e452186a-96ca-4a24-aab6-9db618b60569",
@@ -374,8 +378,10 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("e452186a-96ca-4a24-aab6-9db618b60569",
-	'SubmitItemUpdates',
-	'',
+	'SubmitItemUpdate',
+	'Update a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -383,8 +389,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("4d9c995d-41df-4210-b324-bacfc13385c6",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitItemUpdates',
-	'',
+	'SubmitItemUpdate',
+	'Update a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("2d2951f1-f7bf-4ff2-91bf-5d9b221a1528",
@@ -392,8 +400,10 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("2d2951f1-f7bf-4ff2-91bf-5d9b221a1528",
-	'SubmitItemApprovals',
-	'',
+	'SubmitItemApproval',
+	'Approve a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -401,8 +411,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("629926c0-e851-45a1-a84c-1776a2a7cba6",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitItemApprovals',
-	'',
+	'SubmitItemApproval',
+	'Approve a payment element amount for an employee on a department payroll.
+Not used for preliminary Use Cases.
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("f8de3ba4-c757-43e6-9493-246185227011",
@@ -410,8 +422,10 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("f8de3ba4-c757-43e6-9493-246185227011",
-	'SubmitItemHolds',
-	'',
+	'SubmitItemHold',
+	'Update the on-hold status of a payment element for an employee on a department payroll.
+
+',
 	'::UnmarshallitemHold( Dept:param.Department, ID:param.EmployeeID, Label:param.PaymentLabel, Hold:param.HoldStatus );
 ',
 	1,
@@ -420,8 +434,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("bb2c26a6-cd84-4b87-8bb5-ed5924eab856",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitItemHolds',
-	'',
+	'SubmitItemHold',
+	'Update the on-hold status of a payment element for an employee on a department payroll.
+
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("759593f3-52e5-483a-81ae-8120e73b4312",
@@ -429,8 +445,10 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("759593f3-52e5-483a-81ae-8120e73b4312",
-	'SubmitPayHolds',
-	'',
+	'SubmitPayHold',
+	'Client submits an on-hold status for the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -438,8 +456,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("f143ad52-738b-43d7-a3a2-d79376361797",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitPayHolds',
-	'',
+	'SubmitPayHold',
+	'Client submits an on-hold status for the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("537ef455-63f8-44f2-a3fe-11666471a47b",
@@ -447,8 +467,10 @@ INSERT INTO SPR_PEP
 	"8673d1a5-e3c1-4890-a8c6-d82bc89731e7");
 INSERT INTO SPR_PS
 	VALUES ("537ef455-63f8-44f2-a3fe-11666471a47b",
-	'SubmitPayApprovals',
-	'',
+	'SubmitPayApproval',
+	'Signal approval of the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -456,8 +478,10 @@ INSERT INTO C_EP_PROXY
 	VALUES ("5ddc2f40-c598-4724-b9e2-e763f4901ac4",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
-	'SubmitPayApprovals',
-	'',
+	'SubmitPayApproval',
+	'Signal approval of the entire payment for an employee in a department.
+Not used for preliminary Use Cases.
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("6caf6b8c-d33e-471f-b6ca-ee9e88c3ecee",
@@ -466,7 +490,7 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("6caf6b8c-d33e-471f-b6ca-ee9e88c3ecee",
 	'PayrollData',
-	'',
+	'Data for single payroll payment element for an employee in a department.',
 	'',
 	1,
 	0);
@@ -475,7 +499,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayrollData',
-	'',
+	'Data for single payroll payment element for an employee in a department.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("b78d9224-37d3-4371-829b-727ce3157b4b",
@@ -484,7 +508,7 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("b78d9224-37d3-4371-829b-727ce3157b4b",
 	'Notification',
-	'',
+	'Notify a client of some occurrence.',
 	'',
 	1,
 	0);
@@ -493,7 +517,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Notification',
-	'',
+	'Notify a client of some occurrence.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("8be019a9-e027-42fd-810b-bd39356e51a2",
@@ -502,10 +526,10 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("8be019a9-e027-42fd-810b-bd39356e51a2",
 	'SubmitPayrollApproval',
-	'',
+	'Signal that the payroll for a department has been approved by a client.',
 	'select any dept from instances of Department
  where ( selected.Name == param.Department );
-select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+select one payroll related by dept->Payroll[R34.''has under review''];
 if ( empty payroll )
   LOG::LogFailure( message:"Department not matched for payroll approval" );
   return;
@@ -519,7 +543,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitPayrollApproval',
-	'',
+	'Signal that the payroll for a department has been approved by a client.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("3262aaf6-56ac-4e75-9cdb-de7134df3f29",
@@ -528,7 +552,7 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("3262aaf6-56ac-4e75-9cdb-de7134df3f29",
 	'SubmitToFinance',
-	'',
+	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
 	'select any dept from instances of Department
  where ( selected.Name == param.Department );
 if ( empty dept )
@@ -536,7 +560,7 @@ if ( empty dept )
   return;
 end if;
 
-select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+select one payroll related by dept->Payroll[R34.''has under review''];
 payroll.AssessForSubmittal();',
 	1,
 	0);
@@ -545,7 +569,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitToFinance',
-	'',
+	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("2e4fa06e-2fb2-48b4-bd9c-8dca953ad57a",
@@ -554,7 +578,9 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("2e4fa06e-2fb2-48b4-bd9c-8dca953ad57a",
 	'Accepted',
-	'',
+	'Signal acceptance from Finance of a department payroll submitted for payment.
+Not used for preliminary Use Cases.
+',
 	'',
 	1,
 	0);
@@ -563,7 +589,9 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'Accepted',
-	'',
+	'Signal acceptance from Finance of a department payroll submitted for payment.
+Not used for preliminary Use Cases.
+',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("f9413599-a85d-4909-9ad3-b44281dc4af2",
@@ -572,16 +600,16 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("f9413599-a85d-4909-9ad3-b44281dc4af2",
 	'PayrollSent',
+	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'',
-	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayrollSent',
-	'',
+	'Signal that all of a department''s payroll data requested for review has been sent to client.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_PEP
 	VALUES ("8185cb14-1495-4f74-aba2-96daf97f3cbf",
@@ -590,14 +618,14 @@ INSERT INTO SPR_PEP
 INSERT INTO SPR_PS
 	VALUES ("8185cb14-1495-4f74-aba2-96daf97f3cbf",
 	'UpdatesSent',
-	'',
+	'Signal that all payroll updates for a department have been submitted by client.',
 	'select any dept from instances of Department
  where ( selected.Name == param.Department );
 if ( empty dept )
   LOG::LogFailure( message:"Department not found when updating payroll review status" );
   return;
 end if;
-select one payroll related by dept->Payroll[R34.''needs current evaluation of''];
+select one payroll related by dept->Payroll[R34.''has under review''];
 if ( empty payroll )
   LOG::LogFailure( message:"Payroll not found when updating payroll review status" );
   return;
@@ -612,7 +640,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'UpdatesSent',
-	'',
+	'Signal that all payroll updates for a department have been submitted by client.',
 	'../../Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("cbed0e18-6775-4be9-b1f9-61714edc73e6",

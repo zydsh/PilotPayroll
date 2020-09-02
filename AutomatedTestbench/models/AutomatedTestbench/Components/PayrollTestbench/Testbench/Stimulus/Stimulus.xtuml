@@ -47,7 +47,12 @@ else
   	select one psu related by self->PayrollStatusUpdate[R3];
   	if ( not_empty psu )
   	  psu.SetStatus();
-  	end if;
+  	else
+      select one ra  related by self->RequestAvailable[R3];
+      if ( not_empty ra )
+        ra.MakeRequest();
+      end if;
+    end if;
   end if;
 end if;',
 	1,
@@ -176,6 +181,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

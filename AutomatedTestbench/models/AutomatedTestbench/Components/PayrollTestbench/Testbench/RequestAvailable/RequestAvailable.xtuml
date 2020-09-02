@@ -1,0 +1,104 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("b1d69a34-3726-4570-9691-145df89824c8",
+	'RequestAvailable',
+	26,
+	'RequestAvailable',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("0445091a-23e5-4086-8398-5882ac33f0bc",
+	"b1d69a34-3726-4570-9691-145df89824c8",
+	'Create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'create object instance ra of RequestAvailable;
+
+create object instance stimulus of Stimulus;
+relate stimulus to ra across R3;
+
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("c87a93dc-efad-44b6-97f3-012c2aa73d01",
+	"0445091a-23e5-4086-8398-5882ac33f0bc",
+	'dept',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"5ab21399-05f4-4e99-b214-452c77bcf53b",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("4015cdf8-acd2-4e8a-8ae3-78060a9a2552",
+	"0445091a-23e5-4086-8398-5882ac33f0bc",
+	'holds',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"c87a93dc-efad-44b6-97f3-012c2aa73d01",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5ab21399-05f4-4e99-b214-452c77bcf53b",
+	"0445091a-23e5-4086-8398-5882ac33f0bc",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("045291b8-0afe-414a-b533-4d98f819d9c6",
+	"b1d69a34-3726-4570-9691-145df89824c8",
+	'MakeRequest',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"Requesting available payrolls" );
+send TESTAPP::AvailablePayrolls();
+
+select one stimulus related by self->Stimulus[R3];
+stimulus.Complete();
+',
+	1,
+	'',
+	"0445091a-23e5-4086-8398-5882ac33f0bc",
+	0);
+INSERT INTO O_ID
+	VALUES (0,
+	"b1d69a34-3726-4570-9691-145df89824c8");
+INSERT INTO O_ID
+	VALUES (1,
+	"b1d69a34-3726-4570-9691-145df89824c8");
+INSERT INTO O_ID
+	VALUES (2,
+	"b1d69a34-3726-4570-9691-145df89824c8");
+INSERT INTO PE_PE
+	VALUES ("b1d69a34-3726-4570-9691-145df89824c8",
+	1,
+	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	"254e12da-372d-4f11-ad9a-5b53303407a5",
+	'Testbench',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
+	0,
+	'../Testbench.xtuml');

@@ -606,7 +606,7 @@ INSERT INTO SM_ACT
 	VALUES ("b7b809b8-491b-4764-9efd-cadb1dc13b9b",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
-	'select one dept related by self->Department[R34.''is currently being evaluated for''];
+	'select one dept related by self->Department[R34.''is being reviewed for''];
 send USER::Notification( Code:"UC05_a", Message:"Generating draft payroll for " + dept.Name );
 select any element related by self->EmployeePayment[R7]->EmployeePaymentElement[R15.''is composed of''];
 if ( empty element )
@@ -633,7 +633,7 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'LOG::LogInfo( message:"--- Payroll available for review" );
-select one dept related by self->Department[R34.''is currently being evaluated for''];
+select one dept related by self->Department[R34.''is being reviewed for''];
 select any elmt related by self->EmployeePaymentElement[R29.''has placed on hold''];
 if ( not_empty elmt )
   send USER::Notification( Code:"Holds", Message:"Payroll available for review for department  " + dept.Name );
@@ -654,8 +654,8 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'// @TODO - this is temporary: end payroll scheduler lifecycle here because Finance not yet involved.
-select one dept related by self->Department[R34.''is currently being evaluated for''];
-unrelate self from dept across R34.''is currently being evaluated for'';
+select one dept related by self->Department[R34.''is being reviewed for''];
+unrelate self from dept across R34.''is being reviewed for'';
 relate self to dept across R24.''has been generated for'';
 
 select one scheduler related by self->PayPeriod[R33.''is for'']
@@ -676,8 +676,8 @@ INSERT INTO SM_ACT
 	VALUES ("7785ee6b-7cc0-4803-827f-30bfe4c32716",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
-	'select one dept related by self->Department[R34.''is currently being evaluated for''];
-unrelate self from dept across R34.''is currently being evaluated for'';
+	'select one dept related by self->Department[R34.''is being reviewed for''];
+unrelate self from dept across R34.''is being reviewed for'';
 relate self to dept across R24.''has been generated for'';
 
 select one scheduler related by self->PayPeriod[R33.''is for'']
@@ -766,7 +766,7 @@ INSERT INTO SM_ACT
 	VALUES ("0e549355-478f-443d-955a-a032c216433e",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
-	'select one dept related by self->Department[R34.''is currently being evaluated for''];
+	'select one dept related by self->Department[R34.''is being reviewed for''];
 send USER::Notification( Code:"UC04", Message:"Payroll approved for department " + dept.Name );',
 	'',
 	0);
@@ -809,7 +809,7 @@ INSERT INTO SM_ACT
 	VALUES ("203826a3-675d-49c7-8990-3545b4b0b101",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
-	'select one dept related by self->Department[R34.''is currently being evaluated for''];
+	'select one dept related by self->Department[R34.''is being reviewed for''];
 send USER::Notification( Code:"Reviewed", Message:"Payroll reviewed for department " + dept.Name );',
 	'',
 	0);

@@ -14,12 +14,15 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select many entries from instances of PayrollEntry
+	'// @TODO - this should start from Dept.
+select many entries from instances of PayrollElement
  where selected.Edited;
 count = 0;
 if ( not_empty entries )
   for each entry in entries
-    send TESTAPP::SubmitItemHold( Department:entry.DeptName, EmployeeID:entry.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
+    select one payee related by entry->Payee[R9.''contributes to''];
+    select one dept related by payee->Department[R8.''belongs to''];
+    send TESTAPP::SubmitItemHold( Department:dept.Name, EmployeeID:payee.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
   end for;
   count = count + 1;
 
@@ -28,6 +31,18 @@ end if;',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("ec82031d-6eea-4d52-8760-2aa5690852d8",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17",
+	'ReviewEntries',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	1,
+	'',
+	"637e5f80-bbad-4f46-92bb-2c1f2400bbdb",
 	0);
 INSERT INTO O_NBATTR
 	VALUES ("c0821f99-0707-4c95-a2d1-6e69d7b19fa8",

@@ -2,9 +2,9 @@
 
 INSERT INTO O_OBJ
 	VALUES ("97f00b06-01bd-4757-98d9-717daa3ca783",
-	'ReviewPayrollEntry',
+	'ReviewPayrollElement',
 	7,
-	'ReviewPayrollEntry',
+	'ReviewPayrollElement',
 	'This observation looks for a payroll entry that matches some attribute values.
 It may also make changes to a discovered entry, directed by its action attribute.',
 	"00000000-0000-0000-0000-000000000000");
@@ -15,7 +15,7 @@ INSERT INTO O_TFR
 	'See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
-	'create object instance rvw of ReviewPayrollEntry;
+	'create object instance rvw of ReviewPayrollElement;
 
 rvw.employeeID = param.employee;
 rvw.label = param.label;
@@ -97,7 +97,7 @@ INSERT INTO O_TFR
 	'LOG::LogInfo( message:"--- Expecting to review payroll entry with action " + self.action );
 select one obs related by self->Observation[R4];
 
-select any entry from instances of PayrollEntry
+select any entry from instances of PayrollElement
  where ( selected.EmployeeID == self.employeeID )
    and ( selected.Label == self.label );
 if ( not_empty entry )

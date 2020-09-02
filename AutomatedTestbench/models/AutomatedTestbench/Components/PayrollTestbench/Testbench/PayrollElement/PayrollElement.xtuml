@@ -44,33 +44,15 @@ INSERT INTO O_ATTR
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("9cf0a1c2-007c-4274-b99d-7111aec55752",
+	VALUES ("aff124be-2d17-4259-9019-1a4b1d755cac",
 	"a541e4cf-78f2-4e57-9795-3f35ea702baa");
 INSERT INTO O_BATTR
-	VALUES ("9cf0a1c2-007c-4274-b99d-7111aec55752",
+	VALUES ("aff124be-2d17-4259-9019-1a4b1d755cac",
 	"a541e4cf-78f2-4e57-9795-3f35ea702baa");
 INSERT INTO O_ATTR
-	VALUES ("9cf0a1c2-007c-4274-b99d-7111aec55752",
+	VALUES ("aff124be-2d17-4259-9019-1a4b1d755cac",
 	"a541e4cf-78f2-4e57-9795-3f35ea702baa",
 	"9b684e67-b588-4e86-9f85-c9d2f05f2789",
-	'DeptName',
-	'',
-	'',
-	'DeptName',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("aff124be-2d17-4259-9019-1a4b1d755cac",
-	"a541e4cf-78f2-4e57-9795-3f35ea702baa");
-INSERT INTO O_BATTR
-	VALUES ("aff124be-2d17-4259-9019-1a4b1d755cac",
-	"a541e4cf-78f2-4e57-9795-3f35ea702baa");
-INSERT INTO O_ATTR
-	VALUES ("aff124be-2d17-4259-9019-1a4b1d755cac",
-	"a541e4cf-78f2-4e57-9795-3f35ea702baa",
-	"9cf0a1c2-007c-4274-b99d-7111aec55752",
 	'Hold',
 	'',
 	'',
@@ -117,6 +99,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

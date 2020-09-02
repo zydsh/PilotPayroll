@@ -7,6 +7,18 @@ INSERT INTO O_OBJ
 	'Payee',
 	'An instance of an employee pay item requested from the application for review.',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("03a03adc-0644-496f-8b1b-5483db98e4f4",
+	"9c63482d-b58f-4f87-a87e-03a71788d08f",
+	'ReviewEntry',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	3,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("86521c02-af48-4956-9790-04135daac291",
 	"9c63482d-b58f-4f87-a87e-03a71788d08f");

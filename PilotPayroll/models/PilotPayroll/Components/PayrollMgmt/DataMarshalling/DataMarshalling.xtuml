@@ -39,7 +39,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	0,
-	'',
+	'4.1.17',
 	'PilotPayroll::Components::PayrollMgmt::DataMarshalling');
 INSERT INTO DIM_DIA
 	VALUES ("72378a00-8e97-4279-8b6f-a2fd67ee8d08",
@@ -61,6 +61,9 @@ end if;
 count = 0;
 select many employees related by dept->Employee[R6.''employs''];
 for each emp in employees
+  send USER::PayeeData( Department:dept.Name, 
+                        EmployeeID:emp.NationalID, 
+                        EmployeeFirstName:"", EmployeeLastName:"" );
   select many payments related by emp->EmployeePayment[R7]
                                      ->EmployeePaymentElement[R15.''is composed of''];
   for each payment in payments
@@ -72,14 +75,15 @@ for each emp in employees
     if ( param.Holds == False ) or ( hold == True )
   	  select one spec related by payment->PaymentStructureElement[R13.''is current realization of'']
   	                                  ->PaymentElementSpec[R12.''is typed by''];
-      send USER::PayrollData( Department:dept.Name, 
-                            EmployeeID:emp.NationalID, EmployeeFirstName:emp.FirstName, EmployeeLastName:emp.LastName,
-                            PaymentLabel:spec.Label, PaymentAmount:payment.Amount, HoldStatus:hold );
+      send USER::PayrollData( EmployeeID:emp.NationalID,
+                              PaymentLabel:spec.Label, 
+                              PaymentAmount:payment.Amount, 
+                              HoldStatus:hold );
       count = count + 1;
     end if;	
   end for;
 end for;
-send USER::PayrollSent( Department:dept.Name, Count:count );',
+send USER::DataSent( Ident:"payroll", Count:count );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
@@ -192,6 +196,31 @@ INSERT INTO S_SPARM
 	'');
 INSERT INTO PE_PE
 	VALUES ("1e4bfa68-bb78-4314-90ca-c3a1dd322805",
+	1,
+	"42385522-1c5f-4df9-9de6-3cd5ff2b1211",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("b71aad5b-341a-499a-8d47-a5b5f86a6927",
+	"00000000-0000-0000-0000-000000000000",
+	'AvailablePayrolls',
+	'',
+	'select many depts from instances of Department;
+count = 0;
+for each dept in depts
+  select one payroll related by dept->Payroll[R34.''has under review''];
+  if ( not_empty payroll )
+  	send USER::PayrollAvailable( Department:dept.Name );
+  	count = count + 1;
+  end if;
+end for;
+send USER::DataSent( Ident:"available", Count:count );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("b71aad5b-341a-499a-8d47-a5b5f86a6927",
 	1,
 	"42385522-1c5f-4df9-9de6-3cd5ff2b1211",
 	"00000000-0000-0000-0000-000000000000",

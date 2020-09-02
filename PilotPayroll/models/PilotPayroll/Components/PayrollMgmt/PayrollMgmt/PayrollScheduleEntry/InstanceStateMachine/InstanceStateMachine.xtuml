@@ -265,7 +265,7 @@ INSERT INTO SM_ACT
 	VALUES ("b51326f8-aeae-4558-9d02-bea244afaa1f",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
-	'send USER::Notification( Code:"UC06", Message:"Payroll generation imminent" );
+	'send USER::Notification( Ident:"imminent", Content:"Payroll generation imminent" );
 LOG::LogInfo( message:"**** Payroll generation imminent !!!!!!!!!!!!" ); 
 
 // Ask monitor to trigger at Draft payroll generation date & time

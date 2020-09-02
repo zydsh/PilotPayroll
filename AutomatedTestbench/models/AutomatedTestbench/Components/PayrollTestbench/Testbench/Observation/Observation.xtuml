@@ -82,7 +82,7 @@ INSERT INTO O_TFR
 if ( not_empty gn )
   gn.CheckNotification();
 else
-  select one rvw related by self->ReviewPayrollEntry[R4];
+  select one rvw related by self->ReviewPayrollElement[R4]; 
   if ( not_empty rvw )
   	rvw.ReviewEntry();
   else
@@ -205,7 +205,7 @@ if ( not_empty gn )
   unrelate gn from self across R4;
   delete object instance gn;
 else
-  select one rvw related by self->ReviewPayrollEntry[R4];
+  select one rvw related by self->ReviewPayrollElement[R4];
   if ( not_empty rvw )
   	unrelate rvw from self across R4;
   	delete object instance rvw;
@@ -261,6 +261,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

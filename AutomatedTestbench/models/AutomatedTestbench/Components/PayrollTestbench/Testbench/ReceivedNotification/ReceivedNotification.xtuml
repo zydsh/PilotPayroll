@@ -17,12 +17,30 @@ INSERT INTO O_ATTR
 	VALUES ("7793f490-4cd5-48ae-aab2-425d8f2f5d1b",
 	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d",
 	"00000000-0000-0000-0000-000000000000",
-	'Code',
+	'Ident',
 	'',
 	'',
-	'Code',
+	'Ident',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("58fc5428-50f5-42de-b38a-14c74774ff28",
+	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+INSERT INTO O_BATTR
+	VALUES ("58fc5428-50f5-42de-b38a-14c74774ff28",
+	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+INSERT INTO O_ATTR
+	VALUES ("58fc5428-50f5-42de-b38a-14c74774ff28",
+	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d",
+	"7793f490-4cd5-48ae-aab2-425d8f2f5d1b",
+	'Content',
+	'',
+	'',
+	'Content',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID
@@ -45,6 +63,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

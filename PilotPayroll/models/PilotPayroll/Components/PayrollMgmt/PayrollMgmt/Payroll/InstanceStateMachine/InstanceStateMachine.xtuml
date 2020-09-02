@@ -606,14 +606,16 @@ INSERT INTO SM_ACT
 	VALUES ("b7b809b8-491b-4764-9efd-cadb1dc13b9b",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
-	'select one dept related by self->Department[R34.''is being reviewed for''];
-send USER::Notification( Code:"UC05_a", Message:"Generating draft payroll for " + dept.Name );
-select any element related by self->EmployeePayment[R7]->EmployeePaymentElement[R15.''is composed of''];
+	'select one dept related by self->PayPeriod[R33.''is for'']
+                               ->PayrollScheduleEntry[R32.''specifies dates for'']
+                               ->Department[R4.''is scheduled for''];
+send USER::Notification( Ident:"generating", Content:"Generating draft payroll for " + dept.Name );
+select any element related by self->EmployeePayment[R7]
+                                  ->EmployeePaymentElement[R15.''is composed of''];
 if ( empty element )
   self.BuildPaymentElements();	// first generation for this payroll instance
 end if;
 self.EvaluateEmployeePayments();
-send USER::Notification( Code:"UC05_b", Message:"Draft payroll generated for " + dept.Name );
 create object instance log of PayrollLog;
 relate log to self across R8.''records generation of'';
 log.Log();
@@ -633,12 +635,16 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'LOG::LogInfo( message:"--- Payroll available for review" );
-select one dept related by self->Department[R34.''is being reviewed for''];
+select one dept related by self->PayPeriod[R33.''is for'']
+                               ->PayrollScheduleEntry[R32.''specifies dates for'']
+                               ->Department[R4.''is scheduled for''];
+send USER::Notification( Ident:"generated", Content:"Draft payroll generated for " + dept.Name );
+relate self to dept across R34.''is being reviewed for'';
 select any elmt related by self->EmployeePaymentElement[R29.''has placed on hold''];
 if ( not_empty elmt )
-  send USER::Notification( Code:"Holds", Message:"Payroll available for review for department  " + dept.Name );
+  send USER::Notification( Ident:"Holds", Content:"Payroll available for review for department  " + dept.Name );
 else
-  send USER::Notification( Code:"Noholds", Message:"Payroll available for review for department  " + dept.Name );
+  send USER::Notification( Ident:"Noholds", Content:"Payroll available for review for department  " + dept.Name );
 end if;',
 	'',
 	0);
@@ -661,7 +667,7 @@ relate self to dept across R24.''has been generated for'';
 select one scheduler related by self->PayPeriod[R33.''is for'']
                                     ->PayrollScheduleEntry[R32.''specifies dates for''];
 generate PayrollScheduleEntry3:Complete() to scheduler;  
-send USER::Notification( Code:"Submitted", Message:"Payroll payments submitted for department  " + dept.Name );
+send USER::Notification( Ident:"submitted", Content:"Payroll payments submitted for department  " + dept.Name );
                                   ',
 	'',
 	0);
@@ -767,7 +773,7 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'select one dept related by self->Department[R34.''is being reviewed for''];
-send USER::Notification( Code:"UC04", Message:"Payroll approved for department " + dept.Name );',
+send USER::Notification( Ident:"UC04", Content:"Payroll approved for department " + dept.Name );',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -810,7 +816,7 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'select one dept related by self->Department[R34.''is being reviewed for''];
-send USER::Notification( Code:"Reviewed", Message:"Payroll reviewed for department " + dept.Name );',
+send USER::Notification( Ident:"Reviewed", Content:"Payroll reviewed for department " + dept.Name );',
 	'',
 	0);
 INSERT INTO GD_MD

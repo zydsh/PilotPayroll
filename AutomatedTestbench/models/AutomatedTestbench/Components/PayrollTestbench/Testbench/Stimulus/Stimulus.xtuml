@@ -48,7 +48,7 @@ else
   	if ( not_empty psu )
   	  psu.SetStatus();
   	else
-      select one ra  related by self->RequestAvailable[R3];
+      select one ra related by self->RequestAvailable[R3];
       if ( not_empty ra )
         ra.MakeRequest();
       end if;

@@ -651,7 +651,7 @@ INSERT INTO SPR_PS
 	'PayeeData',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
@@ -668,8 +668,8 @@ INSERT INTO SPR_PS
 	VALUES ("ee544d00-85d5-405d-9f39-048b2befa83a",
 	'AvailablePayrolls',
 	'',
-	'',
-	3,
+	'::AvailablePayrolls();',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
@@ -687,7 +687,7 @@ INSERT INTO SPR_PS
 	'PayrollAvailable',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",

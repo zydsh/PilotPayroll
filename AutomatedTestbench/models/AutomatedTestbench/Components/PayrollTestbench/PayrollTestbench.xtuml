@@ -385,7 +385,7 @@ INSERT INTO SPR_RS
 	'ObservationDone',
 	'Report to the Test sequencer service that an observation has completed.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("5df7def7-0028-4dc9-8578-87518097d737",
@@ -429,7 +429,7 @@ INSERT INTO SPR_RS
 	'StimulusDone',
 	'Respond with this signal when all observations for an executed stimulus are complete.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ef029a3f-8bbc-4d01-b248-9d10545d4527",
@@ -449,7 +449,7 @@ INSERT INTO SPR_RS
 This will initiate stimiuli injection, and thus observation reporting, for a test case.
 If the test case has more than one test sequence, these will start in parallel.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("976b6c82-6628-4a51-b78f-8a11577ec800",
@@ -469,7 +469,7 @@ INSERT INTO SPR_RS
 	'Assess',
 	'On this signal, any active observations with matching key value will be triggered to re-evaluate.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b5a796ca-6082-48ac-92dd-efc0a0922ce7",
@@ -488,7 +488,7 @@ INSERT INTO SPR_RS
 	'Indicate that the given requirement is (partially) tested by the given test case.
 This is used for test coverage reporting.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("c7c36dbc-1771-40f5-9e73-c713d789f49a",
@@ -507,7 +507,7 @@ INSERT INTO SPR_RS
 	'RunTestSuite',
 	'Run the sequence of test buckets associated with the singleton test suite.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("acaa32df-c46b-4fb9-8a4d-e3da8ab0716a",
@@ -525,7 +525,7 @@ INSERT INTO SPR_RS
 	'MakeRequirement',
 	'Create an instance of a requirement which may be linked to test cases for coverage reporting.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("2410fcc8-0433-44ba-8e92-f529a7ae4e7d",
@@ -544,7 +544,7 @@ INSERT INTO SPR_RS
 	'Indicate to the test sequencer that the current test bucket is ready to run test cases.
 ',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b7c0a071-0d7d-4ad9-9d92-4170a9db8b0d",
@@ -585,7 +585,7 @@ INSERT INTO SPR_RS
 	'Request the test sequencer to include a timed delay before invoking the next stimulus or observation.
 For observations, consider using the polling capability which can repeatedly evaluate with delays.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("581dc69f-0c98-4ab6-baf0-a03c367e212f",
@@ -604,7 +604,7 @@ INSERT INTO SPR_RS
 	'StartIntervalTimer',
 	'A stimulus may request start of the interval timer linked to its test sequence.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("bb4f4c38-32d2-41f1-a540-93e7d083ed70",
@@ -684,7 +684,7 @@ INSERT INTO SPR_RS
 	'SetTestBucketResolution',
 	'Test buckets inherit a default resolution from the test suite; this can be overridden.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("9ef51640-e733-4e08-87de-474d06cc17d7",
@@ -702,7 +702,7 @@ INSERT INTO SPR_RS
 	'SetSequenceResolution',
 	'Test sequences inherit a default resolution from the test bucket; this can be overridden.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7db0ac18-85c0-4cf0-a9aa-cd3dc8466a8f",
@@ -720,7 +720,7 @@ INSERT INTO SPR_RS
 	'SetTestSuiteResolution',
 	'Set the timer resolution which will be default for the test buckets in this test suite.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e9a718cd-155e-4f82-ab40-9e08b065623a",
@@ -738,7 +738,7 @@ INSERT INTO SPR_RS
 	'RegisterTestSuite',
 	'A single instance of test suite must be created, to which will be added test bucket(s) containg test case(s).',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b1465433-efc9-45bd-ad88-e5ead4500931",
@@ -757,7 +757,7 @@ INSERT INTO SPR_RS
 	'Assign an optional overall duration limit for execution of a test case.
 If the limit is exceeded, the test case fails and terminates all sequence execution.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("9e278084-be96-4393-8eee-f1793a29017b",
@@ -796,7 +796,7 @@ INSERT INTO SPR_RS
 	'NameTestBucket',
 	'Assign an optional arbitrary naming label to a test bucket instance.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("43da9421-f19f-491d-b0de-6d07de88d215",
@@ -832,7 +832,7 @@ INSERT INTO SPR_RS
 	'AddBucket',
 	'Add an instance of a test bucket to the test suite.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("3ab9f7fe-b572-4c34-98f5-076122029206",
@@ -850,7 +850,7 @@ INSERT INTO SPR_RS
 	'CreateTestCase',
 	'Add an instance of a test case, identified by label, to the indicated test bucket.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("338f43fc-f8fd-4707-98a1-be43d1ec3394",
@@ -869,7 +869,7 @@ INSERT INTO SPR_RS
 	'A test case, identified by its label, can have one or more labeled sequences of stimuli.
 These sequences may run in parallel and may interact via assess signals.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("63e52cd1-3ec8-4352-ade8-ba438a671bd3",
@@ -888,7 +888,7 @@ INSERT INTO SPR_RS
 	'AddStimulus',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ccdf5756-d7fc-4bb0-9a09-adbbe404ef3d",
@@ -906,7 +906,7 @@ INSERT INTO SPR_RS
 	'AddObservation',
 	'Add an observation to follow injection of a specified stimulus.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("db8e25d9-f7a5-4738-85a0-ef4adc5bf3f2",
@@ -926,7 +926,7 @@ INSERT INTO SPR_RS
 The value will be signalled to the testbench, attaching the observation identifier.
 Optionally, the timer can be reset.',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("80b50e27-14fc-4cf7-9830-ef2a7c77d6fa",
@@ -946,7 +946,7 @@ INSERT INTO SPR_RS
 	'IntervalTimerValue',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7c394270-a8ad-44af-a4ad-8601e7eebc96",
@@ -1118,14 +1118,14 @@ INSERT INTO SPR_RS
 	VALUES ("b4f90f2f-7db5-4003-92c1-5bb08c931a35",
 	'PayrollData',
 	'Data for single payroll payment element for an employee in a department.',
-	'create object instance entry of PayrollEntry;
-entry.DeptName = param.Department;
-entry.EmployeeID = param.EmployeeID;
+	'create object instance entry of PayrollElement;
 entry.Label = param.PaymentLabel;
 entry.Amount = param.PaymentAmount;
 entry.Hold = param.HoldStatus;
 entry.Edited = False;
-',
+select any payee from instances of Payee
+ where ( selected.EmployeeID == param.EmployeeID );
+relate entry to payee across R9.''contributes to'';',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1144,7 +1144,9 @@ INSERT INTO SPR_RS
 	'Notification',
 	'Notify a client of some occurrence.',
 	'create object instance msg of ReceivedNotification;
-msg.Code = param.Code;',
+msg.Ident = param.Ident;
+//msg.Content = param.Content;
+',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1220,8 +1222,10 @@ INSERT INTO SPR_RS
 	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
 	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
-	'LOG::LogInfo( message:"--------- Payroll data received ***********" );
-send TESTSEQ::Assess( key:"PayrollAvailable" );
+	'LOG::LogInfo( message:"-------- data received for " + param.Ident );
+if ( param.Ident == "payroll" )
+  send TESTSEQ::Assess( key:"PayrollAvailable" );
+end if;
 
 ',
 	1,
@@ -1259,8 +1263,12 @@ INSERT INTO SPR_RS
 	VALUES ("716995a5-2226-4dfd-ac65-926e433c8ed3",
 	'PayeeData',
 	'',
-	'',
-	3,
+	'create object instance payee of Payee;
+payee.EmployeeID = param.EmployeeID;
+select any dept from instances of Department
+ where ( selected.Name == param.Department );
+relate payee to dept across R8.''belongs to'';',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
@@ -1278,7 +1286,7 @@ INSERT INTO SPR_RS
 	'AvailablePayrolls',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
@@ -1295,8 +1303,9 @@ INSERT INTO SPR_RS
 	VALUES ("c7fe9d80-0149-4f4d-8da1-061b99d741f6",
 	'PayrollAvailable',
 	'',
-	'',
-	3,
+	'create object instance dept of Department;
+dept.Name = param.Department;',
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",

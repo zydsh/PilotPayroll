@@ -1,16 +1,16 @@
 package payrolldeployment;
 
 //Spring requires a POJ class for each message.
-public class NotificationMsg {
+public class DataSentMsg {
 	private String messageName;
 	private String ident;
-	private String content;
-	public NotificationMsg() {
+	private String count;
+	public DataSentMsg() {
 	}
-	public NotificationMsg( String messageName, String ident, String content ) {
+	public DataSentMsg(  String messageName, String ident, String count ) {
 		this.messageName = messageName;
 		this.ident = ident;
-		this.content = content;
+		this.count = count;
 	}
 	public void setMessageName( String messageName ) {
 		this.messageName = messageName;
@@ -18,16 +18,16 @@ public class NotificationMsg {
 	public String getMessageName() {
 		return messageName;
 	}
-	public String getIdent() {
-		return ident;
-	}
-	public String getContent() {
-		return content;
-	}
 	public void setIdent( String ident ) {
 		this.ident = ident;
 	}
-	public void setContent( String content ) {
-		this.content = content;
+	public String getIdent() {
+		return ident;
+	}
+	public void setCount( String count ) {
+		this.count = count;
+	}
+	public String getCount() {
+		return count;
 	}
 }

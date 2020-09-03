@@ -37,12 +37,14 @@ import payrolldeployment.HRuser;                           // Shell component
 import payrolldeployment.NotificationMsg;
 import payrolldeployment.PayeeDataMsg;
 import payrolldeployment.PayrollDataMsg;
-import payrolldeployment.PayrollSentMsg;
+import payrolldeployment.DataSentMsg;
 import payrolldeployment.RetrievePayrollForReviewMsg;
 import payrolldeployment.SubmitItemHoldMsg;
 import payrolldeployment.SubmitPayrollApprovalMsg;
 import payrolldeployment.SubmitToFinanceMsg;
 import payrolldeployment.UpdatesSentMsg;
+import payrolldeployment.AvailablePayrollsMsg;
+import payrolldeployment.PayrollAvailableMsg;
 
 // The Spring framework arranges for an instance of this class to be
 // created, passing an instance of SimpMessagingTemplate as an argument,
@@ -66,6 +68,17 @@ public class HRuserMsgController {
     // Begin outgoing (from this component) messages.
     // Each of the following methods is invoked when the (JavaScript) client sends 
     // a message to the corresponding message-broker topic, "/app/<messageName>".
+
+
+	@MessageMapping( "/AvailablePayrolls" )
+    public void AvailablePayrolls( AvailablePayrollsMsg message ) throws Exception {
+    	try {
+      	  HRuser.Singleton().Payroll().AvailablePayrolls() ) );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in AvailablePayrolls()\n", e );    			
+      	}
+    }
 
 	@MessageMapping( "/RetrievePayrollForReview" )
     public void RetrievePayrollForReview( RetrievePayrollForReviewMsg message ) throws Exception {
@@ -101,7 +114,8 @@ public class HRuserMsgController {
     @MessageMapping( "/UpdatesSent" )
     public void UpdatesSent( UpdatesSentMsg message ) throws Exception {
     	try {
-      	  HRuser.Singleton().Payroll().UpdatesSent( message.getDepartment() );
+      	  HRuser.Singleton().Payroll().UpdatesSent( message.getDepartment(),
+      	                                            Integer.parseInt( message.getCount());
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in UpdatesSent()\n", e );    			
@@ -126,14 +140,21 @@ public class HRuserMsgController {
     // Incoming (to this component) messages.
     // The following methods forward incoming messages to the (JavaScript) client which
     // subscribes to a specific message-broker topic.  
-    public void SendPayrollSentMsg( String Department ) throws Exception {
-    	PayrollSentMsg msg = new PayrollSentMsg( "PayrollSent", Department );
+
+    public void SendDataSentMsg( String Ident, Integer Count ) throws Exception {
+    	DataSentMsg msg = new DataSentMsg( "DataSent", Ident, String.valueOf( Count ) );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendNotificationMsg( String MsgIdent ) throws Exception {
-    	NotificationMsg msg = new NotificationMsg( "Notification", MsgIdent );
+    public void SendNotificationMsg( String Ident, String Content ) throws Exception {
+    	NotificationMsg msg = new NotificationMsg( "Notification", Ident, Content );
+        String topic = "/topic/HRuser/";
+        this.template.convertAndSend( topic, msg );
+    }
+
+    public void SendPayrollAvailableMsg( String Department ) throws Exception {
+    	PayrollAvailableMsg msg = new PayrollAvailableMsg( "PayrollAvailable", Department );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }
@@ -151,10 +172,12 @@ public class HRuserMsgController {
         this.template.convertAndSend( topic, msg );
     }
     
-    public void SendPayrollDataMsg( String PaymentLabel,
+    public void SendPayrollDataMsg( Integer EmployeeId,
+                                    String PaymentLabel,
     		                        Double PaymentAmount,
     		                        Boolean HoldStatus ) throws Exception {
     	PayrollDataMsg msg = new PayrollDataMsg( "PayrollData",
+    	                                          String.valueOf( EmployeeId ),
     			                                  PaymentLabel,
     			                                  String.valueOf( PaymentAmount ),
     			                                  String.valueOf( HoldStatus ) );

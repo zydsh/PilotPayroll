@@ -3,16 +3,19 @@ package payrolldeployment;
 //Spring requires a POJ class for each message.
 public class PayrollDataMsg {
 	private String messageName;
+	private String employeeId;
 	private String paymentLabel;
 	private String paymentAmount;
 	private String holdStatus;
 	public PayrollDataMsg() {
 	}
 	public PayrollDataMsg( String messageName,
+			               String employeeId;
                            String paymentLabel, 
                            String paymentAmount,
                            String holdStatus ) {
 		this.messageName = messageName;
+		this.employeeId = employeeId;
 		this.paymentLabel = paymentLabel;
 		this.paymentAmount = paymentAmount;
 		this.holdStatus = holdStatus;
@@ -22,6 +25,12 @@ public class PayrollDataMsg {
 	}
 	public String getMessageName() {
 		return messageName;
+	}
+	public void setEmployeeId( String employeeId ) {
+		this.employeeId = employeeId;
+	}
+	public String getEmployeeId() {
+		return employeeId;
 	}
 	public void setPaymentLabel( String paymentLabel ) {
 		this.paymentLabel = paymentLabel;

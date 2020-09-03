@@ -34,24 +34,35 @@ public class HRuser extends Component<HRuser> {
     }
 
     // domain functions
-    public void Notification( final String p_Code,  final String p_Message ) throws XtumlException {
+    public void Notification( final String p_Ident,  final String p_Content ) throws XtumlException {
     	try {
-            HRuserMsgController.Singleton().SendNotificationMsg( p_Code, p_Message );
+            HRuserMsgController.Singleton().SendNotificationMsg( p_Item, p_Content );
       	} catch ( Exception e ) {}
     }
 
-    public void PayrollData( final String p_Department, final int p_EmployeeID, final String p_EmployeeFirstName, final String p_EmployeeLastName,  final String p_PaymentLabel,  final double p_PaymentAmount,  final boolean p_HoldStatus ) throws XtumlException {
+    public void PayeeData( final String p_Department, final int p_EmployeeID, final String p_EmployeeFirstName, final String p_EmployeeLastName ) throws XtumlException {
     	try {
-            HRuserMsgController.Singleton().SendPayrollDataMsg( p_Department, p_EmployeeID, p_EmployeeFirstName, p_EmployeeLastName, p_PaymentLabel, p_PaymentAmount, p_HoldStatus );
+            HRuserMsgController.Singleton().SendPayeeDataMsg( p_Department, p_EmployeeID, p_EmployeeFirstName, p_EmployeeLastName );
       	} catch ( Exception e ) {}
     }
 
-    public void PayrollSent( final String p_Department ) throws XtumlException {
+    public void PayrollData( final int p_EmployeeID, final String p_PaymentLabel,  final double p_PaymentAmount,  final boolean p_HoldStatus ) throws XtumlException {
+    	try {
+            HRuserMsgController.Singleton().SendPayrollDataMsg( p_EmployeeID, p_PaymentLabel, p_PaymentAmount, p_HoldStatus );
+      	} catch ( Exception e ) {}
+    }
+
+    public void DataSent( final String p_Ident, final int p_Count ) throws XtumlException {
        	try {
-            HRuserMsgController.Singleton().SendPayrollSentMsg( p_Department );
+            HRuserMsgController.Singleton().SendDataSentMsg( p_Ident, p_Count );
       	} catch ( Exception e ) {}
     }
 
+    public void PayrollAvailable( final String p_Department ) throws XtumlException {
+       	try {
+            HRuserMsgController.Singleton().SendPayrollAvailableMsg( p_Department );
+      	} catch ( Exception e ) {}
+    }
 
     // relates and unrelates
 

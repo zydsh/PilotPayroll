@@ -9,10 +9,9 @@ public class SubmitItemHoldMsg {
 	public SubmitItemHoldMsg() {
 	}
 	public SubmitItemHoldMsg( String department, 
-	                        String employeeId, 
-							String paymentLabel, 
-							String holdStatus ) {
-		this.department = department;
+	                          String employeeId, 
+							  String paymentLabel, 
+							  String holdStatus ) {		this.department = department;
 		this.employeeId = employeeId;
 		this.paymentLabel = paymentLabel;
 		this.holdStatus = holdStatus;

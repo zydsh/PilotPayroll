@@ -4,6 +4,7 @@ var vm = new Vue({
 	el: '#main-content',
 	data {
 	    PayrollRequestDisabled: true,
+	    CancelDisabled: true,
 	    UpdateDisabled: true,
 	    ApproveDisabled: true,
 	    SubmitDisabled: true,
@@ -14,6 +15,7 @@ var vm = new Vue({
 
 function initialize() {
 	    vm.PayrollRequestDisabled = true;
+	    vm.CancelDisabled = true;
 	    vcm.UpdateDisabled = true;
 	    vm.ApproveDisabled = true;
 	    SubmitDisabled = true;
@@ -89,6 +91,12 @@ function sendSubmitToFinance() {
 
 // Support functions for incoming message handling
 
+function availablePayroll ( message ) {
+    dept = JSON.parse( reply.body ).department;
+    $("#payrolls").append("<tr><td>" + dept + "</td></tr>");
+   
+}
+
 function payeeDataMsg( message ) {
     // accept a payee element data message 
     name = JSON.parse( reply.body ).employeeFirstName + " " + JSON.parse( reply.body ).employeeLastName;
@@ -113,17 +121,19 @@ function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
     var messageName = JSON.parse( reply.body ).messageName;
     if ( messageName == "Notification" ) {
-        msgident = JSON.parse( reply.body ).MsgIdent;
+        msgident = JSON.parse( reply.body ).Ident;
         vm.notification = msgs[ msgident ];
-        if ( msgident == "drafted" ) {
+    } else if ( messageName == "PayrollAvailable" ) {
            vm.PayrollDisabled = false;
+           payrollAvailable( message );
+           
     } else if ( messageName == "PayeeData" ) {
            vm.PayrollDisabled = true;
            payeeDataMsg( message );
     } else if ( messageName == "PayrollData" ) {
            vm.PayrollDisabled = true;
            payrollDataMsg( message );
-    } else if ( messageName == "PayrollSent" ) {
+    } else if ( messageName == "DataSent" ) {
            vm.UpdateDisabled = false;
            vm.ApproveDisabled = false;
         $("#payrollentries").show();
@@ -137,6 +147,7 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#payroll" ).click(function() { sendRetrievePayrollForReview(); });
+    $( "#cancel" ).click(function() { cancel(); });
     $( "#update" ).click(function() { sendUpdates(); });
     $( "#approve" ).click(function() { sendSubmitPayrollApproval(); });
     $( "#submit" ).click(function() { sendSubmitToFinance(); });

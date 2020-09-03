@@ -71,7 +71,7 @@ public class HRuserMsgController {
 
 
 	@MessageMapping( "/AvailablePayrolls" )
-    public void AvailablePayrolls( AvailablePayrollsMsg message ) throws Exception {
+    public void AvailablePayrolls( AvailablePayrollsMsg  ) throws Exception {
     	try {
       	  HRuser.Singleton().Payroll().AvailablePayrolls() ) );
       	}

@@ -41,10 +41,26 @@
         <div class="col-md-6">
             <div class="row">
                 <button v-bind:disabled="PayrollRequestDisabled" id="payroll" class="btn btn-primary" type="submit" disabled="disabled">Retrieve payroll for review</button>
-                <button v-bind:disabled="UpdateDisabled" id="update" class="btn btn-primary" type="submit" disabled="disabled">Submit updated items</button>
+                <button v-bind:disabled="CancelDisabled" id="cancel" class="btn btn-primary" type="submit" disabled="disabled">Cancel</button>
+                <button v-bind:disabled="UpdateDisabled" id="update" class="btn btn-primary" type="submit" disabled="disabled">Submit updates</button>
                 <button v-bind:disabled="ApproveDisabled" id="approve" class="btn btn-primary" type="submit" disabled="disabled">Submit approved payroll</button>
                 <button v-bind:disabled="SubmitDisabled" id="finance" class="btn btn-primary" type="submit" disabled="disabled">Submit to Finance</button>
             </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <table id="payrolldepts" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Available for review</th>
+                </tr>
+                </thead>
+                <tbody id="payrolls">
+                </tbody>
+            </table>
         </div>
     </div>
 

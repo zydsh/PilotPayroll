@@ -52,7 +52,7 @@ INSERT INTO S_SYNC
 	VALUES ("d02f6ae0-5a9d-4e8d-b2ba-0f4897ccd9a4",
 	"00000000-0000-0000-0000-000000000000",
 	'MarshalPayroll',
-	'',
+	'Send department employee and payment element data on request.',
 	'select any dept from instances of Department where ( selected.Name == param.Dept );
 if ( empty dept )
   LOG::LogFailure( message:"Department name not matched in Send Payroll" );
@@ -204,7 +204,7 @@ INSERT INTO S_SYNC
 	VALUES ("b71aad5b-341a-499a-8d47-a5b5f86a6927",
 	"00000000-0000-0000-0000-000000000000",
 	'AvailablePayrolls',
-	'',
+	'Respond with any departments with a payroll available for review.',
 	'select many depts from instances of Department;
 count = 0;
 for each dept in depts

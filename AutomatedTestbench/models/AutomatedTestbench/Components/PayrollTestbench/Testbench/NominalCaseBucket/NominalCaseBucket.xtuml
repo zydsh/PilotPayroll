@@ -22,53 +22,54 @@ send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:time
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC06" ); 
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC06", seqLabel:"seq06" );
 stId06 = FastForward::Create( seqLabel:"seq06", days:13, hours:11 );
-GetNotification::CreatePolling( stimulus:stId06, codematch:"imminent", pollInterval:1, timeLimit:10 );
+GetNotification::CreatePolling( stimulus:stId06, matchIdent:"imminent", pollInterval:1, timeLimit:5 );
 
 // Use Case UC05
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC05" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC05", seqLabel:"seq05" );
 stId05 = FastForward::Create( seqLabel:"seq05", days:1, hours:1 );
-GetNotification::CreatePolling( stimulus:stId05, codematch:"generating", pollInterval:1, timeLimit:10 );
-GetNotification::CreatePolling( stimulus:stId05, codematch:"generated", pollInterval:1, timeLimit:10 );
+GetNotification::CreatePolling( stimulus:stId05, matchIdent:"generating", pollInterval:1, timeLimit:5 );
+GetNotification::CreatePolling( stimulus:stId05, matchIdent:"generated", pollInterval:1, timeLimit:5 );
 
 // Use Case UC03
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC03" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC03", seqLabel:"seq03" );
 stId = RequestAvailable::Create( seqLabel:"seq03" );
-::InsertDelay( stimulus:stId, duration:5 );
 stId = RequestPayroll::Create( seqLabel:"seq03", dept:"IT", holds:False );
 WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
-ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:10 );
-stId = PayrollStatusUpdate::Create( seqLabel:"seq03", dept:"IT", requestedstatus:"" );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Holds", pollInterval:1, timeLimit:5 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Reviewed", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq03", dept:"IT", requestedstatus:"Save" );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"reviewed", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"checkhold", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq03", dept:"IT", requestedstatus:"clear" );
 
 // Use Case UC07
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC07" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC07", seqLabel:"seq07" );
 stId = RequestPayroll::Create( seqLabel:"seq07", dept:"IT", holds:True );
 WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
-ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"clear", pollInterval:1, timeLimit:10 );
-stId = PayrollStatusUpdate::Create( seqLabel:"seq07", dept:"IT", requestedstatus:"" );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Noholds", pollInterval:1, timeLimit:10 );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Reviewed", pollInterval:1, timeLimit:10 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"clear", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq07", dept:"IT", requestedstatus:"Save" );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"checkclear", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq07", dept:"IT", requestedstatus:"Clear" );
 
 // Use Case UC04
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC04" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC04", seqLabel:"seq04" );
 stId = RequestPayroll::Create( seqLabel:"seq04", dept:"IT", holds:False );
 WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
-ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"", pollInterval:1, timeLimit:10 );
-ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"", pollInterval:1, timeLimit:10 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"clear", pollInterval:1, timeLimit:10 );
 stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Approve" );
-GetNotification::CreatePolling( stimulus:stId, codematch:"UC04", pollInterval:100, timeLimit:1000 );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"approve", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Clear" );
 
 // Use Case UC09
 send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC09" );
 send TESTSEQ::CreateStimulusSequence( caseLabel:"UC09", seqLabel:"seq09" );
 stId = RequestPayroll::Create( seqLabel:"seq09", dept:"IT", holds:False );
 stId = PayrollStatusUpdate::Create( seqLabel:"seq09", dept:"IT", requestedstatus:"FinalSubmit" );
-GetNotification::CreatePolling( stimulus:stId, codematch:"Submitted", pollInterval:1, timeLimit:10 );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"submitted", pollInterval:1, timeLimit:5 );
 
 
 bucket.Initialized();

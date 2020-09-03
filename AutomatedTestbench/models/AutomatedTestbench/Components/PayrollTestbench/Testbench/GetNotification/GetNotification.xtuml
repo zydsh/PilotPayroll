@@ -18,7 +18,7 @@ INSERT INTO O_TFR
 
 create object instance obs of Observation;
 relate verify to obs across R4;
-verify.code = param.codematch;
+verify.Ident = param.matchIdent;
 
 obs.AppendPolling( stimulus:param.stimulus,
                    pollInterval:param.pollInterval, 
@@ -58,12 +58,12 @@ INSERT INTO O_TPARM
 INSERT INTO O_TPARM
 	VALUES ("bb2565aa-68c3-4ea0-84a8-a6a4a2ae141a",
 	"b2793190-40e6-43fc-87a3-ba7ac95daf33",
-	'codematch',
+	'matchIdent',
 	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"67659838-3468-4731-8315-765ddbdccb9b",
-	'');
+	'This value should match the Ident field of a received notification for observation success.');
 INSERT INTO O_TFR
 	VALUES ("970fd98b-a0a5-4914-b5c5-541810cbb5fb",
 	"77d6047f-1bcc-4553-92e7-a60486cde93e",
@@ -71,11 +71,11 @@ INSERT INTO O_TFR
 	'When invoked, search any existing notifications looking for a match.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'LOG::LogInfo( message:" --- Hoping to observe notification for " + self.code );
+	'LOG::LogInfo( message:" --- Hoping to observe notification for " + self.Ident );
 select one obs related by self->Observation[R4];
 
 select any msg from instances of ReceivedNotification
- where ( selected.Ident == self.code );
+ where ( selected.Ident == self.Ident );
 if ( not_empty msg )
   delete object instance msg;
   obs.Complete( success:True );
@@ -97,10 +97,10 @@ INSERT INTO O_ATTR
 	VALUES ("6e067a53-63bf-4306-ab29-7acf2a824fe2",
 	"77d6047f-1bcc-4553-92e7-a60486cde93e",
 	"00000000-0000-0000-0000-000000000000",
-	'code',
+	'Ident',
 	'',
 	'',
-	'code',
+	'Ident',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',

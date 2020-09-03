@@ -63,6 +63,11 @@ INSERT INTO DIM_CON
 	4518.000000,
 	3387.000000,
 	"caef5cbb-63c6-4f65-856f-9e3a88731b95");
+INSERT INTO DIM_CON
+	VALUES ("b0fb511a-0372-4d49-910a-ca0601d5f71e",
+	4151.000000,
+	3387.000000,
+	"caef5cbb-63c6-4f65-856f-9e3a88731b95");
 INSERT INTO GD_GE
 	VALUES ("20b4a851-5c35-4a55-9a7b-7b9e3bc3441c",
 	"f81cf3a2-2229-4a68-bd4a-d44912aca8f1",
@@ -311,6 +316,106 @@ INSERT INTO DIM_ELE
 	VALUES ("65365e78-a0ca-4bae-bb52-b1418377d091",
 	0,
 	"caef5cbb-63c6-4f65-856f-9e3a88731b95");
+INSERT INTO GD_GE
+	VALUES ("e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	"f81cf3a2-2229-4a68-bd4a-d44912aca8f1",
+	"e5980b09-89c3-4062-bf67-ccb236ad375b",
+	93,
+	0,
+	'AutomatedTestbench::Components::PayrollTestbench::TESTAPPSUPPORT::TestSupport');
+INSERT INTO GD_CON
+	VALUES ("e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("9ab38e5e-d782-4333-b595-02aff32a79f1",
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	0,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"9ab38e5e-d782-4333-b595-02aff32a79f1");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"9ab38e5e-d782-4333-b595-02aff32a79f1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("9ab38e5e-d782-4333-b595-02aff32a79f1",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("1977d36a-ae89-4a81-88e5-15832685313e",
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"1977d36a-ae89-4a81-88e5-15832685313e");
+INSERT INTO DIM_GE
+	VALUES (4025.000000,
+	3414.000000,
+	"1977d36a-ae89-4a81-88e5-15832685313e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1977d36a-ae89-4a81-88e5-15832685313e",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("c45af1e8-aa6a-4281-bec3-e82dd31d38f3",
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"c45af1e8-aa6a-4281-bec3-e82dd31d38f3");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"c45af1e8-aa6a-4281-bec3-e82dd31d38f3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("c45af1e8-aa6a-4281-bec3-e82dd31d38f3",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("05b751c8-2667-49da-b5f1-47c4772e5380",
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	"00000000-0000-0000-0000-000000000000",
+	"e4f88cc6-1623-4c9e-af4d-81bed3f38c03",
+	"119a069b-8e79-4c76-a57c-785eb6e6e010");
+INSERT INTO DIM_WAY
+	VALUES ("e4f88cc6-1623-4c9e-af4d-81bed3f38c03",
+	4151.000000,
+	3387.000000,
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("119a069b-8e79-4c76-a57c-785eb6e6e010",
+	4151.000000,
+	3455.000000,
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	"00000000-0000-0000-0000-000000000000",
+	"e4f88cc6-1623-4c9e-af4d-81bed3f38c03");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("e23753c6-6ce0-4a20-9c4f-0a3c624448c0",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("b0fb511a-0372-4d49-910a-ca0601d5f71e",
+	"00000000-0000-0000-0000-000000000000",
+	"e23753c6-6ce0-4a20-9c4f-0a3c624448c0");
 INSERT INTO DIM_DIA
 	VALUES ("f81cf3a2-2229-4a68-bd4a-d44912aca8f1",
 	'',
@@ -1122,7 +1227,8 @@ INSERT INTO SPR_RS
 entry.Label = param.PaymentLabel;
 entry.Amount = param.PaymentAmount;
 entry.Hold = param.HoldStatus;
-entry.Edited = False;
+entry.HoldUpdated = False;
+entry.AmountUpdated = False;
 select any payee from instances of Payee
  where ( selected.EmployeeID == param.EmployeeID );
 relate entry to payee across R9.''contributes to'';',
@@ -1222,7 +1328,7 @@ INSERT INTO SPR_RS
 	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
 	'DataSent',
 	'Signal that all of a department''s payroll data requested for review has been sent to client.',
-	'LOG::LogInfo( message:"-------- data received for " + param.Ident );
+	'LOG::LogInfo( message:"-------- all data received for " + param.Ident );
 if ( param.Ident == "payroll" )
   send TESTSEQ::Assess( key:"PayrollAvailable" );
 end if;
@@ -1267,7 +1373,8 @@ INSERT INTO SPR_RS
 payee.EmployeeID = param.EmployeeID;
 select any dept from instances of Department
  where ( selected.Name == param.Department );
-relate payee to dept across R8.''belongs to'';',
+relate payee to dept across R8.''belongs to'';
+dept.Reviewing = True;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1320,6 +1427,65 @@ INSERT INTO C_I_PROXY
 	'HumanResources',
 	'',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
+INSERT INTO C_PO
+	VALUES ("564717a1-059d-4ce6-b751-744d7341237f",
+	"76e58be0-a1c7-49ea-ba74-f77b1638c4f9",
+	'TESTAPPSUPPORT',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("e5980b09-89c3-4062-bf67-ccb236ad375b",
+	"21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	"00000000-0000-0000-0000-000000000000",
+	"564717a1-059d-4ce6-b751-744d7341237f");
+INSERT INTO C_R
+	VALUES ("e5980b09-89c3-4062-bf67-ccb236ad375b",
+	'TestSupport',
+	'',
+	'TestSupport',
+	'PayrollTestbench::TESTAPPSUPPORT::TestSupport');
+INSERT INTO SPR_REP
+	VALUES ("10b9ddcd-2583-4f09-8eff-c7c86681e1ec",
+	"61af314c-605b-4abd-adf2-8f6d09aeb759",
+	"e5980b09-89c3-4062-bf67-ccb236ad375b");
+INSERT INTO SPR_RS
+	VALUES ("10b9ddcd-2583-4f09-8eff-c7c86681e1ec",
+	'Initialize',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("61af314c-605b-4abd-adf2-8f6d09aeb759",
+	"21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	-1,
+	'Initialize',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/TestSupport/TestSupport.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c2325554-495d-46b9-9f06-d81288361d17",
+	"fabcaa82-3b97-411c-b1bf-17a14b574e6b",
+	"e5980b09-89c3-4062-bf67-ccb236ad375b");
+INSERT INTO SPR_RS
+	VALUES ("c2325554-495d-46b9-9f06-d81288361d17",
+	'InitializationComplete',
+	'',
+	'TestFunctions::RunNominalCases();',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("fabcaa82-3b97-411c-b1bf-17a14b574e6b",
+	"21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	-1,
+	'InitializationComplete',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/TestSupport/TestSupport.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSupport',
+	'',
+	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/TestSupport/TestSupport.xtuml');
 INSERT INTO PE_PE
 	VALUES ("76e58be0-a1c7-49ea-ba74-f77b1638c4f9",
 	1,

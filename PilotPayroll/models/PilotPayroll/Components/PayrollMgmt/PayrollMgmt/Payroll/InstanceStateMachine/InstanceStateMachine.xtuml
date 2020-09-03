@@ -616,6 +616,7 @@ if ( empty element )
   self.BuildPaymentElements();	// first generation for this payroll instance
 end if;
 self.EvaluateEmployeePayments();
+
 create object instance log of PayrollLog;
 relate log to self across R8.''records generation of'';
 log.Log();
@@ -640,12 +641,7 @@ select one dept related by self->PayPeriod[R33.''is for'']
                                ->Department[R4.''is scheduled for''];
 send USER::Notification( Ident:"generated", Content:"Draft payroll generated for " + dept.Name );
 relate self to dept across R34.''is being reviewed for'';
-select any elmt related by self->EmployeePaymentElement[R29.''has placed on hold''];
-if ( not_empty elmt )
-  send USER::Notification( Ident:"Holds", Content:"Payroll available for review for department  " + dept.Name );
-else
-  send USER::Notification( Ident:"Noholds", Content:"Payroll available for review for department  " + dept.Name );
-end if;',
+',
 	'',
 	0);
 INSERT INTO SM_MOAH
@@ -773,7 +769,7 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'select one dept related by self->Department[R34.''is being reviewed for''];
-send USER::Notification( Ident:"UC04", Content:"Payroll approved for department " + dept.Name );',
+send USER::Notification( Ident:"approve", Content:"Payroll approved for department " + dept.Name );',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -816,7 +812,7 @@ INSERT INTO SM_ACT
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
 	'select one dept related by self->Department[R34.''is being reviewed for''];
-send USER::Notification( Ident:"Reviewed", Content:"Payroll reviewed for department " + dept.Name );',
+send USER::Notification( Ident:"reviewed", Content:"Payroll reviewed for department " + dept.Name );',
 	'',
 	0);
 INSERT INTO GD_MD

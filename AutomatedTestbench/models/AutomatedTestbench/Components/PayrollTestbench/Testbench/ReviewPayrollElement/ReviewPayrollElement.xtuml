@@ -96,6 +96,8 @@ INSERT INTO O_TFR
 	'LOG::LogInfo( message:"--- Expecting to review payroll entry with action " + self.action );
 select one obs related by self->Observation[R4];
 
+success = False;
+
 select any payee from instances of Payee
  where ( selected.EmployeeID == self.payee );
 if ( empty payee )
@@ -107,14 +109,22 @@ select any entry related by payee->PayrollElement[R9.''aggregates'']
 if ( not_empty entry )
   if ( self.action == "hold" ) and ( entry.Hold == False )
   	entry.Hold = True;
-  	entry.Edited = True;
+  	entry.HoldUpdated = True;
+    success = True;
   end if;
   if ( self.action == "clear" ) and ( entry.Hold == True );
   	entry.Hold = False;
-  	entry.Edited = True;
+  	entry.HoldUpdated = True;
+    success = True;
   end if;
-  obs.Complete( success:True );
+  if ( self.action == "checkhold" ) and ( entry.Hold == True );
+    success = True;
+  end if;
+  if ( self.action == "checkclear" ) and ( entry.Hold == False );
+    success = True;
+  end if;
 end if;
+obs.Complete( success:success );
 ',
 	1,
 	'',

@@ -65,26 +65,31 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:"Requesting payroll status update injected: "  + self.newstatus );
+select any dept from instances of Department
+ where ( selected.Name == self.dept );
+
+if ( not dept.Reviewing )
+  LOG::LogInfo( message:"Requested department payroll for update not under review" );
+end if;
+
+if ( self.newstatus == "Save" )
+  dept.SendHoldUpdates();
+end if;
 
 if ( self.newstatus == "Approve" )
-  send TESTAPP::SubmitPayrollApproval( Department:self.dept );
+  dept.SendHoldUpdates();
+  dept.ClearElements();
+  send TESTAPP::SubmitPayrollApproval( Department:dept.Name );
 end if;
 
 if ( self.newstatus == "FinalSubmit" )
-  send TESTAPP::SubmitToFinance( Department:self.dept );
+  dept.ClearElements();
+  send TESTAPP::SubmitToFinance( Department:dept.Name );
 end if;
 
 if ( self.newstatus == "Accept" )
-  send TESTAPP::Accepted( Department:self.dept );
+  send TESTAPP::Accepted( Department:dept.Name );
 end if;
-
-/* @TODO
-select any entry from instances of PayrollElement
- where ( selected.Edited );
-if ( not_empty entry )
-  PayrollElement::SendEntryHolds();
-end if;
-*/
 
 select one stimulus related by self->Stimulus[R3];
 stimulus.Complete();

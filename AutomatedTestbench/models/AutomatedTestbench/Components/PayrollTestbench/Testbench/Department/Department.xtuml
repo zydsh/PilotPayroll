@@ -10,13 +10,12 @@ INSERT INTO O_OBJ
 INSERT INTO O_TFR
 	VALUES ("637e5f80-bbad-4f46-92bb-2c1f2400bbdb",
 	"7ab39b34-fd7a-404b-8780-719eb8be8a17",
-	'SendEntryHolds',
+	'SendHoldUpdates',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'// @TODO - this should start from Dept.
-select many entries from instances of PayrollElement
- where selected.Edited;
+	'select many entries from instances of PayrollElement
+ where selected.HoldUpdated;
 count = 0;
 if ( not_empty entries )
   for each entry in entries
@@ -25,8 +24,7 @@ if ( not_empty entries )
     send TESTAPP::SubmitItemHold( Department:dept.Name, EmployeeID:payee.EmployeeID, PaymentLabel:entry.Label, HoldStatus:entry.Hold );
   end for;
   count = count + 1;
-
-send TESTAPP::UpdatesSent( Department:self.Name, Count:count );
+  send TESTAPP::UpdatesSent( Department:self.Name, Count:count );
 end if;',
 	1,
 	'',
@@ -35,11 +33,21 @@ end if;',
 INSERT INTO O_TFR
 	VALUES ("ec82031d-6eea-4d52-8760-2aa5690852d8",
 	"7ab39b34-fd7a-404b-8780-719eb8be8a17",
-	'ReviewEntries',
+	'ClearElements',
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'',
+	'select many payees related by self->Payee[R8.''employs''];
+for each payee in payees
+  select many elements related by payee->PayrollElement[R9.''aggregates''];
+  for each element in elements
+  	unrelate element from payee across R9.''contributes to'';
+  	delete object instance element;
+  end for;
+  unrelate payee from self across R8.''belongs to'';
+  delete object instance payee;
+end for;
+self.Reviewing = False;',
 	1,
 	'',
 	"637e5f80-bbad-4f46-92bb-2c1f2400bbdb",
@@ -60,6 +68,24 @@ INSERT INTO O_ATTR
 	'Name',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a7b7331f-62f6-49a6-bb94-09a8e87ae944",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO O_BATTR
+	VALUES ("a7b7331f-62f6-49a6-bb94-09a8e87ae944",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17");
+INSERT INTO O_ATTR
+	VALUES ("a7b7331f-62f6-49a6-bb94-09a8e87ae944",
+	"7ab39b34-fd7a-404b-8780-719eb8be8a17",
+	"c0821f99-0707-4c95-a2d1-6e69d7b19fa8",
+	'Reviewing',
+	'',
+	'',
+	'Reviewing',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
 	'',
 	'');
 INSERT INTO O_ID

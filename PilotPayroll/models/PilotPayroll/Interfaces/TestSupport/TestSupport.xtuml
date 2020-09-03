@@ -4,7 +4,7 @@ INSERT INTO C_I
 	VALUES ("21fbab59-853a-47c8-8d2a-8eb0722f711c",
 	"00000000-0000-0000-0000-000000000000",
 	'TestSupport',
-	'');
+	'Supports sequencing of initialization between application and testbench.');
 INSERT INTO C_EP
 	VALUES ("61af314c-605b-4abd-adf2-8f6d09aeb759",
 	"21fbab59-853a-47c8-8d2a-8eb0722f711c",

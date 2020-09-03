@@ -5,13 +5,14 @@ INSERT INTO O_OBJ
 	'RequestAvailable',
 	26,
 	'RequestAvailable',
-	'',
+	'Represents a request to receive identification of thos departments with payrolls available for review.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("0445091a-23e5-4086-8398-5882ac33f0bc",
 	"b1d69a34-3726-4570-9691-145df89824c8",
 	'Create',
-	'',
+	'Add a stimulus of this type to the ''script of a test case.
+',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'create object instance ra of RequestAvailable;
@@ -39,7 +40,7 @@ INSERT INTO O_TFR
 	VALUES ("045291b8-0afe-414a-b533-4d98f819d9c6",
 	"b1d69a34-3726-4570-9691-145df89824c8",
 	'MakeRequest',
-	'',
+	'When activated, signal the application to send the requested data.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:"Requesting available payrolls" );

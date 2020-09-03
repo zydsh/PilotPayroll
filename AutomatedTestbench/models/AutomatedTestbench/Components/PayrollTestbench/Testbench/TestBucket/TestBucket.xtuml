@@ -9,10 +9,9 @@ INSERT INTO O_OBJ
 This supertype uses the test sequencer to manage the order of execution of test cases.
 This mechanism allows for postponment of instantiation of test case components.
 Each test bucket subtype is activated, in sequence, by the test sequencing service.
-Each subtype surfaces an operation which instantiates its stimuli and observations.
+Each subtype surfaces an operation which instantiates its stimuli or observations.
 These stimuli/observations are instantiated as each test bucket is activated.
-They may be deleted when the test bucket completes, dependant on configuration choice.
-The subtype may also surface an operation to delete the test bucket sub/supertype instances.
+They may be deleted when the test bucket completes, dependent on configuration choice.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -107,6 +106,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

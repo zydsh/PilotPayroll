@@ -5,7 +5,8 @@ INSERT INTO O_OBJ
 	'PreConditions',
 	4,
 	'PreConditions',
-	'This class represents a set of application values which should be established before a test case is initiated.
+	'This class represents a set of application values which may be established before a test case is initiated.
+Not used in the initial use cases.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR

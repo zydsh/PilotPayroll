@@ -11,7 +11,7 @@ INSERT INTO O_TFR
 	VALUES ("82ff6d7f-0e77-438e-a86f-7f308737e7b1",
 	"10753813-4435-42b5-b35e-30f6c94ceffb",
 	'Create',
-	'',
+	'Add an instance of a time advance request to the ''script'' of a test case.',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'create object instance ff of FastForward;
@@ -58,7 +58,7 @@ INSERT INTO O_TFR
 	VALUES ("2acb5ce1-8a12-413d-ae38-edebbefba09d",
 	"10753813-4435-42b5-b35e-30f6c94ceffb",
 	'Advance',
-	'',
+	'When activated, advance the perceived time in the application.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:"FastForward injected" );

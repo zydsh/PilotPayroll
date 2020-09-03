@@ -5,14 +5,14 @@ INSERT INTO O_OBJ
 	'PayrollStatusUpdate',
 	23,
 	'PayrollStatusUpdate',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This is a request to update the status based on a configured attribute. ',
+	'This represents a request to update the status of the payroll. ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("990f9b1c-4a19-411a-bf44-f6612a67845a",
 	"56d852da-5807-48de-9bbe-a33dd482bc90",
 	'Create',
-	'',
+	'Add an stimulus of this type to the ''script of a test case.
+',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'create object instance psu of PayrollStatusUpdate;
@@ -61,7 +61,7 @@ INSERT INTO O_TFR
 	VALUES ("b7cf04ef-c030-4379-92eb-89aab2af66c1",
 	"56d852da-5807-48de-9bbe-a33dd482bc90",
 	'SetStatus',
-	'',
+	'When activated, update the payroll status according to the configured attribute value.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:"Requesting payroll status update injected: "  + self.newstatus );
@@ -70,6 +70,10 @@ select any dept from instances of Department
 
 if ( not dept.Reviewing )
   LOG::LogInfo( message:"Requested department payroll for update not under review" );
+end if;
+
+if ( self.newstatus == "Cancel" )
+  dept.ClearElements();
 end if;
 
 if ( self.newstatus == "Save" )

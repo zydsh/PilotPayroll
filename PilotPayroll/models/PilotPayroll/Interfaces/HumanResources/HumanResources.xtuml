@@ -11,13 +11,13 @@ INSERT INTO C_EP
 	-1,
 	'RetrievePayrollForReview',
 	'Request from client to get department payroll data for review.
-Some reviews request only those items with on-hold status.
+Some reviewers request only those items with on-hold status.
 ');
 INSERT INTO C_AS
 	VALUES ("1ba55bd7-0e2e-4583-86b6-7e4ec6170539",
 	'RetrievePayrollForReview',
 	'Request from client to get department payroll data for review.
-Some reviews request only those items with on-hold status.
+Some reviewers request only those items with on-hold status.
 ',
 	0,
 	"00000000-0000-0000-0000-000000000000");
@@ -35,7 +35,7 @@ INSERT INTO C_PP
 	"1ba55bd7-0e2e-4583-86b6-7e4ec6170539",
 	"ba5eda7a-def5-0000-0000-000000000001",
 	'HoldsOnly',
-	'',
+	'If true, only payroll elements with on-hold status will be retrieved',
 	0,
 	'',
 	"ba133a20-a08b-4b43-8ba9-a76254a13285");
@@ -364,7 +364,7 @@ INSERT INTO C_PP
 	"0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Content',
-	'Message content.',
+	'Here, auxiliary data can be attached to the notification',
 	0,
 	'',
 	"d0e3630d-7998-47d3-87e8-031734921af9");
@@ -373,7 +373,7 @@ INSERT INTO C_PP
 	"0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Ident',
-	'Currently used to check for receipt of specific notifications.',
+	'An identifier for the notification being sent.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -382,11 +382,11 @@ INSERT INTO C_EP
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitPayrollApproval',
-	'Signal that the payroll for a department has been approved by a client.');
+	'Signal that the payroll for a department has been approved by a client user.');
 INSERT INTO C_AS
 	VALUES ("180cc4e4-f88e-432c-8950-48095a2171f1",
 	'SubmitPayrollApproval',
-	'Signal that the payroll for a department has been approved by a client.',
+	'Signal that the payroll for a department has been approved by a client user.',
 	0,
 	"0f25438a-f717-4b80-b06c-9ce0f1c905c4");
 INSERT INTO C_PP
@@ -403,11 +403,11 @@ INSERT INTO C_EP
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitToFinance',
-	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.');
+	'Signal that client user wishes to submit finally reviewed payroll to Finance for payment.');
 INSERT INTO C_AS
 	VALUES ("cd89f044-8052-4bd7-828a-07b3030804fc",
 	'SubmitToFinance',
-	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
+	'Signal that client user wishes to submit finally reviewed payroll to Finance for payment.',
 	0,
 	"180cc4e4-f88e-432c-8950-48095a2171f1");
 INSERT INTO C_PP
@@ -449,11 +449,11 @@ INSERT INTO C_EP
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'DataSent',
-	'Signal that all of a department''s payroll data requested for review has been sent to client.');
+	'Signal that all of multi-part data stream requested has been sent to6the requesting client.');
 INSERT INTO C_AS
 	VALUES ("79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	'DataSent',
-	'Signal that all of a department''s payroll data requested for review has been sent to client.',
+	'Signal that all of multi-part data stream requested has been sent to6the requesting client.',
 	1,
 	"dce7039f-aa29-4ba4-af47-7258d8fb7941");
 INSERT INTO C_PP
@@ -461,7 +461,7 @@ INSERT INTO C_PP
 	"79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'Ident',
-	'',
+	'Identifies the type of data which has been sent.',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
@@ -470,7 +470,7 @@ INSERT INTO C_PP
 	"79e0cec4-ae5c-4386-bba6-8e0cbd7b5655",
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'Count',
-	'',
+	'A count of data items which preceeded this end-of-data signal.',
 	0,
 	'',
 	"904bbd7d-dcf9-4ddb-9a85-0f5b32aac4c5");
@@ -509,11 +509,11 @@ INSERT INTO C_EP
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayeeData',
-	'');
+	'Details of an employee on a payroll requested for review.');
 INSERT INTO C_AS
 	VALUES ("ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af",
 	'PayeeData',
-	'',
+	'Details of an employee on a payroll requested for review.',
 	1,
 	"4977673c-bec5-4608-b2c5-3676282e237e");
 INSERT INTO C_PP
@@ -557,11 +557,11 @@ INSERT INTO C_EP
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'AvailablePayrolls',
-	'');
+	'A request for those departments with a payroll currently available for review.');
 INSERT INTO C_AS
 	VALUES ("e4c136c3-a15a-4c1d-a50d-388ef28a61ba",
 	'AvailablePayrolls',
-	'',
+	'A request for those departments with a payroll currently available for review.',
 	0,
 	"ff9b6c68-ccf3-4e51-ba31-b1ad9d4ee0af");
 INSERT INTO C_EP
@@ -569,11 +569,11 @@ INSERT INTO C_EP
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayrollAvailable',
-	'');
+	'Data specifying a department which has a payroll available for review.');
 INSERT INTO C_AS
 	VALUES ("4d16c31d-6243-441a-8a49-f1f48cf4331d",
 	'PayrollAvailable',
-	'',
+	'Data specifying a department which has a payroll available for review.',
 	1,
 	"e4c136c3-a15a-4c1d-a50d-388ef28a61ba");
 INSERT INTO C_PP

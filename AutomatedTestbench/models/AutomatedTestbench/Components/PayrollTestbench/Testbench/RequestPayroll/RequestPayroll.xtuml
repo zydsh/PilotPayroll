@@ -12,7 +12,8 @@ INSERT INTO O_TFR
 	VALUES ("37ce3279-09b8-455b-bfd1-4628a7e625d2",
 	"a0339736-2755-40e8-a654-0b77ca79d2c3",
 	'Create',
-	'',
+	'Add a stimulus of this type to the ''script of a test case.
+',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'create object instance rp of RequestPayroll;

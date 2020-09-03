@@ -5,13 +5,15 @@ INSERT INTO O_OBJ
 	'ReviewPayrollElement',
 	27,
 	'ReviewPayrollElement',
-	'',
+	'Find a payroll element and act upon it according to parameters.
+To succeed, this observation must locate the element and successfully accomplish the configured action.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("fcee4895-9f58-4809-9f34-ed23174fce47",
 	"d5b7adea-73b0-4cf5-9170-1b778fd5030e",
 	'CreatePolling',
-	'See Observation.AppendPolling for description.',
+	'Add an observation of this type to the ''script'' of a test case.
+See Observation.AppendPolling for description.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	0,
 	'create object instance rvw of ReviewPayrollElement;
@@ -90,7 +92,7 @@ INSERT INTO O_TFR
 	VALUES ("e0ea601a-7528-4a80-b44b-7225f245a558",
 	"d5b7adea-73b0-4cf5-9170-1b778fd5030e",
 	'ReviewEntry',
-	'',
+	'When activated, locate and check or modify the specified pay element.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'LOG::LogInfo( message:"--- Expecting to review payroll entry with action " + self.action );

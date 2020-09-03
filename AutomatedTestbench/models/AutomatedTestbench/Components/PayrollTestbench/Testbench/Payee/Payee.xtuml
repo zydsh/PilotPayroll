@@ -5,7 +5,8 @@ INSERT INTO O_OBJ
 	'Payee',
 	22,
 	'Payee',
-	'An instance of an employee pay item requested from the application for review.',
+	'An instance of an employee on the payroll currently under client review.
+Note that only an ID is required for testbench purposes.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("03a03adc-0644-496f-8b1b-5483db98e4f4",
@@ -15,7 +16,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
-	3,
+	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);

@@ -5,7 +5,7 @@ INSERT INTO O_OBJ
 	'PayrollElement',
 	24,
 	'PayrollElement',
-	'',
+	'A labelled payment item that contributes to the overall pay for an employee.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("7c9f2910-4287-410b-b32c-17649569fc94",
@@ -72,7 +72,7 @@ INSERT INTO O_ATTR
 	"a541e4cf-78f2-4e57-9795-3f35ea702baa",
 	"aff124be-2d17-4259-9019-1a4b1d755cac",
 	'HoldUpdated',
-	'',
+	'True if the on-hold status has been altered.',
 	'',
 	'HoldUpdated',
 	0,
@@ -90,7 +90,7 @@ INSERT INTO O_ATTR
 	"a541e4cf-78f2-4e57-9795-3f35ea702baa",
 	"bf7a2f5d-9fe6-495d-8ef9-f0541694eb1a",
 	'AmountUpdated',
-	'',
+	'True if the payment amount has been altered - not used in initial use cases.',
 	'',
 	'AmountUpdated',
 	0,

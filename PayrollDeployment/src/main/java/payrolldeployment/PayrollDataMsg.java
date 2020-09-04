@@ -10,7 +10,7 @@ public class PayrollDataMsg {
 	public PayrollDataMsg() {
 	}
 	public PayrollDataMsg( String messageName,
-			               String employeeId;
+			               String employeeId,
                            String paymentLabel, 
                            String paymentAmount,
                            String holdStatus ) {

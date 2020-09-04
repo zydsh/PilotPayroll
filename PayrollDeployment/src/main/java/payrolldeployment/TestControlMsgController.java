@@ -87,6 +87,8 @@ public class TestControlMsgController {
 
     @MessageMapping( "/GetTime" )
     public void GetTime( GetTimeMsg message ) {
+    	TestControl.Singleton().GetTime();
+    }
 
 
     // End of outgoing messages.

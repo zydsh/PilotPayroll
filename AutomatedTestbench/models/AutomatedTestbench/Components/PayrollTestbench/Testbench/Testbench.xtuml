@@ -1038,7 +1038,7 @@ INSERT INTO DIM_ND
 	97.000000,
 	"ee7abd6a-8d9b-4161-82d7-009110159e83");
 INSERT INTO DIM_GE
-	VALUES (6024.000000,
+	VALUES (6036.000000,
 	3624.000000,
 	"ee7abd6a-8d9b-4161-82d7-009110159e83",
 	"00000000-0000-0000-0000-000000000000");
@@ -1209,8 +1209,8 @@ INSERT INTO DIM_ND
 	88.000000,
 	"51a58744-16ba-45fe-bc0c-b8850364b361");
 INSERT INTO DIM_GE
-	VALUES (5148.000000,
-	3540.000000,
+	VALUES (5160.000000,
+	3456.000000,
 	"51a58744-16ba-45fe-bc0c-b8850364b361",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -2203,6 +2203,30 @@ INSERT INTO DIM_ED
 	VALUES ("8f888913-44e3-47e4-8659-6abc03c3c9bf",
 	"bd70eb0d-7df3-4502-ac50-d28ccc12ab66",
 	"035d7ff4-5b24-4257-926a-d87144d53a7b");
+INSERT INTO GD_GE
+	VALUES ("af2a8af7-a063-4f64-9c51-1c3d520bdf8e",
+	"53f03c15-416c-440e-a65c-8589d8cd4574",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01",
+	21,
+	0,
+	'AutomatedTestbench::Components::PayrollTestbench::Testbench::NotificationString');
+INSERT INTO GD_SHP
+	VALUES ("af2a8af7-a063-4f64-9c51-1c3d520bdf8e");
+INSERT INTO GD_NCS
+	VALUES ("af2a8af7-a063-4f64-9c51-1c3d520bdf8e");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	111.000000,
+	"af2a8af7-a063-4f64-9c51-1c3d520bdf8e");
+INSERT INTO DIM_GE
+	VALUES (5163.000000,
+	3574.000000,
+	"af2a8af7-a063-4f64-9c51-1c3d520bdf8e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("af2a8af7-a063-4f64-9c51-1c3d520bdf8e",
+	0,
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_DIA
 	VALUES ("53f03c15-416c-440e-a65c-8589d8cd4574",
 	'',
@@ -2301,8 +2325,7 @@ INSERT INTO O_OBJ_PROXY
 	'PayrollStatusUpdate',
 	23,
 	'PayrollStatusUpdate',
-	'An example of a stimulus invoking an interface signal to the application under test.
-This is a request to update the status based on a configured attribute. ',
+	'This represents a request to update the status of the payroll. ',
 	"00000000-0000-0000-0000-000000000000",
 	'./PayrollStatusUpdate/PayrollStatusUpdate.xtuml');
 INSERT INTO R_SUB
@@ -2323,7 +2346,7 @@ INSERT INTO O_OBJ_PROXY
 	'RequestAvailable',
 	26,
 	'RequestAvailable',
-	'',
+	'Represents a request to receive identification of thos departments with payrolls available for review.',
 	"00000000-0000-0000-0000-000000000000",
 	'./RequestAvailable/RequestAvailable.xtuml');
 INSERT INTO PE_PE
@@ -2392,7 +2415,7 @@ INSERT INTO O_OBJ_PROXY
 	'GetNotification',
 	20,
 	'GetNotification',
-	'This observation looks for a notification from the application that matches its code attribute value.',
+	'This observation succeeds when it finds a notification from the application that matches its identification attribute.',
 	"00000000-0000-0000-0000-000000000000",
 	'./GetNotification/GetNotification.xtuml');
 INSERT INTO R_SUB
@@ -2415,7 +2438,7 @@ INSERT INTO O_OBJ_PROXY
 	'WaitForTrigger',
 	'This ''observation'' will evaluate only when requested and is used to delay for a certain condition.
 It uses "CreateTriggered" and supplies an "interested in" key value
-The testbench, at some point, can invoke an assessment using that key value.',
+The testbench, at some point, can invoke an assessment using that key value whiuch will trigger evaluation.',
 	"00000000-0000-0000-0000-000000000000",
 	'./WaitForTrigger/WaitForTrigger.xtuml');
 INSERT INTO R_SUB
@@ -2436,7 +2459,8 @@ INSERT INTO O_OBJ_PROXY
 	'ReviewPayrollElement',
 	27,
 	'ReviewPayrollElement',
-	'',
+	'Find a payroll element and act upon it according to parameters.
+To succeed, this observation must locate the element and successfully accomplish the configured action.',
 	"00000000-0000-0000-0000-000000000000",
 	'./ReviewPayrollElement/ReviewPayrollElement.xtuml');
 INSERT INTO PE_PE
@@ -2475,10 +2499,9 @@ INSERT INTO O_OBJ_PROXY
 This supertype uses the test sequencer to manage the order of execution of test cases.
 This mechanism allows for postponment of instantiation of test case components.
 Each test bucket subtype is activated, in sequence, by the test sequencing service.
-Each subtype surfaces an operation which instantiates its stimuli and observations.
+Each subtype surfaces an operation which instantiates its stimuli or observations.
 These stimuli/observations are instantiated as each test bucket is activated.
-They may be deleted when the test bucket completes, dependant on configuration choice.
-The subtype may also surface an operation to delete the test bucket sub/supertype instances.
+They may be deleted when the test bucket completes, dependent on configuration choice.
 ',
 	"00000000-0000-0000-0000-000000000000",
 	'./TestBucket/TestBucket.xtuml');
@@ -2538,7 +2561,7 @@ INSERT INTO O_OBJ_PROXY
 	'Department',
 	25,
 	'Department',
-	'',
+	'Represents a department with a payroll available for review.',
 	"00000000-0000-0000-0000-000000000000",
 	'./Department/Department.xtuml');
 INSERT INTO R_PART
@@ -2563,7 +2586,8 @@ INSERT INTO O_OBJ_PROXY
 	'Payee',
 	22,
 	'Payee',
-	'An instance of an employee pay item requested from the application for review.',
+	'An instance of an employee on the payroll currently under client review.
+Note that only an ID is required for testbench purposes.',
 	"00000000-0000-0000-0000-000000000000",
 	'./Payee/Payee.xtuml');
 INSERT INTO PE_PE
@@ -2618,7 +2642,7 @@ INSERT INTO O_OBJ_PROXY
 	'PayrollElement',
 	24,
 	'PayrollElement',
-	'',
+	'A labelled payment item that contributes to the overall pay for an employee.',
 	"00000000-0000-0000-0000-000000000000",
 	'./PayrollElement/PayrollElement.xtuml');
 INSERT INTO PE_PE
@@ -2676,6 +2700,42 @@ INSERT INTO S_SYNC
 	0);
 INSERT INTO PE_PE
 	VALUES ("98c1d5c4-4847-4946-b659-e7db6f4ddee7",
+	1,
+	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("92e9a20d-5772-4d91-a247-684fbf5144d1",
+	"00000000-0000-0000-0000-000000000000",
+	'CreateNotificationString',
+	'',
+	'create object instance str of NotificationString;
+str.key = param.key;
+str.message = param.msg;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("d844c452-c747-4c90-8134-461c9af48518",
+	"92e9a20d-5772-4d91-a247-684fbf5144d1",
+	'key',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("26354605-dac4-4d24-95c5-c3eecc1acb53",
+	"92e9a20d-5772-4d91-a247-684fbf5144d1",
+	'msg',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"d844c452-c747-4c90-8134-461c9af48518",
+	'');
+INSERT INTO PE_PE
+	VALUES ("92e9a20d-5772-4d91-a247-684fbf5144d1",
 	1,
 	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
 	"00000000-0000-0000-0000-000000000000",

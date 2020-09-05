@@ -1091,7 +1091,7 @@ INSERT INTO SPR_RS
 	VALUES ("ea7fb0db-9df3-4e57-b239-fce278c4ed20",
 	'RetrievePayrollForReview',
 	'Request from client to get department payroll data for review.
-Some reviews request only those items with on-hold status.
+Some reviewers request only those items with on-hold status.
 ',
 	'',
 	1,
@@ -1102,7 +1102,7 @@ INSERT INTO C_EP_PROXY
 	-1,
 	'RetrievePayrollForReview',
 	'Request from client to get department payroll data for review.
-Some reviews request only those items with on-hold status.
+Some reviewers request only those items with on-hold status.
 ',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
@@ -1134,8 +1134,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("84c1fd8b-566d-448e-b5f0-77315d14240a",
 	'SubmitItemApproval',
-	'Approve a payment element amount for an employee on a department payroll.
-Not used for preliminary Use Cases.
+	'Approve a payment element for an employee on a department payroll.
+Preliminary Use Cases only approve hold status.
 ',
 	'',
 	1,
@@ -1145,8 +1145,8 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitItemApproval',
-	'Approve a payment element amount for an employee on a department payroll.
-Not used for preliminary Use Cases.
+	'Approve a payment element for an employee on a department payroll.
+Preliminary Use Cases only approve hold status.
 ',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
@@ -1249,10 +1249,17 @@ INSERT INTO SPR_RS
 	VALUES ("0c2fddcc-17f0-43ca-ac28-4a50c8294c82",
 	'Notification',
 	'Notify a client of some occurrence.',
-	'create object instance msg of ReceivedNotification;
+	'// create an instance to be matched for observation success
+create object instance msg of ReceivedNotification;
 msg.Ident = param.Ident;
-//msg.Content = param.Content;
-',
+msg.Content = param.Content;
+
+// now show the notification
+select any str from instances of NotificationString
+ where ( selected.key == param.Ident );
+if ( not_empty str )
+  LOG::LogInfo( message:"**** NOTIFICATION: " + str.message + param.Content );
+end if;',
 	1,
 	0);
 INSERT INTO C_EP_PROXY
@@ -1269,7 +1276,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("a84e8b17-2b9b-46c2-8135-d900ae56b508",
 	'SubmitPayrollApproval',
-	'Signal that the payroll for a department has been approved by a client.',
+	'Signal that the payroll for a department has been approved by a client user.',
 	'',
 	1,
 	0);
@@ -1278,7 +1285,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitPayrollApproval',
-	'Signal that the payroll for a department has been approved by a client.',
+	'Signal that the payroll for a department has been approved by a client user.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("dbed358c-6472-419f-8dfa-a08c6a8d0068",
@@ -1287,7 +1294,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("dbed358c-6472-419f-8dfa-a08c6a8d0068",
 	'SubmitToFinance',
-	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
+	'Signal that client user wishes to submit finally reviewed payroll to Finance for payment.',
 	'',
 	1,
 	0);
@@ -1296,7 +1303,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitToFinance',
-	'Signal that client wishes to submit finally reviewed payroll to Finance for payment.',
+	'Signal that client user wishes to submit finally reviewed payroll to Finance for payment.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("5d56f9bf-4a46-4873-a33a-8d16ffd893b7",
@@ -1327,7 +1334,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("7e160586-e91d-4df7-ab67-291d123d6e83",
 	'DataSent',
-	'Signal that all of a department''s payroll data requested for review has been sent to client.',
+	'Signal that all of multi-part data stream requested has been sent to6the requesting client.',
 	'LOG::LogInfo( message:"-------- all data received for " + param.Ident );
 if ( param.Ident == "payroll" )
   send TESTSEQ::Assess( key:"PayrollAvailable" );
@@ -1341,7 +1348,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'DataSent',
-	'Signal that all of a department''s payroll data requested for review has been sent to client.',
+	'Signal that all of multi-part data stream requested has been sent to6the requesting client.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("5a6fab6b-7072-42f1-9cf7-38c681723694",
@@ -1368,7 +1375,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("716995a5-2226-4dfd-ac65-926e433c8ed3",
 	'PayeeData',
-	'',
+	'Details of an employee on a payroll requested for review.',
 	'create object instance payee of Payee;
 payee.EmployeeID = param.EmployeeID;
 select any dept from instances of Department
@@ -1382,7 +1389,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayeeData',
-	'',
+	'Details of an employee on a payroll requested for review.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("b951136c-65c9-4b67-b2b2-2fd757d32783",
@@ -1391,7 +1398,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("b951136c-65c9-4b67-b2b2-2fd757d32783",
 	'AvailablePayrolls',
-	'',
+	'A request for those departments with a payroll currently available for review.',
 	'',
 	1,
 	0);
@@ -1400,7 +1407,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'AvailablePayrolls',
-	'',
+	'A request for those departments with a payroll currently available for review.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("c7fe9d80-0149-4f4d-8da1-061b99d741f6",
@@ -1409,7 +1416,7 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("c7fe9d80-0149-4f4d-8da1-061b99d741f6",
 	'PayrollAvailable',
-	'',
+	'Data specifying a department which has a payroll available for review.',
 	'create object instance dept of Department;
 dept.Name = param.Department;',
 	1,
@@ -1419,7 +1426,7 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'PayrollAvailable',
-	'',
+	'Data specifying a department which has a payroll available for review.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("cbed0e18-6775-4be9-b1f9-61714edc73e6",
@@ -1484,7 +1491,7 @@ INSERT INTO C_I_PROXY
 	VALUES ("21fbab59-853a-47c8-8d2a-8eb0722f711c",
 	"00000000-0000-0000-0000-000000000000",
 	'TestSupport',
-	'',
+	'Supports sequencing of initialization between application and testbench.',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/TestSupport/TestSupport.xtuml');
 INSERT INTO PE_PE
 	VALUES ("76e58be0-a1c7-49ea-ba74-f77b1638c4f9",

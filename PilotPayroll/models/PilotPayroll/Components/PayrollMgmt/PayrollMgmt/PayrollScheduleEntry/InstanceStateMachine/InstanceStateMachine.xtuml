@@ -265,8 +265,8 @@ INSERT INTO SM_ACT
 	VALUES ("b51326f8-aeae-4558-9d02-bea244afaa1f",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
-	'send USER::Notification( Ident:"imminent", Content:"Payroll generation imminent" );
-LOG::LogInfo( message:"**** Payroll generation imminent !!!!!!!!!!!!" ); 
+	'select one dept related by self->Department[R4.''is scheduled for''];
+send USER::Notification( Ident:"imminent", Content:dept.Name );
 
 // Ask monitor to trigger at Draft payroll generation date & time
 create event instance advance of PayrollScheduleEntry2:Activate() to self;
@@ -377,7 +377,10 @@ INSERT INTO SM_ACT
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
 	'// @TODO send a missed submission message
-LOG::LogInfo( message:"Payroll submission date passed !!!!!!!!!!!!!!!" );',
+LOG::LogInfo( message:"Payroll submission date passed !!!!!!!!!!!!!!!" );
+select one dept related by self->Department[R4.''is scheduled for''];
+send USER::Notification( Ident:"overdue", Content:dept.Name );
+',
 	'',
 	0);
 INSERT INTO GD_MD

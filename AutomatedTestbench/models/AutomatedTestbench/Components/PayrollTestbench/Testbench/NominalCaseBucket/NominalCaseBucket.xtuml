@@ -14,7 +14,16 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one bucket related by self->TestBucket[R7];
+	'::CreateNotificationString( key:"imminent", msg:"Draft payroll generation imminent for " );
+::CreateNotificationString( key:"generating", msg:"Draft payroll generating for " );
+::CreateNotificationString( key:"generated", msg:"Draft payroll generated for " );
+::CreateNotificationString( key:"reviewed", msg:"Payroll reviewed for " );
+::CreateNotificationString( key:"unapproved", msg:"Payroll unnaproved for " );
+::CreateNotificationString( key:"approved", msg:"Payroll approved for " );
+::CreateNotificationString( key:"submitted", msg:"Payroll submitted for " );
+::CreateNotificationString( key:"overdue", msg:"Payroll submission overdue for " );
+
+select one bucket related by self->TestBucket[R7];
 send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"Payroll_Bucket_1" );
 send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
 
@@ -61,7 +70,7 @@ stId = RequestPayroll::Create( seqLabel:"seq04", dept:"IT", holds:False );
 WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
 ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"clear", pollInterval:1, timeLimit:10 );
 stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Approve" );
-GetNotification::CreatePolling( stimulus:stId, matchIdent:"approve", pollInterval:1, timeLimit:5 );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"approved", pollInterval:1, timeLimit:5 );
 stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Clear" );
 
 // Use Case UC09

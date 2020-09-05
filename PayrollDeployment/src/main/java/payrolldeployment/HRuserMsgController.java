@@ -71,9 +71,9 @@ public class HRuserMsgController {
 
 
 	@MessageMapping( "/AvailablePayrolls" )
-    public void AvailablePayrolls( AvailablePayrollsMsg  ) throws Exception {
+    public void AvailablePayrolls( AvailablePayrollsMsg message  ) throws Exception {
     	try {
-      	  HRuser.Singleton().Payroll().AvailablePayrolls() ) );
+      	  HRuser.Singleton().Payroll().AvailablePayrolls();
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in AvailablePayrolls()\n", e );    			
@@ -115,7 +115,7 @@ public class HRuserMsgController {
     public void UpdatesSent( UpdatesSentMsg message ) throws Exception {
     	try {
       	  HRuser.Singleton().Payroll().UpdatesSent( message.getDepartment(),
-      	                                            Integer.parseInt( message.getCount());
+      	                                            Integer.parseInt( message.getCount() ) );
       	}
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in UpdatesSent()\n", e );    			
@@ -167,7 +167,7 @@ public class HRuserMsgController {
     			                              Department,
     			                              String.valueOf( EmployeeId ),
     			                              EmployeeFirstName,
-    			                              EmployeeLastName ) );
+    			                              EmployeeLastName );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }

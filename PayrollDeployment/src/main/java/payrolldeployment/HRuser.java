@@ -34,9 +34,9 @@ public class HRuser extends Component<HRuser> {
     }
 
     // domain functions
-    public void Notification( final String p_Ident,  final String p_Content ) throws XtumlException {
+    public void Notification( final String p_Ident, final String p_Content ) throws XtumlException {
     	try {
-            HRuserMsgController.Singleton().SendNotificationMsg( p_Item, p_Content );
+            HRuserMsgController.Singleton().SendNotificationMsg( p_Ident, p_Content );
       	} catch ( Exception e ) {}
     }
 

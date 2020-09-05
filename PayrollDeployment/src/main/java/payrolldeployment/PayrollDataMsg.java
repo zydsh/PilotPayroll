@@ -7,18 +7,21 @@ public class PayrollDataMsg {
 	private String paymentLabel;
 	private String paymentAmount;
 	private String holdStatus;
+	private String unapprovalStatus;
 	public PayrollDataMsg() {
 	}
 	public PayrollDataMsg( String messageName,
 			               String employeeId,
                            String paymentLabel, 
                            String paymentAmount,
-                           String holdStatus ) {
+                           String holdStatus,
+                           String unapprovalAtatus ) {
 		this.messageName = messageName;
 		this.employeeId = employeeId;
 		this.paymentLabel = paymentLabel;
 		this.paymentAmount = paymentAmount;
 		this.holdStatus = holdStatus;
+		this.unapprovalStatus = unapprovalStatus;
 	}
 	public void setMessageName( String messageName ) {
 		this.messageName = messageName;
@@ -49,5 +52,11 @@ public class PayrollDataMsg {
 	}
 	public String getHoldStatus() {
 		return holdStatus;
+	}
+	public void setUnapprovalStatus( String unapprovalStatus ) {
+		this.unapprovalStatus = unapprovalStatus;
+	}
+	public String getUnapprovalStatus() {
+		return unapprovalStatus;
 	}
 }

@@ -334,10 +334,19 @@ INSERT INTO C_PP
 	"8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
 	"ba5eda7a-def5-0000-0000-000000000001",
 	'HoldStatus',
-	'',
+	'True if this payment item is held.',
 	0,
 	'',
 	"dd6ae2e6-3b2a-4218-8d36-99681cb8b949");
+INSERT INTO C_PP
+	VALUES ("57bc0b79-ad84-4d52-850d-7a14daad3fa5",
+	"8c9de5fe-1015-4d0e-bc74-0aa939a8f275",
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'UnapprovalStatus',
+	'True if this payment item is unapproved',
+	0,
+	'',
+	"fe35f754-b648-42e8-a367-29ab34cc644f");
 INSERT INTO C_EP
 	VALUES ("0f25438a-f717-4b80-b06c-9ce0f1c905c4",
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",

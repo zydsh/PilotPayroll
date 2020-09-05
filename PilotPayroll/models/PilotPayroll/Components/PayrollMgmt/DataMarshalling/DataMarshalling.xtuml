@@ -67,9 +67,14 @@ for each emp in employees
                                      ->EmployeePaymentElement[R15.''is composed of''];
   for each payment in payments
 	hold = False;
+    unapproved = False;
 	select one payroll related by payment->Payroll[R29.''is on hold for''];
 	if ( not_empty payroll )
 	  hold = True;
+	end if;  	
+	select one payroll related by payment->Payroll[R35.''needs approval for''];
+	if ( not_empty payroll )
+	  unapproved = True;
 	end if;  	
     if ( param.Holds == False ) or ( hold == True )
       if ( not empsent )		// time to send
@@ -83,7 +88,7 @@ for each emp in employees
       send USER::PayrollData( EmployeeID:emp.NationalID,
                               PaymentLabel:spec.Label, 
                               PaymentAmount:payment.Amount, 
-                              HoldStatus:hold );
+                              HoldStatus:hold, UnapprovalStatus: unapproved  );
       count = count + 1;
     end if;	
   end for;

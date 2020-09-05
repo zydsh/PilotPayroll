@@ -40,6 +40,7 @@ import payrolldeployment.PayrollDataMsg;
 import payrolldeployment.DataSentMsg;
 import payrolldeployment.RetrievePayrollForReviewMsg;
 import payrolldeployment.SubmitItemHoldMsg;
+import payrolldeployment.SubmitItemApprovalMsg;
 import payrolldeployment.SubmitPayrollApprovalMsg;
 import payrolldeployment.SubmitToFinanceMsg;
 import payrolldeployment.UpdatesSentMsg;
@@ -133,6 +134,17 @@ public class HRuserMsgController {
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in SubmitItemHold()\n", e );    			
       	}
+
+    @MessageMapping( "/SubmitItemApproval" )
+    public void SubmitItemApproval( SubmitItemApprovalMsg message ) throws Exception {
+    	try {
+      	  HRuser.Singleton().Payroll().SubmitItemApproval( message.getDepartment(),
+      			                                           Integer.parseInt( message.getEmployeeId() ),
+      			                                           message.getPaymentLabel() );
+      	}
+      	catch ( Exception e ) {
+        	  System.out.printf( "Exception, %s, in SubmitItemApproval()\n", e );    			
+      	}
     }
 
     // End of outgoing messages.
@@ -175,12 +187,14 @@ public class HRuserMsgController {
     public void SendPayrollDataMsg( Integer EmployeeId,
                                     String PaymentLabel,
     		                        Double PaymentAmount,
-    		                        Boolean HoldStatus ) throws Exception {
+    		                        Boolean HoldStatus
+    		                        Boolean UnapprovalStatus ) throws Exception {
     	PayrollDataMsg msg = new PayrollDataMsg( "PayrollData",
     	                                          String.valueOf( EmployeeId ),
     			                                  PaymentLabel,
     			                                  String.valueOf( PaymentAmount ),
-    			                                  String.valueOf( HoldStatus ) );
+    			                                  String.valueOf( HoldStatus ),
+    			                                  String.valueOf( UnapprovalStatus ) );
         String topic = "/topic/HRuser/";
         this.template.convertAndSend( topic, msg );
     }

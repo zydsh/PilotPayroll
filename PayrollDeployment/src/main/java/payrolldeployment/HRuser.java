@@ -46,9 +46,9 @@ public class HRuser extends Component<HRuser> {
       	} catch ( Exception e ) {}
     }
 
-    public void PayrollData( final int p_EmployeeID, final String p_PaymentLabel,  final double p_PaymentAmount,  final boolean p_HoldStatus ) throws XtumlException {
+    public void PayrollData( final int p_EmployeeID, final String p_PaymentLabel,  final double p_PaymentAmount,  final boolean p_HoldStatus, final boolean p_UnapprovalStatus ) throws XtumlException {
     	try {
-            HRuserMsgController.Singleton().SendPayrollDataMsg( p_EmployeeID, p_PaymentLabel, p_PaymentAmount, p_HoldStatus );
+            HRuserMsgController.Singleton().SendPayrollDataMsg( p_EmployeeID, p_PaymentLabel, p_PaymentAmount, p_HoldStatus, p_UnapprovalStatus );
       	} catch ( Exception e ) {}
     }
 

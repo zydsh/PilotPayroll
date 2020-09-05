@@ -1226,8 +1226,10 @@ INSERT INTO SPR_RS
 	'create object instance entry of PayrollElement;
 entry.Label = param.PaymentLabel;
 entry.Amount = param.PaymentAmount;
-entry.Hold = param.HoldStatus;
+entry.Hold = param.HoldStatus; 
+entry.Unapproved = param.UnapprovalStatus;
 entry.HoldUpdated = False;
+entry.ApproveUpdated = False;
 entry.AmountUpdated = False;
 select any payee from instances of Payee
  where ( selected.EmployeeID == param.EmployeeID );

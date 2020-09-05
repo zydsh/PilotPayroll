@@ -81,14 +81,17 @@ if ( self.newstatus == "Save" )
 end if;
 
 if ( self.newstatus == "Approve" )
-  dept.SendHoldUpdates();
-  dept.ClearElements();
+  dept.SendApprovalUpdates();
   send TESTAPP::SubmitPayrollApproval( Department:dept.Name );
 end if;
 
 if ( self.newstatus == "FinalSubmit" )
   dept.ClearElements();
   send TESTAPP::SubmitToFinance( Department:dept.Name );
+end if;
+
+if ( self.newstatus == "Clear" )
+  dept.ClearElements();
 end if;
 
 if ( self.newstatus == "Accept" )

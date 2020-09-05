@@ -125,6 +125,10 @@ if ( not_empty entry )
   if ( self.action == "checkclear" ) and ( entry.Hold == False );
     success = True;
   end if;
+  if ( self.action == "approve" );
+    entry.ApproveUpdated = True;
+    success = True;
+  end if;
 end if;
 obs.Complete( success:success );
 ',

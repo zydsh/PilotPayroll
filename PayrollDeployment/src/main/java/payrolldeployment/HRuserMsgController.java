@@ -134,6 +134,7 @@ public class HRuserMsgController {
       	catch ( Exception e ) {
         	  System.out.printf( "Exception, %s, in SubmitItemHold()\n", e );    			
       	}
+    }
 
     @MessageMapping( "/SubmitItemApproval" )
     public void SubmitItemApproval( SubmitItemApprovalMsg message ) throws Exception {
@@ -187,7 +188,7 @@ public class HRuserMsgController {
     public void SendPayrollDataMsg( Integer EmployeeId,
                                     String PaymentLabel,
     		                        Double PaymentAmount,
-    		                        Boolean HoldStatus
+    		                        Boolean HoldStatus,
     		                        Boolean UnapprovalStatus ) throws Exception {
     	PayrollDataMsg msg = new PayrollDataMsg( "PayrollData",
     	                                          String.valueOf( EmployeeId ),

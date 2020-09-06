@@ -257,8 +257,8 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RS
 	VALUES ("025e193d-cace-4bf4-a78c-bba4bd8794ff",
 	'SubmitItemApproval',
-	'Approve a payment element amount for an employee on a department payroll.
-Not used for preliminary Use Cases.
+	'Approve a payment element for an employee on a department payroll.
+Preliminary Use Cases only approve hold status.
 ',
 	'',
 	1,
@@ -268,8 +268,8 @@ INSERT INTO C_EP_PROXY
 	"cbed0e18-6775-4be9-b1f9-61714edc73e6",
 	-1,
 	'SubmitItemApproval',
-	'Approve a payment element amount for an employee on a department payroll.
-Not used for preliminary Use Cases.
+	'Approve a payment element for an employee on a department payroll.
+Preliminary Use Cases only approve hold status.
 ',
 	'../../../../../PilotPayroll/models/PilotPayroll/Interfaces/HumanResources/HumanResources.xtuml');
 INSERT INTO SPR_REP
@@ -347,7 +347,7 @@ INSERT INTO SPR_RS
 	'PayrollData',
 	'Data for single payroll payment element for an employee in a department.',
 	'::PayrollData( EmployeeID:param.EmployeeID, PaymentLabel:param.PaymentLabel, 
-  PaymentAmount:param.PaymentAmount, HoldStatus:param.HoldStatus );',
+  PaymentAmount:param.PaymentAmount, HoldStatus:param.HoldStatus, UnapprovalStatus:param.UnapprovalStatus );',
 	1,
 	0);
 INSERT INTO C_EP_PROXY

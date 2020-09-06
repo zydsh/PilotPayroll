@@ -105,6 +105,12 @@ else
   	if ( not_empty psu )
   	  unrelate psu from self across R3;
   	  delete object instance psu;
+    else
+      select one ra related by self->RequestAvailable[R3];
+      if ( not_empty ra )
+        unrelate ra from self across R3;
+        delete object instance ra;
+      end if;
   	end if;
   end if;
 end if;

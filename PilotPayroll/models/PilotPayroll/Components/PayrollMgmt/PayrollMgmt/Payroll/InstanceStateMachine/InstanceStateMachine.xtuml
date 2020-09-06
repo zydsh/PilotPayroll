@@ -684,16 +684,7 @@ INSERT INTO SM_ACT
 	VALUES ("b7b809b8-491b-4764-9efd-cadb1dc13b9b",
 	"cd4b8730-3d31-42cc-b2a2-c0b6313563f3",
 	1,
-	'select any element related by self->EmployeePayment[R7]
-                                  ->EmployeePaymentElement[R15.''is composed of''];
-if ( empty element )
-  self.BuildPaymentElements();	// first generation for this payroll instance
-  select one dept related by self->PayPeriod[R33.''is for'']
-                               ->PayrollScheduleEntry[R32.''specifies dates for'']
-                               ->Department[R4.''is scheduled for''];
-  relate self to dept across R34.''is being reviewed for'';
-end if;
-self.EvaluateEmployeePayments();
+	'self.EvaluateEmployeePayments();
 
 create object instance log of PayrollLog;
 relate log to self across R8.''records generation of'';

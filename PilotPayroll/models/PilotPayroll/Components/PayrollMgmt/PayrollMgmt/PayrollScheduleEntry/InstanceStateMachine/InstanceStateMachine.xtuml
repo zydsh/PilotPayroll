@@ -326,7 +326,8 @@ INSERT INTO SM_ACT
 select one dept related by self->Department[R4.''is scheduled for''];
 relate payroll to dept across R34.''is being reviewed for'';
 select one payperiod related by self->PayPeriod[R32.''schedules for''];
-relate payroll to payperiod across R33.''is for''; 
+relate payroll to payperiod across R33.''is for'';
+payroll.BuildPaymentElements();
 generate Payroll1:Generate() to payroll;
 
 // Set monitor to trigger warning event if submission date is missed

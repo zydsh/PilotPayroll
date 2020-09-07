@@ -1,59 +1,59 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("7bc7c6fe-2ecc-4961-934e-51a90d231a7d",
-	'ReceivedNotification',
-	21,
-	'ReceivedNotification',
-	'An instance of a message received from the application which can be searched for by an observation.',
+	VALUES ("9cc822ee-6e73-465a-bc73-ab669b0a0f01",
+	'NotificationString',
+	28,
+	'NotificationString',
+	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
-	VALUES ("7793f490-4cd5-48ae-aab2-425d8f2f5d1b",
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	VALUES ("b98ac337-34a7-4aad-8d76-4c383a20c841",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO O_BATTR
-	VALUES ("7793f490-4cd5-48ae-aab2-425d8f2f5d1b",
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	VALUES ("b98ac337-34a7-4aad-8d76-4c383a20c841",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO O_ATTR
-	VALUES ("7793f490-4cd5-48ae-aab2-425d8f2f5d1b",
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d",
+	VALUES ("b98ac337-34a7-4aad-8d76-4c383a20c841",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01",
 	"00000000-0000-0000-0000-000000000000",
-	'Ident',
+	'key',
 	'',
 	'',
-	'Ident',
+	'key',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("58fc5428-50f5-42de-b38a-14c74774ff28",
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	VALUES ("09360c39-e3ff-4cf6-8dca-a17f025e5048",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO O_BATTR
-	VALUES ("58fc5428-50f5-42de-b38a-14c74774ff28",
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	VALUES ("09360c39-e3ff-4cf6-8dca-a17f025e5048",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO O_ATTR
-	VALUES ("58fc5428-50f5-42de-b38a-14c74774ff28",
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d",
-	"7793f490-4cd5-48ae-aab2-425d8f2f5d1b",
-	'Content',
+	VALUES ("09360c39-e3ff-4cf6-8dca-a17f025e5048",
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01",
+	"b98ac337-34a7-4aad-8d76-4c383a20c841",
+	'message',
 	'',
 	'',
-	'Content',
+	'message',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO O_ID
 	VALUES (1,
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO O_ID
 	VALUES (2,
-	"7bc7c6fe-2ecc-4961-934e-51a90d231a7d");
+	"9cc822ee-6e73-465a-bc73-ab669b0a0f01");
 INSERT INTO PE_PE
-	VALUES ("7bc7c6fe-2ecc-4961-934e-51a90d231a7d",
+	VALUES ("9cc822ee-6e73-465a-bc73-ab669b0a0f01",
 	1,
 	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
 	"00000000-0000-0000-0000-000000000000",

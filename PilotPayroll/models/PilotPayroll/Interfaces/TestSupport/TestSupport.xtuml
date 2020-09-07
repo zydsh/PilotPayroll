@@ -1,0 +1,45 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	"00000000-0000-0000-0000-000000000000",
+	'TestSupport',
+	'Supports sequencing of initialization between application and testbench.');
+INSERT INTO C_EP
+	VALUES ("61af314c-605b-4abd-adf2-8f6d09aeb759",
+	"21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	-1,
+	'Initialize',
+	'');
+INSERT INTO C_AS
+	VALUES ("61af314c-605b-4abd-adf2-8f6d09aeb759",
+	'Initialize',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("fabcaa82-3b97-411c-b1bf-17a14b574e6b",
+	"21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	-1,
+	'InitializationComplete',
+	'');
+INSERT INTO C_AS
+	VALUES ("fabcaa82-3b97-411c-b1bf-17a14b574e6b",
+	'InitializationComplete',
+	'',
+	1,
+	"61af314c-605b-4abd-adf2-8f6d09aeb759");
+INSERT INTO PE_PE
+	VALUES ("21fbab59-853a-47c8-8d2a-8eb0722f711c",
+	1,
+	"3e009682-fca9-4bec-a3bd-f9cf28f514cc",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3e009682-fca9-4bec-a3bd-f9cf28f514cc",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	"5713191d-1d3c-41cb-add1-1cce3729acf2",
+	'Interfaces',
+	'',
+	0,
+	'../Interfaces.xtuml');

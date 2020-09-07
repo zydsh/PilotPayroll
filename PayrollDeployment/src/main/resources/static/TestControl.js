@@ -81,6 +81,12 @@ function sendSetTime() {
     	              'minute': dateTime.getUTCMinutes()}));
 }
 
+function sendSetTime() {
+    stompClient.send("/app/SetTime", {} );
+}
+
+// End of client-to-server..
+
 // Display a message received from the server.
 function showReply(message) {
     $("#replies").append("<tr><td>" + message + "</td></tr>");
@@ -95,4 +101,5 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#AdvanceTime" ).click(function() { sendAdvanceTime(); });
     $( "#SetTime" ).click(function() { sendSetTime(); });
+    $( "#GetTime" ).click(function() { sendGetTime(); });
 });

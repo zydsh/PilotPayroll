@@ -265,8 +265,8 @@ INSERT INTO SM_ACT
 	VALUES ("b51326f8-aeae-4558-9d02-bea244afaa1f",
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
-	'send USER::Notification( Code:"UC06", Message:"Payroll generation imminent" );
-LOG::LogInfo( message:"**** Payroll generation imminent !!!!!!!!!!!!" ); 
+	'select one dept related by self->Department[R4.''is scheduled for''];
+send USER::Notification( Ident:"imminent", Content:dept.Name );
 
 // Ask monitor to trigger at Draft payroll generation date & time
 create event instance advance of PayrollScheduleEntry2:Activate() to self;
@@ -324,9 +324,10 @@ INSERT INTO SM_ACT
 	1,
 	'create object instance payroll of Payroll;
 select one dept related by self->Department[R4.''is scheduled for''];
-relate payroll to dept across R34.''is currently being evaluated for'';
+relate payroll to dept across R34.''is being reviewed for'';
 select one payperiod related by self->PayPeriod[R32.''schedules for''];
-relate payroll to payperiod across R33.''is for''; 
+relate payroll to payperiod across R33.''is for'';
+payroll.BuildPaymentElements();
 generate Payroll1:Generate() to payroll;
 
 // Set monitor to trigger warning event if submission date is missed
@@ -377,7 +378,10 @@ INSERT INTO SM_ACT
 	"508f31ae-a839-489f-b30f-9028ebcec96f",
 	1,
 	'// @TODO send a missed submission message
-LOG::LogInfo( message:"Payroll submission date passed !!!!!!!!!!!!!!!" );',
+LOG::LogInfo( message:"Payroll submission date passed !!!!!!!!!!!!!!!" );
+select one dept related by self->Department[R4.''is scheduled for''];
+send USER::Notification( Ident:"overdue", Content:dept.Name );
+',
 	'',
 	0);
 INSERT INTO GD_MD

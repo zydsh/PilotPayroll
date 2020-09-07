@@ -67,7 +67,10 @@ public class TestControl extends Component<TestControl> {
         	  System.out.printf( "Exception, %s, in SendCurrentDateTime()\n", e );    			
       	}
     }
-
+    
+    public void GetTime() {
+    	SendCurrentDateTime();
+    }
 
 
     // relates and unrelates

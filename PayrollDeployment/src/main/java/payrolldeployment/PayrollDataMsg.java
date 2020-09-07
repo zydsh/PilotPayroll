@@ -3,31 +3,25 @@ package payrolldeployment;
 //Spring requires a POJ class for each message.
 public class PayrollDataMsg {
 	private String messageName;
-	private String department;
 	private String employeeId;
-	private String employeeFirstName;
-	private String employeeLastName;
 	private String paymentLabel;
 	private String paymentAmount;
 	private String holdStatus;
+	private String unapprovalStatus;
 	public PayrollDataMsg() {
 	}
 	public PayrollDataMsg( String messageName,
-			               String department, 
-	                       String employeeId, 
-	                       String employeeFirstName, 
-                           String employeeLastName, 
+			               String employeeId,
                            String paymentLabel, 
                            String paymentAmount,
-                           String holdStatus ) {
+                           String holdStatus,
+                           String unapprovalAtatus ) {
 		this.messageName = messageName;
-		this.department = department;
 		this.employeeId = employeeId;
-		this.employeeFirstName = employeeFirstName;
-		this.employeeLastName = employeeLastName;
 		this.paymentLabel = paymentLabel;
 		this.paymentAmount = paymentAmount;
 		this.holdStatus = holdStatus;
+		this.unapprovalStatus = unapprovalStatus;
 	}
 	public void setMessageName( String messageName ) {
 		this.messageName = messageName;
@@ -35,29 +29,11 @@ public class PayrollDataMsg {
 	public String getMessageName() {
 		return messageName;
 	}
-	public void setDepartment( String department ) {
-		this.department = department;
-	}
-	public String getDepartment() {
-		return department;
-	}
-	public void setEmployeeID( String employeeId ) {
+	public void setEmployeeId( String employeeId ) {
 		this.employeeId = employeeId;
 	}
 	public String getEmployeeId() {
 		return employeeId;
-	}
-	public void setEmployeeFirstName( String employeeFirstName ) {
-		this.employeeFirstName = employeeFirstName;
-	}
-	public String getEmployeeFirstName() {
-		return employeeFirstName;
-	}
-	public void setEmployeeLastName( String employeeLastName ) {
-		this.employeeLastName = employeeLastName;
-	}
-	public String getEmployeeLastName() {
-		return employeeLastName;
 	}
 	public void setPaymentLabel( String paymentLabel ) {
 		this.paymentLabel = paymentLabel;
@@ -76,5 +52,11 @@ public class PayrollDataMsg {
 	}
 	public String getHoldStatus() {
 		return holdStatus;
+	}
+	public void setUnapprovalStatus( String unapprovalStatus ) {
+		this.unapprovalStatus = unapprovalStatus;
+	}
+	public String getUnapprovalStatus() {
+		return unapprovalStatus;
 	}
 }

@@ -1,0 +1,138 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("ebb842bc-1283-4528-8f93-563362996b3f",
+	'NominalCaseBucket',
+	15,
+	'NominalCaseBucket',
+	'A test bucket which runs a number of tests based on Use Cases for the Payroll application.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("335acef2-7a9f-427b-b2da-3f2c30504939",
+	"ebb842bc-1283-4528-8f93-563362996b3f",
+	'RunBucketTests',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'::CreateNotificationString( key:"imminent", msg:"Draft payroll generation imminent for " );
+::CreateNotificationString( key:"generating", msg:"Draft payroll generating for " );
+::CreateNotificationString( key:"generated", msg:"Draft payroll generated for " );
+::CreateNotificationString( key:"reviewed", msg:"Payroll reviewed for " );
+::CreateNotificationString( key:"unapproved", msg:"Payroll unapproved for " );
+::CreateNotificationString( key:"approved", msg:"Payroll approved for " );
+::CreateNotificationString( key:"submitted", msg:"Payroll submitted for " );
+::CreateNotificationString( key:"overdue", msg:"Payroll submission overdue for " );
+
+select one bucket related by self->TestBucket[R7];
+send TESTSEQ::NameTestBucket( bucketId:bucket.bucketId, bucketLabel:"Payroll_Bucket_1" );
+send TESTSEQ::SetTestBucketResolution( bucketId:bucket.bucketId, resolution:timerResolution::second );
+
+// Use Case UC06 
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC06" ); 
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC06", seqLabel:"seq06" );
+stId06 = FastForward::Create( seqLabel:"seq06", days:13, hours:11 );
+GetNotification::CreatePolling( stimulus:stId06, matchIdent:"imminent", pollInterval:1, timeLimit:5 );
+
+// Use Case UC05
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC05" );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC05", seqLabel:"seq05" );
+stId05 = FastForward::Create( seqLabel:"seq05", days:1, hours:1 );
+GetNotification::CreatePolling( stimulus:stId05, matchIdent:"generating", pollInterval:1, timeLimit:5 );
+GetNotification::CreatePolling( stimulus:stId05, matchIdent:"generated", pollInterval:1, timeLimit:5 );
+
+// Use Case UC03
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC03" );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC03", seqLabel:"seq03" );
+stId = RequestAvailable::Create( seqLabel:"seq03" );
+stId = RequestPayroll::Create( seqLabel:"seq03", dept:"IT", holds:False );
+WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq03", dept:"IT", requestedstatus:"Save" );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"reviewed", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"checkhold", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq03", dept:"IT", requestedstatus:"clear" );
+
+// Use Case UC07
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC07" );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC07", seqLabel:"seq07" );
+stId = RequestPayroll::Create( seqLabel:"seq07", dept:"IT", holds:True );
+WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"clear", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"hold", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq07", dept:"IT", requestedstatus:"Save" );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10001, label:"Monthly salary", action:"checkclear", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq07", dept:"IT", requestedstatus:"Clear" );
+
+// Use Case UC04
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC04" );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC04", seqLabel:"seq04" );
+stId = RequestPayroll::Create( seqLabel:"seq04", dept:"IT", holds:False );
+WaitForTrigger::CreateTriggered( stimulus:stId, key:"PayrollAvailable", pollInterval:0, timeLimit:0 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Approve" );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"unapproved", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"checkunapproval", pollInterval:1, timeLimit:5 );
+ReviewPayrollElement::CreatePolling( stimulus:stId, employee:10002, label:"Monthly salary", action:"approve", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Approve" );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"approved", pollInterval:1, timeLimit:5 );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq04", dept:"IT", requestedstatus:"Clear" );
+
+// Use Case UC09
+send TESTSEQ::CreateTestCase( bucketId:bucket.bucketId, caseLabel:"UC09" );
+send TESTSEQ::CreateStimulusSequence( caseLabel:"UC09", seqLabel:"seq09" );
+stId = RequestPayroll::Create( seqLabel:"seq09", dept:"IT", holds:False );
+stId = PayrollStatusUpdate::Create( seqLabel:"seq09", dept:"IT", requestedstatus:"FinalSubmit" );
+GetNotification::CreatePolling( stimulus:stId, matchIdent:"submitted", pollInterval:1, timeLimit:5 );
+
+
+bucket.Initialized();
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_TFR
+	VALUES ("8f771b4c-2ec6-4a14-b353-83e057434b3e",
+	"ebb842bc-1283-4528-8f93-563362996b3f",
+	'AddBucket',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'create object instance bucket of TestBucket;
+relate self to bucket across R7;
+bucket.AddToSuite();',
+	1,
+	'',
+	"335acef2-7a9f-427b-b2da-3f2c30504939",
+	0);
+INSERT INTO O_ID
+	VALUES (0,
+	"ebb842bc-1283-4528-8f93-563362996b3f");
+INSERT INTO O_ID
+	VALUES (1,
+	"ebb842bc-1283-4528-8f93-563362996b3f");
+INSERT INTO O_ID
+	VALUES (2,
+	"ebb842bc-1283-4528-8f93-563362996b3f");
+INSERT INTO PE_PE
+	VALUES ("ebb842bc-1283-4528-8f93-563362996b3f",
+	1,
+	"2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2af95cb4-1348-4abf-a7fa-72c9872d63cb",
+	"00000000-0000-0000-0000-000000000000",
+	"254e12da-372d-4f11-ad9a-5b53303407a5",
+	'Testbench',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
+	0,
+	'../Testbench.xtuml');

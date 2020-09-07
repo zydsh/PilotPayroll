@@ -17,7 +17,7 @@ INSERT INTO O_TFR
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'// create payment contributiuon elements from the payment structure ''template''
-select many employees related by self->Department[R34.''is currently being evaluated for'']
+select many employees related by self->Department[R34.''is being reviewed for'']
                                      ->Employee[R6.''employs''];
 for each employee in employees
   create object instance payment of EmployeePayment;
@@ -57,13 +57,14 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one dept related by self->Department[R34.''is currently being evaluated for''];
+	'select one dept related by self->Department[R34.''is being reviewed for''];
 select any bad related by self->EmployeePaymentElement[R35.''has unapproved''];
 if ( not_empty bad )
   LOG::LogFailure( message:"Unable to approve payroll for department " + dept.Name );
+  send USER::Notification( Ident:"unapproved", Content:dept.Name );
   return;
 end if;
-generate Payroll3:Approve() to self;
+generate Payroll3:Approved() to self;
 ',
 	1,
 	'',
@@ -76,7 +77,7 @@ INSERT INTO O_TFR
 	'',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'select one dept related by self->Department[R34.''is currently being evaluated for''];
+	'select one dept related by self->Department[R34.''is being reviewed for''];
 select any bad related by self->EmployeePaymentElement[R35.''has unapproved''];
 if ( not_empty bad )
   LOG::LogFailure( message:"Unable to submit payroll for department " + dept.Name );

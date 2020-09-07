@@ -1,20 +1,18 @@
 package payrolldeployment;
 
 //Spring requires a POJ class for each message.
-public class SubmitItemHoldMsg {
+public class SubmitItemApprovalMsg {
 	private String department;
 	private String employeeId;
 	private String paymentLabel;
-	private String holdStatus;
-	public SubmitItemHoldMsg() {
+	public SubmitItemApprovalMsg() {
 	}
-	public SubmitItemHoldMsg( String department, 
+	public SubmitItemApprovalMsg( String department, 
 	                          String employeeId, 
-							  String paymentLabel, 
-							  String holdStatus ) {		this.department = department;
+							  String paymentLabel ) {
+		this.department = department;
 		this.employeeId = employeeId;
 		this.paymentLabel = paymentLabel;
-		this.holdStatus = holdStatus;
 	}
 	public void setDepartment( String department ) {
 		this.department = department;
@@ -33,11 +31,5 @@ public class SubmitItemHoldMsg {
 	}
 	public String getPaymentLabel() {
 		return paymentLabel;
-	}
-	public void setHoldStatus( String holdStatus ) {
-		this.holdStatus = holdStatus;
-	}
-	public String getHoldStatus() {
-		return holdStatus;
 	}
 }

@@ -5,17 +5,13 @@ INSERT INTO O_OBJ
 	'FastForward',
 	5,
 	'FastForward',
-	'An example of a stimulus providing value(s) to be injected to the application undere test.
-
-A contrivance allows this stimulus to be configured to manipulate the interval timer:
-Any negative value of the supplied attribute will start the timer.
-Exactly -1 will adjust the timer resolution. ',
+	'A stimulus which advances the perceived current time in the application.',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
 	VALUES ("82ff6d7f-0e77-438e-a86f-7f308737e7b1",
 	"10753813-4435-42b5-b35e-30f6c94ceffb",
 	'Create',
-	'',
+	'Add an instance of a time advance request to the ''script'' of a test case.',
 	"ba5eda7a-def5-0000-0000-000000000005",
 	0,
 	'create object instance ff of FastForward;
@@ -24,8 +20,8 @@ ff.hours = param.hours;
 
 create object instance stimulus of Stimulus;
 relate stimulus to ff across R3;
-stimulus.AddToTest( assigned_seq_id:param.seq );
-return stimulus.assigned_stm_id;
+stimulus.AddToTest( seqLabel:param.seqLabel );
+return stimulus.stimulusId;
 ',
 	1,
 	'',
@@ -34,8 +30,8 @@ return stimulus.assigned_stm_id;
 INSERT INTO O_TPARM
 	VALUES ("b5c90e5e-8215-4e4b-875e-2ed7f15e0cf7",
 	"82ff6d7f-0e77-438e-a86f-7f308737e7b1",
-	'seq',
-	"ba5eda7a-def5-0000-0000-000000000005",
+	'seqLabel',
+	"ba5eda7a-def5-0000-0000-000000000004",
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -58,34 +54,33 @@ INSERT INTO O_TPARM
 	'',
 	"93a46435-9bea-4c53-a002-2d54616c2ed8",
 	'');
+INSERT INTO O_TFR
+	VALUES ("2acb5ce1-8a12-413d-ae38-edebbefba09d",
+	"10753813-4435-42b5-b35e-30f6c94ceffb",
+	'Advance',
+	'When activated, advance the perceived time in the application.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'LOG::LogInfo( message:"FastForward injected" );
+
+select one stimulus related by self->Stimulus[R3];
+ts = TimeUtilities::AdvanceTime( days: self.days, hours:self.hours, minutes:0 );
+
+stimulus.Complete();',
+	1,
+	'',
+	"82ff6d7f-0e77-438e-a86f-7f308737e7b1",
+	0);
 INSERT INTO O_NBATTR
-	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
+	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb");
 INSERT INTO O_BATTR
-	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
+	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb");
 INSERT INTO O_ATTR
-	VALUES ("409dc04a-e8b2-469c-9f63-1417062790de",
+	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
 	"10753813-4435-42b5-b35e-30f6c94ceffb",
 	"00000000-0000-0000-0000-000000000000",
-	'current_state',
-	'',
-	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
-	"10753813-4435-42b5-b35e-30f6c94ceffb");
-INSERT INTO O_BATTR
-	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
-	"10753813-4435-42b5-b35e-30f6c94ceffb");
-INSERT INTO O_ATTR
-	VALUES ("a29a665d-bb5e-4683-9678-bf3d7996bcc7",
-	"10753813-4435-42b5-b35e-30f6c94ceffb",
-	"409dc04a-e8b2-469c-9f63-1417062790de",
 	'days',
 	'',
 	'',
@@ -132,6 +127,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

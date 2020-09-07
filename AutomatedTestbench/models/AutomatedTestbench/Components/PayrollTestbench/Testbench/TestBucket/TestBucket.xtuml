@@ -7,17 +7,11 @@ INSERT INTO O_OBJ
 	'TestBucket',
 	'A test bucket is used to group related test cases; every test case must belong to a bucket.
 This supertype uses the test sequencer to manage the order of execution of test cases.
-Invocation of test buckets is managed through polymorphic event dispatch.
 This mechanism allows for postponment of instantiation of test case components.
 Each test bucket subtype is activated, in sequence, by the test sequencing service.
-Each subtype surfaces an operation which instantiates its stimuli and observations.
+Each subtype surfaces an operation which instantiates its stimuli or observations.
 These stimuli/observations are instantiated as each test bucket is activated.
-They may be deleted when the test bucket completes, dependant on configuration choice.
-
-A test bucket subtype must include an instance-based state model.
-This state model must accept or ignore both Execute_pvt and Delete_pvt events.
-The first should result in instantiation of stimuli/observation sequences.
-The second may delete the test bucket sub/supertype instances.
+They may be deleted when the test bucket completes, dependent on configuration choice.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -27,7 +21,7 @@ INSERT INTO O_TFR
 	'Add a new instance of test bucket to the test suite.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send self.assigned_bucket_id = TESTSEQ::AddTestBucket();',
+	'send TESTSEQ::AddBucket( ID:self.bucketId );',
 	1,
 	'',
 	"00000000-0000-0000-0000-000000000000",
@@ -39,7 +33,10 @@ INSERT INTO O_TFR
 	'Dispose of the test bucket instances after completion of execution.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'generate TestBucket2:Delete_pvt to self;',
+	'select one nominal related by self->NominalCaseBucket[R7];
+unrelate self from nominal across R7;
+delete object instance nominal;
+delete object instance self;',
 	1,
 	'',
 	"dc5940e0-920d-4496-82fe-a150351893ff",
@@ -51,29 +48,25 @@ INSERT INTO O_TFR
 	'Signal the test sequencer that the bucket test cases may start execution.',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
-	'send TESTSEQ::BucketInitialized( bucketId:self.assigned_bucket_id );',
+	'send TESTSEQ::BucketInitialized( bucketId:self.bucketId );',
 	1,
 	'',
 	"7bb04181-a76f-42a2-838b-c744a8f29555",
 	0);
-INSERT INTO O_NBATTR
-	VALUES ("e60d5cf8-b860-4187-b176-5f41ea7bb504",
-	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2");
-INSERT INTO O_BATTR
-	VALUES ("e60d5cf8-b860-4187-b176-5f41ea7bb504",
-	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2");
-INSERT INTO O_ATTR
-	VALUES ("e60d5cf8-b860-4187-b176-5f41ea7bb504",
+INSERT INTO O_TFR
+	VALUES ("40baccb7-b4b3-45a5-8e80-df6cd65023f1",
 	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2",
-	"407d9785-e89d-4d7e-967a-f3e98b16c2ff",
-	'current_state',
+	'RunTestCases',
 	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one nominal related by self->NominalCaseBucket[R7];
+nominal.RunBucketTests();
+',
+	1,
 	'',
-	'current_state',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000006",
-	'',
-	'');
+	"4309ad42-6054-4416-bd1b-299a4abbe8b2",
+	0);
 INSERT INTO O_NBATTR
 	VALUES ("407d9785-e89d-4d7e-967a-f3e98b16c2ff",
 	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2");
@@ -84,11 +77,11 @@ INSERT INTO O_ATTR
 	VALUES ("407d9785-e89d-4d7e-967a-f3e98b16c2ff",
 	"61cc68fd-3fc9-47d3-8257-f25fb32b68a2",
 	"00000000-0000-0000-0000-000000000000",
-	'assigned_bucket_id',
+	'bucketId',
 	'An identifier returned by the Test sequencer service.
 Used to identify an instance when being invoked by the Test sequencer.',
 	'',
-	'assigned_bucket_id',
+	'bucketId',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000005",
 	'',
@@ -113,6 +106,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

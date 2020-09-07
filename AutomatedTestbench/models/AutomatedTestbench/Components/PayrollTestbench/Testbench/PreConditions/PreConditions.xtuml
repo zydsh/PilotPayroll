@@ -5,7 +5,8 @@ INSERT INTO O_OBJ
 	'PreConditions',
 	4,
 	'PreConditions',
-	'This class represents a set of application values which should be established before a test case is initiated.
+	'This class represents a set of application values which may be established before a test case is initiated.
+Not used in the initial use cases.
 ',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_TFR
@@ -144,13 +145,13 @@ INSERT INTO O_ATTR
 	VALUES ("204f03c6-bc63-40f2-8f4e-45495082ad2b",
 	"50192ec6-b95d-46af-9633-8781ac3385c3",
 	"00000000-0000-0000-0000-000000000000",
-	'conditions_id',
+	'conditionsCaseLabel',
 	'Used to identify an instance when being invoked by the Test sequencer.
-This id should match the sequence service assigned id of the associated test case. ',
+This label should match the label of the associated test case. ',
 	'',
-	'conditions_id',
+	'conditionsCaseLabel',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000005",
+	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
 INSERT INTO O_ID
@@ -173,6 +174,15 @@ INSERT INTO EP_PKG_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"254e12da-372d-4f11-ad9a-5b53303407a5",
 	'Testbench',
-	'',
+	'An application-specific testbench which will run a series of test cases and report success or failure.
+Controlled by an application-independent utility the testbench injects stimuli and observes results.
+
+Test cases are grouped into one or more test buckets which are added to a singleton test suite.
+Testing is initiated by a function which registers a test suite with the utility and adds test buckets.
+Each test bucket surfaces an operation which ''scripts'' its test cases.
+A test cases creates one or more sequences of stimuli which are added by the script.
+Each stimulus can be followed by zero or more observations which assess application output.
+
+A summary report presents test case pass/fail information.',
 	0,
 	'../Testbench.xtuml');

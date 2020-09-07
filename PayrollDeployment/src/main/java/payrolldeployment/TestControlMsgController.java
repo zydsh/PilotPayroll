@@ -34,6 +34,7 @@ import org.springframework.web.util.HtmlUtils;
 import payrolldeployment.AdvanceTimeMsg;         // AdvanceTime message class
 import payrolldeployment.SetTimeMsg;             // SetTime message class
 import payrolldeployment.CurrentDateTimeMsg;     // Current date and time message class
+import payrolldeployment.GetTimeMsg;             // GetTime message class
 import payrolldeployment.TestControl;            // Shell component
 
 // The Spring framework arranges for an instance of this class to be
@@ -83,6 +84,13 @@ public class TestControlMsgController {
         int minute = Integer.parseInt( message.getMinute() );
         TestControl.Singleton().SetTime( year, month, day, hour, minute );
     }
+
+    @MessageMapping( "/GetTime" )
+    public void GetTime( GetTimeMsg message ) {
+    	TestControl.Singleton().GetTime();
+    }
+
+
     // End of outgoing messages.
     
     // Incoming (to this component) messages.

@@ -228,7 +228,7 @@ for each dept in depts
   	send USER::PayrollAvailable( Department:dept.Name );
   	count = count + 1;
   end if;
-end for;
+end for; 
 send USER::DataSent( Ident:"available", Count:count );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
